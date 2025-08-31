@@ -12,11 +12,12 @@ config_version=5
 
 config/name="Bullethell"
 config/features=PackedStringArray("4.4", "Forward Plus")
-config/icon="res://icon.svg"
+config/icon="res://Assets/icon.svg"
 
 [file_customization]
 
 folder_colors={
+"res://Assets/": "yellow",
 "res://Cenas/": "pink",
 "res://Fases/": "green",
 "res://Scripts/": "red",
