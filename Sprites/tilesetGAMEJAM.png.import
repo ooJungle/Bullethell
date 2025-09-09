@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cfda735rfcla5"
-path="res://.godot/imported/icon1.svg-d8524b113e86a93b40c7f830ce13b356.ctex"
+uid="uid://tpc5pqukpb32"
+path="res://.godot/imported/tilesetGAMEJAM.png-09e42a222e3dd778a6442d81cd417435.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Cenas/icon1.svg"
-dest_files=["res://.godot/imported/icon1.svg-d8524b113e86a93b40c7f830ce13b356.ctex"]
+source_file="res://Sprites/tilesetGAMEJAM.png"
+dest_files=["res://.godot/imported/tilesetGAMEJAM.png-09e42a222e3dd778a6442d81cd417435.ctex"]
 
 [params]
 
@@ -32,6 +32,3 @@ process/hdr_as_srgb=false
 process/hdr_clamp_exposure=false
 process/size_limit=0
 detect_3d/compress_to=1
-svg/scale=1.0
-editor/scale_with_editor_scale=false
-editor/convert_colors_with_editor_theme=false

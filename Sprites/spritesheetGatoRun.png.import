@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ra2bmg2wospu"
-path="res://.godot/imported/icon1.svg-f39268323095aa76e8e5e5e78eafbab7.ctex"
+uid="uid://cu2t0o5bd3mt"
+path="res://.godot/imported/spritesheetGatoRun.png-68240b46c6055645ab4cee6d61a49b17.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Scripts/icon1.svg"
-dest_files=["res://.godot/imported/icon1.svg-f39268323095aa76e8e5e5e78eafbab7.ctex"]
+source_file="res://Sprites/spritesheetGatoRun.png"
+dest_files=["res://.godot/imported/spritesheetGatoRun.png-68240b46c6055645ab4cee6d61a49b17.ctex"]
 
 [params]
 
@@ -32,6 +32,3 @@ process/hdr_as_srgb=false
 process/hdr_clamp_exposure=false
 process/size_limit=0
 detect_3d/compress_to=1
-svg/scale=1.0
-editor/scale_with_editor_scale=false
-editor/convert_colors_with_editor_theme=false
