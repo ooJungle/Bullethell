@@ -2,8 +2,8 @@ extends Node2D
 @export var tilemap: TileMapLayer
 @export var player: CharacterBody2D
 
-const alturaDungeon = 80
-const larguraDungeon = 80
+const alturaDungeon = 100
+const larguraDungeon = 100
 
 enum TileType { VAZIO, CHAO, PAREDE }
 
