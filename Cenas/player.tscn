@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://dhhkgo6tt2qqd"]
+[gd_scene load_steps=24 format=3 uid="uid://cw5ic42v3wep7"]
 
 [ext_resource type="Script" uid="uid://dxifkqojdxq0a" path="res://Scripts/player_moviment.gd" id="1_pmvhq"]
 [ext_resource type="Texture2D" uid="uid://c15g37ceqor6o" path="res://Sprites/spritesheetGatoIdle.png" id="1_ytnb3"]

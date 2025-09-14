@@ -157,5 +157,5 @@ position = Vector2(0, -6)
 sprite_frames = SubResource("SpriteFrames_kw2gp")
 animation = &"Walking"
 autoplay = "Idle"
-frame_progress = 0.470513
+frame_progress = 0.786858
 speed_scale = 1.5
