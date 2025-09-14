@@ -150,12 +150,13 @@ size = Vector2(13.5, 15)
 script = ExtResource("1_pmvhq")
 
 [node name="sprite" type="AnimatedSprite2D" parent="."]
-position = Vector2(-1, -8)
 sprite_frames = SubResource("SpriteFrames_d6rpx")
 animation = &"Walking"
 autoplay = "Idle"
 frame_progress = 0.0607837
 speed_scale = 1.7
+offset = Vector2(0, -8)
 
 [node name="hitbox" type="CollisionShape2D" parent="."]
+position = Vector2(1, 0)
 shape = SubResource("RectangleShape2D_xhfnw")
