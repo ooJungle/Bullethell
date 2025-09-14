@@ -1,6 +1,9 @@
 extends Node2D
 @export var tilemap: TileMapLayer
 @export var player: CharacterBody2D
+@export var inimigo0: CharacterBody2D
+@export var inimigo1: CharacterBody2D
+@export var inimigo2: CharacterBody2D
 
 const alturaDungeon = 100
 const larguraDungeon = 100
@@ -109,7 +112,15 @@ func add_paredes():
 func place_player(rooms: Array[Rect2]):
 	player.position = rooms.pick_random().get_center() * 16
 
+func place_inimigo(rooms: Array[Rect2]):
+	inimigo0.position = rooms.pick_random().get_center() * 16
+	inimigo1.position = rooms.pick_random().get_center() * 16
+	inimigo2.position = rooms.pick_random().get_center() * 16
+	
 func create_dungeon():
-	place_player(generate())
+	var sala = generate()
+	place_player(sala)
+	place_inimigo(sala)
 	add_paredes()
 	render()
+	

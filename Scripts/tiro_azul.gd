@@ -31,5 +31,8 @@ func _on_body_entered(body: Node) -> void:
 	print("[bullet] body_entered:", body, "is_in_group players?", body.is_in_group("players"))
 	if body.is_in_group("players"):
 		if body.has_method("take_damage"):
+			Global.dano += 1
 			body.take_damage(damage)
+		queue_free()
+	if body.name == "TileMapLayer":
 		queue_free()
