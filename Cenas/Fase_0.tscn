@@ -1,7 +1,13 @@
-[gd_scene load_steps=5 format=4 uid="uid://c2uxmib3tht3n"]
+[gd_scene load_steps=12 format=4 uid="uid://c2uxmib3tht3n"]
 
 [ext_resource type="Texture2D" uid="uid://tpc5pqukpb32" path="res://Sprites/tilesetGAMEJAM.png" id="1_ejryi"]
 [ext_resource type="PackedScene" uid="uid://dhhkgo6tt2qqd" path="res://Cenas/player.tscn" id="1_tysq0"]
+[ext_resource type="PackedScene" uid="uid://bpxk7epe337y1" path="res://Cenas/inimigo_0.tscn" id="3_is02t"]
+[ext_resource type="Script" uid="uid://bd046eokvcnu2" path="res://addons/phantom_camera/scripts/phantom_camera_host/phantom_camera_host.gd" id="5_oxnfh"]
+[ext_resource type="Script" uid="uid://bhexx6mj1xv3q" path="res://addons/phantom_camera/scripts/phantom_camera/phantom_camera_2d.gd" id="6_cv223"]
+[ext_resource type="Script" uid="uid://8umksf8e80fw" path="res://addons/phantom_camera/scripts/resources/tween_resource.gd" id="7_618ba"]
+[ext_resource type="PackedScene" uid="uid://buw23jdf15r6e" path="res://Cenas/inimigo_2.tscn" id="8_618ba"]
+[ext_resource type="PackedScene" uid="uid://bqvstnda7b8kd" path="res://Cenas/inimigo_1.tscn" id="8_cv223"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_is02t"]
 texture = ExtResource("1_ejryi")
@@ -110,6 +116,12 @@ texture = ExtResource("1_ejryi")
 physics_layer_0/collision_layer = 1
 sources/0 = SubResource("TileSetAtlasSource_is02t")
 
+[sub_resource type="Resource" id="Resource_8re8n"]
+script = ExtResource("7_618ba")
+duration = 1.0
+transition = 0
+ease = 2
+
 [node name="Fase_0" type="Node2D"]
 
 [node name="TileMapLayer" type="TileMapLayer" parent="."]
@@ -117,7 +129,41 @@ tile_map_data = PackedByteArray("AAD8/wAAAAAAAAkAAAD9/wAAAAAAAAkAAAD+/wAAAAAAAAk
 tile_set = SubResource("TileSet_wycfp")
 
 [node name="player" parent="." instance=ExtResource("1_tysq0")]
-speed = 175.0
+speed = 200.0
 
-[node name="Camera2D" type="Camera2D" parent="player"]
+[node name="inimigo_0" parent="." node_paths=PackedStringArray("player") instance=ExtResource("3_is02t")]
+position = Vector2(139, 76)
+velocidade = 85.0
+player = NodePath("../player")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+physics_interpolation_mode = 1
 zoom = Vector2(2, 2)
+process_callback = 0
+
+[node name="PhantomCameraHost" type="Node" parent="Camera2D"]
+process_priority = 300
+process_physics_priority = 300
+script = ExtResource("5_oxnfh")
+
+[node name="PhantomCamera2D" type="Node2D" parent="." node_paths=PackedStringArray("follow_target")]
+top_level = true
+script = ExtResource("6_cv223")
+follow_mode = 5
+follow_target = NodePath("../player")
+zoom = Vector2(2, 2)
+tween_resource = SubResource("Resource_8re8n")
+follow_damping = true
+follow_damping_value = Vector2(0.25, 0.25)
+dead_zone_width = 0.2
+dead_zone_height = 0.2
+metadata/_custom_type_script = "uid://bhexx6mj1xv3q"
+
+[node name="inimigo_1" parent="." node_paths=PackedStringArray("player") instance=ExtResource("8_cv223")]
+position = Vector2(-196, 68)
+velocidade = 100.0
+player = NodePath("../player")
+
+[node name="inimigo_2" parent="." node_paths=PackedStringArray("player") instance=ExtResource("8_618ba")]
+position = Vector2(213, -118)
+player = NodePath("../player")
