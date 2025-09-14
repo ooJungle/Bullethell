@@ -28,7 +28,7 @@ func _physics_process(delta: float) -> void:
 		if other == self:
 			continue
 		var dist = (other.position - position)
-		if dist.length() <= 50:
+		if dist.length() <= 17:
 			position -= velocity * delta * 10
 	move_and_slide()
 
