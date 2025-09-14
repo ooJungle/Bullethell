@@ -1,0 +1,55 @@
+[gd_scene load_steps=9 format=3 uid="uid://b8fvcleuuxvcy"]
+
+[ext_resource type="PackedScene" uid="uid://cw5ic42v3wep7" path="res://Cenas/player.tscn" id="1_3apeq"]
+[ext_resource type="PackedScene" uid="uid://buw23jdf15r6e" path="res://Cenas/inimigo_2.tscn" id="2_b3mis"]
+[ext_resource type="PackedScene" uid="uid://bqvstnda7b8kd" path="res://Cenas/inimigo_1.tscn" id="3_ft2eh"]
+[ext_resource type="PackedScene" uid="uid://bpxk7epe337y1" path="res://Cenas/inimigo_0.tscn" id="4_hjudd"]
+[ext_resource type="Script" uid="uid://bd046eokvcnu2" path="res://addons/phantom_camera/scripts/phantom_camera_host/phantom_camera_host.gd" id="5_7dk0k"]
+[ext_resource type="Script" uid="uid://bhexx6mj1xv3q" path="res://addons/phantom_camera/scripts/phantom_camera/phantom_camera_2d.gd" id="6_tgvqu"]
+[ext_resource type="Script" uid="uid://8umksf8e80fw" path="res://addons/phantom_camera/scripts/resources/tween_resource.gd" id="7_pxo8h"]
+
+[sub_resource type="Resource" id="Resource_8re8n"]
+script = ExtResource("7_pxo8h")
+duration = 1.0
+transition = 0
+ease = 2
+
+[node name="Node2D" type="Node2D"]
+
+[node name="player" parent="." instance=ExtResource("1_3apeq")]
+position = Vector2(41, 0)
+
+[node name="inimigo_2" parent="." node_paths=PackedStringArray("player") instance=ExtResource("2_b3mis")]
+position = Vector2(162, 50)
+player = NodePath("../player")
+
+[node name="inimigo_1" parent="." node_paths=PackedStringArray("player") instance=ExtResource("3_ft2eh")]
+position = Vector2(-80, 79)
+player = NodePath("../player")
+
+[node name="inimigo_0" parent="." node_paths=PackedStringArray("player") instance=ExtResource("4_hjudd")]
+position = Vector2(38, 78)
+player = NodePath("../player")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+physics_interpolation_mode = 1
+position = Vector2(41, 0)
+zoom = Vector2(2, 2)
+process_callback = 0
+
+[node name="PhantomCameraHost" type="Node" parent="Camera2D"]
+process_priority = 300
+process_physics_priority = 300
+script = ExtResource("5_7dk0k")
+
+[node name="PhantomCamera2D" type="Node2D" parent="." node_paths=PackedStringArray("follow_target")]
+top_level = true
+position = Vector2(41, 0)
+script = ExtResource("6_tgvqu")
+follow_mode = 5
+follow_target = NodePath("../player")
+zoom = Vector2(2, 2)
+tween_resource = SubResource("Resource_8re8n")
+follow_damping = true
+dead_zone_width = 0.2
+dead_zone_height = 0.2

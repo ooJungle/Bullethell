@@ -4,11 +4,11 @@ extends CharacterBody2D
 @onready var sprite: AnimatedSprite2D = $sprite
 var direction: Vector2 = Vector2.ZERO   # inicializado
 
-var vida_maxima: int = 5
-var vida: int = vida_maxima
-
 func _ready() -> void:
 	add_to_group("players")
+	
+var vida_maxima: int = 5
+var vida: int = vida_maxima
 
 func take_damage(amount: int) -> void:
 	vida -= amount

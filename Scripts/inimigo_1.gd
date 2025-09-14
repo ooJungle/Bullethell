@@ -5,6 +5,9 @@ extends CharacterBody2D
 const obj_tiro_azul = preload("res://Cenas/tiro_azul.tscn")
 var timer = 0.0
 
+func _ready() -> void:
+	add_to_group("enemies")
+
 func shoot():
 	if timer >= 1.2:
 		var new_bullet = obj_tiro_azul.instantiate()
@@ -16,7 +19,14 @@ func shoot():
 		get_parent().add_child(new_bullet)
 		timer = 0.0
 
-func _process(_delta: float) -> void:
+func _physics_process(delta: float) -> void:
+	var nearby = get_tree().get_nodes_in_group("enemies") + get_tree().get_nodes_in_group("players")
+	for other in nearby:
+		if other == self:
+			continue
+		var dist = (other.position - position)
+		if dist.length() -8 <= 18:
+			position -= velocity * delta * 3
 	timer += get_process_delta_time()
 	var direction = (player.position - position).normalized()
 	# Move na direção do player
@@ -37,10 +47,3 @@ func _process(_delta: float) -> void:
 		
 	if (player.position - position).length() < 200:
 		shoot()
-	var nearby = get_tree().get_nodes_in_group("enemies") + get_tree().get_nodes_in_group("players")
-	for other in nearby:
-		if other == self:
-			continue
-		var dist = position.distance_to(other.position)
-		if dist < 16:
-			velocity += (position - other.position).normalized() * 50
