@@ -1,7 +1,7 @@
-[gd_scene load_steps=5 format=4 uid="uid://c2uxmib3tht3n"]
+[gd_scene load_steps=5 format=4 uid="uid://b4ne18gakke7o"]
 
 [ext_resource type="Texture2D" uid="uid://tpc5pqukpb32" path="res://Sprites/tilesetGAMEJAM.png" id="1_ejryi"]
-[ext_resource type="PackedScene" uid="uid://dhhkgo6tt2qqd" path="res://Cenas/player.tscn" id="1_tysq0"]
+[ext_resource type="PackedScene" uid="uid://cw5ic42v3wep7" path="res://Cenas/player.tscn" id="1_tysq0"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_is02t"]
 texture = ExtResource("1_ejryi")
