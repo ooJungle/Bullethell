@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=4 uid="uid://dq5arm2820s3g"]
+[gd_scene load_steps=7 format=4 uid="uid://dq5arm2820s3g"]
 
 [ext_resource type="Texture2D" uid="uid://tpc5pqukpb32" path="res://Sprites/tilesetGAMEJAM.png" id="1_1jg4h"]
 [ext_resource type="PackedScene" uid="uid://cw5ic42v3wep7" path="res://Cenas/player.tscn" id="1_jew0q"]
 [ext_resource type="PackedScene" uid="uid://btwm7v5ywkigl" path="res://Cenas/inimigo_4.tscn" id="2_1jg4h"]
+[ext_resource type="PackedScene" uid="uid://ci0rtmu664888" path="res://Cenas/inimigo_REDONDO.tscn" id="3_qia1d"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_qia1d"]
 texture = ExtResource("1_1jg4h")
@@ -108,7 +109,8 @@ texture = ExtResource("1_1jg4h")
 11:11/0 = 0
 
 [sub_resource type="TileSet" id="TileSet_bjqr6"]
-physics_layer_0/collision_layer = 1
+physics_layer_0/collision_layer = 15
+physics_layer_0/collision_mask = 15
 sources/0 = SubResource("TileSetAtlasSource_qia1d")
 
 [node name="fase_teste" type="Node2D"]
@@ -125,4 +127,8 @@ zoom = Vector2(1.5, 1.5)
 
 [node name="inimigo_4" parent="." node_paths=PackedStringArray("player") instance=ExtResource("2_1jg4h")]
 position = Vector2(274, 18)
+player = NodePath("../player")
+
+[node name="inimigo_REDONDO" parent="." node_paths=PackedStringArray("player") instance=ExtResource("3_qia1d")]
+position = Vector2(-346, 86)
 player = NodePath("../player")

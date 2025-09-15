@@ -95,7 +95,7 @@ func _physics_process(delta: float) -> void:
 				continue
 			var dist = (other.position - position)
 			if dist.length() <= 17:
-				position -= velocity * delta * 10
+				velocity = -7 * velocity
 				knockback = true
 				tempo_knockback = 0.0
 				break  # sai do loop para não reativar no mesmo frame
@@ -103,7 +103,8 @@ func _physics_process(delta: float) -> void:
 	# processa o estado de knockback
 	if knockback:
 		tempo_knockback += delta
-		velocity = Vector2.ZERO
+		if tempo_knockback > 0.2:
+			velocity = Vector2.ZERO
 		if tempo_knockback >= 2.0:
 			knockback = false
 		

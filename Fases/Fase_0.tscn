@@ -140,8 +140,9 @@ tile_set = SubResource("TileSet_7dk0k")
 position = Vector2(41, 0)
 speed = 150.0
 
-[node name="inimigo_2" parent="." instance=ExtResource("2_b3mis")]
+[node name="inimigo_2" parent="." node_paths=PackedStringArray("player") instance=ExtResource("2_b3mis")]
 position = Vector2(162, 50)
+player = NodePath("../player")
 
 [node name="inimigo_1" parent="." node_paths=PackedStringArray("player") instance=ExtResource("3_ft2eh")]
 position = Vector2(-80, 79)

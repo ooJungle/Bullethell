@@ -4,6 +4,7 @@ extends CharacterBody2D
 @export var player = Node2D
 const obj_tiro_roxo = preload("res://Cenas/tiro_roxo.tscn")
 
+var girar = true
 var timer = 0.0
 var knockback = false
 var tempo_knockback = 0.0
@@ -35,7 +36,8 @@ func _physics_process(delta: float) -> void:
 	timer += delta
 	tempo_entre_tiros += delta
 	var direction = (player.position - position).normalized()
-
+	look_at(player.position)
+	
 	# só anda se não estiver em knockback
 	if not knockback:
 		velocity = direction * velocidade
@@ -72,6 +74,9 @@ func _physics_process(delta: float) -> void:
 		sprite.play("Walking")
 	else:
 		sprite.play("Idle")
-		
+	
 	if (player.position - position).length() < 500:
 		shoot(130)
+	if girar:
+		sprite.rotate(-3.14/2)
+		girar = false
