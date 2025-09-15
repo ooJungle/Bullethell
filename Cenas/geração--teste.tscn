@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://cj25a1hrjy6w5" path="res://Scripts/dungeon_generator.gd" id="1_plsyj"]
 [ext_resource type="Texture2D" uid="uid://c0ne8ed4aqixq" path="res://Sprites/PLACEHOLDER -- Dungeon_Tileset.png" id="2_hym32"]
 [ext_resource type="PackedScene" uid="uid://cw5ic42v3wep7" path="res://Cenas/player.tscn" id="3_ncrc2"]
-[ext_resource type="Script" path="res://Cenas/label.gd" id="4_ahi0v"]
+[ext_resource type="Script" uid="uid://0ha4ht83gk2w" path="res://Scripts/label.gd" id="4_ahi0v"]
 [ext_resource type="PackedScene" uid="uid://buw23jdf15r6e" path="res://Cenas/inimigo_2.tscn" id="4_jv87p"]
 [ext_resource type="PackedScene" uid="uid://bqvstnda7b8kd" path="res://Cenas/inimigo_1.tscn" id="5_ahi0v"]
 [ext_resource type="PackedScene" uid="uid://bpxk7epe337y1" path="res://Cenas/inimigo_0.tscn" id="6_x81wf"]

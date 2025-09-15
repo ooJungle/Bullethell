@@ -59,5 +59,5 @@ func _physics_process(delta: float) -> void:
 	else:
 		sprite.play("Idle")
 		
-	if (player.position - position).length() < 200:
+	if (player.position - position).length() < 500:
 		shoot(130)

@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://b8fvcleuuxvcy"]
+[gd_scene load_steps=14 format=3 uid="uid://b8fvcleuuxvcy"]
 
 [ext_resource type="PackedScene" uid="uid://cw5ic42v3wep7" path="res://Cenas/player.tscn" id="1_3apeq"]
 [ext_resource type="Script" uid="uid://bl0k0fcu8kka2" path="res://Fases/fase_0.gd" id="1_b3mis"]
@@ -9,12 +9,12 @@
 [ext_resource type="Script" uid="uid://bd046eokvcnu2" path="res://addons/phantom_camera/scripts/phantom_camera_host/phantom_camera_host.gd" id="5_7dk0k"]
 [ext_resource type="Script" uid="uid://bhexx6mj1xv3q" path="res://addons/phantom_camera/scripts/phantom_camera/phantom_camera_2d.gd" id="6_tgvqu"]
 [ext_resource type="Script" uid="uid://8umksf8e80fw" path="res://addons/phantom_camera/scripts/resources/tween_resource.gd" id="7_pxo8h"]
+[ext_resource type="PackedScene" uid="uid://ci0rtmu664888" path="res://Cenas/inimigo_REDONDO.tscn" id="10_hjudd"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_hjudd"]
 texture = ExtResource("2_ft2eh")
 0:0/0 = 0
 1:0/0 = 0
-1:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 2:0/0 = 0
 3:0/0 = 0
 4:0/0 = 0
@@ -129,9 +129,9 @@ ease = 2
 script = ExtResource("1_b3mis")
 tilemap = NodePath("TileMapLayer")
 player = NodePath("player")
-inimigo0 = NodePath("inimigo_0")
+inimigo0 = NodePath("inimigo_REDONDO")
 inimigo1 = NodePath("inimigo_1")
-inimigo2 = NodePath("inimigo_0")
+inimigo2 = NodePath("inimigo_2")
 
 [node name="TileMapLayer" type="TileMapLayer" parent="."]
 tile_set = SubResource("TileSet_7dk0k")
@@ -176,3 +176,7 @@ tween_resource = SubResource("Resource_8re8n")
 follow_damping = true
 dead_zone_width = 0.2
 dead_zone_height = 0.2
+
+[node name="inimigo_REDONDO" parent="." node_paths=PackedStringArray("player") instance=ExtResource("10_hjudd")]
+position = Vector2(-199, -127)
+player = NodePath("../player")
