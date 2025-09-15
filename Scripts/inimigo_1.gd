@@ -4,7 +4,8 @@ extends CharacterBody2D
 @export var player = Node2D
 const obj_tiro_azul = preload("res://Cenas/tiro_azul.tscn")
 var timer = 0.0
-
+var knockback = false
+var tempo_knockback
 func _ready() -> void:
 	add_to_group("enemies")
 
@@ -20,17 +21,33 @@ func shoot():
 		timer = 0.0
 
 func _physics_process(delta: float) -> void:
-	var nearby = get_tree().get_nodes_in_group("enemies") + get_tree().get_nodes_in_group("players")
-	for other in nearby:
-		if other == self:
-			continue
-		var dist = (other.position - position)
-		if dist.length() -8 <= 18:
-			position -= velocity * delta * 3
-	timer += get_process_delta_time()
+	timer += delta
 	var direction = (player.position - position).normalized()
-	# Move na direção do player
-	velocity = direction * velocidade
+
+	# só anda se não estiver em knockback
+	if not knockback:
+		velocity = direction * velocidade
+
+	# checa colisão apenas para iniciar knockback
+	if not knockback:
+		var nearby = get_tree().get_nodes_in_group("enemies") + get_tree().get_nodes_in_group("players")
+		for other in nearby:
+			if other == self:
+				continue
+			var dist = (other.position - position)
+			if dist.length() <= 20:
+				position -= velocity * delta * 10
+				knockback = true
+				tempo_knockback = 0.0
+				break  # sai do loop para não reativar no mesmo frame
+
+	# processa o estado de knockback
+	if knockback:
+		tempo_knockback += delta
+		velocity = Vector2.ZERO
+		if tempo_knockback >= 2.0:
+			knockback = false
+		
 	move_and_slide()
 
 	# Flip do sprite

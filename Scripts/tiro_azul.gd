@@ -2,7 +2,7 @@ extends Area2D
 
 @export var player: Node2D
 @export var damage: int = 1
-@export var speed: float = 175.0
+@export var speed: float = 130.0
 @export var duration: float = 5.0
 @export var timer = 0.0
 

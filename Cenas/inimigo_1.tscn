@@ -91,12 +91,15 @@ size = Vector2(16, 15)
 
 [node name="inimigo_1" type="CharacterBody2D"]
 position = Vector2(-1, -6)
+collision_layer = 4
+collision_mask = 4
 script = ExtResource("1_miy63")
 
 [node name="sprite" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_p3k80")
 animation = &"Idle"
 speed_scale = 1.2
+offset = Vector2(0, -6)
 
 [node name="hitbox" type="CollisionShape2D" parent="."]
 position = Vector2(1, 6.5)
