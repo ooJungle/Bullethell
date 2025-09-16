@@ -88,14 +88,30 @@ func _physics_process(delta: float) -> void:
 	timer += delta
 	
 	# Processa o estado de knockback primeiro
+	if not knockback:
+		var nearby = get_tree().get_nodes_in_group("players")
+		for other in nearby:
+			if other == self:
+				continue
+			var dist = (other.position - position)
+			if dist.length() <= 20:
+				knockback = true
+				tempo_knockback = 0.0
+				break  # sai do loop para não reativar no mesmo frame
+
+	# processa o estado de knockback
 	if knockback:
 		tempo_knockback += delta
 		if tempo_knockback > 0.2:
-			velocity = Vector2.ZERO
+			position = Vector2.ZERO
 		if tempo_knockback >= 2.0:
 			knockback = false
-		move_and_slide()
+		else:
+			position -= 7*(player.position - position).normalized()
+
 		return # Pula o resto da lógica se estiver em knockback
+
+	move_and_slide()
 
 	# Lógica de movimento principal
 	var direcao_desejada = _get_context_steering_direction()
@@ -106,17 +122,6 @@ func _physics_process(delta: float) -> void:
 	velocity = velocity.lerp(velocidade_desejada, nitidez_curva * delta)
 	
 	# Checa colisão com outros inimigos/player para iniciar knockback
-	var nearby = get_tree().get_nodes_in_group("players")
-	for other in nearby:
-		if other == self:
-			continue
-		var dist = (other.position - position)
-		if dist.length() <= 17:
-			velocity = -7 * velocity
-			knockback = true
-			tempo_knockback = 0.0
-			break
-
 	move_and_slide()
 
 	# --- Lógica de Animação e Visual ---

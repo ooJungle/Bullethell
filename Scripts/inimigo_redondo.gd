@@ -35,7 +35,7 @@ func shoot(velocidade_tiro: float):
 func _physics_process(delta: float) -> void:
 	timer += delta
 	tempo_entre_tiros += delta
-	var direction = (player.position - position).normalized()
+	direction = (player.position - position).normalized()
 	look_at(player.position)
 	
 	# só anda se não estiver em knockback

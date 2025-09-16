@@ -26,6 +26,8 @@ animations = [{
 size = Vector2(26, 26)
 
 [node name="inimigo_5" type="CharacterBody2D"]
+collision_layer = 16
+collision_mask = 16
 script = ExtResource("1_m8kee")
 
 [node name="sprite" type="AnimatedSprite2D" parent="."]
@@ -36,26 +38,26 @@ animation = &"Walking"
 position = Vector2(0, -8)
 shape = SubResource("RectangleShape2D_in5ms")
 
-[node name="RayCast2D0" type="RayCast2D" parent="."]
+[node name="RayCast0" type="RayCast2D" parent="."]
 target_position = Vector2(40, 0)
 
-[node name="RayCast2D2" type="RayCast2D" parent="."]
+[node name="RayCast1" type="RayCast2D" parent="."]
 target_position = Vector2(28, -28)
 
-[node name="RayCast2D3" type="RayCast2D" parent="."]
+[node name="RayCast2" type="RayCast2D" parent="."]
+target_position = Vector2(28, 28)
+
+[node name="RayCast3" type="RayCast2D" parent="."]
 target_position = Vector2(0, -40)
 
-[node name="RayCast2D4" type="RayCast2D" parent="."]
+[node name="RayCast4" type="RayCast2D" parent="."]
 target_position = Vector2(-28, -28)
 
-[node name="RayCast2D5" type="RayCast2D" parent="."]
+[node name="RayCast5" type="RayCast2D" parent="."]
 target_position = Vector2(-40, 0)
 
-[node name="RayCast2D6" type="RayCast2D" parent="."]
+[node name="RayCast6" type="RayCast2D" parent="."]
 target_position = Vector2(-28, 28)
 
-[node name="RayCast2D7" type="RayCast2D" parent="."]
+[node name="RayCast7" type="RayCast2D" parent="."]
 target_position = Vector2(0, 40)
-
-[node name="RayCast2D8" type="RayCast2D" parent="."]
-target_position = Vector2(28, 28)

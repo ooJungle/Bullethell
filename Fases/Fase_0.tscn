@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://b8fvcleuuxvcy"]
+[gd_scene load_steps=15 format=3 uid="uid://b8fvcleuuxvcy"]
 
 [ext_resource type="PackedScene" uid="uid://cw5ic42v3wep7" path="res://Cenas/player.tscn" id="1_3apeq"]
 [ext_resource type="Script" uid="uid://bl0k0fcu8kka2" path="res://Fases/fase_0.gd" id="1_b3mis"]
@@ -10,15 +10,22 @@
 [ext_resource type="Script" uid="uid://bhexx6mj1xv3q" path="res://addons/phantom_camera/scripts/phantom_camera/phantom_camera_2d.gd" id="6_tgvqu"]
 [ext_resource type="Script" uid="uid://8umksf8e80fw" path="res://addons/phantom_camera/scripts/resources/tween_resource.gd" id="7_pxo8h"]
 [ext_resource type="PackedScene" uid="uid://ci0rtmu664888" path="res://Cenas/inimigo_REDONDO.tscn" id="10_hjudd"]
+[ext_resource type="PackedScene" uid="uid://burb4hginapym" path="res://Cenas/Inimigo_5.tscn" id="11_7dk0k"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_hjudd"]
 texture = ExtResource("2_ft2eh")
 0:0/0 = 0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 1:0/0 = 0
+1:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 2:0/0 = 0
+2:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 3:0/0 = 0
+3:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 4:0/0 = 0
+4:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 5:0/0 = 0
+5:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 6:0/0 = 0
 7:0/0 = 0
 8:0/0 = 0
@@ -115,8 +122,8 @@ texture = ExtResource("2_ft2eh")
 9:9/0 = 0
 
 [sub_resource type="TileSet" id="TileSet_7dk0k"]
-physics_layer_0/collision_layer = 15
-physics_layer_0/collision_mask = 15
+physics_layer_0/collision_layer = 255
+physics_layer_0/collision_mask = 255
 sources/0 = SubResource("TileSetAtlasSource_hjudd")
 
 [sub_resource type="Resource" id="Resource_8re8n"]
@@ -131,7 +138,7 @@ tilemap = NodePath("TileMapLayer")
 player = NodePath("player")
 inimigo0 = NodePath("inimigo_REDONDO")
 inimigo1 = NodePath("inimigo_1")
-inimigo2 = NodePath("inimigo_2")
+inimigo2 = NodePath("inimigo_5")
 
 [node name="TileMapLayer" type="TileMapLayer" parent="."]
 tile_set = SubResource("TileSet_7dk0k")
@@ -178,4 +185,8 @@ dead_zone_height = 0.2
 
 [node name="inimigo_REDONDO" parent="." node_paths=PackedStringArray("player") instance=ExtResource("10_hjudd")]
 position = Vector2(-199, -127)
+player = NodePath("../player")
+
+[node name="inimigo_5" parent="." node_paths=PackedStringArray("player") instance=ExtResource("11_7dk0k")]
+position = Vector2(172, -110)
 player = NodePath("../player")
