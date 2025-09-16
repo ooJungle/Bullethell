@@ -5,8 +5,8 @@ extends Node2D
 @export var inimigo1: CharacterBody2D
 @export var inimigo2: CharacterBody2D
 
-const alturaDungeon = 100
-const larguraDungeon = 100
+const alturaDungeon = 80
+const larguraDungeon = 80
 
 enum TileType { VAZIO, CHAO, PAREDE }
 
