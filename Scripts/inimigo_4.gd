@@ -4,10 +4,10 @@ extends CharacterBody2D
 @export var player = Node2D
 const obj_tiro_roxo = preload("res://Cenas/tiro_roxo.tscn")
 const obj_tiro_azul = preload("res://Cenas/tiro_azul.tscn")
+const obj_tiro_verde = preload("res://Cenas/tiro_verde.tscn")
 
 
-
-var ataque_aleatorio = randi_range(0,3)
+var ataque_aleatorio = randi_range(0,4)
 var timer = 0.0
 var knockback = false
 var tempo_knockback = 0.0
@@ -40,7 +40,7 @@ func shoot(velocidade_tiro: float):
 				limite_projeteis = 0
 				rotacao = 200
 				atirando = false
-				ataque_aleatorio = randi_range(0,3)
+				ataque_aleatorio = randi_range(0,4)
 	if ataque_aleatorio == 1:
 		if timer >= 1.2:
 			for i in range(11):
@@ -50,7 +50,7 @@ func shoot(velocidade_tiro: float):
 					new_bullet.velocity = direction * velocidade_tiro
 					get_parent().add_child(new_bullet)
 			timer = 0.0
-			ataque_aleatorio = randi_range(0,3)
+			ataque_aleatorio = randi_range(0,4)
 
 	if ataque_aleatorio == 2:
 		if timer >= 1.2:
@@ -60,7 +60,7 @@ func shoot(velocidade_tiro: float):
 			new_bullet.velocity = direction * velocidade_tiro
 			get_parent().add_child(new_bullet)
 			timer = 0.0
-			ataque_aleatorio = randi_range(0,3)
+			ataque_aleatorio = randi_range(0,4)
 
 	if ataque_aleatorio == 3:
 		if timer >= 1.2:
@@ -72,7 +72,20 @@ func shoot(velocidade_tiro: float):
 			new_bullet.velocity = direction * velocidade
 			get_parent().add_child(new_bullet)
 			timer = 0.0
-			ataque_aleatorio = randi_range(0,3)
+			ataque_aleatorio = randi_range(0,4)
+
+	if ataque_aleatorio == 4:
+		if timer >= 1.2:
+			for i in range(4):
+				var new_bullet = obj_tiro_verde.instantiate()
+				var direction = (player.position - position).normalized()
+				
+				new_bullet.player = player
+				new_bullet.position = Vector2.ZERO + position * i
+				new_bullet.velocity = direction * velocidade
+				get_parent().add_child(new_bullet)
+			timer = 0.0
+			ataque_aleatorio = randi_range(0,4)
 
 
 
@@ -89,7 +102,7 @@ func _physics_process(delta: float) -> void:
 
 	# checa colisão apenas para iniciar knockback
 	if not knockback:
-		var nearby = get_tree().get_nodes_in_group("enemies") + get_tree().get_nodes_in_group("players")
+		var nearby = get_tree().get_nodes_in_group("players")
 		for other in nearby:
 			if other == self:
 				continue

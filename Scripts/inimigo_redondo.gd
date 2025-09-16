@@ -44,7 +44,7 @@ func _physics_process(delta: float) -> void:
 
 	# checa colisão apenas para iniciar knockback
 	if not knockback:
-		var nearby = get_tree().get_nodes_in_group("enemies") + get_tree().get_nodes_in_group("players")
+		var nearby = get_tree().get_nodes_in_group("players")
 		for other in nearby:
 			if other == self:
 				continue

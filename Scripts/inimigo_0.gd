@@ -27,7 +27,7 @@ func _physics_process(delta: float) -> void:
 
 	# checa colisão apenas para iniciar knockback
 	if not knockback:
-		var nearby = get_tree().get_nodes_in_group("enemies") + get_tree().get_nodes_in_group("players")
+		var nearby = get_tree().get_nodes_in_group("players")
 		for other in nearby:
 			if other == self:
 				continue
@@ -51,11 +51,10 @@ func _physics_process(delta: float) -> void:
 	# Flip do sprite
 	if velocity.x > 0:
 		sprite.flip_h = false
-		sprite.offset = Vector2(-26, 30)
+		
 	elif velocity.x < 0:
 		sprite.flip_h = true
-		sprite.offset = Vector2(26, 30)
-	
+			
 	# Animação
 	if velocity.length() > 0:
 		sprite.play("Walking")

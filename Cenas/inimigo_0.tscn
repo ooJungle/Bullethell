@@ -159,5 +159,5 @@ speed_scale = 1.5
 offset = Vector2(0, -6)
 
 [node name="hitbox" type="CollisionShape2D" parent="."]
-position = Vector2(1, 2)
+position = Vector2(1, -4)
 shape = SubResource("RectangleShape2D_mf6jg")
