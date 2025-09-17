@@ -17,7 +17,7 @@ config/features=PackedStringArray("4.4", "Forward Plus")
 [autoload]
 
 PhantomCameraManager="*res://addons/phantom_camera/scripts/managers/phantom_camera_manager.gd"
-Global="*res://Scripts/Global.gd"
+Global="*res://Scripts/global.gd"
 
 [editor_plugins]
 
