@@ -23,4 +23,4 @@ func _on_body_entered(body: Node) -> void:
 			body.take_damage(damage)
 		queue_free()  # destrói a bala ao acertar
 	if body.name == "TileMapLayer":
-		velocity = -velocity
+		velocity = velocity
