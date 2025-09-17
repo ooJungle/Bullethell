@@ -1,9 +1,9 @@
 extends Node2D
+
 @export var tilemap: TileMapLayer
 @export var player: CharacterBody2D
-@export var inimigo0: CharacterBody2D
-@export var inimigo1: CharacterBody2D
-@export var inimigo2: CharacterBody2D
+@export var navigation_region: NavigationRegion2D
+@export var inimigos: Array[CharacterBody2D] = []
 
 const alturaDungeon = 100
 const larguraDungeon = 100
@@ -28,8 +28,8 @@ func generate():
 	var tentativas = 0
 	
 	while rooms.size() < 10 and tentativas < tentativasMaximas:
-		var w = randi_range(8, 16)
-		var h = randi_range(8, 16)
+		var w = randi_range(12, 24)
+		var h = randi_range(12, 24)
 		var x = randi_range(1, alturaDungeon - w - 1)
 		var y = randi_range(1, larguraDungeon - h - 1)
 		var room = Rect2(x, y, w, h)
@@ -93,7 +93,6 @@ func corredor(from: Vector2, to: Vector2, largura: int = 2):
 				if is_in_bounds(x, y):
 					dungeon_grid[y][x] = TileType.CHAO
 					
-	
 func is_in_bounds(x: int, y: int) -> bool:
 	return x >= 0 and y >= 0 and x < larguraDungeon and y < alturaDungeon
 
@@ -109,18 +108,47 @@ func add_paredes():
 							if dungeon_grid[ny][nx] == TileType.VAZIO:
 								dungeon_grid[ny][nx] = TileType.PAREDE
 
-func place_player(rooms: Array[Rect2]):
-	player.position = rooms.pick_random().get_center() * 16
+# --- FUNÇÃO MODIFICADA ---
+# Agora, esta função retorna a sala onde o jogador foi posicionado.
+func place_player(rooms: Array[Rect2]) -> Rect2:
+	var player_room = rooms.pick_random()
+	player.position = player_room.get_center() * 16
+	return player_room
 
-func place_inimigo(rooms: Array[Rect2]):
-	inimigo0.position = rooms.pick_random().get_center() * 16
-	inimigo1.position = rooms.pick_random().get_center() * 16
-	inimigo2.position = rooms.pick_random().get_center() * 16
+# --- FUNÇÃO MODIFICADA ---
+# Agora, esta função recebe a sala do jogador para poder evitá-la.
+func place_inimigo(all_rooms: Array[Rect2], player_room: Rect2):
+	# Criamos uma cópia da lista de todas as salas
+	var possible_spawn_rooms = all_rooms.duplicate()
+	# E removemos a sala do jogador da lista de possibilidades
+	possible_spawn_rooms.erase(player_room)
 	
+	# Caso de emergência: se só houver uma sala no mapa, não há onde nascer.
+	if possible_spawn_rooms.is_empty():
+		print("AVISO: Não há salas disponíveis para os inimigos nascerem fora da sala do jogador.")
+		return # Interrompe a função para não dar erro
+
+	for inimigo in inimigos:
+		if is_instance_valid(inimigo):
+			# Escolhe uma sala aleatória APENAS da lista de salas seguras
+			var spawn_room = possible_spawn_rooms.pick_random()
+			inimigo.position = spawn_room.get_center() * 16
+
+# --- FUNÇÃO MODIFICADA ---
+# O fluxo de chamadas foi ajustado para passar a informação da sala do jogador.
 func create_dungeon():
-	var sala = generate()
-	place_player(sala)
-	place_inimigo(sala)
+	var salas = generate()
 	add_paredes()
 	render()
 	
+	await get_tree().process_frame
+	
+	navigation_region.bake_navigation_polygon()
+	
+	await get_tree().process_frame
+	
+	# 1. Posicionamos o jogador e guardamos em que sala ele nasceu
+	var sala_do_player = place_player(salas)
+	
+	# 2. Passamos a lista de todas as salas E a sala do jogador para a função de posicionar inimigos
+	place_inimigo(salas, sala_do_player)

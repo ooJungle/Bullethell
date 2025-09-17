@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=3 uid="uid://bgs1gd3re016g"]
+
+[ext_resource type="Script" uid="uid://bp0t7rdr0alv5" path="res://Scripts/tiro_amarelo.gd" id="1_qt5ni"]
+[ext_resource type="Texture2D" uid="uid://y1bsrfrw4xj2" path="res://Sprites/tiro_amarelo.png" id="2_wobai"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_g8jtw"]
+radius = 7.0
+
+[node name="tiro_amarelo" type="Area2D"]
+script = ExtResource("1_qt5ni")
+damage = null
+duration = null
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_wobai")
+
+[node name="hitbox" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_g8jtw")

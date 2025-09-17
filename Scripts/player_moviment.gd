@@ -1,15 +1,17 @@
 extends CharacterBody2D
 
 @export var speed: float = 300.0
+@export var forca_salto_inimigo: float = 5.0 # Nova variável para a força do salto
+
 @onready var sprite: AnimatedSprite2D = $sprite
-var direction: Vector2 = Vector2.ZERO   # inicializado
+var direction: Vector2 = Vector2.ZERO
+var vida_maxima: int = 5
+var vida: int = vida_maxima
+
 
 func _ready() -> void:
 	add_to_group("players")
 	
-var vida_maxima: int = 5
-var vida: int = vida_maxima
-
 func take_damage(amount: int) -> void:
 	vida -= amount
 	print("Player tomou dano. Vida:", vida)
@@ -41,3 +43,22 @@ func _physics_process(_delta: float) -> void:
 			sprite.play("Idle")
 
 	move_and_slide()
+	
+	handle_enemy_bounce() # Chamada para a nova função de verificação
+
+# --- FUNÇÃO DE SALTO FORÇADO (CORRIGIDA) ---
+func handle_enemy_bounce():
+	# Primeiro, verificamos se o jogador está realmente no chão
+	if is_on_floor():
+		# Agora, iteramos por todas as colisões que aconteceram no último frame
+		for i in get_slide_collision_count():
+			var collision = get_slide_collision(i)
+			var collider = collision.get_collider()
+			
+			# Verificamos se o corpo com que colidimos é um inimigo
+			if collider and collider.is_in_group("enemies"):
+				# Se estamos no chão E colidimos com um inimigo, assumimos que o inimigo é o chão.
+				# Então, forçamos o salto.
+				position.y -= forca_salto_inimigo
+				# Encontrámos a colisão que queríamos, podemos parar o loop
+				break
