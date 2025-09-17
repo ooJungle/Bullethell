@@ -1,0 +1,42 @@
+[gd_scene load_steps=5 format=3 uid="uid://ci0rtmu664888"]
+
+[ext_resource type="Script" uid="uid://bqfg2teqn6bny" path="res://Scripts/inimigo_redondo.gd" id="1_2dlls"]
+[ext_resource type="Texture2D" uid="uid://0lg1tna0hnmk" path="res://Sprites/inimigo_REDONDO.png" id="2_x0fsl"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ao1cn"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_x0fsl")
+}],
+"loop": true,
+"name": &"Idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_x0fsl")
+}],
+"loop": true,
+"name": &"Walking",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2dlls"]
+size = Vector2(69, 65)
+
+[node name="inimigo_REDONDO" type="CharacterBody2D"]
+collision_layer = 2
+collision_mask = 2
+script = ExtResource("1_2dlls")
+
+[node name="sprite" type="AnimatedSprite2D" parent="."]
+position = Vector2(-2, -15)
+scale = Vector2(-0.734323, 0.760192)
+sprite_frames = SubResource("SpriteFrames_ao1cn")
+animation = &"Idle"
+offset = Vector2(2.5, 30)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-3.5, 2.5)
+shape = SubResource("RectangleShape2D_2dlls")

@@ -1,0 +1,63 @@
+[gd_scene load_steps=5 format=3 uid="uid://burb4hginapym"]
+
+[ext_resource type="Script" uid="uid://c24rkgo6l8gn3" path="res://Scripts/inimigo_5.gd" id="1_m8kee"]
+[ext_resource type="Texture2D" uid="uid://43vonnfep7qg" path="res://Sprites/inimigo_horrendo.png" id="2_e8bdr"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ry66y"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_e8bdr")
+}],
+"loop": true,
+"name": &"Idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_e8bdr")
+}],
+"loop": true,
+"name": &"Walking",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_in5ms"]
+size = Vector2(26, 26)
+
+[node name="inimigo_5" type="CharacterBody2D"]
+collision_layer = 16
+collision_mask = 16
+script = ExtResource("1_m8kee")
+
+[node name="sprite" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_ry66y")
+animation = &"Walking"
+
+[node name="hitbox" type="CollisionShape2D" parent="."]
+position = Vector2(0, -8)
+shape = SubResource("RectangleShape2D_in5ms")
+
+[node name="RayCast0" type="RayCast2D" parent="."]
+target_position = Vector2(40, 0)
+
+[node name="RayCast1" type="RayCast2D" parent="."]
+target_position = Vector2(28, -28)
+
+[node name="RayCast2" type="RayCast2D" parent="."]
+target_position = Vector2(28, 28)
+
+[node name="RayCast3" type="RayCast2D" parent="."]
+target_position = Vector2(0, -40)
+
+[node name="RayCast4" type="RayCast2D" parent="."]
+target_position = Vector2(-28, -28)
+
+[node name="RayCast5" type="RayCast2D" parent="."]
+target_position = Vector2(-40, 0)
+
+[node name="RayCast6" type="RayCast2D" parent="."]
+target_position = Vector2(-28, 28)
+
+[node name="RayCast7" type="RayCast2D" parent="."]
+target_position = Vector2(0, 40)

@@ -1,0 +1,43 @@
+[gd_scene load_steps=5 format=3 uid="uid://buw23jdf15r6e"]
+
+[ext_resource type="Script" uid="uid://yo02svsp2r60" path="res://Scripts/inimigo_2.gd" id="1_scw1g"]
+[ext_resource type="Texture2D" uid="uid://bagxdjdchicjk" path="res://Sprites/atiradora.png" id="2_scw1g"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_vhvaj"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_scw1g")
+}],
+"loop": true,
+"name": &"Idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_scw1g")
+}],
+"loop": true,
+"name": &"Walking",
+"speed": 5.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_scw1g"]
+radius = 13.0
+height = 50.0
+
+[node name="inimigo_2" type="CharacterBody2D"]
+collision_layer = 2
+collision_mask = 2
+script = ExtResource("1_scw1g")
+
+[node name="sprite" type="AnimatedSprite2D" parent="."]
+position = Vector2(-2, -15)
+scale = Vector2(-0.734323, 0.760192)
+sprite_frames = SubResource("SpriteFrames_vhvaj")
+animation = &"Walking"
+offset = Vector2(2.5, 30)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-2, 13)
+shape = SubResource("CapsuleShape2D_scw1g")
