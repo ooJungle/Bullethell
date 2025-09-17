@@ -1,0 +1,75 @@
+[gd_scene load_steps=5 format=3 uid="uid://d26majiwami8u"]
+
+[ext_resource type="Script" uid="uid://o52wl5acbuc8" path="res://Scripts/Menu/pause_menu.gd" id="1_vp8nw"]
+[ext_resource type="VideoStream" uid="uid://bccjs2um4sifs" path="res://Sprites/Menu/PauseVideo.ogv" id="2_lmtvr"]
+[ext_resource type="VideoStream" uid="uid://dfh7k6b2d37hl" path="res://Sprites/Menu/DespauseVideo.ogv" id="3_jvxnt"]
+[ext_resource type="Texture2D" uid="uid://c7np1pw8eyl4c" path="res://Sprites/Menu/FundoPause.jpeg" id="4_lmtvr"]
+
+[node name="PauseMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_vp8nw")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+visible = false
+
+[node name="PauseVideo" type="VideoStreamPlayer" parent="CanvasLayer"]
+z_index = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+stream = ExtResource("2_lmtvr")
+volume_db = -80.0
+expand = true
+buffering_msec = 10
+
+[node name="DespauseVideo" type="VideoStreamPlayer" parent="CanvasLayer"]
+z_index = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+stream = ExtResource("3_jvxnt")
+volume_db = -80.0
+expand = true
+buffering_msec = 10
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 3.0
+offset_right = -2.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("4_lmtvr")
+expand_mode = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer"]
+offset_left = 472.0
+offset_top = 222.0
+offset_right = 542.0
+offset_bottom = 288.0
+scale = Vector2(2.60747, 2.75908)
+
+[node name="ResumeButton" type="Button" parent="CanvasLayer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/outline_size = 4
+text = "Resume"
+
+[node name="QuitButton" type="Button" parent="CanvasLayer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/outline_size = 4
+text = "Quit"
+
+[connection signal="finished" from="CanvasLayer/PauseVideo" to="." method="_on_pause_video_finished"]
+[connection signal="finished" from="CanvasLayer/DespauseVideo" to="." method="_on_pause_video_2_finished"]
+[connection signal="pressed" from="CanvasLayer/VBoxContainer/ResumeButton" to="." method="_on_resume_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/VBoxContainer/QuitButton" to="." method="_on_quit_button_pressed"]

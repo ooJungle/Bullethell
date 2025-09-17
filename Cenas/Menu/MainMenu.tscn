@@ -1,0 +1,42 @@
+[gd_scene load_steps=2 format=3 uid="uid://b1baf17wokydn"]
+
+[ext_resource type="Script" uid="uid://2lib0cu1aw2a" path="res://Scripts/Menu/main_menu.gd" id="1_2a42p"]
+
+[node name="MainMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_2a42p")
+
+[node name="PlayButton" type="Button" parent="."]
+layout_mode = 2
+offset_left = 488.0
+offset_top = 200.0
+offset_right = 558.0
+offset_bottom = 231.0
+scale = Vector2(2.24, 1.88)
+theme_override_constants/outline_size = 4
+text = "Play"
+
+[node name="SettingsButton" type="Button" parent="."]
+layout_mode = 2
+offset_left = 488.0
+offset_top = 269.0
+offset_right = 558.0
+offset_bottom = 300.0
+scale = Vector2(2.24, 1.88)
+theme_override_constants/outline_size = 4
+text = "Settings"
+
+[node name="QuitButton" type="Button" parent="."]
+layout_mode = 2
+offset_left = 488.0
+offset_top = 338.0
+offset_right = 558.0
+offset_bottom = 369.0
+scale = Vector2(2.24, 1.88)
+theme_override_constants/outline_size = 4
+text = "Quit"
+
+[connection signal="pressed" from="PlayButton" to="." method="_on_play_button_pressed"]
+[connection signal="pressed" from="SettingsButton" to="." method="_on_settings_button_pressed"]
+[connection signal="pressed" from="QuitButton" to="." method="_on_quit_button_pressed"]

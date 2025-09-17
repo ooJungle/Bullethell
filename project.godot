@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="Bullethell"
-run/main_scene="uid://b8fvcleuuxvcy"
+run/main_scene="uid://b1baf17wokydn"
 config/features=PackedStringArray("4.4", "Forward Plus")
 
 [autoload]
@@ -27,8 +27,7 @@ enabled=PackedStringArray("res://addons/phantom_camera/plugin.cfg")
 
 folder_colors={
 "res://Assets/": "yellow",
-"res://Cenas/": "pink",
-"res://Fases/": "green",
+"res://Cenas/": "green",
 "res://Scripts/": "red",
 "res://Sons e Musica/": "purple",
 "res://Sprites/": "teal"

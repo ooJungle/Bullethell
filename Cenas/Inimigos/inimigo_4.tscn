@@ -1,0 +1,44 @@
+[gd_scene load_steps=5 format=3 uid="uid://btwm7v5ywkigl"]
+
+[ext_resource type="Script" uid="uid://dikk4m0y8l6jn" path="res://Scripts/Inimigos/inimigo_4.gd" id="1_bpwg1"]
+[ext_resource type="Texture2D" uid="uid://bb83m0qrgn7uc" path="res://Sprites/Inimigos/inimigo_4.png" id="2_j8h06"]
+
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_jeuxd"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_j8h06")
+}],
+"loop": true,
+"name": &"Idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_j8h06")
+}],
+"loop": true,
+"name": &"Walking",
+"speed": 5.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_scw1g"]
+radius = 13.0
+height = 50.0
+
+[node name="inimigo_4" type="CharacterBody2D"]
+collision_layer = 2
+collision_mask = 2
+script = ExtResource("1_bpwg1")
+
+[node name="sprite" type="AnimatedSprite2D" parent="."]
+position = Vector2(-2, -15)
+scale = Vector2(-0.734323, 0.760192)
+sprite_frames = SubResource("SpriteFrames_jeuxd")
+animation = &"Idle"
+offset = Vector2(2.5, 30)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-2, 13)
+shape = SubResource("CapsuleShape2D_scw1g")

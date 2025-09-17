@@ -8,7 +8,6 @@ var direction: Vector2 = Vector2.ZERO
 var vida_maxima: int = 5
 var vida: int = vida_maxima
 
-
 func _ready() -> void:
 	add_to_group("players")
 	
@@ -22,6 +21,8 @@ func die() -> void:
 	print("morreu")
 
 func _physics_process(_delta: float) -> void:
+	if Global.paused:
+		return
 	# Input
 	direction.x = Input.get_axis("move_left", "move_right")
 	direction.y = Input.get_axis("move_up", "move_down")
@@ -66,8 +67,5 @@ func handle_enemy_bounce():
 func _unhandled_input(event: InputEvent) -> void:
 	# Verifica se a ação "ui_cancel" (ESC) foi recém-pressionada
 	if event.is_action_pressed("ui_cancel"):
-		if not get_tree().paused and $".."/PauseMenu/CanvasLayer/PauseVideo.paused:
+		if not Global.paused:
 			$".."/PauseMenu.start_pause()
-		else:
-			$".."/PauseMenu._on_pause_video_finished()
-			$".."/PauseMenu._on_resume_button_pressed()

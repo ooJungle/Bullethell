@@ -1,0 +1,257 @@
+[gd_scene load_steps=20 format=3 uid="uid://b8fvcleuuxvcy"]
+
+[ext_resource type="PackedScene" uid="uid://cw5ic42v3wep7" path="res://Cenas/player.tscn" id="1_3apeq"]
+[ext_resource type="Script" uid="uid://bl0k0fcu8kka2" path="res://Fases/fase_0.gd" id="1_b3mis"]
+[ext_resource type="PackedScene" uid="uid://buw23jdf15r6e" path="res://Cenas/Inimigos/inimigo_2.tscn" id="2_b3mis"]
+[ext_resource type="Texture2D" uid="uid://c0ne8ed4aqixq" path="res://Sprites/PLACEHOLDER -- Dungeon_Tileset.png" id="2_ft2eh"]
+[ext_resource type="PackedScene" uid="uid://bqvstnda7b8kd" path="res://Cenas/Inimigos/inimigo_1.tscn" id="3_ft2eh"]
+[ext_resource type="PackedScene" uid="uid://bpxk7epe337y1" path="res://Cenas/Inimigos/inimigo_0.tscn" id="4_hjudd"]
+[ext_resource type="Script" uid="uid://bd046eokvcnu2" path="res://addons/phantom_camera/scripts/phantom_camera_host/phantom_camera_host.gd" id="5_7dk0k"]
+[ext_resource type="Script" uid="uid://bhexx6mj1xv3q" path="res://addons/phantom_camera/scripts/phantom_camera/phantom_camera_2d.gd" id="6_tgvqu"]
+[ext_resource type="Script" uid="uid://8umksf8e80fw" path="res://addons/phantom_camera/scripts/resources/tween_resource.gd" id="7_pxo8h"]
+[ext_resource type="PackedScene" uid="uid://bkhxrca0185x8" path="res://Cenas/Inimigos/inimigo_qualquer.tscn" id="10_hjudd"]
+[ext_resource type="PackedScene" uid="uid://burb4hginapym" path="res://Cenas/Inimigos/Inimigo_5.tscn" id="11_7dk0k"]
+[ext_resource type="PackedScene" uid="uid://d26majiwami8u" path="res://Cenas/Menu/PauseMenu.tscn" id="12_tgvqu"]
+
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_uocwv"]
+
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_tgvqu"]
+vertices = PackedVector2Array(8, 8, -8, 8, -8, -8, 8, -8)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)])
+agent_radius = 0.0
+
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_7dk0k"]
+vertices = PackedVector2Array(8, 8, -8, 8, -8, -8, 8, -8)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)])
+agent_radius = 0.0
+
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_pxo8h"]
+vertices = PackedVector2Array(8, 8, -8, 8, -8, -8, 8, -8)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)])
+agent_radius = 0.0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_tgvqu"]
+texture = ExtResource("2_ft2eh")
+0:0/0 = 0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+1:0/0 = 0
+1:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+2:0/0 = 0
+2:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+3:0/0 = 0
+3:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+4:0/0 = 0
+4:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+5:0/0 = 0
+5:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+6:0/0 = 0
+6:0/0/navigation_layer_0/polygon = SubResource("NavigationPolygon_pxo8h")
+7:0/0 = 0
+7:0/0/navigation_layer_0/polygon = SubResource("NavigationPolygon_pxo8h")
+8:0/0 = 0
+8:0/0/navigation_layer_0/polygon = SubResource("NavigationPolygon_pxo8h")
+9:0/0 = 0
+9:0/0/navigation_layer_0/polygon = SubResource("NavigationPolygon_pxo8h")
+0:1/0 = 0
+1:1/0 = 0
+1:1/0/navigation_layer_0/polygon = SubResource("NavigationPolygon_7dk0k")
+2:1/0 = 0
+2:1/0/navigation_layer_0/polygon = SubResource("NavigationPolygon_7dk0k")
+3:1/0 = 0
+3:1/0/navigation_layer_0/polygon = SubResource("NavigationPolygon_7dk0k")
+4:1/0 = 0
+4:1/0/navigation_layer_0/polygon = SubResource("NavigationPolygon_7dk0k")
+5:1/0 = 0
+6:1/0 = 0
+6:1/0/navigation_layer_0/polygon = SubResource("NavigationPolygon_pxo8h")
+7:1/0 = 0
+7:1/0/navigation_layer_0/polygon = SubResource("NavigationPolygon_pxo8h")
+8:1/0 = 0
+8:1/0/navigation_layer_0/polygon = SubResource("NavigationPolygon_pxo8h")
+9:1/0 = 0
+9:1/0/navigation_layer_0/polygon = SubResource("NavigationPolygon_pxo8h")
+0:2/0 = 0
+1:2/0 = 0
+1:2/0/navigation_layer_0/polygon = SubResource("NavigationPolygon_7dk0k")
+2:2/0 = 0
+2:2/0/navigation_layer_0/polygon = SubResource("NavigationPolygon_7dk0k")
+3:2/0 = 0
+3:2/0/navigation_layer_0/polygon = SubResource("NavigationPolygon_7dk0k")
+4:2/0 = 0
+4:2/0/navigation_layer_0/polygon = SubResource("NavigationPolygon_7dk0k")
+5:2/0 = 0
+6:2/0 = 0
+6:2/0/navigation_layer_0/polygon = SubResource("NavigationPolygon_pxo8h")
+7:2/0 = 0
+7:2/0/navigation_layer_0/polygon = SubResource("NavigationPolygon_pxo8h")
+8:2/0 = 0
+8:2/0/navigation_layer_0/polygon = SubResource("NavigationPolygon_pxo8h")
+9:2/0 = 0
+9:2/0/navigation_layer_0/polygon = SubResource("NavigationPolygon_pxo8h")
+0:3/0 = 0
+1:3/0 = 0
+1:3/0/navigation_layer_0/polygon = SubResource("NavigationPolygon_7dk0k")
+2:3/0 = 0
+2:3/0/navigation_layer_0/polygon = SubResource("NavigationPolygon_7dk0k")
+3:3/0 = 0
+3:3/0/navigation_layer_0/polygon = SubResource("NavigationPolygon_7dk0k")
+4:3/0 = 0
+4:3/0/navigation_layer_0/polygon = SubResource("NavigationPolygon_7dk0k")
+5:3/0 = 0
+6:3/0 = 0
+7:3/0 = 0
+8:3/0 = 0
+9:3/0 = 0
+0:4/0 = 0
+1:4/0 = 0
+2:4/0 = 0
+3:4/0 = 0
+4:4/0 = 0
+5:4/0 = 0
+6:4/0 = 0
+7:4/0 = 0
+8:4/0 = 0
+9:4/0 = 0
+0:5/0 = 0
+1:5/0 = 0
+2:5/0 = 0
+3:5/0 = 0
+4:5/0 = 0
+5:5/0 = 0
+6:5/0 = 0
+7:5/0 = 0
+8:5/0 = 0
+9:5/0 = 0
+0:6/0 = 0
+0:6/0/navigation_layer_0/polygon = SubResource("NavigationPolygon_tgvqu")
+1:6/0 = 0
+1:6/0/navigation_layer_0/polygon = SubResource("NavigationPolygon_tgvqu")
+2:6/0 = 0
+2:6/0/navigation_layer_0/polygon = SubResource("NavigationPolygon_tgvqu")
+3:6/0 = 0
+3:6/0/navigation_layer_0/polygon = SubResource("NavigationPolygon_tgvqu")
+4:6/0 = 0
+5:6/0 = 0
+6:6/0 = 0
+7:6/0 = 0
+8:6/0 = 0
+9:6/0 = 0
+0:7/0 = 0
+0:7/0/navigation_layer_0/polygon = SubResource("NavigationPolygon_tgvqu")
+1:7/0 = 0
+1:7/0/navigation_layer_0/polygon = SubResource("NavigationPolygon_tgvqu")
+2:7/0 = 0
+2:7/0/navigation_layer_0/polygon = SubResource("NavigationPolygon_tgvqu")
+3:7/0 = 0
+3:7/0/navigation_layer_0/polygon = SubResource("NavigationPolygon_tgvqu")
+4:7/0 = 0
+5:7/0 = 0
+6:7/0 = 0
+7:7/0 = 0
+8:7/0 = 0
+9:7/0 = 0
+0:8/0 = 0
+1:8/0 = 0
+2:8/0 = 0
+3:8/0 = 0
+4:8/0 = 0
+5:8/0 = 0
+6:8/0 = 0
+7:8/0 = 0
+8:8/0 = 0
+9:8/0 = 0
+0:9/0 = 0
+1:9/0 = 0
+2:9/0 = 0
+3:9/0 = 0
+4:9/0 = 0
+5:9/0 = 0
+6:9/0 = 0
+7:9/0 = 0
+8:9/0 = 0
+9:9/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_7dk0k"]
+physics_layer_0/collision_layer = 255
+physics_layer_0/collision_mask = 255
+navigation_layer_0/layers = 255
+sources/0 = SubResource("TileSetAtlasSource_tgvqu")
+
+[sub_resource type="Resource" id="Resource_8re8n"]
+script = ExtResource("7_pxo8h")
+duration = 1.0
+transition = 0
+ease = 2
+
+[node name="Node2D" type="Node2D" node_paths=PackedStringArray("tilemap", "player", "navigation_region", "inimigos")]
+script = ExtResource("1_b3mis")
+tilemap = NodePath("NavigationRegion2D/TileMapLayer")
+player = NodePath("player")
+navigation_region = NodePath("NavigationRegion2D")
+inimigos = [NodePath("inimigo_0"), NodePath("inimigo_1"), NodePath("inimigo_2"), NodePath("inimigo_REDONDO"), NodePath("inimigo_5")]
+
+[node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]
+navigation_polygon = SubResource("NavigationPolygon_uocwv")
+
+[node name="TileMapLayer" type="TileMapLayer" parent="NavigationRegion2D" groups=["level_tilemap"]]
+tile_set = SubResource("TileSet_7dk0k")
+
+[node name="player" parent="." instance=ExtResource("1_3apeq")]
+position = Vector2(41, 0)
+collision_layer = 1
+collision_mask = 1
+safe_margin = 0.08
+speed = 150.0
+
+[node name="inimigo_2" parent="." node_paths=PackedStringArray("player") instance=ExtResource("2_b3mis")]
+position = Vector2(162, 50)
+player = NodePath("../player")
+
+[node name="inimigo_1" parent="." node_paths=PackedStringArray("player") instance=ExtResource("3_ft2eh")]
+position = Vector2(-80, 79)
+velocidade = 80.0
+player = NodePath("../player")
+
+[node name="inimigo_0" parent="." node_paths=PackedStringArray("player") instance=ExtResource("4_hjudd")]
+position = Vector2(38, 78)
+player = NodePath("../player")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+physics_interpolation_mode = 1
+position = Vector2(41, 0)
+zoom = Vector2(2, 2)
+process_callback = 0
+
+[node name="PhantomCameraHost" type="Node" parent="Camera2D"]
+process_priority = 300
+process_physics_priority = 300
+script = ExtResource("5_7dk0k")
+
+[node name="PhantomCamera2D" type="Node2D" parent="." node_paths=PackedStringArray("follow_target")]
+top_level = true
+position = Vector2(41, 0)
+script = ExtResource("6_tgvqu")
+follow_mode = 5
+follow_target = NodePath("../player")
+zoom = Vector2(2, 2)
+tween_resource = SubResource("Resource_8re8n")
+follow_damping = true
+dead_zone_width = 0.2
+dead_zone_height = 0.2
+
+[node name="inimigo_REDONDO" parent="." node_paths=PackedStringArray("player") instance=ExtResource("10_hjudd")]
+position = Vector2(-199, -127)
+player = NodePath("../player")
+
+[node name="inimigo_5" parent="." node_paths=PackedStringArray("player") instance=ExtResource("11_7dk0k")]
+position = Vector2(172, -110)
+player = NodePath("../player")
+
+[node name="PauseMenu" parent="." instance=ExtResource("12_tgvqu")]
+offset_left = -78.4848
+offset_top = 78.9558
+offset_right = -78.4848
+offset_bottom = 78.9558
