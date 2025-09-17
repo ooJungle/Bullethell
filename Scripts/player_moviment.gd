@@ -62,3 +62,12 @@ func handle_enemy_bounce():
 				position.y -= forca_salto_inimigo
 				# Encontrámos a colisão que queríamos, podemos parar o loop
 				break
+
+func _unhandled_input(event: InputEvent) -> void:
+	# Verifica se a ação "ui_cancel" (ESC) foi recém-pressionada
+	if event.is_action_pressed("ui_cancel"):
+		if not get_tree().paused and $".."/PauseMenu/CanvasLayer/PauseVideo.paused:
+			$".."/PauseMenu.start_pause()
+		else:
+			$".."/PauseMenu._on_pause_video_finished()
+			$".."/PauseMenu._on_resume_button_pressed()

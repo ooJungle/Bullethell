@@ -1,16 +1,17 @@
-[gd_scene load_steps=19 format=3 uid="uid://b8fvcleuuxvcy"]
+[gd_scene load_steps=20 format=3 uid="uid://cf6sy0e4hs6bd"]
 
 [ext_resource type="PackedScene" uid="uid://cw5ic42v3wep7" path="res://Cenas/player.tscn" id="1_3apeq"]
-[ext_resource type="Script" uid="uid://bl0k0fcu8kka2" path="res://Fases/fase_0.gd" id="1_b3mis"]
-[ext_resource type="PackedScene" uid="uid://buw23jdf15r6e" path="res://Cenas/inimigo_2.tscn" id="2_b3mis"]
+[ext_resource type="Script" path="res://Fases/fase_0.gd" id="1_b3mis"]
+[ext_resource type="PackedScene" path="res://Cenas/inimigo_2.tscn" id="2_b3mis"]
 [ext_resource type="Texture2D" uid="uid://c0ne8ed4aqixq" path="res://Sprites/PLACEHOLDER -- Dungeon_Tileset.png" id="2_ft2eh"]
-[ext_resource type="PackedScene" uid="uid://bqvstnda7b8kd" path="res://Cenas/inimigo_1.tscn" id="3_ft2eh"]
-[ext_resource type="PackedScene" uid="uid://bpxk7epe337y1" path="res://Cenas/inimigo_0.tscn" id="4_hjudd"]
+[ext_resource type="PackedScene" path="res://Cenas/inimigo_1.tscn" id="3_ft2eh"]
+[ext_resource type="PackedScene" path="res://Cenas/inimigo_0.tscn" id="4_hjudd"]
 [ext_resource type="Script" uid="uid://bd046eokvcnu2" path="res://addons/phantom_camera/scripts/phantom_camera_host/phantom_camera_host.gd" id="5_7dk0k"]
 [ext_resource type="Script" uid="uid://bhexx6mj1xv3q" path="res://addons/phantom_camera/scripts/phantom_camera/phantom_camera_2d.gd" id="6_tgvqu"]
 [ext_resource type="Script" uid="uid://8umksf8e80fw" path="res://addons/phantom_camera/scripts/resources/tween_resource.gd" id="7_pxo8h"]
-[ext_resource type="PackedScene" uid="uid://bkhxrca0185x8" path="res://Cenas/inimigo_REDONDO.tscn" id="10_hjudd"]
-[ext_resource type="PackedScene" uid="uid://burb4hginapym" path="res://Cenas/Inimigo_5.tscn" id="11_7dk0k"]
+[ext_resource type="PackedScene" path="res://Cenas/inimigo_REDONDO.tscn" id="10_hjudd"]
+[ext_resource type="PackedScene" path="res://Cenas/Inimigo_5.tscn" id="11_7dk0k"]
+[ext_resource type="PackedScene" uid="uid://d26majiwami8u" path="res://Cenas/PauseMenu.tscn" id="12_tgvqu"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_uocwv"]
 
@@ -32,7 +33,7 @@ polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3)])
 outlines = Array[PackedVector2Array]([PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)])
 agent_radius = 0.0
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_hjudd"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_tgvqu"]
 texture = ExtResource("2_ft2eh")
 0:0/0 = 0
 0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
@@ -177,7 +178,7 @@ texture = ExtResource("2_ft2eh")
 physics_layer_0/collision_layer = 255
 physics_layer_0/collision_mask = 255
 navigation_layer_0/layers = 255
-sources/0 = SubResource("TileSetAtlasSource_hjudd")
+sources/0 = SubResource("TileSetAtlasSource_tgvqu")
 
 [sub_resource type="Resource" id="Resource_8re8n"]
 script = ExtResource("7_pxo8h")
@@ -200,6 +201,9 @@ tile_set = SubResource("TileSet_7dk0k")
 
 [node name="player" parent="." instance=ExtResource("1_3apeq")]
 position = Vector2(41, 0)
+collision_layer = 1
+collision_mask = 1
+safe_margin = 0.08
 speed = 150.0
 
 [node name="inimigo_2" parent="." node_paths=PackedStringArray("player") instance=ExtResource("2_b3mis")]
@@ -245,3 +249,9 @@ player = NodePath("../player")
 [node name="inimigo_5" parent="." node_paths=PackedStringArray("player") instance=ExtResource("11_7dk0k")]
 position = Vector2(172, -110)
 player = NodePath("../player")
+
+[node name="PauseMenu" parent="." instance=ExtResource("12_tgvqu")]
+offset_left = -78.4848
+offset_top = 78.9558
+offset_right = -78.4848
+offset_bottom = 78.9558

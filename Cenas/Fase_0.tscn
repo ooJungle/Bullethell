@@ -117,6 +117,9 @@ tile_map_data = PackedByteArray("AAD8/wAAAAAAAAkAAAD9/wAAAAAAAAkAAAD+/wAAAAAAAAk
 tile_set = SubResource("TileSet_wycfp")
 
 [node name="player" parent="." instance=ExtResource("1_tysq0")]
+collision_layer = 1
+collision_mask = 1
+safe_margin = 0.08
 speed = 175.0
 
 [node name="Camera2D" type="Camera2D" parent="player"]
