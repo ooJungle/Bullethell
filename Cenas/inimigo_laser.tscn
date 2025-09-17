@@ -1,0 +1,38 @@
+[gd_scene load_steps=5 format=3 uid="uid://bu7otdeikbwcr"]
+
+[ext_resource type="Script" uid="uid://dpe1ob6rs5koo" path="res://Scripts/inimigo_laser.gd" id="1_nkaow"]
+[ext_resource type="Texture2D" uid="uid://d3y0qgm3dhi85" path="res://Sprites/placegolder inimigo laser.png" id="2_0nkwv"]
+[ext_resource type="Texture2D" uid="uid://cx6ixn88ac2ge" path="res://Sprites/laser.png" id="3_tykgi"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ao3qg"]
+height = 38.0
+
+[node name="CharacterBody2D" type="CharacterBody2D"]
+script = ExtResource("1_nkaow")
+
+[node name="Inimigo" type="Sprite2D" parent="."]
+position = Vector2(3.8147e-06, 1.90735e-06)
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("2_0nkwv")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+scale = Vector2(1.14484, 0.732117)
+shape = SubResource("CapsuleShape2D_ao3qg")
+
+[node name="FirePoint" type="Node2D" parent="."]
+
+[node name="linha" type="Line2D" parent="FirePoint"]
+points = PackedVector2Array(0, 0, 1000, 0)
+width = 2.0
+default_color = Color(1, 0.482353, 0, 1)
+
+[node name="Laserbeam" type="Sprite2D" parent="FirePoint"]
+visible = false
+position = Vector2(500, 0)
+scale = Vector2(31.2936, 0.957145)
+texture = ExtResource("3_tykgi")
+
+[node name="RayCast2D" type="RayCast2D" parent="FirePoint"]
+visible = false
+scale = Vector2(1.14582, 2.78477)
+target_position = Vector2(1000, 0)

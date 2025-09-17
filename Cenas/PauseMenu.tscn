@@ -1,0 +1,44 @@
+[gd_scene load_steps=3 format=3 uid="uid://d26majiwami8u"]
+
+[ext_resource type="Script" uid="uid://o52wl5acbuc8" path="res://Scripts/pause_menu.gd" id="1_vp8nw"]
+[ext_resource type="VideoStream" uid="uid://b2ps8kdagrpig" path="res://Sons e Musica/Ricky-Rolling.ogv" id="2_snhpj"]
+
+[node name="PauseMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_vp8nw")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="PauseVideo" type="VideoStreamPlayer" parent="CanvasLayer"]
+z_index = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+stream = ExtResource("2_snhpj")
+expand = true
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer"]
+offset_left = 472.0
+offset_top = 208.0
+offset_right = 542.0
+offset_bottom = 274.0
+scale = Vector2(2.60747, 2.75908)
+
+[node name="ResumeButton" type="Button" parent="CanvasLayer/VBoxContainer"]
+layout_mode = 2
+text = "Resume"
+
+[node name="QuitButton" type="Button" parent="CanvasLayer/VBoxContainer"]
+layout_mode = 2
+text = "Quit"
+
+[connection signal="finished" from="CanvasLayer/PauseVideo" to="." method="_on_pause_video_finished"]
+[connection signal="pressed" from="CanvasLayer/VBoxContainer/ResumeButton" to="." method="_on_resume_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/VBoxContainer/QuitButton" to="." method="_on_quit_button_pressed"]
