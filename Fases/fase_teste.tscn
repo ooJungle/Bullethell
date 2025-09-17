@@ -1,10 +1,12 @@
-[gd_scene load_steps=8 format=4 uid="uid://dq5arm2820s3g"]
+[gd_scene load_steps=10 format=4 uid="uid://bi5tmecvhnnsj"]
 
 [ext_resource type="Texture2D" uid="uid://tpc5pqukpb32" path="res://Sprites/tilesetGAMEJAM.png" id="1_1jg4h"]
 [ext_resource type="PackedScene" uid="uid://cw5ic42v3wep7" path="res://Cenas/player.tscn" id="1_jew0q"]
-[ext_resource type="PackedScene" uid="uid://btwm7v5ywkigl" path="res://Cenas/inimigo_4.tscn" id="2_1jg4h"]
-[ext_resource type="PackedScene" uid="uid://ci0rtmu664888" path="res://Cenas/inimigo_REDONDO.tscn" id="3_qia1d"]
-[ext_resource type="PackedScene" uid="uid://burb4hginapym" path="res://Cenas/Inimigo_5.tscn" id="5_bjqr6"]
+[ext_resource type="PackedScene" path="res://Cenas/inimigo_4.tscn" id="2_1jg4h"]
+[ext_resource type="PackedScene" uid="uid://bkhxrca0185x8" path="res://Cenas/inimigo_REDONDO.tscn" id="3_qia1d"]
+[ext_resource type="PackedScene" path="res://Cenas/Inimigo_5.tscn" id="5_bjqr6"]
+[ext_resource type="PackedScene" uid="uid://bu7otdeikbwcr" path="res://Cenas/inimigo_laser.tscn" id="6_adu1l"]
+[ext_resource type="PackedScene" path="res://Cenas/PauseMenu.tscn" id="7_pkdox"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_qia1d"]
 texture = ExtResource("1_1jg4h")
@@ -127,13 +129,31 @@ position = Vector2(73, 37)
 zoom = Vector2(1.5, 1.5)
 
 [node name="inimigo_4" parent="." node_paths=PackedStringArray("player") instance=ExtResource("2_1jg4h")]
-position = Vector2(516, -2)
+position = Vector2(-688, 24)
 player = NodePath("../player")
 
 [node name="inimigo_REDONDO" parent="." node_paths=PackedStringArray("player") instance=ExtResource("3_qia1d")]
-position = Vector2(-460, 120)
+position = Vector2(-575, 54)
 player = NodePath("../player")
 
 [node name="inimigo_5" parent="." node_paths=PackedStringArray("player") instance=ExtResource("5_bjqr6")]
-position = Vector2(34, 343)
+position = Vector2(-506, -4)
 player = NodePath("../player")
+
+[node name="CharacterBody2D6" parent="." node_paths=PackedStringArray("player") instance=ExtResource("6_adu1l")]
+position = Vector2(-698, 268)
+player = NodePath("../player")
+
+[node name="CharacterBody2D4" parent="." node_paths=PackedStringArray("player") instance=ExtResource("6_adu1l")]
+position = Vector2(-730, -230)
+player = NodePath("../player")
+
+[node name="CharacterBody2D5" parent="." node_paths=PackedStringArray("player") instance=ExtResource("6_adu1l")]
+position = Vector2(-285, -185)
+player = NodePath("../player")
+
+[node name="PauseMenu" parent="." instance=ExtResource("7_pkdox")]
+offset_left = -78.4848
+offset_top = 78.9558
+offset_right = -78.4848
+offset_bottom = 78.9558

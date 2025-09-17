@@ -6,7 +6,7 @@ extends CharacterBody2D
 @export var duracaoMira: float = 2.0
 @export var ducacaoLock: float = 0.5
 @export var duracaoTiro: float = 1.0
-@export var tiroCooldown: float = 3.0
+@export var tiroCooldown: float = 6.0
 
 @onready var sprite: Sprite2D = $Inimigo
 @onready var fire_point: Node2D = $FirePoint
@@ -19,7 +19,7 @@ var estadoAtual = Estado.IDLE
 
 var state_timer: float = 0.0
 var locked_angle: float = 0.0
-var alvo_atingido_neste_tiro: bool = false # <<< NOVO: Nossa variável de controle
+var alvo_atingido_neste_tiro: bool = false
 
 func _ready() -> void:
 	mudar_para_estado(Estado.COOLDOWN)
@@ -64,20 +64,20 @@ func mudar_para_estado(novoEstado: Estado):
 		Estado.MIRANDO:
 			state_timer = duracaoMira
 			linha.visible = true
-			linha.default_color = Color("ffd966", 0.7)
+			linha.default_color = Color("ffd900dc")
 			
 		Estado.LOCKADO:
 			state_timer = ducacaoLock
 			linha.visible = true
-			linha.default_color = Color.RED
+			linha.default_color = Color("ff7b00")
 			
 		Estado.ATIRANDO:
 			state_timer = duracaoTiro
 			laserbeam.visible = true
-			alvo_atingido_neste_tiro = false # <<< ALTERADO: Resetamos a variável aqui!
+			alvo_atingido_neste_tiro = false
 			
 		Estado.COOLDOWN:
-			state_timer = tiroCooldown
+			state_timer = randf_range(0.0, tiroCooldown)
 			
 		Estado.IDLE:
 			mudar_para_estado(Estado.COOLDOWN)
@@ -100,9 +100,6 @@ func modo_lockado(delta):
 		
 func modo_atirando(delta):
 	fire_point.rotation = locked_angle
-	
-	# <<< LÓGICA DE COLISÃO ALTERADA
-	# Só verificamos a colisão se ainda não tivermos atingido o alvo neste disparo
 	if not alvo_atingido_neste_tiro:
 		ray_cast_2d.force_raycast_update()
 		

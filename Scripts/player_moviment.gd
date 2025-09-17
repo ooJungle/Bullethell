@@ -41,3 +41,13 @@ func _physics_process(_delta: float) -> void:
 			sprite.play("Idle")
 
 	move_and_slide()
+
+func _unhandled_input(event: InputEvent) -> void:
+	# Verifica se a ação "ui_cancel" (ESC) foi recém-pressionada
+	if event.is_action_pressed("ui_cancel"):
+		if not get_tree().paused and not $".."/PauseMenu/CanvasLayer/PauseVideo.is_playing():
+			$".."/PauseMenu.start_pause()
+		else:
+			$".."/PauseMenu._on_pause_video_finished()
+			$".."/PauseMenu._on_resume_button_pressed()
+			get_tree().root.set_input_as_handled()

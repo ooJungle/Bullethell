@@ -22,15 +22,17 @@ shape = SubResource("CapsuleShape2D_ao3qg")
 [node name="FirePoint" type="Node2D" parent="."]
 
 [node name="linha" type="Line2D" parent="FirePoint"]
-visible = false
 points = PackedVector2Array(0, 0, 1000, 0)
 width = 2.0
-default_color = Color(0.835294, 0.215686, 0, 0.764706)
+default_color = Color(1, 0.482353, 0, 1)
 
 [node name="Laserbeam" type="Sprite2D" parent="FirePoint"]
+visible = false
 position = Vector2(500, 0)
 scale = Vector2(31.2936, 0.957145)
 texture = ExtResource("3_tykgi")
 
 [node name="RayCast2D" type="RayCast2D" parent="FirePoint"]
+visible = false
+scale = Vector2(1.14582, 2.78477)
 target_position = Vector2(1000, 0)

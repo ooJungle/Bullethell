@@ -113,9 +113,7 @@ func place_player(rooms: Array[Rect2]):
 	player.position = rooms.pick_random().get_center() * 16
 
 func place_inimigo(rooms: Array[Rect2]):
-	inimigo0.position = rooms.pick_random().get_center() * 16
-	inimigo1.position = rooms.pick_random().get_center() * 16
-	inimigo2.position = rooms.pick_random().get_center() * 16
+	pass
 	
 func create_dungeon():
 	var sala = generate()
