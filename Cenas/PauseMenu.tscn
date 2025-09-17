@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://d26majiwami8u"]
 
-[ext_resource type="Script" uid="uid://o52wl5acbuc8" path="res://Scripts/pause_menu.gd" id="1_vp8nw"]
-[ext_resource type="VideoStream" uid="uid://b2ps8kdagrpig" path="res://Sons e Musica/Ricky-Rolling.ogv" id="2_snhpj"]
+[ext_resource type="Script" path="res://Scripts/pause_menu.gd" id="1_vp8nw"]
+[ext_resource type="VideoStream" path="res://Sons e Musica/Ricky-Rolling.ogv" id="2_snhpj"]
 
 [node name="PauseMenu" type="Control"]
 layout_mode = 3

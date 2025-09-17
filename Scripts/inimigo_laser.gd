@@ -11,6 +11,7 @@ extends CharacterBody2D
 @onready var sprite: Sprite2D = $Inimigo
 @onready var fire_point: Node2D = $FirePoint
 @onready var linha: Line2D = $FirePoint/linha
+@onready var linha_2: Line2D = $FirePoint/linha2
 @onready var laserbeam: Sprite2D = $FirePoint/Laserbeam
 @onready var ray_cast_2d: RayCast2D = $FirePoint/RayCast2D
 
@@ -25,12 +26,17 @@ func _ready() -> void:
 	mudar_para_estado(Estado.COOLDOWN)
 
 func _physics_process(delta: float) -> void:
+	var direction_to_player = Vector2.ZERO
+	if is_instance_valid(player):
+		direction_to_player = (player.global_position - global_position).normalized()
+		
+	if estadoAtual in [Estado.IDLE, Estado.COOLDOWN, Estado.MIRANDO]:
+		sprite.rotation = direction_to_player.angle() + PI / 2
+
 	if estadoAtual in [Estado.MIRANDO, Estado.LOCKADO, Estado.ATIRANDO]:
 		velocity = Vector2.ZERO
 	else:
-		if is_instance_valid(player):
-			var direction = (player.global_position - global_position).normalized()
-			velocity = direction * velocidade
+		velocity = direction_to_player * velocidade
 	
 	var nearby = get_tree().get_nodes_in_group("enemies") + get_tree().get_nodes_in_group("players")
 	for other in nearby:
@@ -58,18 +64,23 @@ func _process(delta: float) -> void:
 func mudar_para_estado(novoEstado: Estado):
 	estadoAtual = novoEstado
 	linha.visible = false
+	linha_2.visible = false
 	laserbeam.visible = false
 	
 	match novoEstado:
 		Estado.MIRANDO:
 			state_timer = duracaoMira
 			linha.visible = true
+			linha_2.visible = true
 			linha.default_color = Color("ffd900dc")
+			linha_2.default_color = Color("ffd900dc")
 			
 		Estado.LOCKADO:
 			state_timer = ducacaoLock
 			linha.visible = true
+			linha_2.visible = true
 			linha.default_color = Color("ff7b00")
+			linha_2.default_color = Color("ff7b00")
 			
 		Estado.ATIRANDO:
 			state_timer = duracaoTiro

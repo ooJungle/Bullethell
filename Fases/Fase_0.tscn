@@ -9,9 +9,10 @@
 [ext_resource type="Script" uid="uid://bd046eokvcnu2" path="res://addons/phantom_camera/scripts/phantom_camera_host/phantom_camera_host.gd" id="5_7dk0k"]
 [ext_resource type="Script" uid="uid://bhexx6mj1xv3q" path="res://addons/phantom_camera/scripts/phantom_camera/phantom_camera_2d.gd" id="6_tgvqu"]
 [ext_resource type="Script" uid="uid://8umksf8e80fw" path="res://addons/phantom_camera/scripts/resources/tween_resource.gd" id="7_pxo8h"]
-[ext_resource type="PackedScene" uid="uid://bkhxrca0185x8" path="res://Cenas/inimigo_REDONDO.tscn" id="10_hjudd"]
+[ext_resource type="PackedScene" uid="uid://bkhxrca0185x8" path="res://Cenas/inimigo_qualquer.tscn" id="10_hjudd"]
 [ext_resource type="PackedScene" uid="uid://burb4hginapym" path="res://Cenas/Inimigo_5.tscn" id="11_7dk0k"]
 [ext_resource type="PackedScene" uid="uid://d26majiwami8u" path="res://Cenas/PauseMenu.tscn" id="12_tgvqu"]
+
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_uocwv"]
 

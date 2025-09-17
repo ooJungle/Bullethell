@@ -1,13 +1,13 @@
 [gd_scene load_steps=5 format=3 uid="uid://bkhxrca0185x8"]
 
-[ext_resource type="Script" path="res://Scripts/inimigo_redondo.gd" id="1_2dlls"]
-[ext_resource type="Texture2D" uid="uid://0lg1tna0hnmk" path="res://Sprites/inimigo_REDONDO.png" id="2_x0fsl"]
+[ext_resource type="Script" uid="uid://bqfg2teqn6bny" path="res://Scripts/inimigo_qualquer.gd" id="1_2dlls"]
+[ext_resource type="Texture2D" uid="uid://d3y0qgm3dhi85" path="res://Sprites/placegolder inimigo laser.png" id="2_5y0nl"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_ao1cn"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("2_x0fsl")
+"texture": ExtResource("2_5y0nl")
 }],
 "loop": true,
 "name": &"Idle",
@@ -15,15 +15,16 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("2_x0fsl")
+"texture": ExtResource("2_5y0nl")
 }],
 "loop": true,
 "name": &"Walking",
 "speed": 5.0
 }]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_2dlls"]
-size = Vector2(69, 65)
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_3kq0m"]
+radius = 15.0
+height = 58.0
 
 [node name="inimigo_REDONDO" type="CharacterBody2D"]
 collision_layer = 2
@@ -32,11 +33,11 @@ script = ExtResource("1_2dlls")
 
 [node name="sprite" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, -17)
-scale = Vector2(-0.734323, 0.760192)
+scale = Vector2(0.2, 0.2)
 sprite_frames = SubResource("SpriteFrames_ao1cn")
 animation = &"Idle"
 offset = Vector2(2.5, 30)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-3.5, 2.5)
-shape = SubResource("RectangleShape2D_2dlls")
+position = Vector2(0, 1)
+shape = SubResource("CapsuleShape2D_3kq0m")

@@ -2,10 +2,10 @@
 
 [ext_resource type="Texture2D" uid="uid://tpc5pqukpb32" path="res://Sprites/tilesetGAMEJAM.png" id="1_1jg4h"]
 [ext_resource type="PackedScene" uid="uid://cw5ic42v3wep7" path="res://Cenas/player.tscn" id="1_jew0q"]
-[ext_resource type="PackedScene" uid="uid://btwm7v5ywkigl" path="res://Cenas/inimigo_4.tscn" id="2_1jg4h"]
-[ext_resource type="PackedScene" uid="uid://bkhxrca0185x8" path="res://Cenas/inimigo_REDONDO.tscn" id="3_qia1d"]
+[ext_resource type="PackedScene" path="res://Cenas/inimigo_4.tscn" id="2_1jg4h"]
+[ext_resource type="PackedScene" uid="uid://bkhxrca0185x8" path="res://Cenas/inimigo_qualquer.tscn" id="3_qia1d"]
 [ext_resource type="PackedScene" uid="uid://burb4hginapym" path="res://Cenas/Inimigo_5.tscn" id="5_bjqr6"]
-[ext_resource type="PackedScene" path="res://Cenas/inimigo_laser.tscn" id="6_adu1l"]
+[ext_resource type="PackedScene" uid="uid://bu7otdeikbwcr" path="res://Cenas/inimigo_laser.tscn" id="6_adu1l"]
 [ext_resource type="PackedScene" uid="uid://d26majiwami8u" path="res://Cenas/PauseMenu.tscn" id="7_pkdox"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_2x8jn"]
@@ -87,7 +87,6 @@ texture = ExtResource("1_1jg4h")
 10:8/0 = 0
 11:8/0 = 0
 0:9/0 = 0
-0:9/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 1:9/0 = 0
 1:9/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, 3.14753, 8, 3.14753, 8, 8, -8, 8)
 2:9/0 = 0
@@ -140,7 +139,7 @@ zoom = Vector2(1.5, 1.5)
 position = Vector2(-688, 24)
 player = NodePath("../player")
 
-[node name="inimigo_REDONDO" parent="." node_paths=PackedStringArray("player") instance=ExtResource("3_qia1d")]
+[node name="inimigo_qualquer" parent="." node_paths=PackedStringArray("player") instance=ExtResource("3_qia1d")]
 position = Vector2(-575, 54)
 player = NodePath("../player")
 
@@ -151,6 +150,9 @@ player = NodePath("../player")
 [node name="CharacterBody2D6" parent="." node_paths=PackedStringArray("player") instance=ExtResource("6_adu1l")]
 position = Vector2(-698, 268)
 player = NodePath("../player")
+duracaoMira = 1.5
+ducacaoLock = 0.25
+duracaoTiro = 1.25
 
 [node name="CharacterBody2D4" parent="." node_paths=PackedStringArray("player") instance=ExtResource("6_adu1l")]
 position = Vector2(-730, -230)
