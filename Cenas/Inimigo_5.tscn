@@ -1,7 +1,7 @@
-[gd_scene load_steps=6 format=3 uid="uid://burb4hginapym"]
+[gd_scene load_steps=6 format=3 uid="uid://c8oiudyfhk3cl"]
 
-[ext_resource type="Script" uid="uid://c24rkgo6l8gn3" path="res://Scripts/Inimigos/inimigo_5.gd" id="1_m8kee"]
-[ext_resource type="Texture2D" uid="uid://43vonnfep7qg" path="res://Sprites/Inimigos/inimigo_horrendo.png" id="2_e8bdr"]
+[ext_resource type="Script" path="res://Scripts/inimigo_5.gd" id="1_m8kee"]
+[ext_resource type="Texture2D" path="res://Sprites/inimigo_horrendo.png" id="2_e8bdr"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_ry66y"]
 animations = [{

@@ -8,35 +8,21 @@ var girar = true
 var timer = 0.0
 var knockback = false
 var tempo_knockback = 0.0
-var tempo_entre_tiros = 0.0
-var limite_projeteis = 0
 var rotacao = 200
-var atirando = false
 var direction: Vector2 = Vector2.ZERO
 func shoot(velocidade_tiro: float):
-	if not atirando:
-		direction = (player.position - position).normalized()
-	if timer >= 1.2:
-		atirando = true
-		if tempo_entre_tiros > 0.01:
-			rotacao += 0.1
-			var new_bullet = obj_tiro_roxo.instantiate()
-			new_bullet.position = position
-			new_bullet.velocity = (direction * velocidade_tiro).rotated(rotacao)
-			get_parent().add_child(new_bullet)
-			limite_projeteis += 1
-			tempo_entre_tiros = 0.0
-		if limite_projeteis > 30:
-			timer = 0.0
-			limite_projeteis = 0
-			rotacao = 200
-			atirando = false
+	if timer >= 3.0:
+		var new_bullet = obj_tiro_roxo.instantiate()
+		var direction = (player.position - position).normalized()
+		new_bullet.position = position
+		new_bullet.velocity = direction * velocidade_tiro
+		get_parent().add_child(new_bullet)
+		timer = 0.0
 
 func _physics_process(delta: float) -> void:
 	if Global.paused:
 		return
 	timer += delta
-	tempo_entre_tiros += delta
 	direction = (player.position - position).normalized()
 	look_at(player.position)
 	

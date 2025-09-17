@@ -1,13 +1,13 @@
-[gd_scene load_steps=5 format=3 uid="uid://bkhxrca0185x8"]
+[gd_scene load_steps=5 format=3 uid="uid://cup0raircu6at"]
 
-[ext_resource type="Script" uid="uid://bqfg2teqn6bny" path="res://Scripts/Inimigos/inimigo_qualquer.gd" id="1_2dlls"]
-[ext_resource type="Texture2D" uid="uid://d3y0qgm3dhi85" path="res://Sprites/Inimigos/placegolder inimigo laser.png" id="2_5y0nl"]
+[ext_resource type="Script" uid="uid://8j63cbnh1k54" path="res://Scripts/Inimigos/inimigo_6.gd" id="1_tbf7d"]
+[ext_resource type="Texture2D" uid="uid://d3y0qgm3dhi85" path="res://Sprites/Inimigos/placegolder inimigo laser.png" id="2_irq7h"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_ao1cn"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("2_5y0nl")
+"texture": ExtResource("2_irq7h")
 }],
 "loop": true,
 "name": &"Idle",
@@ -15,7 +15,7 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("2_5y0nl")
+"texture": ExtResource("2_irq7h")
 }],
 "loop": true,
 "name": &"Walking",
@@ -29,7 +29,7 @@ height = 58.0
 [node name="inimigo_6" type="CharacterBody2D"]
 collision_layer = 2
 collision_mask = 2
-script = ExtResource("1_2dlls")
+script = ExtResource("1_tbf7d")
 
 [node name="sprite" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, -17)
