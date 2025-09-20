@@ -1,6 +1,6 @@
 [gd_scene load_steps=23 format=3 uid="uid://bpxk7epe337y1"]
 
-[ext_resource type="Script" uid="uid://q8cms5vqvnj4" path="res://Scripts/Inimigos/inimigo_0.gd" id="1_mf6jg"]
+[ext_resource type="Script" uid="uid://q8cms5vqvnj4" path="res://Scripts/inimigo_0.gd" id="1_mf6jg"]
 [ext_resource type="Texture2D" uid="uid://2vf1cnjbjpfl" path="res://Sprites/Sprite-Sheet-GatoZumbiCompleto.png" id="1_y3828"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_dhk4n"]

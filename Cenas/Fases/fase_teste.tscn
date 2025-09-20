@@ -4,8 +4,13 @@
 [ext_resource type="PackedScene" uid="uid://0h3wdjgqgfpx" path="res://Cenas/fundo.tscn" id="1_eiwq8"]
 [ext_resource type="PackedScene" uid="uid://cw5ic42v3wep7" path="res://Cenas/player.tscn" id="1_jew0q"]
 [ext_resource type="PackedScene" uid="uid://btwm7v5ywkigl" path="res://Cenas/Inimigos/inimigo_4.tscn" id="2_1jg4h"]
+[ext_resource type="PackedScene" uid="uid://bkhxrca0185x8" path="res://Cenas/Inimigos/inimigo_qualquer.tscn" id="3_qia1d"]
 [ext_resource type="PackedScene" uid="uid://burb4hginapym" path="res://Cenas/Inimigos/Inimigo_5.tscn" id="5_bjqr6"]
+<<<<<<< HEAD
 [ext_resource type="PackedScene" uid="uid://cup0raircu6at" path="res://Cenas/Inimigos/inimigo_6.tscn" id="7_axsth"]
+=======
+[ext_resource type="PackedScene" uid="uid://bu7otdeikbwcr" path="res://Cenas/Inimigos/inimigo_laser.tscn" id="6_adu1l"]
+>>>>>>> parent of cb516ce (novo padrão de tiro)
 [ext_resource type="PackedScene" uid="uid://d26majiwami8u" path="res://Cenas/Menu/PauseMenu.tscn" id="7_pkdox"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_axsth"]
@@ -154,19 +159,37 @@ safe_margin = 0.08
 zoom = Vector2(1.75, 1.75)
 
 [node name="inimigo_4" parent="." node_paths=PackedStringArray("player") instance=ExtResource("2_1jg4h")]
-position = Vector2(-1089, -673)
+position = Vector2(-688, 24)
+player = NodePath("../player")
+
+[node name="inimigo_qualquer" parent="." node_paths=PackedStringArray("player") instance=ExtResource("3_qia1d")]
+position = Vector2(-575, 54)
 player = NodePath("../player")
 
 [node name="inimigo_5" parent="." node_paths=PackedStringArray("player") instance=ExtResource("5_bjqr6")]
-position = Vector2(-1040, -724)
+position = Vector2(-506, -4)
 player = NodePath("../player")
 
+<<<<<<< HEAD
+=======
+[node name="CharacterBody2D6" parent="." node_paths=PackedStringArray("player") instance=ExtResource("6_adu1l")]
+position = Vector2(-698, 268)
+player = NodePath("../player")
+duracaoMira = 1.5
+ducacaoLock = 0.25
+duracaoTiro = 1.25
+
+[node name="CharacterBody2D4" parent="." node_paths=PackedStringArray("player") instance=ExtResource("6_adu1l")]
+position = Vector2(-730, -230)
+player = NodePath("../player")
+
+[node name="CharacterBody2D5" parent="." node_paths=PackedStringArray("player") instance=ExtResource("6_adu1l")]
+position = Vector2(-285, -185)
+player = NodePath("../player")
+
+>>>>>>> parent of cb516ce (novo padrão de tiro)
 [node name="PauseMenu" parent="." instance=ExtResource("7_pkdox")]
 offset_left = -78.4848
 offset_top = 78.9558
 offset_right = -78.4848
 offset_bottom = 78.9558
-
-[node name="inimigo_6" parent="." node_paths=PackedStringArray("player") instance=ExtResource("7_axsth")]
-position = Vector2(555, 42)
-player = NodePath("../player")

@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://c24rkgo6l8gn3" path="res://Scripts/Inimigos/inimigo_5.gd" id="1_m8kee"]
 [ext_resource type="Texture2D" uid="uid://43vonnfep7qg" path="res://Sprites/Inimigos/inimigo_horrendo.png" id="2_e8bdr"]
 
+
 [sub_resource type="SpriteFrames" id="SpriteFrames_ry66y"]
 animations = [{
 "frames": [{

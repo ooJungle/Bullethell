@@ -2,7 +2,7 @@ extends CharacterBody2D
 @export var velocidade = 90.0
 @onready var sprite: AnimatedSprite2D = $sprite
 @export var player = Node2D
-const obj_tiro_roxo = preload("res://Cenas/Projeteis/tiro_central.tscn")
+const obj_tiro_roxo = preload("res://Cenas/Projeteis/tiro_amarelo.tscn")
 
 var girar = true
 var timer = 0.0
