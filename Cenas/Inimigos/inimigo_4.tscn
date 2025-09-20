@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://dikk4m0y8l6jn" path="res://Scripts/Inimigos/inimigo_4.gd" id="1_bpwg1"]
 [ext_resource type="Texture2D" uid="uid://bb83m0qrgn7uc" path="res://Sprites/Inimigos/inimigo_4.png" id="2_j8h06"]
 
+
 [sub_resource type="SpriteFrames" id="SpriteFrames_jeuxd"]
 animations = [{
 "frames": [{
@@ -27,10 +28,8 @@ radius = 13.0
 height = 50.0
 
 [node name="inimigo_4" type="CharacterBody2D"]
-collision_layer = 0
+collision_layer = 2
 collision_mask = 2
-motion_mode = 1
-wall_min_slide_angle = 0.0
 script = ExtResource("1_bpwg1")
 
 [node name="sprite" type="AnimatedSprite2D" parent="."]

@@ -42,7 +42,7 @@ func shoot(velocidade_tiro: float):
 				atirando = false
 				ataque_aleatorio = randi_range(0,4)
 	if ataque_aleatorio == 1:
-		if timer >= 5:
+		if timer >= 1.2:
 			for i in range(11):
 					var new_bullet = obj_tiro_roxo.instantiate()
 					var direction = (player.position - position).normalized().rotated((40 * i))

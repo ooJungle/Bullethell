@@ -14,6 +14,7 @@ var dungeon_grid = []
 
 func _ready() -> void:
 	create_dungeon()
+
 func generate():
 	dungeon_grid = []
 	

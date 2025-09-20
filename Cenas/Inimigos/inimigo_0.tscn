@@ -1,6 +1,6 @@
 [gd_scene load_steps=23 format=3 uid="uid://bpxk7epe337y1"]
 
-[ext_resource type="Script" uid="uid://q8cms5vqvnj4" path="res://Scripts/inimigo_0.gd" id="1_mf6jg"]
+[ext_resource type="Script" uid="uid://q8cms5vqvnj4" path="res://Scripts/Inimigos/inimigo_0.gd" id="1_mf6jg"]
 [ext_resource type="Texture2D" uid="uid://2vf1cnjbjpfl" path="res://Sprites/Sprite-Sheet-GatoZumbiCompleto.png" id="1_y3828"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_dhk4n"]
@@ -146,10 +146,8 @@ animations = [{
 size = Vector2(16, 14)
 
 [node name="inimigo_0" type="CharacterBody2D"]
-collision_layer = 0
-collision_mask = 2
-motion_mode = 1
-wall_min_slide_angle = 0.0
+collision_layer = 8
+collision_mask = 8
 script = ExtResource("1_mf6jg")
 
 [node name="sprite" type="AnimatedSprite2D" parent="."]
