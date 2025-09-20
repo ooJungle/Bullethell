@@ -16,7 +16,7 @@ var direction: Vector2 = Vector2.ZERO
 func shoot(velocidade_tiro: float):
 	if not atirando:
 		direction = (player.position - position).normalized()
-	if timer >= 1.2:
+	if timer >= 3.75:
 		atirando = true
 		if tempo_entre_tiros > 0.01:
 			rotacao += 0.1

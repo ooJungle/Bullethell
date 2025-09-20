@@ -147,8 +147,6 @@ animations = [{
 size = Vector2(16.5, 16.5)
 
 [node name="player" type="CharacterBody2D"]
-collision_layer = 32
-collision_mask = 32
 safe_margin = 1.0
 script = ExtResource("1_pmvhq")
 

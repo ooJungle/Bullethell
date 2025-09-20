@@ -1,6 +1,6 @@
 [gd_scene load_steps=15 format=3 uid="uid://bqvstnda7b8kd"]
 
-[ext_resource type="Script" uid="uid://dkuonslenu4tk" path="res://Scripts/inimigo_1.gd" id="1_miy63"]
+[ext_resource type="Script" uid="uid://dkuonslenu4tk" path="res://Scripts/Inimigos/inimigo_1.gd" id="1_miy63"]
 [ext_resource type="Texture2D" uid="uid://bfx331vyknt83" path="res://Sprites/Sprite-Sheet-GatoFantasmaCompleto.png" id="1_s6g5e"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_s6g5e"]
@@ -90,8 +90,10 @@ animations = [{
 size = Vector2(16, 15)
 
 [node name="inimigo_1" type="CharacterBody2D"]
-collision_layer = 4
-collision_mask = 4
+collision_layer = 0
+collision_mask = 2
+motion_mode = 1
+wall_min_slide_angle = 0.0
 script = ExtResource("1_miy63")
 
 [node name="sprite" type="AnimatedSprite2D" parent="."]
