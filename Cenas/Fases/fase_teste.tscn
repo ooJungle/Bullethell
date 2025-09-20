@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=4 uid="uid://dq5arm2820s3g"]
+[gd_scene load_steps=12 format=4 uid="uid://dq5arm2820s3g"]
 
 [ext_resource type="Texture2D" uid="uid://tpc5pqukpb32" path="res://Sprites/tilesetGAMEJAM.png" id="1_1jg4h"]
 [ext_resource type="PackedScene" uid="uid://cw5ic42v3wep7" path="res://Cenas/player.tscn" id="1_jew0q"]
@@ -9,6 +9,12 @@
 [ext_resource type="PackedScene" uid="uid://d26majiwami8u" path="res://Cenas/Menu/PauseMenu.tscn" id="7_pkdox"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_2x8jn"]
+
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_axsth"]
+vertices = PackedVector2Array(8, 8, -8, 8, -8, -8, 8, -8)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)])
+agent_radius = 0.0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_pkdox"]
 texture = ExtResource("1_1jg4h")
@@ -87,6 +93,7 @@ texture = ExtResource("1_1jg4h")
 10:8/0 = 0
 11:8/0 = 0
 0:9/0 = 0
+0:9/0/navigation_layer_0/polygon = SubResource("NavigationPolygon_axsth")
 1:9/0 = 0
 1:9/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, 3.14753, 8, 3.14753, 8, 8, -8, 8)
 2:9/0 = 0
