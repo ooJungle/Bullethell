@@ -10,7 +10,7 @@ func _ready() -> void:
 	add_to_group("enemies")
 
 func shoot():
-	if timer >= 1.2:
+	if timer >= 4:
 		var new_bullet = obj_tiro_azul.instantiate()
 		var direction = (player.position - position).normalized()
 		

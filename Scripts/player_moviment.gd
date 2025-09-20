@@ -10,7 +10,8 @@ var vida: int = vida_maxima
 
 func _ready() -> void:
 	add_to_group("players")
-	
+	get_viewport().transparent_bg = true
+
 func take_damage(amount: int) -> void:
 	vida -= amount
 	print("Player tomou dano. Vida:", vida)
@@ -21,6 +22,7 @@ func die() -> void:
 	print("morreu")
 
 func _physics_process(_delta: float) -> void:
+	get_window().mouse_passthrough = false
 	if Global.paused:
 		return
 	# Input

@@ -2,7 +2,7 @@ extends CharacterBody2D
 @export var velocidade = 90.0
 @onready var sprite: AnimatedSprite2D = $sprite
 @export var player = Node2D
-const obj_tiro_roxo = preload("res://Cenas/Projeteis/tiro_central.tscn")
+const obj_tiro_roxo = preload("res://Cenas/Projeteis/tiro_amarelo.tscn")
 
 var girar = true
 var timer = 0.0
@@ -16,7 +16,7 @@ var direction: Vector2 = Vector2.ZERO
 func shoot(velocidade_tiro: float):
 	if not atirando:
 		direction = (player.position - position).normalized()
-	if timer >= 1.2:
+	if timer >= 3.75:
 		atirando = true
 		if tempo_entre_tiros > 0.01:
 			rotacao += 0.1

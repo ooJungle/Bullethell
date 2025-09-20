@@ -1,8 +1,4 @@
-<<<<<<< HEAD
 [gd_scene load_steps=22 format=3 uid="uid://b8fvcleuuxvcy"]
-=======
-[gd_scene load_steps=20 format=3 uid="uid://b8fvcleuuxvcy"]
->>>>>>> parent of cb516ce (novo padrão de tiro)
 
 [ext_resource type="PackedScene" uid="uid://cw5ic42v3wep7" path="res://Cenas/player.tscn" id="1_3apeq"]
 [ext_resource type="Script" uid="uid://bl0k0fcu8kka2" path="res://Cenas/Fases/fase_0.gd" id="1_b3mis"]
@@ -16,6 +12,7 @@
 [ext_resource type="Script" uid="uid://8umksf8e80fw" path="res://addons/phantom_camera/scripts/resources/tween_resource.gd" id="7_pxo8h"]
 [ext_resource type="PackedScene" uid="uid://bkhxrca0185x8" path="res://Cenas/Inimigos/inimigo_qualquer.tscn" id="10_hjudd"]
 [ext_resource type="PackedScene" uid="uid://burb4hginapym" path="res://Cenas/Inimigos/Inimigo_5.tscn" id="11_7dk0k"]
+[ext_resource type="PackedScene" uid="uid://bu7otdeikbwcr" path="res://Cenas/Inimigos/inimigo_laser.tscn" id="12_gmavx"]
 [ext_resource type="PackedScene" uid="uid://d26majiwami8u" path="res://Cenas/Menu/PauseMenu.tscn" id="12_tgvqu"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_uocwv"]
@@ -196,7 +193,7 @@ script = ExtResource("1_b3mis")
 tilemap = NodePath("NavigationRegion2D/TileMapLayer")
 player = NodePath("player")
 navigation_region = NodePath("NavigationRegion2D")
-inimigos = [NodePath("inimigo_0"), NodePath("inimigo_1"), NodePath("inimigo_2"), NodePath("inimigo_REDONDO"), NodePath("inimigo_5")]
+inimigos = [NodePath("inimigo_0"), NodePath("inimigo_1"), NodePath("inimigo_2"), NodePath("CharacterBody2D"), NodePath("inimigo_5"), NodePath("inimigo_REDONDO")]
 
 [node name="ColorRect" parent="." instance=ExtResource("2_2kwqn")]
 offset_left = -37720.0
@@ -251,11 +248,6 @@ follow_damping = true
 dead_zone_width = 0.2
 dead_zone_height = 0.2
 
-[node name="inimigo_REDONDO" parent="." node_paths=PackedStringArray("player") instance=ExtResource("10_hjudd")]
-position = Vector2(-199, -127)
-velocidade = null
-player = NodePath("../player")
-
 [node name="inimigo_5" parent="." node_paths=PackedStringArray("player") instance=ExtResource("11_7dk0k")]
 position = Vector2(172, -110)
 player = NodePath("../player")
@@ -265,3 +257,11 @@ offset_left = -78.4848
 offset_top = 78.9558
 offset_right = -78.4848
 offset_bottom = 78.9558
+
+[node name="CharacterBody2D" parent="." node_paths=PackedStringArray("player") instance=ExtResource("12_gmavx")]
+position = Vector2(-126, -110)
+player = NodePath("../player")
+
+[node name="inimigo_REDONDO" parent="." node_paths=PackedStringArray("player") instance=ExtResource("10_hjudd")]
+position = Vector2(-207, 117)
+player = NodePath("../player")

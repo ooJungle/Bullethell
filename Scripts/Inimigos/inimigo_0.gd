@@ -9,7 +9,7 @@ var knockback = false
 var tempo_knockback = 0.0
 
 func shoot(velocidade_tiro: float):
-	if timer >= 1.2:
+	if timer >= 3:
 		var new_bullet = obj_tiro_roxo.instantiate()
 		var direction = (player.position - position).normalized()
 		new_bullet.position = position
