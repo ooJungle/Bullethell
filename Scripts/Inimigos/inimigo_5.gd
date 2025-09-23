@@ -28,10 +28,8 @@ extends CharacterBody2D
 
 # --- Disparos ---
 
-const obj_tiro_azul = preload("res://Cenas/Projeteis/tiro_azul.tscn")
-
+const obj_tiro_espiral = preload("res://Cenas/Projeteis/projetil_espiral.tscn")
 var timer = 0.0
-
 
 
 # --- Knockback ---
@@ -229,19 +227,12 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 
 
 func shoot():
-
 	if timer >= 4:
-
-		var new_bullet = obj_tiro_azul.instantiate()
-
+		var new_bullet = obj_tiro_espiral.instantiate()
 		var direction = (player.global_position - global_position).normalized()
 
-		new_bullet.player = player
-
 		new_bullet.global_position = global_position
-
-		new_bullet.velocity = direction * velocidade * 1.5
+		new_bullet.velocity = direction * 150.0 # Defina a velocidade que desejar
 
 		get_parent().add_child(new_bullet)
-
 		timer = 0.0

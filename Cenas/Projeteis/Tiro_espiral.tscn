@@ -1,0 +1,16 @@
+[gd_scene load_steps=4 format=3 uid="uid://clo0b2d0comue"]
+
+[ext_resource type="Script" uid="uid://bsgs47ikdl156" path="res://Scripts/Projeteis/tiro_espiral.gd" id="1_yobfq"]
+[ext_resource type="Texture2D" uid="uid://dtfya46fnxhud" path="res://Sprites/Projeteis/tiro_roxo.png" id="3_0cbwn"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_yobfq"]
+radius = 7.07107
+
+[node name="tiro_espiral" type="Area2D"]
+script = ExtResource("1_yobfq")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("3_0cbwn")
+
+[node name="hitbox" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_yobfq")
