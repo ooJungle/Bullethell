@@ -1,12 +1,12 @@
 [gd_scene load_steps=7 format=3 uid="uid://dpbr7stlxrotw"]
 
-[ext_resource type="Script" uid="uid://cj25a1hrjy6w5" path="res://Scripts/dungeon_generator.gd" id="1_plsyj"]
-[ext_resource type="Texture2D" uid="uid://c0ne8ed4aqixq" path="res://Sprites/PLACEHOLDER -- Dungeon_Tileset.png" id="2_hym32"]
-[ext_resource type="PackedScene" uid="uid://cw5ic42v3wep7" path="res://Cenas/player.tscn" id="3_ncrc2"]
-[ext_resource type="Script" uid="uid://0ha4ht83gk2w" path="res://Scripts/label.gd" id="4_ahi0v"]
+[ext_resource type="Script" uid="uid://cj25a1hrjy6w5" path="res://Scripts/dungeon_generator.gd" id="1_8lqoq"]
+[ext_resource type="Texture2D" uid="uid://c0ne8ed4aqixq" path="res://Sprites/PLACEHOLDER -- Dungeon_Tileset.png" id="2_yk1y6"]
+[ext_resource type="PackedScene" uid="uid://cw5ic42v3wep7" path="res://Cenas/player.tscn" id="3_ky5w4"]
+[ext_resource type="Script" path="res://Scripts/label.gd" id="4_vjnep"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_b0oiu"]
-texture = ExtResource("2_hym32")
+texture = ExtResource("2_yk1y6")
 0:0/0 = 0
 1:0/0 = 0
 1:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
@@ -115,7 +115,7 @@ sources/0 = SubResource("TileSetAtlasSource_b0oiu")
 
 [node name="geração--teste" type="Node2D" node_paths=PackedStringArray("tilemap", "player")]
 position = Vector2(552, 288)
-script = ExtResource("1_plsyj")
+script = ExtResource("1_8lqoq")
 tilemap = NodePath("TileMapLayer")
 player = NodePath("player")
 
@@ -123,7 +123,7 @@ player = NodePath("player")
 position = Vector2(-2, 0)
 tile_set = SubResource("TileSet_m4yp7")
 
-[node name="player" parent="." instance=ExtResource("3_ncrc2")]
+[node name="player" parent="." instance=ExtResource("3_ky5w4")]
 position = Vector2(17, 30)
 
 [node name="Camera2D" type="Camera2D" parent="player"]
@@ -135,4 +135,4 @@ offset_right = 21.0
 offset_bottom = -27.0
 horizontal_alignment = 1
 vertical_alignment = 1
-script = ExtResource("4_ahi0v")
+script = ExtResource("4_vjnep")
