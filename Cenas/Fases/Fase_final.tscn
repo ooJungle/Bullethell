@@ -1,0 +1,29 @@
+[gd_scene load_steps=6 format=3 uid="uid://b2038bydv7ng2"]
+
+[ext_resource type="PackedScene" uid="uid://cw5ic42v3wep7" path="res://Cenas/player.tscn" id="1_24tbe"]
+[ext_resource type="Script" uid="uid://clim2u32y8c03" path="res://Cenas/Fases/battle_manager.gd" id="2_01lal"]
+[ext_resource type="Script" uid="uid://cyk1f0xeom3jr" path="res://Cenas/Fases/blaster_spawner.gd" id="2_m1hs5"]
+[ext_resource type="PackedScene" uid="uid://d367i72jfndks" path="res://Cenas/Projeteis/Blaster.tscn" id="3_noj5k"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_01lal"]
+size = Vector2(1010.12, 539.676)
+
+[node name="FaseFinal" type="Node2D"]
+
+[node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="player" parent="." instance=ExtResource("1_24tbe")]
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(-2.50002, 3)
+scale = Vector2(0.963251, 0.945011)
+shape = SubResource("RectangleShape2D_01lal")
+
+[node name="BlasterSpawner" type="Node2D" parent="."]
+script = ExtResource("2_m1hs5")
+blaster_scene = ExtResource("3_noj5k")
+
+[node name="BattleManager" type="Node" parent="."]
+script = ExtResource("2_01lal")
