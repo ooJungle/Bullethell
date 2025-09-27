@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://dkuonslenu4tk" path="res://Scripts/Inimigos/inimigo_1.gd" id="1_miy63"]
 [ext_resource type="Texture2D" uid="uid://bfx331vyknt83" path="res://Sprites/Sprite-Sheet-GatoFantasmaCompleto.png" id="1_s6g5e"]
 
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_s6g5e"]
 atlas = ExtResource("1_s6g5e")
 region = Rect2(0, 32, 32, 32)

@@ -5,6 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://burb4hginapym" path="res://Cenas/Inimigos/Inimigo_5.tscn" id="4_j42wr"]
 [ext_resource type="PackedScene" uid="uid://d26majiwami8u" path="res://Cenas/Menu/PauseMenu.tscn" id="6_sdqx0"]
 
+
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_2x8jn"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_axsth"]

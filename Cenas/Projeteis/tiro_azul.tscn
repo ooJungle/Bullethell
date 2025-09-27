@@ -4,6 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://b2w2rkna1j42w" path="res://Sprites/Projeteis/tiro_azul.png" id="2_8p4rj"]
 
 
+
 [sub_resource type="CircleShape2D" id="CircleShape2D_u4f0u"]
 radius = 7.0
 

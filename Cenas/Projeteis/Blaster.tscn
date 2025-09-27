@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://bvi74nmu58wnv" path="res://Cenas/Projeteis/blaster.gd" id="1_ftrur"]
 [ext_resource type="Texture2D" uid="uid://cxm7jb8isnkq4" path="res://Sprites/icon1.svg" id="2_4h1ry"]
 
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4h1ry"]
 size = Vector2(24, 24)
 

@@ -4,6 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://737rinf03v5b" path="res://Sprites/Projeteis/tiro_verde.png" id="1_vsmuj"]
 
 
+
 [sub_resource type="CircleShape2D" id="CircleShape2D_u4f0u"]
 radius = 7.0
 

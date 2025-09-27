@@ -1,0 +1,22 @@
+[gd_scene load_steps=5 format=3 uid="uid://dqryqp2hxfnc0"]
+
+[ext_resource type="Shader" uid="uid://cxbgcg08gn1nv" path="res://Scripts/buraconegro.gdshader" id="2_8t6kn"]
+[ext_resource type="Texture2D" uid="uid://diglcam8poj7g" path="res://Sprites/buraconegro.png" id="2_wyo5y"]
+[ext_resource type="Texture2D" uid="uid://43vonnfep7qg" path="res://Sprites/Inimigos/inimigo_horrendo.png" id="3_cghek"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_2uvms"]
+shader = ExtResource("2_8t6kn")
+shader_parameter/distortion_strength = 0.15
+shader_parameter/falloff = 1.5
+
+[node name="Buraco negro efeito" type="Node2D"]
+
+[node name="Buraco negro" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_2uvms")
+position = Vector2(95.5, 53.5)
+scale = Vector2(1.06061, 1.16162)
+texture = ExtResource("3_cghek")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(100, 50)
+texture = ExtResource("2_wyo5y")

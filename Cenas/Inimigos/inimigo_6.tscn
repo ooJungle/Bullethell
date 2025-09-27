@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://8j63cbnh1k54" path="res://Scripts/Inimigos/inimigo_6.gd" id="1_tbf7d"]
 [ext_resource type="Texture2D" uid="uid://d3y0qgm3dhi85" path="res://Sprites/Inimigos/placegolder inimigo laser.png" id="2_irq7h"]
 
+
 [sub_resource type="SpriteFrames" id="SpriteFrames_ao1cn"]
 animations = [{
 "frames": [{
