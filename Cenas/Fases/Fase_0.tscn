@@ -1,7 +1,7 @@
 [gd_scene load_steps=21 format=3 uid="uid://b8fvcleuuxvcy"]
 
 [ext_resource type="PackedScene" uid="uid://cw5ic42v3wep7" path="res://Cenas/player.tscn" id="1_3apeq"]
-[ext_resource type="Script" uid="uid://bl0k0fcu8kka2" path="res://Scripts/fase_0.gd" id="1_b3mis"]
+[ext_resource type="Script" path="res://Cenas/Fases/fase_0.gd" id="1_b3mis"]
 [ext_resource type="PackedScene" uid="uid://buw23jdf15r6e" path="res://Cenas/Inimigos/inimigo_2.tscn" id="2_b3mis"]
 [ext_resource type="Texture2D" uid="uid://c0ne8ed4aqixq" path="res://Sprites/PLACEHOLDER -- Dungeon_Tileset.png" id="2_ft2eh"]
 [ext_resource type="PackedScene" uid="uid://bqvstnda7b8kd" path="res://Cenas/Inimigos/inimigo_1.tscn" id="3_ft2eh"]

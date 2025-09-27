@@ -1,0 +1,26 @@
+[gd_scene load_steps=5 format=3 uid="uid://xi2hrnn8tbmj"]
+
+[ext_resource type="Script" uid="uid://cm8uu8q5nh73l" path="res://buraco_negro.gd" id="1_q4k5o"]
+[ext_resource type="Texture2D" uid="uid://diglcam8poj7g" path="res://Sprites/buraconegro.png" id="2_q4k5o"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_x46ls"]
+radius = 1089.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ioayt"]
+radius = 15.0333
+
+[node name="buraco_negro" type="Area2D"]
+collision_mask = 255
+script = ExtResource("1_q4k5o")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_q4k5o")
+
+[node name="campo_gravitacional" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_x46ls")
+
+[node name="horizonte_de_eventos" type="Area2D" parent="."]
+collision_mask = 255
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="horizonte_de_eventos"]
+shape = SubResource("CircleShape2D_ioayt")

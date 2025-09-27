@@ -64,7 +64,7 @@ func _physics_process(delta: float) -> void:
 
 
 
-	timer += delta
+	timer += delta * Global.fator_tempo
 
 	if not is_instance_valid(player):
 
@@ -78,13 +78,13 @@ func _physics_process(delta: float) -> void:
 
 	if knockback:
 
-		tempo_knockback += delta
+		tempo_knockback += delta * Global.fator_tempo
 
 		if tempo_knockback >= 0.4:
 
 			knockback = false
 
-		velocity = velocity.lerp(Vector2.ZERO, delta * 5.0)
+		velocity = velocity.lerp(Vector2.ZERO, delta * 5.0 * Global.fator_tempo)
 
 		move_and_slide()
 
@@ -124,19 +124,19 @@ func _physics_process(delta: float) -> void:
 
 		# Aplica-se a força como uma aceleração.
 
-		velocity += forca_direcao * delta
+		velocity += forca_direcao * delta * Global.fator_tempo
 
 
 
 		# Garante-se que a velocidade final não ultrapassa a velocidade máxima.
 
-		velocity = velocity.limit_length(velocidade)
+		velocity = velocity.limit_length(velocidade * Global.fator_tempo)
 
 	else:
 
 		# Se não há caminho, desacelera suavemente.
 
-		velocity = velocity.lerp(Vector2.ZERO, delta * 3.0)
+		velocity = velocity.lerp(Vector2.ZERO, delta * 3.0 * Global.fator_tempo)
 
 
 
