@@ -7,7 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://bu7otdeikbwcr" path="res://Cenas/Inimigos/inimigo_laser.tscn" id="6_adu1l"]
 [ext_resource type="PackedScene" uid="uid://cup0raircu6at" path="res://Cenas/Inimigos/inimigo_6.tscn" id="7_axsth"]
 [ext_resource type="PackedScene" uid="uid://d26majiwami8u" path="res://Cenas/Menu/PauseMenu.tscn" id="7_pkdox"]
-[ext_resource type="PackedScene" path="res://Cenas/buraco_negro_efeito.tscn" id="8_eiwq8"]
+[ext_resource type="PackedScene" uid="uid://dqryqp2hxfnc0" path="res://Cenas/buraco_negro_efeito.tscn" id="8_eiwq8"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_2x8jn"]
 

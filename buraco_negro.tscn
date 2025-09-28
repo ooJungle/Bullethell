@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://diglcam8poj7g" path="res://Sprites/buraconegro.png" id="2_q4k5o"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_x46ls"]
-radius = 1089.0
+radius = 554.023
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ioayt"]
 radius = 15.0333

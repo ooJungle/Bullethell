@@ -153,8 +153,8 @@ offset_bottom = 78.9558
 metadata/_edit_use_anchors_ = true
 
 [node name="buraco_negro" parent="." node_paths=PackedStringArray("wormhole_exit") instance=ExtResource("5_lxfcb")]
-position = Vector2(-1076, -64)
+position = Vector2(-647, 133)
 wormhole_exit = NodePath("../buraco_de_mihoca")
 
 [node name="buraco_de_mihoca" parent="." instance=ExtResource("6_0qkmx")]
-position = Vector2(914, -175)
+position = Vector2(451, -209)

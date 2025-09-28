@@ -1,7 +1,7 @@
 extends CharacterBody2D
 
 # --- Variáveis de Movimento e Combate ---
-@export var velocidade = 100.0 # Representa a velocidade MÁXIMA BASE
+@export var velocidade = 200.0 # Representa a velocidade MÁXIMA BASE
 @export var player: Node2D
 @export var forca_maxima_direcao = 200.0 # Quão rápido o inimigo pode virar.
 @export var forca_knockback = 450.0
@@ -13,7 +13,7 @@ extends CharacterBody2D
 @onready var perception_timer: Timer = $PerceptionTimer
 
 # --- Disparos e Variáveis Internas ---
-const obj_tiro_azul = preload("res://Cenas/Projeteis/tiro_azul.tscn")
+const obj_tiro_azul = preload("res://Cenas/Projeteis/projetil_espiral.tscn")
 var timer = 0.0
 var knockback = false
 var tempo_knockback = 0.0
@@ -96,14 +96,14 @@ func calcular_forcas_externas() -> Vector2:
 		var dist = global_position.distance_to(buraco_negro_proximo.global_position)
 		if dist > 1.0:
 			var direcao = (buraco_negro_proximo.global_position - global_position).normalized()
-			var forca = (buraco_negro_proximo.forca_gravidade / max(sqrt(dist), 20))
+			var forca = ((buraco_negro_proximo.forca_gravidade / max(sqrt(dist), 20)/10))
 			forca_total += direcao * forca
 			
 	if in_wh_field:
 		var dist = global_position.distance_to(buraco_minhoca_proximo.global_position)
 		if dist > 1.0:
 			var direcao = (global_position - buraco_minhoca_proximo.global_position).normalized()
-			var forca = (buraco_minhoca_proximo.forca_repulsao_campo / max(sqrt(dist), 20))
+			var forca = ((buraco_minhoca_proximo.forca_repulsao_campo / max(sqrt(dist), 20)/10))
 			forca_total += direcao * forca
 
 	return forca_total
@@ -149,7 +149,6 @@ func shoot():
 	if timer >= 4:
 		var new_bullet = obj_tiro_azul.instantiate()
 		var direction = (player.global_position - global_position).normalized()
-		new_bullet.player = player
 		new_bullet.global_position = global_position
 		new_bullet.velocity = direction * velocidade * 1.5
 		get_parent().add_child(new_bullet)
