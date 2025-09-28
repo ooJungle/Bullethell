@@ -23,4 +23,7 @@ shape = SubResource("CircleShape2D_x46ls")
 collision_mask = 255
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="horizonte_de_eventos"]
+position = Vector2(-3, 3)
 shape = SubResource("CircleShape2D_ioayt")
+
+[connection signal="body_entered" from="horizonte_de_eventos" to="." method="_on_horizonte_de_eventos_body_entered"]

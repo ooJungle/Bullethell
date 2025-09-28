@@ -44,7 +44,6 @@ func _physics_process(delta: float) -> void:
 
 	atualizar_fator_tempo()
 
-	# --- LÓGICA DE FÍSICA CENTRALIZADA ---
 	var forca_externa = calcular_forcas_externas()
 	velocity += forca_externa * delta
 	
@@ -55,10 +54,7 @@ func _physics_process(delta: float) -> void:
 		velocity = velocity.move_toward(target_velocity, aceleracao * delta)
 	else:
 		velocity = velocity.move_toward(Vector2.ZERO, atrito * delta)
-	
-	# --- FIM DA NOVA LÓGICA ---
 
-	# Flip e animação
 	if input_direction.x > 0:
 		sprite.flip_h = false
 	elif input_direction.x < 0:
@@ -91,22 +87,36 @@ func _unhandled_input(event: InputEvent) -> void:
 		if not Global.paused:
 			$".."/PauseMenu.start_pause()
 
-# --- FUNÇÃO DE SUPORTE PARA FÍSICA (ATUALIZADA) ---
+# --- FUNÇÃO DE FÍSICA ATUALIZADA ---
 func calcular_forcas_externas() -> Vector2:
+	# --- NOVA VERIFICAÇÃO DE SOBREPOSIÇÃO ---
+	var in_bn_field = false
+	if is_instance_valid(buraco_negro_proximo) and global_position.distance_to(buraco_negro_proximo.global_position) < buraco_negro_proximo.raio_maximo:
+		in_bn_field = true
+
+	var in_wh_field = false
+	if is_instance_valid(buraco_minhoca_proximo) and global_position.distance_to(buraco_minhoca_proximo.global_position) < buraco_minhoca_proximo.raio_maximo:
+		in_wh_field = true
+
+	# Se estiver em ambos os campos ao mesmo tempo, anula os efeitos
+	if in_bn_field and in_wh_field:
+		return Vector2.ZERO
+	# --- FIM DA VERIFICAÇÃO ---
+
 	var forca_total = Vector2.ZERO
 	
-	# Força de atração do Buraco Negro
-	if is_instance_valid(buraco_negro_proximo):
+	# Força de atração do Buraco Negro (apenas se não estiver sobreposto)
+	if in_bn_field:
 		var dist = global_position.distance_to(buraco_negro_proximo.global_position)
-		if dist > 1.0 and dist < buraco_negro_proximo.raio_maximo:
+		if dist > 1.0:
 			var direcao = (buraco_negro_proximo.global_position - global_position).normalized()
 			var forca = (buraco_negro_proximo.forca_gravidade / max(sqrt(dist), 20))
 			forca_total += direcao * forca
 			
-	# Força de repulsão do Buraco de Minhoca
-	if is_instance_valid(buraco_minhoca_proximo):
+	# Força de repulsão do Buraco de Minhoca (apenas se não estiver sobreposto)
+	if in_wh_field:
 		var dist = global_position.distance_to(buraco_minhoca_proximo.global_position)
-		if dist > 1.0 and dist < buraco_minhoca_proximo.raio_maximo:
+		if dist > 1.0:
 			var direcao = (global_position - buraco_minhoca_proximo.global_position).normalized()
 			var forca = (buraco_minhoca_proximo.forca_repulsao_campo / max(sqrt(dist), 20))
 			forca_total += direcao * forca
