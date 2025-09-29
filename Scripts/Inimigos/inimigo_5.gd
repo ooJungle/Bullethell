@@ -1,7 +1,7 @@
 extends CharacterBody2D
 
 # --- Variáveis de Movimento e Combate ---
-@export var velocidade = 200.0 # Representa a velocidade MÁXIMA BASE
+@export var velocidade = 100.0 # Representa a velocidade MÁXIMA BASE
 @export var player: Node2D
 @export var forca_maxima_direcao = 200.0 # Quão rápido o inimigo pode virar.
 @export var forca_knockback = 450.0
@@ -12,13 +12,14 @@ extends CharacterBody2D
 @onready var area_deteccao: Area2D = $Area2D
 @onready var perception_timer: Timer = $PerceptionTimer
 
-# --- Disparos e Variáveis Internas ---
+# --- Disparos ---
 const obj_tiro_azul = preload("res://Cenas/Projeteis/projetil_espiral.tscn")
 var timer = 0.0
+
+# --- Knockback ---
 var knockback = false
 var tempo_knockback = 0.0
-var buraco_negro_proximo: Node2D = null
-var buraco_minhoca_proximo: Node2D = null
+
 
 func _ready() -> void:
 	add_to_group("enemies")
@@ -26,6 +27,10 @@ func _ready() -> void:
 	area_deteccao.body_entered.connect(_on_area_2d_body_entered)
 	makepath()
 
+
+# ================================================================
+# --- LÓGICA DE MOVIMENTO E AÇÃO ---
+# ================================================================
 
 func _physics_process(delta: float) -> void:
 	if Global.paused:
@@ -42,10 +47,6 @@ func _physics_process(delta: float) -> void:
 			knockback = false
 		velocity = velocity.lerp(Vector2.ZERO, delta * 5.0 * Global.fator_tempo)
 		move_and_slide(); return
-	
-	# O inimigo também calcula as forças externas que atuam sobre ele
-	var forca_externa = calcular_forcas_externas()
-	velocity += forca_externa * delta * Global.fator_tempo
 
 	var direcao_alvo = Vector2.ZERO
 	if not navigation_agent.is_navigation_finished():
@@ -68,45 +69,54 @@ func _physics_process(delta: float) -> void:
 		shoot()
 
 
+# --- FUNÇÃO DE PLANEAMENTO DE ROTA ESTRATÉGICA (ATUALIZADA) ---
 func makepath() -> void:
-	if is_instance_valid(player):
+	if not is_instance_valid(player):
+		return
+
+	var mapa_rid = navigation_agent.get_navigation_map()
+	var pos_atual = global_position
+	var pos_player = player.global_position
+
+	# --- CÁLCULO DA ROTA A: CAMINHO DIRETO ---
+	var caminho_direto = NavigationServer2D.map_get_path(mapa_rid, pos_atual, pos_player, true)
+	var custo_caminho_direto = calcular_comprimento_do_caminho(caminho_direto)
+	
+	# --- CÁLCULO DA ROTA B: CAMINHO PELO BURACO NEGRO ---
+	var custo_caminho_buraco = INF # Começa como infinito por defeito
+	
+	var buraco_negro_proximo = encontrar_corpo_celeste_mais_proximo("buracos_negros")
+	
+	if is_instance_valid(buraco_negro_proximo) and is_instance_valid(buraco_negro_proximo.wormhole_exit):
+		var pos_buraco_negro = buraco_negro_proximo.global_position
+		var pos_saida_minhoca = buraco_negro_proximo.wormhole_exit.global_position
+		
+		var caminho_ate_buraco = NavigationServer2D.map_get_path(mapa_rid, pos_atual, pos_buraco_negro, true)
+		var custo_ate_buraco = calcular_comprimento_do_caminho(caminho_ate_buraco)
+		
+		var caminho_da_saida = NavigationServer2D.map_get_path(mapa_rid, pos_saida_minhoca, pos_player, true)
+		var custo_da_saida = calcular_comprimento_do_caminho(caminho_da_saida)
+		
+		custo_caminho_buraco = custo_ate_buraco + custo_da_saida
+
+	# --- A DECISÃO ---
+	if custo_caminho_buraco < custo_caminho_direto:
+		navigation_agent.target_position = buraco_negro_proximo.global_position
+	else:
 		navigation_agent.target_position = player.global_position
 
 
-# --- Funções de Física e Suporte para o Inimigo ---
+# ================================================================
+# --- Funções de Suporte ---
+# ================================================================
 
-func calcular_forcas_externas() -> Vector2:
-	buraco_negro_proximo = encontrar_corpo_celeste_mais_proximo("buracos_negros")
-	buraco_minhoca_proximo = encontrar_corpo_celeste_mais_proximo("buracos_minhoca")
-
-	var in_bn_field = false
-	if is_instance_valid(buraco_negro_proximo) and global_position.distance_to(buraco_negro_proximo.global_position) < buraco_negro_proximo.raio_maximo:
-		in_bn_field = true
-
-	var in_wh_field = false
-	if is_instance_valid(buraco_minhoca_proximo) and global_position.distance_to(buraco_minhoca_proximo.global_position) < buraco_minhoca_proximo.raio_maximo:
-		in_wh_field = true
-
-	if in_bn_field and in_wh_field:
-		return Vector2.ZERO
-
-	var forca_total = Vector2.ZERO
-	
-	if in_bn_field:
-		var dist = global_position.distance_to(buraco_negro_proximo.global_position)
-		if dist > 1.0:
-			var direcao = (buraco_negro_proximo.global_position - global_position).normalized()
-			var forca = ((buraco_negro_proximo.forca_gravidade / max(sqrt(dist), 20)/10))
-			forca_total += direcao * forca
-			
-	if in_wh_field:
-		var dist = global_position.distance_to(buraco_minhoca_proximo.global_position)
-		if dist > 1.0:
-			var direcao = (global_position - buraco_minhoca_proximo.global_position).normalized()
-			var forca = ((buraco_minhoca_proximo.forca_repulsao_campo / max(sqrt(dist), 20)/10))
-			forca_total += direcao * forca
-
-	return forca_total
+func calcular_comprimento_do_caminho(caminho: PackedVector2Array) -> float:
+	var distancia = 0.0
+	if caminho.size() < 2:
+		return INF
+	for i in range(caminho.size() - 1):
+		distancia += caminho[i].distance_to(caminho[i+1])
+	return distancia
 
 
 func encontrar_corpo_celeste_mais_proximo(grupo: String) -> Node2D:

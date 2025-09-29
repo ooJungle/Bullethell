@@ -3,7 +3,6 @@
 [ext_resource type="Texture2D" uid="uid://dtfya46fnxhud" path="res://Sprites/Projeteis/tiro_roxo.png" id="1_daehv"]
 [ext_resource type="Script" uid="uid://cxsg8h7qabkw2" path="res://Scripts/Projeteis/projetil_espiral.gd" id="1_ola5w"]
 
-
 [sub_resource type="CircleShape2D" id="CircleShape2D_ola5w"]
 radius = 7.0
 
@@ -11,6 +10,7 @@ radius = 7.0
 script = ExtResource("1_ola5w")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+visible = false
 texture = ExtResource("1_daehv")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

@@ -156,8 +156,9 @@ metadata/_edit_use_anchors_ = true
 [node name="buraco_negro" parent="." node_paths=PackedStringArray("wormhole_exit") instance=ExtResource("5_17rqi")]
 z_index = -1
 position = Vector2(-647, 133)
+forca_gravidade = 25000.0
 wormhole_exit = NodePath("../buraco_de_mihoca")
 
 [node name="buraco_de_mihoca" parent="." instance=ExtResource("6_wdrpp")]
 z_index = 10
-position = Vector2(477, -215)
+position = Vector2(451, -209)
