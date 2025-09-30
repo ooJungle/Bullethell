@@ -15,3 +15,5 @@ texture = ExtResource("1_daehv")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_ola5w")
+
+[node name="PivoOrbital" type="Node2D" parent="."]

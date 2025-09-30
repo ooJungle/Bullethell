@@ -69,6 +69,10 @@ move_left={
 ]
 }
 
+[layer_names]
+
+2d_physics/layer_32="teleporte"
+
 [physics]
 
 common/physics_interpolation=true

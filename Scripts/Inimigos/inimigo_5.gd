@@ -78,31 +78,39 @@ func makepath() -> void:
 	var pos_atual = global_position
 	var pos_player = player.global_position
 
-	# --- CÁLCULO DA ROTA A: CAMINHO DIRETO ---
+	# --- ROTA A: Custo do caminho direto ---
 	var caminho_direto = NavigationServer2D.map_get_path(mapa_rid, pos_atual, pos_player, true)
 	var custo_caminho_direto = calcular_comprimento_do_caminho(caminho_direto)
 	
-	# --- CÁLCULO DA ROTA B: CAMINHO PELO BURACO NEGRO ---
-	var custo_caminho_buraco = INF # Começa como infinito por defeito
+	# --- ROTA B: Custo do caminho pelo Buraco Negro ---
+	var custo_caminho_buraco = INF # Começa como infinito
+	var buraco_negro_alvo = null
 	
+	# Encontra o buraco negro mais próximo (poderia ser otimizado para verificar todos)
 	var buraco_negro_proximo = encontrar_corpo_celeste_mais_proximo("buracos_negros")
 	
 	if is_instance_valid(buraco_negro_proximo) and is_instance_valid(buraco_negro_proximo.wormhole_exit):
 		var pos_buraco_negro = buraco_negro_proximo.global_position
 		var pos_saida_minhoca = buraco_negro_proximo.wormhole_exit.global_position
 		
+		# Custo para ir do inimigo até o buraco negro
 		var caminho_ate_buraco = NavigationServer2D.map_get_path(mapa_rid, pos_atual, pos_buraco_negro, true)
 		var custo_ate_buraco = calcular_comprimento_do_caminho(caminho_ate_buraco)
 		
+		# Custo para ir da saída do buraco de minhoca até o jogador
 		var caminho_da_saida = NavigationServer2D.map_get_path(mapa_rid, pos_saida_minhoca, pos_player, true)
 		var custo_da_saida = calcular_comprimento_do_caminho(caminho_da_saida)
 		
+		# O custo total é a soma das duas partes
 		custo_caminho_buraco = custo_ate_buraco + custo_da_saida
+		buraco_negro_alvo = buraco_negro_proximo
 
 	# --- A DECISÃO ---
 	if custo_caminho_buraco < custo_caminho_direto:
-		navigation_agent.target_position = buraco_negro_proximo.global_position
+		# Se o caminho pelo buraco é mais curto, o alvo é o buraco negro
+		navigation_agent.target_position = buraco_negro_alvo.global_position
 	else:
+		# Caso contrário, o alvo é o jogador
 		navigation_agent.target_position = player.global_position
 
 
@@ -113,7 +121,7 @@ func makepath() -> void:
 func calcular_comprimento_do_caminho(caminho: PackedVector2Array) -> float:
 	var distancia = 0.0
 	if caminho.size() < 2:
-		return INF
+		return INF # Retorna infinito se o caminho for inválido
 	for i in range(caminho.size() - 1):
 		distancia += caminho[i].distance_to(caminho[i+1])
 	return distancia
