@@ -11,11 +11,6 @@ var raio_maximo: float
 
 func _ready() -> void:
 	add_to_group("buracos_negros")
-	
-	# Conectamos os DOIS sinais (para corpos e para áreas)
-	event_horizon.body_entered.connect(_on_horizonte_de_eventos_body_entered)
-	event_horizon.area_entered.connect(_on_horizonte_de_eventos_area_entered)
-	
 	if has_node("campo_gravitacional"):
 		raio_maximo = $campo_gravitacional.shape.radius
 	else:

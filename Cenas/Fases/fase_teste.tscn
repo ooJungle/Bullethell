@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=4 uid="uid://dq5arm2820s3g"]
+[gd_scene load_steps=13 format=4 uid="uid://dq5arm2820s3g"]
 
 [ext_resource type="Texture2D" uid="uid://tpc5pqukpb32" path="res://Sprites/tilesetGAMEJAM.png" id="1_1jg4h"]
 [ext_resource type="PackedScene" uid="uid://cw5ic42v3wep7" path="res://Cenas/player.tscn" id="1_jew0q"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://bu7otdeikbwcr" path="res://Cenas/Inimigos/inimigo_laser.tscn" id="6_adu1l"]
 [ext_resource type="PackedScene" uid="uid://cup0raircu6at" path="res://Cenas/Inimigos/inimigo_6.tscn" id="7_axsth"]
 [ext_resource type="PackedScene" uid="uid://d26majiwami8u" path="res://Cenas/Menu/PauseMenu.tscn" id="7_pkdox"]
+[ext_resource type="PackedScene" uid="uid://b2pnn1csceu83" path="res://mira.tscn" id="8_eiwq8"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_2x8jn"]
 
@@ -174,3 +175,5 @@ offset_bottom = 78.9558
 [node name="inimigo_6" parent="." node_paths=PackedStringArray("player") instance=ExtResource("7_axsth")]
 position = Vector2(555, 42)
 player = NodePath("../player")
+
+[node name="Mira" parent="." instance=ExtResource("8_eiwq8")]

@@ -146,6 +146,7 @@ safe_margin = 0.08
 
 [node name="Camera2D" type="Camera2D" parent="player"]
 zoom = Vector2(1.5, 1.5)
+process_callback = 0
 
 [node name="PauseMenu" parent="." instance=ExtResource("4_00w2j")]
 offset_left = -78.4848

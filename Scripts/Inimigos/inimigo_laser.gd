@@ -25,7 +25,7 @@ var alvo_atingido_neste_tiro: bool = false
 func _ready() -> void:
 	mudar_para_estado(Estado.COOLDOWN)
 
-func _physics_process(delta: float) -> void:
+func _physics_process(_delta: float) -> void:
 	if Global.paused:
 		return
 	var direction_to_player = Vector2.ZERO

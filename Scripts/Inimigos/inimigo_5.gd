@@ -24,7 +24,6 @@ var tempo_knockback = 0.0
 func _ready() -> void:
 	add_to_group("enemies")
 	perception_timer.timeout.connect(makepath)
-	area_deteccao.body_entered.connect(_on_area_2d_body_entered)
 	makepath()
 
 

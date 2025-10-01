@@ -9,11 +9,11 @@ var timer = 0.0
 var knockback = false
 var tempo_knockback = 0.0
 var rotacao = 200
-var direction: Vector2 = Vector2.ZERO
+var direction := Vector2.ZERO
 func shoot(velocidade_tiro: float):
 	if timer >= 3.0:
 		var new_bullet = obj_tiro_roxo.instantiate()
-		var direction = (player.position - position).normalized()
+		direction = (player.position - position).normalized()
 		new_bullet.position = position
 		new_bullet.velocity = direction * velocidade_tiro
 		get_parent().add_child(new_bullet)
