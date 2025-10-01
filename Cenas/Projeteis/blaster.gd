@@ -1,6 +1,6 @@
 extends Node2D
 
-@export var aim_duration: float = 0.5
+@export var aim_duration: float = 0.75
 @export var laser_duration: float = 1.0
 @export var laser_width: float = 10.0
 @export var horizontal_laser_length: float = 1200.0 # Comprimento para tiros de cima/baixo
