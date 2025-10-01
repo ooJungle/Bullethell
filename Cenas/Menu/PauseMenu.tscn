@@ -5,7 +5,6 @@
 [ext_resource type="VideoStream" uid="uid://dfh7k6b2d37hl" path="res://Sprites/Menu/DespauseVideo.ogv" id="3_jvxnt"]
 [ext_resource type="Texture2D" uid="uid://c7np1pw8eyl4c" path="res://Sprites/Menu/FundoPause.jpeg" id="4_lmtvr"]
 
-
 [node name="PauseMenu" type="Control"]
 layout_mode = 3
 anchors_preset = 15

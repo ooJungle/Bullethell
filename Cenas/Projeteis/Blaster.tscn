@@ -1,21 +1,20 @@
-[gd_scene load_steps=5 format=3 uid="uid://d367i72jfndks"]
+[gd_scene load_steps=5 format=3 uid="uid://nktj48qc0r0f"]
 
-[ext_resource type="Script" uid="uid://bvi74nmu58wnv" path="res://Cenas/Projeteis/blaster.gd" id="1_ftrur"]
-[ext_resource type="Texture2D" uid="uid://cxm7jb8isnkq4" path="res://Sprites/icon1.svg" id="2_4h1ry"]
-
+[ext_resource type="Script" uid="uid://bvi74nmu58wnv" path="res://Cenas/Projeteis/blaster.gd" id="1_a1j0g"]
+[ext_resource type="Texture2D" uid="uid://cxm7jb8isnkq4" path="res://Sprites/icon1.svg" id="2_a5ga7"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4h1ry"]
 size = Vector2(24, 24)
 
 [sub_resource type="SegmentShape2D" id="SegmentShape2D_ftrur"]
-b = Vector2(0, 50)
+b = Vector2(500, 0)
 
 [node name="Blaster" type="Node2D"]
-script = ExtResource("1_ftrur")
+script = ExtResource("1_a1j0g")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 scale = Vector2(0.2, 0.2)
-texture = ExtResource("2_4h1ry")
+texture = ExtResource("2_a5ga7")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_4h1ry")
@@ -27,10 +26,9 @@ shape = SubResource("SegmentShape2D_ftrur")
 
 [node name="RayCast2D" type="RayCast2D" parent="LaserArea"]
 enabled = false
-target_position = Vector2(0, 500)
+target_position = Vector2(500, 0)
 
 [node name="Line2D" type="Line2D" parent="LaserArea"]
-visible = false
-points = PackedVector2Array(0, 0, 0, 500)
+points = PackedVector2Array(0, 0, 500, 0)
 default_color = Color(1, 0, 0, 1)
 antialiased = true

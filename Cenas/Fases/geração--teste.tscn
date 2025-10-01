@@ -3,8 +3,7 @@
 [ext_resource type="Script" uid="uid://cj25a1hrjy6w5" path="res://Scripts/dungeon_generator.gd" id="1_8lqoq"]
 [ext_resource type="Texture2D" uid="uid://c0ne8ed4aqixq" path="res://Sprites/PLACEHOLDER -- Dungeon_Tileset.png" id="2_yk1y6"]
 [ext_resource type="PackedScene" uid="uid://cw5ic42v3wep7" path="res://Cenas/player.tscn" id="3_ky5w4"]
-[ext_resource type="Script" uid="uid://0ha4ht83gk2w" path="res://Scripts/label.gd" id="4_vjnep"]
-
+[ext_resource type="Script" path="res://Scripts/label.gd" id="4_vjnep"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_b0oiu"]
 texture = ExtResource("2_yk1y6")
@@ -124,7 +123,7 @@ player = NodePath("player")
 position = Vector2(-2, 0)
 tile_set = SubResource("TileSet_m4yp7")
 
-[node name="player" parent="." instance=ExtResource("3_ky5w4")]
+[node name="player" parent="." groups=["player"] instance=ExtResource("3_ky5w4")]
 position = Vector2(17, 30)
 
 [node name="Camera2D" type="Camera2D" parent="player"]
