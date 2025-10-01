@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=4 uid="uid://jembfhef02eu"]
+[gd_scene load_steps=12 format=4 uid="uid://jembfhef02eu"]
 
 [ext_resource type="Texture2D" uid="uid://tpc5pqukpb32" path="res://Sprites/tilesetGAMEJAM.png" id="1_o5f7t"]
 [ext_resource type="PackedScene" uid="uid://burb4hginapym" path="res://Cenas/Inimigos/Inimigo_5.tscn" id="2_qn7uv"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://d26majiwami8u" path="res://Cenas/Menu/PauseMenu.tscn" id="4_00w2j"]
 [ext_resource type="PackedScene" uid="uid://xi2hrnn8tbmj" path="res://Cenas/buraco_negro.tscn" id="5_17rqi"]
 [ext_resource type="PackedScene" uid="uid://c353olxkynf22" path="res://Cenas/buraco_de_minhoca.tscn" id="6_wdrpp"]
+[ext_resource type="PackedScene" uid="uid://b2pnn1csceu83" path="res://mira.tscn" id="7_qn7uv"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_2x8jn"]
 
@@ -144,7 +145,7 @@ collision_mask = 1
 safe_margin = 0.08
 
 [node name="Camera2D" type="Camera2D" parent="player"]
-zoom = Vector2(0.5, 0.5)
+zoom = Vector2(1.5, 1.5)
 
 [node name="PauseMenu" parent="." instance=ExtResource("4_00w2j")]
 offset_left = -78.4848
@@ -161,3 +162,5 @@ wormhole_exit = NodePath("../buraco_de_mihoca")
 [node name="buraco_de_mihoca" parent="." instance=ExtResource("6_wdrpp")]
 z_index = 10
 position = Vector2(477, -215)
+
+[node name="Mira" parent="." instance=ExtResource("7_qn7uv")]

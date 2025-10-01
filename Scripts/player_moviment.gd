@@ -1,21 +1,17 @@
 extends CharacterBody2D
 
-# --- Variáveis de Movimento e Combate ---
 @export var speed: float = 300.0
 @export var aceleracao: float = 1500.0
 @export var atrito: float = 1200.0
 @export var forca_salto_inimigo: float = 200.0
-
-# --- Variáveis da Dilatação/Aceleração do Tempo ---
 @export var raio_max_dilatacao: float = 500.0
 @export var fator_tempo_maximo: float = 3.0
 @export var raio_max_aceleracao: float = 500.0
 @export var fator_tempo_minimo: float = 0.2
 
-# --- Nós Filhos ---
 @onready var sprite: AnimatedSprite2D = $sprite
+@onready var dano_timer: Timer = $dano_timer
 
-# --- Variáveis Internas ---
 var vida_maxima: int = 5
 var vida: int = vida_maxima
 var buraco_negro_proximo: Node2D = null
@@ -23,6 +19,7 @@ var buraco_minhoca_proximo: Node2D = null
 
 
 func _ready() -> void:
+	Global.tomou_dano.connect(dano)
 	add_to_group("players")
 	vida = vida_maxima
 
@@ -71,6 +68,10 @@ func _physics_process(delta: float) -> void:
 	handle_enemy_bounce()
 
 
+func dano():
+	sprite.modulate = Color(1.0, 0.325, 0.349)
+	dano_timer.start(0.3)
+
 func handle_enemy_bounce():
 	if is_on_floor():
 		for i in get_slide_collision_count():
@@ -86,10 +87,8 @@ func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action_pressed("ui_cancel"):
 		if not Global.paused:
 			$".."/PauseMenu.start_pause()
-
-# --- FUNÇÃO DE FÍSICA ATUALIZADA ---
+			
 func calcular_forcas_externas() -> Vector2:
-	# --- NOVA VERIFICAÇÃO DE SOBREPOSIÇÃO ---
 	var in_bn_field = false
 	if is_instance_valid(buraco_negro_proximo) and global_position.distance_to(buraco_negro_proximo.global_position) < buraco_negro_proximo.raio_maximo:
 		in_bn_field = true
@@ -98,14 +97,11 @@ func calcular_forcas_externas() -> Vector2:
 	if is_instance_valid(buraco_minhoca_proximo) and global_position.distance_to(buraco_minhoca_proximo.global_position) < buraco_minhoca_proximo.raio_maximo:
 		in_wh_field = true
 
-	# Se estiver em ambos os campos ao mesmo tempo, anula os efeitos
 	if in_bn_field and in_wh_field:
 		return Vector2.ZERO
-	# --- FIM DA VERIFICAÇÃO ---
 
 	var forca_total = Vector2.ZERO
 	
-	# Força de atração do Buraco Negro (apenas se não estiver sobreposto)
 	if in_bn_field:
 		var dist = global_position.distance_to(buraco_negro_proximo.global_position)
 		if dist > 1.0:
@@ -113,7 +109,6 @@ func calcular_forcas_externas() -> Vector2:
 			var forca = (buraco_negro_proximo.forca_gravidade / max(sqrt(dist), 20))
 			forca_total += direcao * forca
 			
-	# Força de repulsão do Buraco de Minhoca (apenas se não estiver sobreposto)
 	if in_wh_field:
 		var dist = global_position.distance_to(buraco_minhoca_proximo.global_position)
 		if dist > 1.0:
@@ -123,8 +118,6 @@ func calcular_forcas_externas() -> Vector2:
 
 	return forca_total
 
-
-# --- Funções para a Dilatação e Aceleração do Tempo ---
 func atualizar_fator_tempo():
 	buraco_negro_proximo = encontrar_corpo_celeste_mais_proximo("buracos_negros")
 	buraco_minhoca_proximo = encontrar_corpo_celeste_mais_proximo("buracos_minhoca")
@@ -161,3 +154,7 @@ func encontrar_corpo_celeste_mais_proximo(grupo: String) -> Node2D:
 			mais_proximo = no
 			
 	return mais_proximo
+
+
+func _on_dano_timer_timeout() -> void:
+	sprite.modulate = Color(1.0, 1.0, 1.0)

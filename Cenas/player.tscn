@@ -1,8 +1,9 @@
-[gd_scene load_steps=24 format=3 uid="uid://cw5ic42v3wep7"]
+[gd_scene load_steps=26 format=3 uid="uid://cw5ic42v3wep7"]
 
 [ext_resource type="Script" uid="uid://dxifkqojdxq0a" path="res://Scripts/player_moviment.gd" id="1_pmvhq"]
 [ext_resource type="Texture2D" uid="uid://c15g37ceqor6o" path="res://Sprites/spritesheetGatoIdle.png" id="1_ytnb3"]
 [ext_resource type="Texture2D" uid="uid://cu2t0o5bd3mt" path="res://Sprites/spritesheetGatoRun.png" id="3_iersn"]
+[ext_resource type="Script" uid="uid://crfk7npa02onr" path="res://Scripts/PROVISORIO --- VIDA.gd" id="4_5p0qj"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_iersn"]
 atlas = ExtResource("1_ytnb3")
@@ -146,6 +147,8 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_iersn"]
 size = Vector2(16.5, 16.5)
 
+[sub_resource type="LabelSettings" id="LabelSettings_yuqgu"]
+
 [node name="player" type="CharacterBody2D" groups=["player"]]
 collision_layer = 32
 collision_mask = 32
@@ -163,3 +166,18 @@ offset = Vector2(0, -8)
 [node name="hitbox" type="CollisionShape2D" parent="."]
 position = Vector2(1, -2)
 shape = SubResource("RectangleShape2D_iersn")
+
+[node name="dano_timer" type="Timer" parent="."]
+wait_time = 0.5
+
+[node name="Label" type="Label" parent="."]
+offset_left = -20.0
+offset_top = -34.0
+offset_right = 20.0
+offset_bottom = -11.0
+label_settings = SubResource("LabelSettings_yuqgu")
+horizontal_alignment = 1
+vertical_alignment = 1
+script = ExtResource("4_5p0qj")
+
+[connection signal="timeout" from="dano_timer" to="." method="_on_dano_timer_timeout"]

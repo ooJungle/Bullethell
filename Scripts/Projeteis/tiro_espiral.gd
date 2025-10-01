@@ -5,14 +5,11 @@ func _ready() -> void:
 	# Conecta o seu próprio sinal de colisão
 	body_entered.connect(_on_body_entered)
 
-func _on_body_entered(body: Node2D) -> void:
+func _on_body_entered(body: Node) -> void:
 	if body.is_in_group("players"):
-		# Assumimos que o jogador tem a função take_damage
-		if body.has_method("take_damage"):
-			body.take_damage(1)
-
-	# O ponto individual desaparece ao colidir
-	queue_free()
+		Global.vida -= 1
+		Global.tomou_ano()
+		queue_free()
 
 func _physics_process(delta: float) -> void:
 	position = position.rotated(9*delta*Global.fator_tempo)

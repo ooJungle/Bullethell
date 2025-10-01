@@ -1,7 +1,7 @@
 [gd_scene load_steps=8 format=3 uid="uid://xi2hrnn8tbmj"]
 
 [ext_resource type="Script" uid="uid://cm8uu8q5nh73l" path="res://Scripts/buraco_negro.gd" id="1_q4k5o"]
-[ext_resource type="Shader" path="res://Scripts/buraconegro.gdshader" id="2_lkkdg"]
+[ext_resource type="Shader" uid="uid://c0d76cqoxadc7" path="res://Scripts/buraconegro.gdshader" id="2_lkkdg"]
 [ext_resource type="Texture2D" uid="uid://diglcam8poj7g" path="res://Sprites/buraconegro.png" id="2_q4k5o"]
 [ext_resource type="Texture2D" uid="uid://crsjawqsiqi8" path="res://Sprites/pearto.png" id="3_8swc7"]
 

@@ -121,7 +121,8 @@ func modo_atirando(delta):
 		if ray_cast_2d.is_colliding():
 			var collider = ray_cast_2d.get_collider()
 			if collider == player:
-				print("Player atingido")
+				Global.vida -= 40
+				Global.Tomou_ano()
 				alvo_atingido_neste_tiro = true
 	
 	state_timer -= delta

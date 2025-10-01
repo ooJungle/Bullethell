@@ -31,12 +31,10 @@ func _physics_process(delta: float) -> void:
 	if duration <= 0: 
 		queue_free() 
 
-func _on_body_entered(body: Node) -> void: 
-	print("[bullet] body_entered:", body, "is_in_group players?", body.is_in_group("players")) 
-	if body.is_in_group("players"): 
-		if body.has_method("take_damage"): 
-			Global.dano += 1 
-			body.take_damage(damage) 
-		queue_free() 
+func _on_body_entered(body: Node) -> void:
+	if body.is_in_group("players"):
+		Global.vida -= 1
+		Global.Tomou_ano()
+		queue_free()
 	if body.name == "TileMapLayer": 
 		queue_free()
