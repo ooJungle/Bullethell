@@ -35,7 +35,7 @@ func _physics_process(delta: float) -> void:
 	if Global.paused:
 		return
 	
-	timer += delta
+	timer += delta  * Global.fator_tempo
 	if not is_instance_valid(player):
 		velocity = Vector2.ZERO
 		move_and_slide(); return

@@ -11,7 +11,7 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	if Global.paused:
 		return
-	position += velocity * delta
+	position += velocity * delta  * Global.fator_tempo
 
 	duration -= delta
 	if duration <= 0:

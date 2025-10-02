@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://bqvstnda7b8kd"]
+[gd_scene load_steps=16 format=3 uid="uid://bqvstnda7b8kd"]
 
 [ext_resource type="Script" uid="uid://dkuonslenu4tk" path="res://Scripts/Inimigos/inimigo_1.gd" id="1_miy63"]
 [ext_resource type="Texture2D" uid="uid://bfx331vyknt83" path="res://Sprites/Sprite-Sheet-GatoFantasmaCompleto.png" id="1_s6g5e"]
@@ -89,6 +89,10 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_gkh32"]
 size = Vector2(16, 15)
 
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_d4qcl"]
+radius = 9.0
+height = 18.0
+
 [node name="inimigo_1" type="CharacterBody2D"]
 collision_layer = 0
 collision_mask = 2
@@ -101,5 +105,16 @@ speed_scale = 1.2
 offset = Vector2(0, -6)
 
 [node name="hitbox" type="CollisionShape2D" parent="."]
-position = Vector2(1, 1)
 shape = SubResource("RectangleShape2D_gkh32")
+
+[node name="CollisionArea" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CollisionArea"]
+shape = SubResource("CapsuleShape2D_d4qcl")
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
+debug_enabled = true
+
+[node name="PerceptionTimer" type="Timer" parent="."]
+wait_time = 0.2
+autostart = true

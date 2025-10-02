@@ -1,6 +1,7 @@
-[gd_scene load_steps=13 format=4 uid="uid://jembfhef02eu"]
+[gd_scene load_steps=16 format=4 uid="uid://jembfhef02eu"]
 
 [ext_resource type="Texture2D" uid="uid://c876hd16x2x1y" path="res://Sprites/tileset_temp.png" id="1_qn7uv"]
+[ext_resource type="Texture2D" uid="uid://bfb1x6eempwp8" path="res://Sprites/tile_serto.png" id="2_00w2j"]
 [ext_resource type="PackedScene" uid="uid://burb4hginapym" path="res://Cenas/Inimigos/Inimigo_5.tscn" id="2_qn7uv"]
 [ext_resource type="PackedScene" uid="uid://cw5ic42v3wep7" path="res://Cenas/player.tscn" id="3_mhq7l"]
 [ext_resource type="PackedScene" uid="uid://d26majiwami8u" path="res://Cenas/Menu/PauseMenu.tscn" id="4_00w2j"]
@@ -27,11 +28,35 @@ texture = ExtResource("1_qn7uv")
 4:0/0 = 0
 4:0/0/navigation_layer_0/polygon = SubResource("NavigationPolygon_mhq7l")
 
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_vljnb"]
+vertices = PackedVector2Array(8, 8, -8, 8, -8, -8, 8, -8)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)])
+agent_radius = 0.0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_vljnb"]
+texture = ExtResource("2_00w2j")
+0:0/0 = 0
+0:0/0/navigation_layer_0/polygon = SubResource("NavigationPolygon_vljnb")
+1:0/0 = 0
+1:0/0/navigation_layer_0/polygon = SubResource("NavigationPolygon_vljnb")
+2:0/0 = 0
+2:0/0/navigation_layer_0/polygon = SubResource("NavigationPolygon_vljnb")
+3:0/0 = 0
+3:0/0/navigation_layer_0/polygon = SubResource("NavigationPolygon_vljnb")
+4:0/0 = 0
+4:0/0/navigation_layer_0/polygon = SubResource("NavigationPolygon_vljnb")
+5:0/0 = 0
+5:0/0/navigation_layer_0/polygon = SubResource("NavigationPolygon_vljnb")
+6:0/0 = 0
+6:0/0/navigation_layer_0/polygon = SubResource("NavigationPolygon_vljnb")
+
 [sub_resource type="TileSet" id="TileSet_17rqi"]
 physics_layer_0/collision_layer = 255
 physics_layer_0/collision_mask = 255
-navigation_layer_0/layers = 1
+navigation_layer_0/layers = 255
 sources/0 = SubResource("TileSetAtlasSource_00w2j")
+sources/1 = SubResource("TileSetAtlasSource_vljnb")
 
 [node name="fase_teste" type="Node2D"]
 

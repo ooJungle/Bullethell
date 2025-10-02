@@ -22,10 +22,10 @@ func _physics_process(delta: float) -> void:
 	# --- Steering Behavior ---
 	var desired_velocity = (player.position - position).normalized() * speed
 	var steering_force = desired_velocity - velocity
-	velocity += steering_force * steering_strength * delta
+	velocity += steering_force * steering_strength * delta * Global.fator_tempo
 
 	# Move manual (Area2D não tem move_and_slide)
-	position += velocity * delta
+	position += velocity * delta * Global.fator_tempo
 
 	# Timer da bala
 	duration -= delta

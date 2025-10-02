@@ -10,8 +10,8 @@ func _ready() -> void:
 	connect("body_entered", Callable(self, "_on_body_entered"))
 
 func _process(delta: float) -> void:
-	position += velocity * delta
-	centro.rotation_degrees += rotacao * delta
+	position += velocity * delta  * Global.fator_tempo
+	centro.rotation_degrees += rotacao * delta  * Global.fator_tempo
 	duration -= delta
 	if duration <= 0:
 		queue_free()

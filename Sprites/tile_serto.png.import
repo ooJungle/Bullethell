@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cx6ixn88ac2ge"
-path="res://.godot/imported/laser.png-4f4b02cb966aba9bf028827676f71539.ctex"
+uid="uid://bfb1x6eempwp8"
+path="res://.godot/imported/tile_serto.png-f2d1f26259689eedc467574c050c4941.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/Projeteis/laser.png"
-dest_files=["res://.godot/imported/laser.png-4f4b02cb966aba9bf028827676f71539.ctex"]
+source_file="res://Sprites/tile_serto.png"
+dest_files=["res://.godot/imported/tile_serto.png-f2d1f26259689eedc467574c050c4941.ctex"]
 
 [params]
 

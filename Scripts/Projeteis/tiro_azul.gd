@@ -22,9 +22,9 @@ func _physics_process(delta: float) -> void:
 		var direction = (player.position - position).normalized() 
 		velocity = direction * speed 
 		# Move manual (Area2D não tem move_and_slide) 
-		position += velocity * delta 
+		position += velocity * delta * Global.fator_tempo
 	else: 
-		position += velocity * delta 
+		position += velocity * delta * Global.fator_tempo
 
 	# Timer da bala 
 	duration -= delta 
