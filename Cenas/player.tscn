@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://cw5ic42v3wep7"]
+[gd_scene load_steps=27 format=3 uid="uid://cw5ic42v3wep7"]
 
 [ext_resource type="Script" uid="uid://dxifkqojdxq0a" path="res://Scripts/player_moviment.gd" id="1_pmvhq"]
 [ext_resource type="Texture2D" uid="uid://c15g37ceqor6o" path="res://Sprites/spritesheetGatoIdle.png" id="1_ytnb3"]
@@ -149,6 +149,9 @@ size = Vector2(16.5, 16.5)
 
 [sub_resource type="LabelSettings" id="LabelSettings_yuqgu"]
 
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_5p0qj"]
+radius = 7.0
+
 [node name="player" type="CharacterBody2D" groups=["player"]]
 collision_layer = 32
 collision_mask = 32
@@ -179,5 +182,17 @@ label_settings = SubResource("LabelSettings_yuqgu")
 horizontal_alignment = 1
 vertical_alignment = 1
 script = ExtResource("4_5p0qj")
+
+[node name="Inventario" type="Node2D" parent="."]
+
+[node name="ArmaEquipada" type="Sprite2D" parent="Inventario"]
+
+[node name="AttackHitbox" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AttackHitbox"]
+shape = SubResource("CapsuleShape2D_5p0qj")
+disabled = true
+
+[node name="AttackTimer" type="Timer" parent="."]
 
 [connection signal="timeout" from="dano_timer" to="." method="_on_dano_timer_timeout"]

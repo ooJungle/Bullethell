@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://bu7otdeikbwcr"]
+[gd_scene load_steps=6 format=3 uid="uid://bu7otdeikbwcr"]
 
 [ext_resource type="Script" uid="uid://dpe1ob6rs5koo" path="res://Scripts/Inimigos/inimigo_laser.gd" id="1_nkaow"]
 [ext_resource type="Texture2D" uid="uid://0lg1tna0hnmk" path="res://Sprites/Inimigos/inimigo_REDONDO.png" id="2_nkaow"]
@@ -7,7 +7,11 @@
 [sub_resource type="CircleShape2D" id="CircleShape2D_0nkwv"]
 radius = 8.0
 
-[node name="CharacterBody2D" type="CharacterBody2D"]
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_wcglr"]
+radius = 19.0
+height = 38.0
+
+[node name="Inimigo laser" type="CharacterBody2D"]
 collision_layer = 0
 collision_mask = 2
 script = ExtResource("1_nkaow")
@@ -45,3 +49,18 @@ texture = ExtResource("3_tykgi")
 [node name="RayCast2D" type="RayCast2D" parent="FirePoint"]
 scale = Vector2(1.025, 30)
 target_position = Vector2(1000, 0)
+
+[node name="CollisionArea" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CollisionArea"]
+position = Vector2(4, 0)
+shape = SubResource("CapsuleShape2D_wcglr")
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
+debug_enabled = true
+
+[node name="PerceptionTimer" type="Timer" parent="."]
+wait_time = 0.2
+autostart = true
+
+[connection signal="body_entered" from="CollisionArea" to="." method="_on_collision_area_body_entered"]

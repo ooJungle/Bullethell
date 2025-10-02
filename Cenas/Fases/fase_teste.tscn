@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=4 uid="uid://dq5arm2820s3g"]
+[gd_scene load_steps=14 format=4 uid="uid://dq5arm2820s3g"]
 
 [ext_resource type="Texture2D" uid="uid://tpc5pqukpb32" path="res://Sprites/tilesetGAMEJAM.png" id="1_1jg4h"]
 [ext_resource type="PackedScene" uid="uid://cw5ic42v3wep7" path="res://Cenas/player.tscn" id="1_jew0q"]
@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://cup0raircu6at" path="res://Cenas/Inimigos/inimigo_6.tscn" id="7_axsth"]
 [ext_resource type="PackedScene" uid="uid://d26majiwami8u" path="res://Cenas/Menu/PauseMenu.tscn" id="7_pkdox"]
 [ext_resource type="PackedScene" uid="uid://b2pnn1csceu83" path="res://mira.tscn" id="8_eiwq8"]
+[ext_resource type="PackedScene" uid="uid://cnhitdfef1p5m" path="res://espada.tscn" id="9_mt4jj"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_2x8jn"]
 
@@ -127,6 +128,10 @@ sources/0 = SubResource("TileSetAtlasSource_pkdox")
 
 [node name="fase_teste2" type="Node2D"]
 
+[node name="Espada" parent="." instance=ExtResource("9_mt4jj")]
+z_index = 4
+position = Vector2(281, -191)
+
 [node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]
 navigation_polygon = SubResource("NavigationPolygon_2x8jn")
 
@@ -142,6 +147,7 @@ safe_margin = 0.08
 
 [node name="Camera2D" type="Camera2D" parent="player"]
 zoom = Vector2(1.5, 1.5)
+process_callback = 0
 
 [node name="inimigo_4" parent="." node_paths=PackedStringArray("player") instance=ExtResource("2_1jg4h")]
 position = Vector2(-1089, -673)
@@ -151,19 +157,16 @@ player = NodePath("../player")
 position = Vector2(-1040, -724)
 player = NodePath("../player")
 
-[node name="CharacterBody2D6" parent="." node_paths=PackedStringArray("player") instance=ExtResource("6_adu1l")]
-position = Vector2(-713, 309)
-player = NodePath("../player")
-duracaoMira = 1.5
-ducacaoLock = 0.25
-duracaoTiro = 1.25
-
-[node name="CharacterBody2D4" parent="." node_paths=PackedStringArray("player") instance=ExtResource("6_adu1l")]
-position = Vector2(-730, -230)
+[node name="Inimigo laser" parent="." node_paths=PackedStringArray("player") instance=ExtResource("6_adu1l")]
+position = Vector2(-785, 212)
 player = NodePath("../player")
 
-[node name="CharacterBody2D5" parent="." node_paths=PackedStringArray("player") instance=ExtResource("6_adu1l")]
-position = Vector2(-1018, 51)
+[node name="Inimigo laser2" parent="." node_paths=PackedStringArray("player") instance=ExtResource("6_adu1l")]
+position = Vector2(-590, -283)
+player = NodePath("../player")
+
+[node name="Inimigo laser3" parent="." node_paths=PackedStringArray("player") instance=ExtResource("6_adu1l")]
+position = Vector2(-854, 437)
 player = NodePath("../player")
 
 [node name="PauseMenu" parent="." instance=ExtResource("7_pkdox")]

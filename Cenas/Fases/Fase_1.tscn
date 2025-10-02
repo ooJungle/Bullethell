@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=4 uid="uid://jembfhef02eu"]
+[gd_scene load_steps=13 format=4 uid="uid://jembfhef02eu"]
 
 [ext_resource type="Texture2D" uid="uid://c876hd16x2x1y" path="res://Sprites/tileset_temp.png" id="1_qn7uv"]
 [ext_resource type="PackedScene" uid="uid://burb4hginapym" path="res://Cenas/Inimigos/Inimigo_5.tscn" id="2_qn7uv"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://xi2hrnn8tbmj" path="res://Cenas/buraco_negro.tscn" id="5_17rqi"]
 [ext_resource type="PackedScene" uid="uid://c353olxkynf22" path="res://Cenas/buraco_de_minhoca.tscn" id="6_wdrpp"]
 [ext_resource type="PackedScene" uid="uid://b2pnn1csceu83" path="res://mira.tscn" id="7_qn7uv"]
+[ext_resource type="PackedScene" uid="uid://cnhitdfef1p5m" path="res://espada.tscn" id="8_mhq7l"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_2x8jn"]
 
@@ -73,3 +74,6 @@ z_index = 10
 position = Vector2(477, -215)
 
 [node name="Mira" parent="." instance=ExtResource("7_qn7uv")]
+
+[node name="Espada" parent="." instance=ExtResource("8_mhq7l")]
+position = Vector2(-318, -108)
