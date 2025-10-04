@@ -1,14 +1,14 @@
 [gd_scene load_steps=7 format=3 uid="uid://c353olxkynf22"]
 
 [ext_resource type="Script" uid="uid://dnxslifrmhpgk" path="res://Scripts/buraco_de_minhoca.gd" id="1_ptb3r"]
-[ext_resource type="Shader" uid="uid://c0d76cqoxadc7" path="res://Scripts/buraconegro.gdshader" id="2_52i6p"]
+[ext_resource type="Shader" uid="uid://b60pgx20m7fnx" path="res://Cenas/buraco_de_minhoca.gdshader" id="2_52i6p"]
 [ext_resource type="Texture2D" uid="uid://m8lp0e4yc8hy" path="res://Sprites/buraco_minhoca.png" id="2_fowkf"]
-[ext_resource type="Texture2D" uid="uid://crsjawqsiqi8" path="res://Sprites/pearto.png" id="3_n1qm3"]
+[ext_resource type="Texture2D" uid="uid://bt5socl2sy4jw" path="res://efeito_distorcao.png" id="3_52i6p"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_f0mhy"]
 shader = ExtResource("2_52i6p")
-shader_parameter/distortion_strength = 0.15
 shader_parameter/falloff = 1.5
+shader_parameter/red_intensity = 0.4
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_2f4gr"]
 radius = 561.004
@@ -19,8 +19,8 @@ script = ExtResource("1_ptb3r")
 
 [node name="burego efeito" type="Sprite2D" parent="."]
 material = SubResource("ShaderMaterial_f0mhy")
-scale = Vector2(0.45, 0.36)
-texture = ExtResource("3_n1qm3")
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("3_52i6p")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("2_fowkf")

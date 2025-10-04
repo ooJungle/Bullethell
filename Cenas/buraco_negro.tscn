@@ -1,14 +1,14 @@
 [gd_scene load_steps=8 format=3 uid="uid://xi2hrnn8tbmj"]
 
 [ext_resource type="Script" uid="uid://cm8uu8q5nh73l" path="res://Scripts/buraco_negro.gd" id="1_q4k5o"]
-[ext_resource type="Shader" path="res://Scripts/buraconegro.gdshader" id="2_lkkdg"]
+[ext_resource type="Shader" uid="uid://c0d76cqoxadc7" path="res://Scripts/buraconegro.gdshader" id="2_lkkdg"]
 [ext_resource type="Texture2D" uid="uid://diglcam8poj7g" path="res://Sprites/buraconegro.png" id="2_q4k5o"]
 [ext_resource type="Texture2D" uid="uid://crsjawqsiqi8" path="res://Sprites/pearto.png" id="3_8swc7"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_7d4j5"]
 shader = ExtResource("2_lkkdg")
-shader_parameter/distortion_strength = 0.15
 shader_parameter/falloff = 1.5
+shader_parameter/red_intensity = 0.4
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_x46ls"]
 radius = 554.023
@@ -23,6 +23,7 @@ script = ExtResource("1_q4k5o")
 [node name="burego efeito" type="Sprite2D" parent="."]
 material = SubResource("ShaderMaterial_7d4j5")
 position = Vector2(-3, 3)
+rotation = 3.14159
 scale = Vector2(0.45, 0.36)
 texture = ExtResource("3_8swc7")
 

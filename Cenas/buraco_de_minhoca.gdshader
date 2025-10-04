@@ -15,17 +15,15 @@ void fragment() {
 	float mask = 1.0 - pow(distance_from_center * 2.0, falloff);
 
 	// Efeito de Puxar (Pinch/Gravitacional)
-	vec2 pull_offset = normalize(centered_uv) * distortion_strength * mask;
-
-	vec2 total_offset = pull_offset;	
+	vec2 pull_offset = normalize(centered_uv) * distortion_strength;
 	
-	vec2 distorted_screen_uv = SCREEN_UV - total_offset;
+	vec2 distorted_screen_uv = SCREEN_UV - pull_offset + vec2(0.0, 0.0);
 	
 	vec3 background_color = texture(SCREEN_TEXTURE, distorted_screen_uv).rgb;
 	
 	// --- NOVA LÓGICA DA MÁSCARA VERMELHA ---
 	// Define a cor alvo (vermelho puro)
-	vec3 red_color = vec3(1.0, 0.0, 0.0);
+	vec3 red_color = vec3(0.3, 0.0, 1.0);
 	
 	// Mistura a cor de fundo com a cor vermelha.
 	// A intensidade da mistura é controlada pela 'mask' (proximidade ao centro)
