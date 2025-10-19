@@ -24,7 +24,8 @@ var vida_maxima: int = 5
 var vida: int = vida_maxima
 var buraco_negro_proximo: Node2D = null
 var buraco_minhoca_proximo: Node2D = null
-
+var JUMP_VELOCITY = -450
+var SPEED = 250
 # --- INÍCIO: Variáveis de estado da arma ---
 var tem_arma: bool = false
 var pode_atacar: bool = true
@@ -47,36 +48,56 @@ func _physics_process(delta: float) -> void:
 	if Global.paused:
 		return
 
-	atualizar_fator_tempo()
-
-	var forca_externa = calcular_forcas_externas()
-	velocity += forca_externa * delta
-	
-	var input_direction = Input.get_vector("move_left", "move_right", "move_up", "move_down")
-
-	if input_direction != Vector2.ZERO:
-		var target_velocity = input_direction * speed
-		velocity = velocity.move_toward(target_velocity, aceleracao * delta)
+	if Global.plataforma:
+		if not is_on_floor():
+			velocity += get_gravity() * delta
+		var direction := Input.get_axis("move_left", "move_right")
+		if direction:
+			velocity.x = direction * SPEED
+		else:
+			velocity.x = move_toward(velocity.x, 0, SPEED)
+		
+		if direction > 0:
+			sprite.flip_h = false
+		elif direction < 0:
+			sprite.flip_h = true
+		if Input.is_action_just_pressed("ui_accept") and is_on_floor():
+			velocity.y = JUMP_VELOCITY
+		
+		# ALTERAÇÃO 1: Deixa a interrupção do pulo mais suave
+		if Input.is_action_just_released("ui_accept") and velocity.y < 0:
+			velocity.y *= 0.5
 	else:
-		velocity = velocity.move_toward(Vector2.ZERO, atrito * delta)
+		atualizar_fator_tempo()
 
-	if input_direction.x > 0:
-		sprite.flip_h = false
-	elif input_direction.x < 0:
-		sprite.flip_h = true
+		var forca_externa = calcular_forcas_externas()
+		velocity += forca_externa * delta
+		
+		var input_direction = Input.get_vector("move_left", "move_right", "move_up", "move_down")
 
-	if velocity.length() > 10.0:
-		if sprite.animation != "Walking":
-			sprite.play("Walking")
-	else:
-		if sprite.animation != "Idle":
-			sprite.play("Idle")
-	
-	# --- INÍCIO: Lógica de rotação da arma ---
-	if tem_arma:
-		rotacionar_arma_para_mouse()
-	# --- FIM: Lógica de rotação da arma ---
-	
+		if input_direction != Vector2.ZERO:
+			var target_velocity = input_direction * speed
+			velocity = velocity.move_toward(target_velocity, aceleracao * delta)
+		else:
+			velocity = velocity.move_toward(Vector2.ZERO, atrito * delta)
+
+		if input_direction.x > 0:
+			sprite.flip_h = false
+		elif input_direction.x < 0:
+			sprite.flip_h = true
+
+		if velocity.length() > 10.0:
+			if sprite.animation != "Walking":
+				sprite.play("Walking")
+		else:
+			if sprite.animation != "Idle":
+				sprite.play("Idle")
+		
+		# --- INÍCIO: Lógica de rotação da arma ---
+		if tem_arma:
+			rotacionar_arma_para_mouse()
+		# --- FIM: Lógica de rotação da arma ---
+		
 	move_and_slide()
 	handle_enemy_bounce()
 
