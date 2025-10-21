@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cx6ixn88ac2ge"
-path="res://.godot/imported/laser.png-4f4b02cb966aba9bf028827676f71539.ctex"
+uid="uid://c8ev27nrgotn"
+path="res://.godot/imported/spriteSheetPolvo.png-77b91c955632a2e94a2b14e836296904.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/Projeteis/laser.png"
-dest_files=["res://.godot/imported/laser.png-4f4b02cb966aba9bf028827676f71539.ctex"]
+source_file="res://Sprites/Inimigos/spriteSheetPolvo.png"
+dest_files=["res://.godot/imported/spriteSheetPolvo.png-77b91c955632a2e94a2b14e836296904.ctex"]
 
 [params]
 

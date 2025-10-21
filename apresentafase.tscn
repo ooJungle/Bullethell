@@ -7,7 +7,6 @@
 [ext_resource type="PackedScene" uid="uid://cw5ic42v3wep7" path="res://Cenas/player.tscn" id="3_ju58k"]
 [ext_resource type="Texture2D" uid="uid://bgjhkjkgxqjd3" path="res://Sprites/tileset_mais_um.png" id="4_r7g8p"]
 [ext_resource type="PackedScene" uid="uid://d26majiwami8u" path="res://Cenas/Menu/PauseMenu.tscn" id="4_vljnb"]
-[ext_resource type="Texture2D" uid="uid://cf7slhik44p1y" path="res://Sprites/tilech.png" id="5_1m4mj"]
 [ext_resource type="PackedScene" uid="uid://xi2hrnn8tbmj" path="res://Cenas/buraco_negro.tscn" id="5_r7g8p"]
 [ext_resource type="PackedScene" uid="uid://c353olxkynf22" path="res://Cenas/buraco_de_minhoca.tscn" id="6_1m4mj"]
 [ext_resource type="Texture2D" uid="uid://dvdp7efvwav8l" path="res://Sprites/tilech2.png" id="6_s4ud6"]
@@ -79,8 +78,11 @@ texture = ExtResource("4_r7g8p")
 6:0/0 = 0
 6:0/0/navigation_layer_0/polygon = SubResource("NavigationPolygon_r7g8p")
 
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_bq5j8"]
+load_path = "res://.godot/imported/tilech.png-2296dd0effff45474be0cc497a87e857.ctex"
+
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_luwjv"]
-texture = ExtResource("5_1m4mj")
+texture = SubResource("CompressedTexture2D_bq5j8")
 0:0/0 = 0
 1:0/0 = 0
 0:1/0 = 0
