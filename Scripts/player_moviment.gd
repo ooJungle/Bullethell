@@ -9,16 +9,14 @@ extends CharacterBody2D
 @export var raio_max_aceleracao: float = 500.0
 @export var fator_tempo_minimo: float = 0.2
 
-# --- Nós do Player (originais e novos) ---
 @onready var sprite: AnimatedSprite2D = $sprite
 @onready var dano_timer: Timer = $dano_timer
-# --- INÍCIO: Referências para os nós da arma ---
+
 @onready var iventario: Node2D = $Inventario
 @onready var arma_sprite: Sprite2D = $Inventario/ArmaEquipada
 @onready var attack_hitbox: Area2D = $AttackHitbox
 @onready var attack_timer: Timer = $AttackTimer
 @onready var hitbox_shape: CollisionShape2D = $AttackHitbox/CollisionShape2D
-# --- FIM: Referências para os nós da arma ---
 
 var vida_maxima: int = 5
 var vida: int = vida_maxima
@@ -26,22 +24,18 @@ var buraco_negro_proximo: Node2D = null
 var buraco_minhoca_proximo: Node2D = null
 var JUMP_VELOCITY = -450
 var SPEED = 250
-# --- INÍCIO: Variáveis de estado da arma ---
+
 var tem_arma: bool = false
 var pode_atacar: bool = true
 var arma_atual_dados: Dictionary
-# --- FIM: Variáveis de estado da arma ---
-
 
 func _ready() -> void:
 	Global.tomou_dano.connect(dano)
 	add_to_group("players")
 	vida = vida_maxima
 	
-	# --- INÍCIO: Conectar sinais da arma ---
 	attack_hitbox.body_entered.connect(_on_attack_hitbox_body_entered)
 	attack_timer.timeout.connect(_on_attack_timer_timeout)
-	# --- FIM: Conectar sinais da arma ---
 
 
 func _physics_process(delta: float) -> void:
@@ -64,7 +58,6 @@ func _physics_process(delta: float) -> void:
 		if Input.is_action_just_pressed("ui_accept") and is_on_floor():
 			velocity.y = JUMP_VELOCITY
 		
-		# ALTERAÇÃO 1: Deixa a interrupção do pulo mais suave
 		if Input.is_action_just_released("ui_accept") and velocity.y < 0:
 			velocity.y *= 0.5
 	else:
@@ -93,33 +86,27 @@ func _physics_process(delta: float) -> void:
 			if sprite.animation != "Idle":
 				sprite.play("Idle")
 		
-		# --- INÍCIO: Lógica de rotação da arma ---
 		if tem_arma:
 			rotacionar_arma_para_mouse()
-		# --- FIM: Lógica de rotação da arma ---
 		
 	move_and_slide()
 	handle_enemy_bounce()
-
 
 func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action_pressed("ui_cancel"):
 		if not Global.paused:
 			$".."/PauseMenu.start_pause()
 	
-	# --- INÍCIO: Input da arma ---
 	if event.is_action_pressed("atacar") and tem_arma and pode_atacar:
 		atacar()
 		
 	if event.is_action_pressed("dropar") and tem_arma:
 		dropar_arma()
-	# --- FIM: Input da arma ---
 
 
 # ==================================================================
-# --- INÍCIO: Funções do Sistema de Armas ---
+# 			--- Funções do Sistema de Armas ---
 # ==================================================================
-
 func rotacionar_arma_para_mouse():
 	var direcao_mouse = get_global_mouse_position() - iventario.global_position
 	iventario.rotation = direcao_mouse.angle()
@@ -166,13 +153,6 @@ func _on_attack_hitbox_body_entered(body: Node2D):
 		if body.has_method("receber_dano"): # Exemplo de como chamar dano no inimigo
 			body.receber_dano(10)
 
-# ==================================================================
-# --- FIM: Funções do Sistema de Armas ---
-# ==================================================================
-
-
-# --- Funções originais do seu script ---
-
 func take_damage(amount: int) -> void:
 	vida -= amount
 	print("Player tomou dano. Vida:", vida)
@@ -187,7 +167,7 @@ func dano():
 	dano_timer.start(0.3)
 
 func handle_enemy_bounce():
-	if is_on_floor(): # Nota: handle_enemy_bounce talvez não funcione como esperado, pois move_and_slide() não define is_on_floor() em jogos top-down.
+	if is_on_floor():
 		for i in get_slide_collision_count():
 			var collision = get_slide_collision(i)
 			var collider = collision.get_collider()

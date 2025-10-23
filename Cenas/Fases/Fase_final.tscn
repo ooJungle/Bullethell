@@ -6,18 +6,19 @@
 [ext_resource type="PackedScene" uid="uid://nktj48qc0r0f" path="res://Cenas/Projeteis/Blaster.tscn" id="3_noj5k"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_01lal"]
-size = Vector2(1010.12, 539.676)
+size = Vector2(604.204, 354.493)
 
 [node name="FaseFinal" type="Node2D"]
 
 [node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(2, 2)
 
 [node name="player" parent="." instance=ExtResource("1_24tbe")]
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
-position = Vector2(-2.50002, 3)
+position = Vector2(0.999992, 0.499994)
 scale = Vector2(0.963251, 0.945011)
 shape = SubResource("RectangleShape2D_01lal")
 
