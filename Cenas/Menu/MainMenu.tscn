@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://b1baf17wokydn"]
+[gd_scene load_steps=3 format=3 uid="uid://b1baf17wokydn"]
 
 [ext_resource type="Script" uid="uid://2lib0cu1aw2a" path="res://Scripts/Menu/main_menu.gd" id="1_2a42p"]
+[ext_resource type="PackedScene" uid="uid://b2pnn1csceu83" path="res://UI_UX/mira.tscn" id="2_y2bdj"]
 
 [node name="MainMenu" type="Control"]
 layout_mode = 3
@@ -36,6 +37,9 @@ offset_bottom = 369.0
 scale = Vector2(2.24, 1.88)
 theme_override_constants/outline_size = 4
 text = "Quit"
+
+[node name="Mira" parent="." instance=ExtResource("2_y2bdj")]
+position = Vector2(598.563, 285.347)
 
 [connection signal="pressed" from="PlayButton" to="." method="_on_play_button_pressed"]
 [connection signal="pressed" from="SettingsButton" to="." method="_on_settings_button_pressed"]

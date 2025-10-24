@@ -145,7 +145,7 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_iersn"]
-size = Vector2(16.5, 16.5)
+size = Vector2(18.25, 19)
 
 [sub_resource type="LabelSettings" id="LabelSettings_yuqgu"]
 
@@ -167,7 +167,7 @@ speed_scale = 1.7
 offset = Vector2(0, -8)
 
 [node name="hitbox" type="CollisionShape2D" parent="."]
-position = Vector2(1, -2)
+position = Vector2(0.125, -2.5)
 shape = SubResource("RectangleShape2D_iersn")
 
 [node name="dano_timer" type="Timer" parent="."]
@@ -196,3 +196,4 @@ disabled = true
 [node name="AttackTimer" type="Timer" parent="."]
 
 [connection signal="timeout" from="dano_timer" to="." method="_on_dano_timer_timeout"]
+[connection signal="body_entered" from="AttackHitbox" to="." method="_on_attack_hitbox_body_entered"]

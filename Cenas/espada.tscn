@@ -1,7 +1,8 @@
 [gd_scene load_steps=5 format=3 uid="uid://cnhitdfef1p5m"]
 
-[ext_resource type="Script" uid="uid://urk5rfh82am2" path="res://espada_coletavel.gd" id="1_5xcw1"]
+[ext_resource type="Script" uid="uid://urk5rfh82am2" path="res://Cenas/espada_coletavel.gd" id="1_5xcw1"]
 [ext_resource type="Texture2D" uid="uid://c0tlhaa5km110" path="res://Sprites/PLACEHOLDER -- espada.png" id="2_olrou"]
+
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_740t4"]
 atlas = ExtResource("2_olrou")

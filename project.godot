@@ -12,7 +12,7 @@ config_version=5
 
 config/name="Bullethell"
 run/main_scene="uid://b1baf17wokydn"
-config/features=PackedStringArray("4.5", "Forward Plus")
+config/features=PackedStringArray("4.4", "Forward Plus")
 
 [autoload]
 
@@ -30,13 +30,15 @@ folder_colors={
 "res://Cenas/": "green",
 "res://Scripts/": "red",
 "res://Sons e Musica/": "purple",
-"res://Sprites/": "teal"
+"res://Sprites/": "teal",
+"res://UI_UX/": "blue"
 }
 
 [global_group]
 
 laser=""
 player=""
+inimigo=""
 
 [input]
 

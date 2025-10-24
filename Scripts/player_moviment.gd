@@ -11,6 +11,7 @@ extends CharacterBody2D
 
 @onready var sprite: AnimatedSprite2D = $sprite
 @onready var dano_timer: Timer = $dano_timer
+@onready var hitbox: Area2D = $AreaHitbox
 
 @onready var iventario: Node2D = $Inventario
 @onready var arma_sprite: Sprite2D = $Inventario/ArmaEquipada
@@ -18,7 +19,7 @@ extends CharacterBody2D
 @onready var attack_timer: Timer = $AttackTimer
 @onready var hitbox_shape: CollisionShape2D = $AttackHitbox/CollisionShape2D
 
-var vida_maxima: int = 5
+var vida_maxima: int = 300
 var vida: int = vida_maxima
 var buraco_negro_proximo: Node2D = null
 var buraco_minhoca_proximo: Node2D = null
@@ -30,8 +31,6 @@ var pode_atacar: bool = true
 var arma_atual_dados: Dictionary
 
 func _ready() -> void:
-	Global.tomou_dano.connect(dano)
-	add_to_group("players")
 	vida = vida_maxima
 	
 	attack_hitbox.body_entered.connect(_on_attack_hitbox_body_entered)
@@ -41,7 +40,7 @@ func _ready() -> void:
 func _physics_process(delta: float) -> void:
 	if Global.paused:
 		return
-
+		
 	if Global.plataforma:
 		if not is_on_floor():
 			velocity += get_gravity() * delta
@@ -150,17 +149,19 @@ func _on_attack_timer_timeout():
 func _on_attack_hitbox_body_entered(body: Node2D):
 	if body.is_in_group("enemies"):
 		print("Acertei o inimigo: ", body.name)
-		if body.has_method("receber_dano"): # Exemplo de como chamar dano no inimigo
+		if body.has_method("take_damage"):
 			body.receber_dano(10)
 
 func take_damage(amount: int) -> void:
 	vida -= amount
+	Global.vida = vida
 	print("Player tomou dano. Vida:", vida)
 	if vida <= 0:
 		die()
 
 func die() -> void:
 	print("morreu")
+	get_tree().change_scene_to_file("res://Cenas/Menu/LostScene.tscn")
 
 func dano():
 	sprite.modulate = Color(1.0, 0.325, 0.349)
