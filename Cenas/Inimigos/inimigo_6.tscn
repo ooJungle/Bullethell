@@ -30,7 +30,7 @@ height = 58.0
 radius = 9.0
 height = 38.0
 
-[node name="inimigo_6" type="CharacterBody2D"]
+[node name="inimigo_6" type="CharacterBody2D" groups=["inimigo"]]
 collision_layer = 0
 collision_mask = 2
 script = ExtResource("1_tbf7d")

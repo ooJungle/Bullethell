@@ -19,10 +19,8 @@ func _process(delta: float) -> void:
 
 func _on_body_entered(body: Node) -> void:
 	# debug: veja quem entrou
-	print("[bullet] body_entered:", body, "is_in_group players?", body.is_in_group("players"))
-	if body.is_in_group("players"):
+	print("[bullet] body_entered:", body, "is_in_group players?", body.is_in_group("player"))
+	if body.is_in_group("player"):
 		if body.has_method("take_damage"):
 			body.take_damage(damage)
-		queue_free()  # destrói a bala ao acertar
-	if body.name == "TileMapLayer":
-		velocity = velocity
+		queue_free()

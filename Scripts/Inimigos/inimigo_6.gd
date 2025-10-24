@@ -104,11 +104,6 @@ func recalcular_caminho() -> void:
 	if is_instance_valid(player):
 		navigation_agent.target_position = player.global_position
 
-func aplicar_knockback(direcao: Vector2):
-	knockback = true
-	tempo_knockback_atual = 0.0
-	velocity = direcao * forca_knockback
-
 # Função de animação simplificada, sem flip_h.
 func update_animation():
 	if velocity.length() > 10:
@@ -116,11 +111,16 @@ func update_animation():
 	else:
 		sprite.play("Idle")
 
+func aplicar_knockback(direcao: Vector2):
+	knockback = true
+	tempo_knockback_atual = 0.0
+	velocity = direcao * forca_knockback
 
 # --- CONEXÃO DE SINAIS ---
 func _on_collision_area_body_entered(body: Node2D) -> void:
 	if knockback or body == self:
 		return
-	if body.is_in_group("players"):
+	if body.is_in_group("player"):
 		var direcao = (global_position - body.global_position).normalized()
 		aplicar_knockback(direcao)
+		body.take_damage(5)

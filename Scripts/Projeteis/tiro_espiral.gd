@@ -7,8 +7,8 @@ func _ready() -> void:
 
 func _on_body_entered(body: Node) -> void:
 	if body.is_in_group("players"):
-		Global.vida -= 1
-		Global.tomou_ano()
+		if body.has_method("take_damage"):
+			body.take_damage(1)
 		queue_free()
 
 func _physics_process(delta: float) -> void:

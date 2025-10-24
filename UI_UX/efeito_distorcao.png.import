@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dba7roywd1lm5"
-path="res://.godot/imported/spriteSheet_portalBranco.png-a1d7ac45260fdd91d2641dedbdba499e.ctex"
+uid="uid://bt5socl2sy4jw"
+path="res://.godot/imported/efeito_distorcao.png-163b97a26e0b93e7a1c03da96c0838d6.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/spriteSheet_portalBranco.png"
-dest_files=["res://.godot/imported/spriteSheet_portalBranco.png-a1d7ac45260fdd91d2641dedbdba499e.ctex"]
+source_file="res://UI_UX/efeito_distorcao.png"
+dest_files=["res://.godot/imported/efeito_distorcao.png-163b97a26e0b93e7a1c03da96c0838d6.ctex"]
 
 [params]
 

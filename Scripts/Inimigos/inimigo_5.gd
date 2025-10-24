@@ -153,14 +153,13 @@ func aplicar_knockback(direcao: Vector2):
 	tempo_knockback = 0.0
 	velocity = direcao * forca_knockback
 
-
 func _on_area_2d_body_entered(body: Node2D) -> void:
 	if body == self: return
 	if knockback: return
-	if body.is_in_group("players"):
+	if body.is_in_group("player"):
 		var direcao = (global_position - body.global_position).normalized()
 		aplicar_knockback(direcao)
-
+		body.take_damage(5)
 
 func shoot():
 	if timer >= 4:

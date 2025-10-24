@@ -6,13 +6,18 @@ const obj_tiro_roxo = preload("res://Cenas/Projeteis/tiro_central.tscn")
 
 var girar = true
 var timer = 0.0
-var knockback = false
 var tempo_knockback = 0.0
 var tempo_entre_tiros = 0.0
 var limite_projeteis = 0
 var rotacao = 200
 var atirando = false
 var direction: Vector2 = Vector2.ZERO
+
+# --- Variáveis de Knockback ---
+var knockback = false
+var tempo_knockback_atual = 0.0
+@export var forca_knockback = 600.0
+
 func shoot(velocidade_tiro: float):
 	if not atirando:
 		direction = (player.position - position).normalized()
@@ -82,3 +87,16 @@ func _physics_process(delta: float) -> void:
 	if girar:
 		sprite.rotate(-3.14/2)
 		girar = false
+
+func aplicar_knockback(direcao: Vector2):
+	knockback = true
+	tempo_knockback_atual = 0.0
+	velocity = direcao * forca_knockback
+
+func _on_collision_area_body_entered(body: Node2D) -> void:
+	if knockback or body == self:
+		return
+	if body.is_in_group("player"):
+		var direcao = (global_position - body.global_position).normalized()
+		aplicar_knockback(direcao)
+		body.take_damage(5)

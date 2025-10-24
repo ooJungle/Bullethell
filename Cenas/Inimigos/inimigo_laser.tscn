@@ -11,7 +11,7 @@ radius = 8.0
 radius = 19.0
 height = 38.0
 
-[node name="Inimigo laser" type="CharacterBody2D"]
+[node name="Inimigo laser" type="CharacterBody2D" groups=["inimigo"]]
 collision_layer = 2
 collision_mask = 2
 script = ExtResource("1_nkaow")
@@ -40,7 +40,7 @@ points = PackedVector2Array(0, 0, 1000, 0)
 width = 3.0
 default_color = Color(1, 0.482353, 0, 1)
 
-[node name="Laserbeam" type="Sprite2D" parent="FirePoint"]
+[node name="Laserbeam" type="Sprite2D" parent="FirePoint" groups=["laser"]]
 visible = false
 position = Vector2(536, -4)
 scale = Vector2(30.9375, 8.16992)
