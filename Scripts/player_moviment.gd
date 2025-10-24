@@ -32,6 +32,7 @@ var arma_atual_dados: Dictionary
 
 func _ready() -> void:
 	vida = vida_maxima
+	Global.vida = vida
 	
 	attack_hitbox.body_entered.connect(_on_attack_hitbox_body_entered)
 	attack_timer.timeout.connect(_on_attack_timer_timeout)
