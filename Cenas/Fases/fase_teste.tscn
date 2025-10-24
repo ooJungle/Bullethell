@@ -7,8 +7,8 @@
 [ext_resource type="PackedScene" uid="uid://bu7otdeikbwcr" path="res://Cenas/Inimigos/inimigo_laser.tscn" id="6_adu1l"]
 [ext_resource type="PackedScene" uid="uid://cup0raircu6at" path="res://Cenas/Inimigos/inimigo_6.tscn" id="7_axsth"]
 [ext_resource type="PackedScene" uid="uid://d26majiwami8u" path="res://Cenas/Menu/PauseMenu.tscn" id="7_pkdox"]
-[ext_resource type="PackedScene" uid="uid://b2pnn1csceu83" path="res://mira.tscn" id="8_eiwq8"]
-[ext_resource type="PackedScene" uid="uid://cnhitdfef1p5m" path="res://espada.tscn" id="9_mt4jj"]
+[ext_resource type="PackedScene" uid="uid://b2pnn1csceu83" path="res://UI_UX/mira.tscn" id="8_eiwq8"]
+[ext_resource type="PackedScene" uid="uid://cnhitdfef1p5m" path="res://Cenas/espada.tscn" id="9_mt4jj"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_2x8jn"]
 

@@ -7,7 +7,6 @@ extends CharacterBody2D
 
 # --- Variáveis de Combate e Estados ---
 @export var player: Node2D
-@export var forca_knockback = 600.0
 @export_group("Timers do Ataque")
 @export var duracaoMira: float = 2.0
 @export var ducacaoLock: float = 0.5
@@ -32,9 +31,10 @@ var state_timer: float = 0.0
 var locked_angle: float = 0.0
 var alvo_atingido_neste_tiro: bool = false
 
-# --- Variáveis de Estado de Knockback ---
+# --- Variáveis de Knockback ---
 var knockback = false
 var tempo_knockback_atual = 0.0
+@export var forca_knockback = 600.0
 
 func _ready() -> void:
 	add_to_group("enemies")
@@ -160,7 +160,8 @@ func modo_atirando(delta: float):
 		if ray_cast_2d.is_colliding():
 			var collider = ray_cast_2d.get_collider()
 			if collider == player:
-				if "take_damage" in player: player.take_damage(40)
+				if "take_damage" in player: 
+					player.take_damage(40)
 				alvo_atingido_neste_tiro = true
 	
 	state_timer -= delta * Global.fator_tempo
@@ -230,7 +231,6 @@ func encontrar_corpo_celeste_mais_proximo(grupo: String) -> Node2D:
 			mais_proximo = no
 	return mais_proximo
 	
-# --- FUNÇÕES DE SUPORTE (INALTERADAS) ---
 func aplicar_knockback(direcao: Vector2):
 	knockback = true
 	tempo_knockback_atual = 0.0
@@ -241,6 +241,7 @@ func aplicar_knockback(direcao: Vector2):
 func _on_collision_area_body_entered(body: Node2D) -> void:
 	if knockback or body == self:
 		return
-	if body.is_in_group("players"):
+	if body.is_in_group("player"):
 		var direcao = (global_position - body.global_position).normalized()
 		aplicar_knockback(direcao)
+		body.take_damage(5)

@@ -1,7 +1,7 @@
 [gd_scene load_steps=25 format=4 uid="uid://7hxjdmej07vp"]
 
 [ext_resource type="Texture2D" uid="uid://c876hd16x2x1y" path="res://Sprites/tileset_temp.png" id="1_hj6t5"]
-[ext_resource type="PackedScene" uid="uid://c05h55i7hjr20" path="res://fundo.tscn" id="1_r7g8p"]
+[ext_resource type="PackedScene" uid="uid://c05h55i7hjr20" path="res://UI_UX/fundo.tscn" id="1_r7g8p"]
 [ext_resource type="PackedScene" uid="uid://burb4hginapym" path="res://Cenas/Inimigos/Inimigo_5.tscn" id="2_gmbfb"]
 [ext_resource type="Texture2D" uid="uid://bfb1x6eempwp8" path="res://Sprites/tile_serto.png" id="2_ju58k"]
 [ext_resource type="PackedScene" uid="uid://cw5ic42v3wep7" path="res://Cenas/player.tscn" id="3_ju58k"]
@@ -10,9 +10,10 @@
 [ext_resource type="PackedScene" uid="uid://xi2hrnn8tbmj" path="res://Cenas/buraco_negro.tscn" id="5_r7g8p"]
 [ext_resource type="PackedScene" uid="uid://c353olxkynf22" path="res://Cenas/buraco_de_minhoca.tscn" id="6_1m4mj"]
 [ext_resource type="Texture2D" uid="uid://dvdp7efvwav8l" path="res://Sprites/tilech2.png" id="6_s4ud6"]
-[ext_resource type="PackedScene" uid="uid://b2pnn1csceu83" path="res://mira.tscn" id="7_s4ud6"]
+[ext_resource type="PackedScene" uid="uid://b2pnn1csceu83" path="res://UI_UX/mira.tscn" id="7_s4ud6"]
 [ext_resource type="PackedScene" uid="uid://btwm7v5ywkigl" path="res://Cenas/Inimigos/inimigo_4.tscn" id="12_nx366"]
 [ext_resource type="PackedScene" uid="uid://bu7otdeikbwcr" path="res://Cenas/Inimigos/inimigo_laser.tscn" id="13_y7t32"]
+
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_2x8jn"]
 

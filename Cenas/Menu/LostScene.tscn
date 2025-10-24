@@ -1,0 +1,39 @@
+[gd_scene load_steps=3 format=3 uid="uid://ho5yv5ew87ln"]
+
+[ext_resource type="Script" uid="uid://bxqgvl7b40t4m" path="res://Scripts/Menu/lost_scene.gd" id="1_oej1p"]
+[ext_resource type="Texture2D" uid="uid://cxm7jb8isnkq4" path="res://Sprites/icon1.svg" id="2_4qvgj"]
+
+[node name="LostScene" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_oej1p")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 0
+offset_right = 1152.0
+offset_bottom = 648.0
+texture = ExtResource("2_4qvgj")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 0
+offset_left = 480.0
+offset_top = 280.0
+offset_right = 580.0
+offset_bottom = 346.0
+scale = Vector2(2, 2)
+alignment = 1
+
+[node name="RetryButton" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+text = "Retry"
+
+[node name="MenuButton" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+text = "Menu"
+
+[connection signal="pressed" from="VBoxContainer/RetryButton" to="." method="_on_retry_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/MenuButton" to="." method="_on_menu_button_pressed"]
