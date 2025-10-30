@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://ho5yv5ew87ln"]
+[gd_scene load_steps=4 format=3 uid="uid://ho5yv5ew87ln"]
 
 [ext_resource type="Script" uid="uid://bxqgvl7b40t4m" path="res://Scripts/Menu/lost_scene.gd" id="1_oej1p"]
 [ext_resource type="Texture2D" uid="uid://cxm7jb8isnkq4" path="res://Sprites/icon1.svg" id="2_4qvgj"]
+[ext_resource type="PackedScene" uid="uid://b2pnn1csceu83" path="res://UI_UX/mira.tscn" id="3_g8j1v"]
 
 [node name="LostScene" type="Control"]
 layout_mode = 3
@@ -34,6 +35,8 @@ text = "Retry"
 [node name="MenuButton" type="Button" parent="VBoxContainer"]
 layout_mode = 2
 text = "Menu"
+
+[node name="Mira" parent="VBoxContainer" instance=ExtResource("3_g8j1v")]
 
 [connection signal="pressed" from="VBoxContainer/RetryButton" to="." method="_on_retry_button_pressed"]
 [connection signal="pressed" from="VBoxContainer/MenuButton" to="." method="_on_menu_button_pressed"]

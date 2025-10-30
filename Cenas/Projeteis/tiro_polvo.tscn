@@ -1,0 +1,16 @@
+[gd_scene load_steps=4 format=3 uid="uid://g70of3bvs1ck"]
+
+[ext_resource type="Script" uid="uid://c5pn7amw5tkd" path="res://Scripts/Projeteis/tiro_polvo.gd" id="1_yumi6"]
+[ext_resource type="Texture2D" uid="uid://byyjaxs1lhle3" path="res://Sprites/Projeteis/bulletPolvo.png" id="2_0c6mv"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_sxr07"]
+radius = 7.0
+
+[node name="tiro_polvo" type="Area2D"]
+script = ExtResource("1_yumi6")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_0c6mv")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_sxr07")

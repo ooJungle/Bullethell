@@ -1,0 +1,71 @@
+[gd_scene load_steps=9 format=3 uid="uid://2gn7h1kpcbh8"]
+
+[ext_resource type="Script" uid="uid://bpw4rey8dmhx5" path="res://Scripts/Inimigos/inimigo_polvo.gd" id="1_7nq0h"]
+[ext_resource type="Texture2D" uid="uid://c8ev27nrgotn" path="res://Sprites/Inimigos/spriteSheetPolvo.png" id="2_qacp0"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7sk66"]
+atlas = ExtResource("2_qacp0")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_chvrd"]
+atlas = ExtResource("2_qacp0")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nhmfn"]
+atlas = ExtResource("2_qacp0")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_75ksd"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7sk66")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_chvrd")
+}],
+"loop": true,
+"name": &"andando",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nhmfn")
+}],
+"loop": true,
+"name": &"atirando",
+"speed": 5.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_7nq0h"]
+radius = 6.0
+height = 20.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_qacp0"]
+radius = 7.0
+height = 20.0
+
+[node name="inimigo_polvo" type="CharacterBody2D"]
+script = ExtResource("1_7nq0h")
+
+[node name="sprite" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_75ksd")
+animation = &"andando"
+frame_progress = 0.44515195
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 6)
+shape = SubResource("CapsuleShape2D_7nq0h")
+
+[node name="CollisionArea" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CollisionArea"]
+position = Vector2(0, 6)
+shape = SubResource("CapsuleShape2D_qacp0")
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
+debug_enabled = true
+
+[node name="PerceptionTimer" type="Timer" parent="."]
+wait_time = 0.2
+autostart = true
