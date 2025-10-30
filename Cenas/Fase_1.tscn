@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://d1yfu58apys3a"]
+
+[ext_resource type="PackedScene" uid="uid://burb4hginapym" path="res://Cenas/Inimigos/Inimigo_5.tscn" id="4_j42wr"]
+
+[node name="fase_teste" type="Node2D"]
+
+[node name="inimigo_5" parent="." node_paths=PackedStringArray("player") instance=ExtResource("4_j42wr")]
+position = Vector2(-372, -159)
+player = NodePath("")

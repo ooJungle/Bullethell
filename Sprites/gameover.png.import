@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bt5socl2sy4jw"
-path="res://.godot/imported/efeito_distorcao.png-163b97a26e0b93e7a1c03da96c0838d6.ctex"
+uid="uid://d10lk88fslwii"
+path="res://.godot/imported/gameover.png-c3c6df9f769ab09903b0028b1034e54c.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://UI_UX/efeito_distorcao.png"
-dest_files=["res://.godot/imported/efeito_distorcao.png-163b97a26e0b93e7a1c03da96c0838d6.ctex"]
+source_file="res://Sprites/gameover.png"
+dest_files=["res://.godot/imported/gameover.png-c3c6df9f769ab09903b0028b1034e54c.ctex"]
 
 [params]
 
