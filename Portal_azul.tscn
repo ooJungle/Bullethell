@@ -1,0 +1,65 @@
+[gd_scene load_steps=10 format=3 uid="uid://c77pyqh2ugfxp"]
+
+[ext_resource type="Texture2D" uid="uid://dilhbwpsphdq4" path="res://Sprites/spriteSheet_portalAzul.png" id="1_mbms6"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lcede"]
+atlas = ExtResource("1_mbms6")
+region = Rect2(0, 0, 101, 101)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_laiun"]
+atlas = ExtResource("1_mbms6")
+region = Rect2(101, 0, 101, 101)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_eoo57"]
+atlas = ExtResource("1_mbms6")
+region = Rect2(202, 0, 101, 101)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_82qfk"]
+atlas = ExtResource("1_mbms6")
+region = Rect2(303, 0, 101, 101)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vxbdh"]
+atlas = ExtResource("1_mbms6")
+region = Rect2(404, 0, 101, 101)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5q8rd"]
+atlas = ExtResource("1_mbms6")
+region = Rect2(505, 0, 101, 101)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_5ybe6"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lcede")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_laiun")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_eoo57")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_82qfk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vxbdh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5q8rd")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_b55a4"]
+radius = 30.066593
+
+[node name="Portal_azul" type="Area2D"]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_5ybe6")
+speed_scale = 1.5
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_b55a4")
