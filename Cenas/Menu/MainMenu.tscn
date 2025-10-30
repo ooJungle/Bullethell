@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://b1baf17wokydn"]
+[gd_scene load_steps=4 format=3 uid="uid://b1baf17wokydn"]
 
 [ext_resource type="Script" uid="uid://2lib0cu1aw2a" path="res://Scripts/Menu/main_menu.gd" id="1_2a42p"]
 [ext_resource type="PackedScene" uid="uid://b2pnn1csceu83" path="res://UI_UX/mira.tscn" id="2_y2bdj"]
+[ext_resource type="AudioStream" uid="uid://c4aj72861f4y0" path="res://Sons e Musica/Musica Jogo.mp3" id="3_qpwnb"]
 
 [node name="MainMenu" type="Control"]
 layout_mode = 3
@@ -40,6 +41,11 @@ text = "Quit"
 
 [node name="Mira" parent="." instance=ExtResource("2_y2bdj")]
 position = Vector2(598.563, 285.347)
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+position = Vector2(-2, 0)
+stream = ExtResource("3_qpwnb")
+autoplay = true
 
 [connection signal="pressed" from="PlayButton" to="." method="_on_play_button_pressed"]
 [connection signal="pressed" from="SettingsButton" to="." method="_on_settings_button_pressed"]
