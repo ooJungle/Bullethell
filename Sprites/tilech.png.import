@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://d10lk88fslwii"
-path="res://.godot/imported/gameover.png-c3c6df9f769ab09903b0028b1034e54c.ctex"
+uid="uid://dqpwdfyk1vdo6"
+path="res://.godot/imported/tilech.png-2296dd0effff45474be0cc497a87e857.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/gameover.png"
-dest_files=["res://.godot/imported/gameover.png-c3c6df9f769ab09903b0028b1034e54c.ctex"]
+source_file="res://Sprites/tilech.png"
+dest_files=["res://.godot/imported/tilech.png-2296dd0effff45474be0cc497a87e857.ctex"]
 
 [params]
 

@@ -14,7 +14,6 @@
 [ext_resource type="PackedScene" uid="uid://btwm7v5ywkigl" path="res://Cenas/Inimigos/inimigo_4.tscn" id="12_nx366"]
 [ext_resource type="PackedScene" uid="uid://bu7otdeikbwcr" path="res://Cenas/Inimigos/inimigo_laser.tscn" id="13_y7t32"]
 
-
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_2x8jn"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_mhq7l"]
@@ -147,6 +146,7 @@ metadata/_edit_use_anchors_ = true
 [node name="buraco_negro" parent="." node_paths=PackedStringArray("wormhole_exit") instance=ExtResource("5_r7g8p")]
 z_index = 10
 position = Vector2(-647, 133)
+forca_gravidade = 18000.0
 wormhole_exit = NodePath("../buraco_de_mihoca")
 
 [node name="buraco_de_mihoca" parent="." instance=ExtResource("6_1m4mj")]

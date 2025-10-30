@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dqpwdfyk1vdo6"
-path="res://.godot/imported/tilech.png-ba86d157dd8442556ade3b9f1db807bd.ctex"
+uid="uid://btly5qbyu14jv"
+path="res://.godot/imported/teste tiles.png-77ead02da46f71417abe9e61cde8949f.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://tilech.png"
-dest_files=["res://.godot/imported/tilech.png-ba86d157dd8442556ade3b9f1db807bd.ctex"]
+source_file="res://Sprites/teste tiles.png"
+dest_files=["res://.godot/imported/teste tiles.png-77ead02da46f71417abe9e61cde8949f.ctex"]
 
 [params]
 
