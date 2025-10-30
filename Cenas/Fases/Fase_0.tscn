@@ -323,6 +323,8 @@ player = NodePath("../player")
 [node name="buraco_de_mihoca" parent="." instance=ExtResource("22_ve75a")]
 position = Vector2(3333, -5)
 
+[node name="Node" type="Node" parent="."]
+
 [connection signal="body_entered" from="Portal_branco" to="Portal_branco" method="_on_body_entered"]
 [connection signal="body_entered" from="Portal_azul" to="Portal_azul" method="_on_body_entered"]
 [connection signal="body_entered" from="Portal_azul2" to="Portal_azul2" method="_on_body_entered"]
