@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=4 uid="uid://cyav1pug64gto"]
+[gd_scene load_steps=27 format=4 uid="uid://dgvk00ax3rrbo"]
 
 [ext_resource type="Script" uid="uid://bqle0el6yjirx" path="res://Cenas/Fases/fase_0.gd" id="1_l7uc1"]
 [ext_resource type="PackedScene" uid="uid://c05h55i7hjr20" path="res://UI_UX/fundo.tscn" id="1_setcl"]
@@ -7,8 +7,19 @@
 [ext_resource type="PackedScene" uid="uid://cw5ic42v3wep7" path="res://Cenas/player.tscn" id="4_2olo2"]
 [ext_resource type="PackedScene" uid="uid://d26majiwami8u" path="res://Cenas/Menu/PauseMenu.tscn" id="5_wbwhm"]
 [ext_resource type="PackedScene" path="res://Cenas/Portal_branco.tscn" id="6_8l1lx"]
-[ext_resource type="PackedScene" path="res://Portal_azul.tscn" id="7_gfvjn"]
+[ext_resource type="PackedScene" uid="uid://c77pyqh2ugfxp" path="res://Portal_azul.tscn" id="7_gfvjn"]
 [ext_resource type="PackedScene" uid="uid://b2pnn1csceu83" path="res://UI_UX/mira.tscn" id="8_3tumv"]
+[ext_resource type="Script" uid="uid://bc6goug6s4slk" path="res://Cenas/portal_branco.gd" id="8_kwsdg"]
+[ext_resource type="Script" uid="uid://cpx7qjv5egdce" path="res://portal_azulasdasdasdasd.gd" id="10_4uowy"]
+[ext_resource type="Script" uid="uid://b5vat081jhy6k" path="res://portal_azul312431233123123123123.gd" id="10_gmavx"]
+[ext_resource type="Script" uid="uid://divnw7xkn5nty" path="res://portal_azul3212334924830942389.gd" id="12_2kwqn"]
+[ext_resource type="PackedScene" uid="uid://bpxk7epe337y1" path="res://Cenas/Inimigos/inimigo_0.tscn" id="14_ukt1a"]
+[ext_resource type="PackedScene" uid="uid://bqvstnda7b8kd" path="res://Cenas/Inimigos/inimigo_1.tscn" id="15_2gjbv"]
+[ext_resource type="PackedScene" uid="uid://2gn7h1kpcbh8" path="res://Cenas/Inimigos/inimigo_polvo.tscn" id="16_ciat0"]
+[ext_resource type="PackedScene" uid="uid://bkhxrca0185x8" path="res://Cenas/Inimigos/inimigo_qualquer.tscn" id="17_ve75a"]
+[ext_resource type="PackedScene" uid="uid://bu7otdeikbwcr" path="res://Cenas/Inimigos/inimigo_laser.tscn" id="18_if8b4"]
+[ext_resource type="PackedScene" uid="uid://btwm7v5ywkigl" path="res://Cenas/Inimigos/inimigo_4.tscn" id="19_8de20"]
+[ext_resource type="PackedScene" uid="uid://buw23jdf15r6e" path="res://Cenas/Inimigos/inimigo_2.tscn" id="20_oy6jg"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_pxeo3"]
 
@@ -153,10 +164,10 @@ sources/1 = SubResource("TileSetAtlasSource_6kjqg")
 script = ExtResource("1_l7uc1")
 
 [node name="ColorRect" parent="." instance=ExtResource("1_setcl")]
-offset_left = -82582.0
-offset_top = -32093.0
-offset_right = 103423.0
-offset_bottom = 35533.0
+offset_left = -82557.0
+offset_top = -32821.0
+offset_right = 103448.0
+offset_bottom = 34805.0
 
 [node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]
 navigation_polygon = SubResource("NavigationPolygon_pxeo3")
@@ -166,11 +177,13 @@ tile_map_data = PackedByteArray("AADl/+r/AAABAAIAAADl/+v/AAABAAMAAAAmABcAAAABAAM
 tile_set = SubResource("TileSet_pxeo3")
 
 [node name="player" parent="." instance=ExtResource("4_2olo2")]
+position = Vector2(7, 62)
 collision_layer = 1
 collision_mask = 1
 safe_margin = 0.08
 
 [node name="Camera2D" type="Camera2D" parent="player"]
+position = Vector2(48, 28)
 zoom = Vector2(1.5, 1.5)
 
 [node name="Label" type="Label" parent="player/Camera2D"]
@@ -191,27 +204,120 @@ metadata/_edit_use_anchors_ = true
 
 [node name="Portal_branco" parent="." instance=ExtResource("6_8l1lx")]
 position = Vector2(581, 0)
+script = ExtResource("8_kwsdg")
 
 [node name="Portal_azul" parent="." instance=ExtResource("7_gfvjn")]
 position = Vector2(1668, 2283)
+script = ExtResource("8_kwsdg")
 
 [node name="Portal_azul2" parent="." instance=ExtResource("7_gfvjn")]
 position = Vector2(3265, 2268)
+script = ExtResource("8_kwsdg")
 
 [node name="Portal_azul3" parent="." instance=ExtResource("7_gfvjn")]
 position = Vector2(4951, 2272)
+script = ExtResource("8_kwsdg")
 
 [node name="Portal_azul4" parent="." instance=ExtResource("7_gfvjn")]
-position = Vector2(90, 1393)
+position = Vector2(111, 1389)
+script = ExtResource("10_gmavx")
 
 [node name="Portal_azul5" parent="." instance=ExtResource("7_gfvjn")]
 position = Vector2(-356, 1072)
+script = ExtResource("10_4uowy")
 
 [node name="Portal_azul6" parent="." instance=ExtResource("7_gfvjn")]
 position = Vector2(594, 1066)
+script = ExtResource("12_2kwqn")
 
 [node name="Mira" parent="." instance=ExtResource("8_3tumv")]
 position = Vector2(598.563, 285.347)
 
 [node name="Timer" type="Timer" parent="."]
 wait_time = 300.0
+
+[node name="inimigo_0" parent="." instance=ExtResource("14_ukt1a")]
+position = Vector2(1290, 307)
+
+[node name="inimigo_1" parent="." instance=ExtResource("15_2gjbv")]
+position = Vector2(2121, 309)
+
+[node name="inimigo_polvo" parent="." instance=ExtResource("16_ciat0")]
+position = Vector2(1284, 1288)
+
+[node name="inimigo_polvo2" parent="." instance=ExtResource("16_ciat0")]
+position = Vector2(2098, 1297)
+
+[node name="inimigo_2" parent="." instance=ExtResource("14_ukt1a")]
+position = Vector2(1421, 2276)
+
+[node name="inimigo_3" parent="." instance=ExtResource("15_2gjbv")]
+position = Vector2(2165, 2281)
+
+[node name="inimigo_polvo3" parent="." instance=ExtResource("16_ciat0")]
+position = Vector2(1309, 2276)
+
+[node name="inimigo_polvo4" parent="." instance=ExtResource("16_ciat0")]
+position = Vector2(2080, 2288)
+
+[node name="inimigo_6" parent="." instance=ExtResource("17_ve75a")]
+position = Vector2(2904, 313)
+
+[node name="Inimigo laser" parent="." instance=ExtResource("18_if8b4")]
+position = Vector2(3665, 297)
+
+[node name="Inimigo laser2" parent="." instance=ExtResource("18_if8b4")]
+position = Vector2(2876, 1289)
+
+[node name="Inimigo laser3" parent="." instance=ExtResource("18_if8b4")]
+position = Vector2(3708, 1289)
+
+[node name="inimigo_7" parent="." instance=ExtResource("17_ve75a")]
+position = Vector2(3317, 1332)
+
+[node name="Inimigo laser4" parent="." instance=ExtResource("18_if8b4")]
+position = Vector2(2827, 2299)
+
+[node name="Inimigo laser5" parent="." instance=ExtResource("18_if8b4")]
+position = Vector2(3384, 2311)
+
+[node name="Inimigo laser6" parent="." instance=ExtResource("18_if8b4")]
+position = Vector2(3696, 2323)
+
+[node name="inimigo_8" parent="." instance=ExtResource("17_ve75a")]
+position = Vector2(2950, 2310)
+
+[node name="inimigo_4" parent="." instance=ExtResource("19_8de20")]
+position = Vector2(4435, 340)
+
+[node name="inimigo_5" parent="." instance=ExtResource("20_oy6jg")]
+position = Vector2(5430, 321)
+
+[node name="inimigo_9" parent="." instance=ExtResource("20_oy6jg")]
+position = Vector2(4439, 1326)
+
+[node name="inimigo_10" parent="." instance=ExtResource("20_oy6jg")]
+position = Vector2(4493, 2312)
+
+[node name="inimigo_11" parent="." instance=ExtResource("20_oy6jg")]
+position = Vector2(5350, 2301)
+
+[node name="inimigo_12" parent="." instance=ExtResource("19_8de20")]
+position = Vector2(4548, 2312)
+
+[node name="inimigo_13" parent="." instance=ExtResource("19_8de20")]
+position = Vector2(5260, 2305)
+
+[node name="inimigo_14" parent="." instance=ExtResource("17_ve75a")]
+position = Vector2(5397, 1313)
+
+[node name="inimigo_15" parent="." instance=ExtResource("19_8de20")]
+position = Vector2(4510, 1328)
+
+[connection signal="body_entered" from="Portal_branco" to="Portal_branco" method="_on_body_entered"]
+[connection signal="body_entered" from="Portal_azul" to="Portal_azul" method="_on_body_entered"]
+[connection signal="body_entered" from="Portal_azul2" to="Portal_azul2" method="_on_body_entered"]
+[connection signal="body_entered" from="Portal_azul3" to="Portal_azul3" method="_on_body_entered"]
+[connection signal="body_entered" from="Portal_azul4" to="Portal_azul4" method="_on_body_entered"]
+[connection signal="body_entered" from="Portal_azul5" to="Portal_azul5" method="_on_body_entered"]
+[connection signal="body_entered" from="Portal_azul6" to="Portal_azul6" method="_on_body_entered"]

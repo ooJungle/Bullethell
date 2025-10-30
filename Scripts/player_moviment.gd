@@ -1,5 +1,5 @@
 extends CharacterBody2D
-
+@onready var player: CharacterBody2D = $"."
 @export var speed: float = 300.0
 @export var aceleracao: float = 1500.0
 @export var atrito: float = 1200.0
