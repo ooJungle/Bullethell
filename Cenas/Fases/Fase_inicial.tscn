@@ -7,7 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://c3qjh5yoook7g" path="res://Sprites/tileCINZA.png" id="5_2m3ot"]
 [ext_resource type="PackedScene" uid="uid://cw5ic42v3wep7" path="res://Cenas/player.tscn" id="5_bh7my"]
 [ext_resource type="Texture2D" uid="uid://dvdp7efvwav8l" path="res://Sprites/tilech2.png" id="6_bh7my"]
-[ext_resource type="PackedScene" uid="uid://b2pnn1csceu83" path="res://mira.tscn" id="6_vvbgk"]
+[ext_resource type="PackedScene" uid="uid://b2pnn1csceu83" path="res://UI_UX/mira.tscn" id="6_vvbgk"]
 [ext_resource type="PackedScene" uid="uid://d26majiwami8u" path="res://Cenas/Menu/PauseMenu.tscn" id="9_bh7my"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_2m3ot"]
@@ -259,6 +259,7 @@ position = Vector2(566, 331)
 
 [node name="Camera2D" type="Camera2D" parent="player"]
 zoom = Vector2(1.5, 1.5)
+process_callback = 0
 
 [node name="Mira" parent="." instance=ExtResource("6_vvbgk")]
 position = Vector2(438, 250)

@@ -11,13 +11,6 @@ extends CharacterBody2D
 
 @onready var sprite: AnimatedSprite2D = $sprite
 @onready var dano_timer: Timer = $dano_timer
-@onready var hitbox: Area2D = $AreaHitbox
-
-@onready var iventario: Node2D = $Inventario
-@onready var arma_sprite: Sprite2D = $Inventario/ArmaEquipada
-@onready var attack_hitbox: Area2D = $AttackHitbox
-@onready var attack_timer: Timer = $AttackTimer
-@onready var hitbox_shape: CollisionShape2D = $AttackHitbox/CollisionShape2D
 
 var vida_maxima: int = 300
 var vida: int = vida_maxima
@@ -25,6 +18,7 @@ var buraco_negro_proximo: Node2D = null
 var buraco_minhoca_proximo: Node2D = null
 var JUMP_VELOCITY = -450
 var SPEED = 250
+var last_move_direction: Vector2 = Vector2.DOWN
 
 var tem_arma: bool = false
 var pode_atacar: bool = true
@@ -33,10 +27,6 @@ var arma_atual_dados: Dictionary
 func _ready() -> void:
 	vida = vida_maxima
 	Global.vida = vida
-	
-	attack_hitbox.body_entered.connect(_on_attack_hitbox_body_entered)
-	attack_timer.timeout.connect(_on_attack_timer_timeout)
-
 
 func _physics_process(delta: float) -> void:
 	if Global.paused:
@@ -75,23 +65,44 @@ func _physics_process(delta: float) -> void:
 			velocity = velocity.move_toward(Vector2.ZERO, atrito * delta)
 		if velocity.length() > 10.0:
 			if input_direction.y < 0:
-				sprite.flip_h = false
+				last_move_direction = Vector2.UP
+				sprite.flip_h = false 
 				if sprite.animation != "andando_costas":
 					sprite.play("andando_costas")
 			elif input_direction.y > 0:
-				sprite.flip_h = false
+				last_move_direction = Vector2.DOWN
+				sprite.flip_h = false 
 				if sprite.animation != "andando_frente":
 					sprite.play("andando_frente")
 			elif input_direction.x != 0:
 				if sprite.animation != "andando_lado":
 					sprite.play("andando_lado")
 				if input_direction.x > 0:
+					last_move_direction = Vector2.RIGHT
 					sprite.flip_h = false
 				elif input_direction.x < 0:
+					last_move_direction = Vector2.LEFT
 					sprite.flip_h = true
-		
-		if tem_arma:
-			rotacionar_arma_para_mouse()
+		else:
+			if last_move_direction.y < 0:
+				sprite.flip_h = false
+				if sprite.animation != "idle_costas":
+					sprite.play("idle_costas")
+			elif last_move_direction.y > 0:
+				sprite.flip_h = false
+				if sprite.animation != "idle_frente":
+					sprite.play("idle_frente")
+			elif last_move_direction.x != 0:
+				if sprite.animation != "idle_lado":
+					sprite.play("idle_lado")
+				if last_move_direction.x > 0:
+					sprite.flip_h = false
+				elif last_move_direction.x < 0:
+					sprite.flip_h = true
+			else:
+				sprite.flip_h = false
+				if sprite.animation != "idle_frente":
+					sprite.play("idle_frente")
 		
 	move_and_slide()
 	handle_enemy_bounce()
@@ -100,62 +111,6 @@ func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action_pressed("ui_cancel"):
 		if not Global.paused:
 			$".."/PauseMenu.start_pause()
-	
-	if event.is_action_pressed("atacar") and tem_arma and pode_atacar:
-		atacar()
-		
-	if event.is_action_pressed("dropar") and tem_arma:
-		dropar_arma()
-
-
-# ==================================================================
-# 			--- Funções do Sistema de Armas ---
-# ==================================================================
-func rotacionar_arma_para_mouse():
-	var direcao_mouse = get_global_mouse_position() - iventario.global_position
-	iventario.rotation = direcao_mouse.angle()
-
-func equipar_arma(dados_da_arma: Dictionary):
-	if tem_arma:
-		dropar_arma()
-
-	tem_arma = true
-	arma_atual_dados = dados_da_arma
-	
-	arma_sprite.texture = arma_atual_dados.textura_equipada
-	arma_sprite.visible = true
-
-func dropar_arma():
-	if not tem_arma:
-		return
-
-	var cena_coletavel: PackedScene = arma_atual_dados.cena_coletavel
-	
-	if cena_coletavel:
-		var arma_instancia = cena_coletavel.instantiate()
-		arma_instancia.global_position = global_position + Vector2.RIGHT.rotated(rotation) * 40
-		get_parent().add_child(arma_instancia)
-
-	tem_arma = false
-	pode_atacar = true
-	arma_atual_dados = {}
-	arma_sprite.visible = false
-
-func atacar():
-	pode_atacar = false
-	hitbox_shape.disabled = false
-	attack_timer.start(0.2)
-
-func _on_attack_timer_timeout():
-	hitbox_shape.disabled = true
-	await get_tree().create_timer(0.3).timeout
-	pode_atacar = true
-
-func _on_attack_hitbox_body_entered(body: Node2D):
-	if body.is_in_group("enemies"):
-		print("Acertei o inimigo: ", body.name)
-		if body.has_method("take_damage"):
-			body.receber_dano(10)
 
 func take_damage(amount: int) -> void:
 	vida -= amount

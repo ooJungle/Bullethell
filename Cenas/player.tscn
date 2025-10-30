@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://cw5ic42v3wep7"]
+[gd_scene load_steps=24 format=3 uid="uid://cw5ic42v3wep7"]
 
 [ext_resource type="Script" uid="uid://dxifkqojdxq0a" path="res://Scripts/player_moviment.gd" id="1_pmvhq"]
 [ext_resource type="Texture2D" uid="uid://bf5oc0wyh6l5l" path="res://Sprites/player_costas_spritesheet.png" id="2_yuqgu"]
@@ -54,6 +54,18 @@ region = Rect2(64, 0, 64, 64)
 atlas = ExtResource("4_8vhvd")
 region = Rect2(128, 0, 64, 64)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_yuqgu"]
+atlas = ExtResource("2_yuqgu")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jx05c"]
+atlas = ExtResource("3_jx05c")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8vhvd"]
+atlas = ExtResource("4_8vhvd")
+region = Rect2(0, 0, 64, 64)
+
 [sub_resource type="SpriteFrames" id="SpriteFrames_8tubf"]
 animations = [{
 "frames": [{
@@ -106,15 +118,36 @@ animations = [{
 "loop": true,
 "name": &"andando_lado",
 "speed": 8.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yuqgu")
+}],
+"loop": true,
+"name": &"idle_costas",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jx05c")
+}],
+"loop": true,
+"name": &"idle_frente",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8vhvd")
+}],
+"loop": true,
+"name": &"idle_lado",
+"speed": 5.0
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_iersn"]
 size = Vector2(18.25, 19)
 
 [sub_resource type="LabelSettings" id="LabelSettings_yuqgu"]
-
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_5p0qj"]
-radius = 7.0
 
 [node name="player" type="CharacterBody2D" groups=["player"]]
 collision_layer = 32
@@ -124,7 +157,7 @@ script = ExtResource("1_pmvhq")
 
 [node name="sprite" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_8tubf")
-animation = &"andando_costas"
+animation = &"idle_lado"
 speed_scale = 1.7
 offset = Vector2(0, -8)
 
@@ -145,17 +178,4 @@ horizontal_alignment = 1
 vertical_alignment = 1
 script = ExtResource("4_5p0qj")
 
-[node name="Inventario" type="Node2D" parent="."]
-
-[node name="ArmaEquipada" type="Sprite2D" parent="Inventario"]
-
-[node name="AttackHitbox" type="Area2D" parent="."]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="AttackHitbox"]
-shape = SubResource("CapsuleShape2D_5p0qj")
-disabled = true
-
-[node name="AttackTimer" type="Timer" parent="."]
-
 [connection signal="timeout" from="dano_timer" to="." method="_on_dano_timer_timeout"]
-[connection signal="body_entered" from="AttackHitbox" to="." method="_on_attack_hitbox_body_entered"]
