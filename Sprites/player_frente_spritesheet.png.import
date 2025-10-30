@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c0tlhaa5km110"
-path="res://.godot/imported/PLACEHOLDER -- espada.png-48c58dc9ff7180e327629d9f6db5fc98.ctex"
+uid="uid://bagfj71s27lwp"
+path="res://.godot/imported/player_frente_spritesheet.png-8fe522a000b20d05cae1b253b332b819.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/PLACEHOLDER -- espada.png"
-dest_files=["res://.godot/imported/PLACEHOLDER -- espada.png-48c58dc9ff7180e327629d9f6db5fc98.ctex"]
+source_file="res://Sprites/player_frente_spritesheet.png"
+dest_files=["res://.godot/imported/player_frente_spritesheet.png-8fe522a000b20d05cae1b253b332b819.ctex"]
 
 [params]
 

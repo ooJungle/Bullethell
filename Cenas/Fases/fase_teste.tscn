@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=4 uid="uid://dq5arm2820s3g"]
+[gd_scene load_steps=13 format=4 uid="uid://dq5arm2820s3g"]
 
 [ext_resource type="Texture2D" uid="uid://tpc5pqukpb32" path="res://Sprites/tilesetGAMEJAM.png" id="1_1jg4h"]
 [ext_resource type="PackedScene" uid="uid://cw5ic42v3wep7" path="res://Cenas/player.tscn" id="1_jew0q"]
@@ -8,7 +8,6 @@
 [ext_resource type="PackedScene" uid="uid://cup0raircu6at" path="res://Cenas/Inimigos/inimigo_6.tscn" id="7_axsth"]
 [ext_resource type="PackedScene" uid="uid://d26majiwami8u" path="res://Cenas/Menu/PauseMenu.tscn" id="7_pkdox"]
 [ext_resource type="PackedScene" uid="uid://b2pnn1csceu83" path="res://UI_UX/mira.tscn" id="8_eiwq8"]
-[ext_resource type="PackedScene" uid="uid://cnhitdfef1p5m" path="res://Cenas/espada.tscn" id="9_mt4jj"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_2x8jn"]
 
@@ -127,10 +126,6 @@ navigation_layer_0/layers = 255
 sources/0 = SubResource("TileSetAtlasSource_pkdox")
 
 [node name="fase_teste2" type="Node2D"]
-
-[node name="Espada" parent="." instance=ExtResource("9_mt4jj")]
-z_index = 4
-position = Vector2(281, -191)
 
 [node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]
 navigation_polygon = SubResource("NavigationPolygon_2x8jn")

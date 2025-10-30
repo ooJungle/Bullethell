@@ -9,7 +9,7 @@ anchors_preset = 0
 script = ExtResource("1_2a42p")
 
 [node name="PlayButton" type="Button" parent="."]
-layout_mode = 2
+layout_mode = 0
 offset_left = 488.0
 offset_top = 200.0
 offset_right = 558.0
@@ -19,7 +19,7 @@ theme_override_constants/outline_size = 4
 text = "Play"
 
 [node name="SettingsButton" type="Button" parent="."]
-layout_mode = 2
+layout_mode = 0
 offset_left = 488.0
 offset_top = 269.0
 offset_right = 558.0
@@ -29,7 +29,7 @@ theme_override_constants/outline_size = 4
 text = "Settings"
 
 [node name="QuitButton" type="Button" parent="."]
-layout_mode = 2
+layout_mode = 0
 offset_left = 488.0
 offset_top = 338.0
 offset_right = 558.0
