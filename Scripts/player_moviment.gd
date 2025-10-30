@@ -73,18 +73,22 @@ func _physics_process(delta: float) -> void:
 			velocity = velocity.move_toward(target_velocity, aceleracao * delta)
 		else:
 			velocity = velocity.move_toward(Vector2.ZERO, atrito * delta)
-
-		if input_direction.x > 0:
-			sprite.flip_h = false
-		elif input_direction.x < 0:
-			sprite.flip_h = true
-
 		if velocity.length() > 10.0:
-			if sprite.animation != "Walking":
-				sprite.play("Walking")
-		else:
-			if sprite.animation != "Idle":
-				sprite.play("Idle")
+			if input_direction.y < 0:
+				sprite.flip_h = false
+				if sprite.animation != "andando_costas":
+					sprite.play("andando_costas")
+			elif input_direction.y > 0:
+				sprite.flip_h = false
+				if sprite.animation != "andando_frente":
+					sprite.play("andando_frente")
+			elif input_direction.x != 0:
+				if sprite.animation != "andando_lado":
+					sprite.play("andando_lado")
+				if input_direction.x > 0:
+					sprite.flip_h = false
+				elif input_direction.x < 0:
+					sprite.flip_h = true
 		
 		if tem_arma:
 			rotacionar_arma_para_mouse()

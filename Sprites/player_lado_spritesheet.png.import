@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c0ne8ed4aqixq"
-path="res://.godot/imported/PLACEHOLDER -- Dungeon_Tileset.png-95e0067ee2bf6ee7eedf22ff13b42a14.ctex"
+uid="uid://cs32q1pddm5"
+path="res://.godot/imported/player_lado_spritesheet.png-87392115e7a2336f99de786686dc2fba.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/PLACEHOLDER -- Dungeon_Tileset.png"
-dest_files=["res://.godot/imported/PLACEHOLDER -- Dungeon_Tileset.png-95e0067ee2bf6ee7eedf22ff13b42a14.ctex"]
+source_file="res://Sprites/player_lado_spritesheet.png"
+dest_files=["res://.godot/imported/player_lado_spritesheet.png-87392115e7a2336f99de786686dc2fba.ctex"]
 
 [params]
 
