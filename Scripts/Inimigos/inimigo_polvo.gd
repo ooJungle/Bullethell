@@ -82,7 +82,6 @@ func _physics_process(delta: float) -> void:
 		velocity = velocity.lerp(Vector2.ZERO, delta * 3.0  * Global.fator_tempo)
 
 	move_and_slide()
-	update_animation_and_flip()
 	
 	if (player.global_position - global_position).length() < 500:
 		shoot()
@@ -222,14 +221,6 @@ func shoot():
 				get_parent().add_child(new_bullet)
 			attack_cooldown = 0.0
 			ataque_aleatorio = randi_range(0, 4)
-
-func update_animation_and_flip():
-	if velocity.length() > 10:
-		sprite.play("Walking")
-		if velocity.x > 0: sprite.flip_h = false
-		elif velocity.x < 0: sprite.flip_h = true
-	else:
-		sprite.play("Idle")
 
 func aplicar_knockback(direcao: Vector2):
 	knockback = true
