@@ -59,6 +59,8 @@ radius = 30.066593
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_5ybe6")
+autoplay = "default"
+frame_progress = 0.40919992
 speed_scale = 1.5
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
