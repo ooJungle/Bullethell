@@ -222,34 +222,44 @@ script = ExtResource("8_kwsdg")
 position = Vector2(594, 1066)
 script = ExtResource("12_2kwqn")
 
-[node name="inimigo_1" parent="." node_paths=PackedStringArray("player") instance=ExtResource("15_2gjbv")]
+[node name="inimigo_4" parent="." node_paths=PackedStringArray("player") instance=ExtResource("19_8de20")]
 visible = false
-position = Vector2(2121, 309)
+position = Vector2(4435, 340)
 player = NodePath("../player")
 
-[node name="inimigo_polvo" parent="." node_paths=PackedStringArray("player") instance=ExtResource("16_ciat0")]
+[node name="inimigo_5" parent="." node_paths=PackedStringArray("player") instance=ExtResource("20_oy6jg")]
 visible = false
-position = Vector2(1284, 1288)
+position = Vector2(5430, 321)
 player = NodePath("../player")
 
-[node name="inimigo_polvo2" parent="." node_paths=PackedStringArray("player") instance=ExtResource("16_ciat0")]
+[node name="inimigo_9" parent="." node_paths=PackedStringArray("player") instance=ExtResource("20_oy6jg")]
 visible = false
-position = Vector2(2098, 1297)
+position = Vector2(4439, 1326)
 player = NodePath("../player")
 
-[node name="inimigo_3" parent="." node_paths=PackedStringArray("player") instance=ExtResource("15_2gjbv")]
+[node name="inimigo_10" parent="." node_paths=PackedStringArray("player") instance=ExtResource("20_oy6jg")]
 visible = false
-position = Vector2(2165, 2281)
+position = Vector2(4493, 2312)
 player = NodePath("../player")
 
-[node name="inimigo_polvo4" parent="." node_paths=PackedStringArray("player") instance=ExtResource("16_ciat0")]
+[node name="inimigo_11" parent="." node_paths=PackedStringArray("player") instance=ExtResource("20_oy6jg")]
 visible = false
-position = Vector2(2080, 2288)
+position = Vector2(5350, 2301)
 player = NodePath("../player")
 
-[node name="inimigo_polvo5" parent="." node_paths=PackedStringArray("player") instance=ExtResource("16_ciat0")]
+[node name="inimigo_12" parent="." node_paths=PackedStringArray("player") instance=ExtResource("19_8de20")]
 visible = false
-position = Vector2(1309, 2276)
+position = Vector2(4548, 2312)
+player = NodePath("../player")
+
+[node name="inimigo_13" parent="." node_paths=PackedStringArray("player") instance=ExtResource("19_8de20")]
+visible = false
+position = Vector2(5260, 2305)
+player = NodePath("../player")
+
+[node name="inimigo_15" parent="." node_paths=PackedStringArray("player") instance=ExtResource("19_8de20")]
+visible = false
+position = Vector2(4510, 1328)
 player = NodePath("../player")
 
 [node name="Portal_azul5" parent="." instance=ExtResource("7_gfvjn")]
@@ -299,44 +309,34 @@ player = NodePath("../player")
 position = Vector2(-356, 1072)
 script = ExtResource("10_4uowy")
 
-[node name="inimigo_4" parent="." node_paths=PackedStringArray("player") instance=ExtResource("19_8de20")]
+[node name="inimigo_1" parent="." node_paths=PackedStringArray("player") instance=ExtResource("15_2gjbv")]
 visible = false
-position = Vector2(4435, 340)
+position = Vector2(2121, 309)
 player = NodePath("../player")
 
-[node name="inimigo_5" parent="." node_paths=PackedStringArray("player") instance=ExtResource("20_oy6jg")]
+[node name="inimigo_polvo" parent="." node_paths=PackedStringArray("player") instance=ExtResource("16_ciat0")]
 visible = false
-position = Vector2(5430, 321)
+position = Vector2(1284, 1288)
 player = NodePath("../player")
 
-[node name="inimigo_9" parent="." node_paths=PackedStringArray("player") instance=ExtResource("20_oy6jg")]
+[node name="inimigo_polvo2" parent="." node_paths=PackedStringArray("player") instance=ExtResource("16_ciat0")]
 visible = false
-position = Vector2(4439, 1326)
+position = Vector2(2098, 1297)
 player = NodePath("../player")
 
-[node name="inimigo_10" parent="." node_paths=PackedStringArray("player") instance=ExtResource("20_oy6jg")]
+[node name="inimigo_3" parent="." node_paths=PackedStringArray("player") instance=ExtResource("15_2gjbv")]
 visible = false
-position = Vector2(4493, 2312)
+position = Vector2(2165, 2281)
 player = NodePath("../player")
 
-[node name="inimigo_11" parent="." node_paths=PackedStringArray("player") instance=ExtResource("20_oy6jg")]
+[node name="inimigo_polvo4" parent="." node_paths=PackedStringArray("player") instance=ExtResource("16_ciat0")]
 visible = false
-position = Vector2(5350, 2301)
+position = Vector2(2080, 2288)
 player = NodePath("../player")
 
-[node name="inimigo_12" parent="." node_paths=PackedStringArray("player") instance=ExtResource("19_8de20")]
+[node name="inimigo_polvo5" parent="." node_paths=PackedStringArray("player") instance=ExtResource("16_ciat0")]
 visible = false
-position = Vector2(4548, 2312)
-player = NodePath("../player")
-
-[node name="inimigo_13" parent="." node_paths=PackedStringArray("player") instance=ExtResource("19_8de20")]
-visible = false
-position = Vector2(5260, 2305)
-player = NodePath("../player")
-
-[node name="inimigo_15" parent="." node_paths=PackedStringArray("player") instance=ExtResource("19_8de20")]
-visible = false
-position = Vector2(4510, 1328)
+position = Vector2(1309, 2276)
 player = NodePath("../player")
 
 [node name="Mira" parent="." instance=ExtResource("8_3tumv")]
