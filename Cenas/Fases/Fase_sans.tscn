@@ -1,9 +1,9 @@
 [gd_scene load_steps=6 format=3 uid="uid://rr4ddlu5jthi"]
 
-[ext_resource type="PackedScene" uid="uid://cw5ic42v3wep7" path="res://Cenas/player.tscn" id="1_24tbe"]
-[ext_resource type="Script" uid="uid://be3talp5xho6t" path="res://Cenas/Fases/battle_manager.gd" id="2_01lal"]
-[ext_resource type="Script" uid="uid://3t3oktpmpjtt" path="res://Cenas/Fases/blaster_spawner.gd" id="2_m1hs5"]
-[ext_resource type="PackedScene" uid="uid://nktj48qc0r0f" path="res://Cenas/Projeteis/Blaster.tscn" id="3_noj5k"]
+[ext_resource type="PackedScene" uid="uid://cw5ic42v3wep7" path="res://Cenas/player.tscn" id="1_v58fx"]
+[ext_resource type="Script" uid="uid://3t3oktpmpjtt" path="res://Cenas/Fases/blaster_spawner.gd" id="2_ik5d6"]
+[ext_resource type="PackedScene" uid="uid://nktj48qc0r0f" path="res://Cenas/Projeteis/Blaster.tscn" id="3_qfdmg"]
+[ext_resource type="Script" uid="uid://be3talp5xho6t" path="res://Cenas/Fases/battle_manager.gd" id="4_4uv34"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_01lal"]
 size = Vector2(604.204, 354.493)
@@ -13,7 +13,7 @@ size = Vector2(604.204, 354.493)
 [node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2(2, 2)
 
-[node name="player" parent="." instance=ExtResource("1_24tbe")]
+[node name="player" parent="." instance=ExtResource("1_v58fx")]
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 
@@ -23,8 +23,8 @@ scale = Vector2(0.963251, 0.945011)
 shape = SubResource("RectangleShape2D_01lal")
 
 [node name="BlasterSpawner" type="Node2D" parent="."]
-script = ExtResource("2_m1hs5")
-blaster_scene = ExtResource("3_noj5k")
+script = ExtResource("2_ik5d6")
+blaster_scene = ExtResource("3_qfdmg")
 
 [node name="BattleManager" type="Node" parent="."]
-script = ExtResource("2_01lal")
+script = ExtResource("4_4uv34")

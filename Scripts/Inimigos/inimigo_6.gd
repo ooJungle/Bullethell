@@ -28,24 +28,17 @@ func _ready() -> void:
 
 	add_to_group("enemies")
 	
-	# --- ROTAÇÃO INICIAL DO SPRITE ---
-	# A função 'look_at' assume que o nó aponta para a direita (eixo X positivo).
-	# Se o seu sprite originalmente aponta para cima, precisamos rotacioná-lo 90 graus.
-	# Fazer isso no _ready() é mais limpo do que usar uma flag no _physics_process.
 	sprite.rotation_degrees = 90 
-	# OU use -90 se ele estiver apontando para baixo. Ajuste conforme necessário.
 
-	# Configura e conecta o timer de percepção para o pathfinding
 	perception_timer.wait_time = tempo_percepcao
 	perception_timer.timeout.connect(recalcular_caminho)
 	
-	recalcular_caminho() # Calcula o caminho inicial
+	recalcular_caminho()
 
 
 func _physics_process(delta: float) -> void:
-	if Global.paused:
+	if Global.paused or !visible:
 		return
-	
 	attack_cooldown += delta
 	
 	if not is_instance_valid(player):

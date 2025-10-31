@@ -45,7 +45,7 @@ height = 20.0
 radius = 7.0
 height = 20.0
 
-[node name="inimigo_polvo" type="CharacterBody2D"]
+[node name="inimigo_polvo" type="CharacterBody2D" groups=["inimigo"]]
 script = ExtResource("1_7nq0h")
 
 [node name="sprite" type="AnimatedSprite2D" parent="."]

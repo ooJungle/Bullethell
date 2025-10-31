@@ -34,26 +34,28 @@ var direcao_ataque_fixa: Vector2 = Vector2.ZERO
 var knockback = false
 var tempo_knockback_atual = 0.0
 
-
 func _ready() -> void:
 	player = get_node_or_null("/root/Node2D/player")
 
-	randomize()
-	ataque_aleatorio = randi_range(0, 4)
-	
 	add_to_group("enemies")
-	
-	# O timer agora chama a nova função de decisão estratégica
-	perception_timer.wait_time = tempo_percepcao
-	perception_timer.timeout.connect(decidir_melhor_caminho)
-	
-	decidir_melhor_caminho() # Calcula o caminho inicial
 
-
-func _physics_process(delta: float) -> void:
-	if Global.paused:
+	perception_timer.one_shot = true
+	perception_timer.wait_time = tempo_percepcao + randf_range(-0.3, 0.3)
+	perception_timer.timeout.connect(on_perception_timer_timeout)
+	perception_timer.start()
+	
+func on_perception_timer_timeout() -> void:
+	if Global.paused or !visible:
 		return
 	
+	decidir_melhor_caminho()
+
+	perception_timer.wait_time = tempo_percepcao + randf_range(-0.3, 0.3)
+	perception_timer.start()
+
+func _physics_process(delta: float) -> void:
+	if Global.paused or !visible:
+		return
 	attack_cooldown += delta * Global.fator_tempo
 	tempo_entre_tiros += delta * Global.fator_tempo
 	

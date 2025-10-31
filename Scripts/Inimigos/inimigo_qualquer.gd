@@ -41,7 +41,7 @@ func shoot(velocidade_tiro: float):
 			atirando = false
 
 func _physics_process(delta: float) -> void:
-	if Global.paused:
+	if Global.paused or !visible:
 		return
 	timer += delta
 	tempo_entre_tiros += delta

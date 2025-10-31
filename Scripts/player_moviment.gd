@@ -116,6 +116,8 @@ func take_damage(amount: int) -> void:
 	vida -= amount
 	Global.vida = vida
 	print("Player tomou dano. Vida:", vida)
+	
+	dano()
 	if vida <= 0:
 		die()
 

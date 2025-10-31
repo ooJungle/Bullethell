@@ -26,18 +26,24 @@ func _ready() -> void:
 	player = get_node_or_null("/root/Node2D/player")
 
 	add_to_group("enemies")
-	# O nome da função conectada foi mudado para a nova função estratégica
-	perception_timer.wait_time = tempo_percepcao
-	perception_timer.timeout.connect(decidir_melhor_caminho)
 
-	# Calcula o caminho inicial.
-	decidir_melhor_caminho()
-
-
-func _physics_process(delta: float) -> void:
-	if Global.paused:
+	perception_timer.one_shot = true
+	perception_timer.wait_time = tempo_percepcao + randf_range(-0.3, 0.3)
+	perception_timer.timeout.connect(on_perception_timer_timeout)
+	perception_timer.start()
+	
+func on_perception_timer_timeout() -> void:
+	if Global.paused or !visible:
 		return
 	
+	decidir_melhor_caminho()
+
+	perception_timer.wait_time = tempo_percepcao + randf_range(-0.3, 0.3)
+	perception_timer.start()
+
+func _physics_process(delta: float) -> void:
+	if Global.paused or !visible:
+		return
 	shoot_timer += delta * Global.fator_tempo
 	if not is_instance_valid(player):
 		velocity = Vector2.ZERO

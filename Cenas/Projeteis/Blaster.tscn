@@ -19,7 +19,8 @@ texture = ExtResource("2_a5ga7")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_4h1ry")
 
-[node name="LaserArea" type="Area2D" parent="."]
+[node name="LaserArea" type="Area2D" parent="." groups=["laser"]]
+disable_mode = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="LaserArea"]
 shape = SubResource("SegmentShape2D_ftrur")
@@ -30,10 +31,12 @@ target_position = Vector2(500, 0)
 
 [node name="Line2D" type="Line2D" parent="LaserArea"]
 points = PackedVector2Array(0, 0, 500, 0)
+width = 30.0
 default_color = Color(1, 0, 0, 1)
 antialiased = true
 
 [node name="AimLine" type="Line2D" parent="."]
 points = PackedVector2Array(0, 0, 500, 0)
+width = 30.0
 default_color = Color(1, 0, 0, 1)
 antialiased = true

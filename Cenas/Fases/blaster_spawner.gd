@@ -6,7 +6,6 @@ var player
 
 func _ready() -> void:
 	player = get_tree().get_first_node_in_group("player")
-	player.speed = 100
 	
 func spawn_blaster(pattern: String):
 	var blaster = blaster_scene.instantiate()

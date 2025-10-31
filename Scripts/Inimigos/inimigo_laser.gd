@@ -40,21 +40,28 @@ func _ready() -> void:
 	player = get_node_or_null("/root/Node2D/player")
 
 	add_to_group("enemies")
-	
-	# O timer agora chama a nova função de decisão estratégica
-	perception_timer.wait_time = tempo_percepcao
-	perception_timer.timeout.connect(decidir_melhor_caminho)
-	
-	mudar_para_estado(Estado.COOLDOWN) # Inicia a máquina de estados
 
+	perception_timer.one_shot = true
+	perception_timer.wait_time = tempo_percepcao + randf_range(-0.3, 0.3)
+	perception_timer.timeout.connect(on_perception_timer_timeout)
+	perception_timer.start()
+		
+	mudar_para_estado(Estado.COOLDOWN)
 
+func on_perception_timer_timeout() -> void:
+	if Global.paused or !visible:
+		return
+	
+	decidir_melhor_caminho()
+
+	perception_timer.wait_time = tempo_percepcao + randf_range(-0.3, 0.3)
+	perception_timer.start()
 # ================================================================
 # --- LÓGICA DE MOVIMENTO (PHYSICS) ---
 # ================================================================
 func _physics_process(delta: float) -> void:
-	if Global.paused:
+	if Global.paused or !visible:
 		return
-
 	if knockback:
 		tempo_knockback_atual += delta
 		if tempo_knockback_atual >= 0.3:

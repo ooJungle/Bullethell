@@ -34,9 +34,8 @@ func _ready() -> void:
 # ================================================================
 
 func _physics_process(delta: float) -> void:
-	if Global.paused:
+	if Global.paused or !visible:
 		return
-	
 	timer += delta  * Global.fator_tempo
 	if not is_instance_valid(player):
 		velocity = Vector2.ZERO

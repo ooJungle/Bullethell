@@ -1,8 +1,8 @@
 extends Node2D
 
-@export var aim_duration: float = 0.75
-@export var laser_duration: float = 1.0
-@export var laser_width: float = 10.0
+@export var aim_duration: float = 0.6
+@export var laser_duration: float = 0.9
+@export var laser_width: float = 15.0
 @export var horizontal_laser_length: float = 1200.0
 @export var vertical_laser_length: float = 2400.0
 var orientation: String = "horizontal" 
@@ -13,6 +13,8 @@ var orientation: String = "horizontal"
 @onready var laser_line: Line2D = $LaserArea/Line2D
 @onready var laser_colision = $LaserArea/CollisionShape2D
 @onready var aim_line: Line2D = $AimLine
+
+@export var player: CharacterBody2D
 
 func _ready():
 	laser_area.add_to_group("laser")
@@ -63,7 +65,22 @@ func fire_laser():
 	if laser_line:
 		laser_line.visible = true
 		laser_line.points = [Vector2.ZERO, laser_ray.target_position]
+		
+	# 1. Pega o comprimento total do laser a partir do RayCast
+	var laser_comprimento = laser_ray.target_position.length()
 	
+	# 2. Cria uma nova forma de "hitbox" retangular
+	var new_laser_shape = RectangleShape2D.new()
+	
+	# 3. Define o tamanho desse "hitbox"
+	new_laser_shape.size = Vector2(laser_comprimento, laser_width)
+	
+	# 4. Aplica essa nova forma ao seu nó de colisão
+	laser_colision.shape = new_laser_shape
+	
+	# 5. Centraliza o "hitbox"
+	laser_colision.position = Vector2(laser_comprimento / 2.0, 0)
+		
 	laser_ray.force_raycast_update()
 	
 	await get_tree().create_timer(laser_duration).timeout
@@ -75,7 +92,3 @@ func fire_laser():
 
 func set_orientation(type: String):
 	orientation = type
-	
-func _process(delta: float) -> void:
-	if Global.paused:
-		return

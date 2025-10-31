@@ -1,27 +1,27 @@
 extends Node
 
 @export var attack_sequence: Array[Dictionary] = [  # Defina padrões de ataques aqui
-	{"type": "blaster_wave", "count": 2, "delay": 1, "pattern": "horizontal"},  # Onda horizontal
-	{"type": "blaster_wave", "count": 4, "delay": 1, "pattern": "diagonal"},     # Diagonal
-	{"type": "blaster_wave", "count": 2, "delay": 1, "pattern": "vertical"},    # Vertical
-	{"type": "blaster_wave", "count": 4, "delay": 1, "pattern": "diagonal"},     # Diagonal
-	{"type": "blaster_wave", "count": 2, "delay": 1, "pattern": "horizontal"},  # Onda horizontal
-	{"type": "blaster_wave", "count": 3, "delay": 1, "pattern": "random"},     # Aleatória
-	{"type": "blaster_wave", "count": 2, "delay": 1, "pattern": "vertical"},    # Vertical
-	{"type": "blaster_wave", "count": 2, "delay": 1, "pattern": "horizontal"},  # Onda horizontal
-	{"type": "blaster_wave", "count": 4, "delay": 1, "pattern": "diagonal"},     # Diagonal
-	{"type": "blaster_wave", "count": 2, "delay": 1, "pattern": "vertical"},    # Vertical
-	{"type": "blaster_wave", "count": 4, "delay": 1, "pattern": "diagonal"},     # Diagonal
-	{"type": "blaster_wave", "count": 2, "delay": 1, "pattern": "horizontal"},  # Onda horizontal
-	{"type": "blaster_wave", "count": 3, "delay": 1, "pattern": "random"},     # Aleatória
-	{"type": "blaster_wave", "count": 2, "delay": 1, "pattern": "vertical"},    # Vertical
-	{"type": "blaster_wave", "count": 2, "delay": 1, "pattern": "horizontal"},  # Onda horizontal
-	{"type": "blaster_wave", "count": 4, "delay": 1, "pattern": "diagonal"},     # Diagonal
-	{"type": "blaster_wave", "count": 2, "delay": 1, "pattern": "vertical"},    # Vertical
-	{"type": "blaster_wave", "count": 4, "delay": 1, "pattern": "diagonal"},     # Diagonal
-	{"type": "blaster_wave", "count": 2, "delay": 1, "pattern": "horizontal"},  # Onda horizontal
-	{"type": "blaster_wave", "count": 3, "delay": 1, "pattern": "random"},     # Aleatória
-	{"type": "blaster_wave", "count": 2, "delay": 1, "pattern": "vertical"}    # Vertical
+	{"type": "blaster_wave", "count": 2, "delay": 0.5, "pattern": "horizontal"},  # Onda horizontal
+	{"type": "blaster_wave", "count": 4, "delay": 0.5, "pattern": "diagonal"},     # Diagonal
+	{"type": "blaster_wave", "count": 2, "delay": 0.5, "pattern": "vertical"},    # Vertical
+	{"type": "blaster_wave", "count": 4, "delay": 0.5, "pattern": "diagonal"},     # Diagonal
+	{"type": "blaster_wave", "count": 2, "delay": 0.5, "pattern": "horizontal"},  # Onda horizontal
+	{"type": "blaster_wave", "count": 3, "delay": 0.5, "pattern": "random"},     # Aleatória
+	{"type": "blaster_wave", "count": 2, "delay": 0.5, "pattern": "vertical"},    # Vertical
+	{"type": "blaster_wave", "count": 2, "delay": 0.5, "pattern": "horizontal"},  # Onda horizontal
+	{"type": "blaster_wave", "count": 4, "delay": 0.5, "pattern": "diagonal"},     # Diagonal
+	{"type": "blaster_wave", "count": 2, "delay": 0.5, "pattern": "vertical"},    # Vertical
+	{"type": "blaster_wave", "count": 4, "delay": 0.5, "pattern": "diagonal"},     # Diagonal
+	{"type": "blaster_wave", "count": 2, "delay": 0.5, "pattern": "horizontal"},  # Onda horizontal
+	{"type": "blaster_wave", "count": 3, "delay": 0.5, "pattern": "random"},     # Aleatória
+	{"type": "blaster_wave", "count": 2, "delay": 0.5, "pattern": "vertical"},    # Vertical
+	{"type": "blaster_wave", "count": 2, "delay": 0.5, "pattern": "horizontal"},  # Onda horizontal
+	{"type": "blaster_wave", "count": 4, "delay": 0.5, "pattern": "diagonal"},     # Diagonal
+	{"type": "blaster_wave", "count": 2, "delay": 0.5, "pattern": "vertical"},    # Vertical
+	{"type": "blaster_wave", "count": 4, "delay": 0.5, "pattern": "diagonal"},     # Diagonal
+	{"type": "blaster_wave", "count": 2, "delay": 0.5, "pattern": "horizontal"},  # Onda horizontal
+	{"type": "blaster_wave", "count": 3, "delay": 0.5, "pattern": "random"},     # Aleatória
+	{"type": "blaster_wave", "count": 2, "delay": 0.5, "pattern": "vertical"}    # Vertical
 ]
 
 var current_phase: int = 0
@@ -33,12 +33,10 @@ func _ready():
 	start_battle()
 
 func start_battle():
-	print("Battle Started!")
 	execute_next_phase()
 
 func execute_next_phase():
 	if current_phase >= attack_sequence.size():
-		print("Battle Won! Boss defeated.")
 		return
 	
 	var phase = attack_sequence[current_phase]
@@ -49,7 +47,7 @@ func execute_next_phase():
 			spawn_blaster_wave(phase.count, phase.delay, phase.pattern)
 	
 	current_phase += 1
-	await get_tree().create_timer(3.0).timeout
+	await get_tree().create_timer(2.0).timeout
 	execute_next_phase()
 
 func spawn_blaster_wave(count: int, delay: float, pattern: String):
