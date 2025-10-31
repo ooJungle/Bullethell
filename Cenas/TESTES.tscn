@@ -108,10 +108,10 @@ sources/7 = SubResource("TileSetAtlasSource_nx366")
 [node name="apresentafase" type="Node2D"]
 
 [node name="ColorRect" parent="." instance=ExtResource("1_r7g8p")]
-offset_left = -86555.0
-offset_top = -34318.0
-offset_right = 99450.0
-offset_bottom = 33308.0
+offset_left = -7295.0
+offset_top = -4339.0
+offset_right = 7539.0
+offset_bottom = 4797.0
 
 [node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]
 navigation_polygon = SubResource("NavigationPolygon_2x8jn")

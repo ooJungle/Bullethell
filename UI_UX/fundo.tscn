@@ -4,7 +4,7 @@
 modulate = Color(0, 0, 0, 1)
 show_behind_parent = true
 z_index = -999
-offset_left = -86169.0
-offset_top = -34206.0
-offset_right = 99836.0
-offset_bottom = 33420.0
+offset_left = -6222.0
+offset_top = -4060.0
+offset_right = 5937.0
+offset_bottom = 4738.0

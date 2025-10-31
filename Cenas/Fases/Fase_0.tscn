@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=4 uid="uid://cyav1pug64gto"]
+[gd_scene load_steps=27 format=4 uid="uid://dgvk00ax3rrbo"]
 
 [ext_resource type="Script" uid="uid://bqle0el6yjirx" path="res://Cenas/Fases/fase_0.gd" id="1_l7uc1"]
 [ext_resource type="PackedScene" uid="uid://c05h55i7hjr20" path="res://UI_UX/fundo.tscn" id="1_setcl"]
@@ -6,8 +6,8 @@
 [ext_resource type="Texture2D" uid="uid://btly5qbyu14jv" path="res://Sprites/teste tiles.png" id="3_qxyfa"]
 [ext_resource type="PackedScene" uid="uid://cw5ic42v3wep7" path="res://Cenas/player.tscn" id="4_2olo2"]
 [ext_resource type="PackedScene" uid="uid://d26majiwami8u" path="res://Cenas/Menu/PauseMenu.tscn" id="5_wbwhm"]
-[ext_resource type="PackedScene" path="res://Cenas/Portal_branco.tscn" id="6_8l1lx"]
-[ext_resource type="PackedScene" path="res://Portal_azul.tscn" id="7_gfvjn"]
+[ext_resource type="PackedScene" uid="uid://cdqk51gsmwxbg" path="res://Cenas/Portal_branco.tscn" id="6_8l1lx"]
+[ext_resource type="PackedScene" uid="uid://c77pyqh2ugfxp" path="res://Portal_azul.tscn" id="7_gfvjn"]
 [ext_resource type="PackedScene" uid="uid://b2pnn1csceu83" path="res://UI_UX/mira.tscn" id="8_3tumv"]
 [ext_resource type="Script" uid="uid://bc6goug6s4slk" path="res://Cenas/portal_branco.gd" id="8_kwsdg"]
 [ext_resource type="Script" uid="uid://cpx7qjv5egdce" path="res://portal_azulasdasdasdasd.gd" id="10_4uowy"]
@@ -22,6 +22,8 @@
 [ext_resource type="PackedScene" uid="uid://c353olxkynf22" path="res://Cenas/buraco_de_minhoca.tscn" id="22_ve75a"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_pxeo3"]
+vertices = PackedVector2Array(2246, -342, 2246, 390, 1734, 390, 1194, -342, 1734, 634, 2230, 634, 2230, 1366, 1734, 1366, 1734, 1610, 2230, 1610, 2230, 2342, 1178, 2342, 1178, 1610, 1658, 1610, 1658, 1366, 1658, 634, 1178, 1366, 1178, 634, 1658, 390, 1194, 390, 3862, -342, 3862, 390, 3350, 390, 2810, -342, 3350, 634, 3846, 634, 3846, 1366, 3350, 1366, 3350, 1610, 3846, 1610, 3846, 2342, 2794, 2342, 2794, 1610, 3274, 1610, 3274, 1366, 3274, 634, 2794, 1366, 2794, 634, 3274, 390, 2810, 390, 5462, -342, 5462, 390, 4950, 390, 4410, -342, 4950, 634, 5446, 634, 5446, 1366, 4950, 1366, 4950, 1610, 5446, 1610, 5446, 2342, 4394, 2342, 4394, 1610, 4874, 1610, 4874, 1366, 4874, 634, 4394, 1366, 4394, 634, 4874, 390, 4410, 390, 630, 1446, -422, 1446, -422, 714, 630, 714, 630, 390, -422, 390, -422, -342, 630, -342)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3), PackedInt32Array(4, 5, 6, 7), PackedInt32Array(8, 9, 10, 11), PackedInt32Array(11, 12, 13), PackedInt32Array(8, 11, 13), PackedInt32Array(7, 8, 13, 14), PackedInt32Array(4, 7, 14, 15), PackedInt32Array(14, 16, 17, 15), PackedInt32Array(2, 4, 15, 18), PackedInt32Array(3, 2, 18), PackedInt32Array(3, 18, 19), PackedInt32Array(20, 21, 22, 23), PackedInt32Array(24, 25, 26, 27), PackedInt32Array(28, 29, 30, 31), PackedInt32Array(31, 32, 33), PackedInt32Array(28, 31, 33), PackedInt32Array(27, 28, 33, 34), PackedInt32Array(24, 27, 34, 35), PackedInt32Array(34, 36, 37, 35), PackedInt32Array(22, 24, 35, 38), PackedInt32Array(23, 22, 38), PackedInt32Array(23, 38, 39), PackedInt32Array(40, 41, 42, 43), PackedInt32Array(44, 45, 46, 47), PackedInt32Array(48, 49, 50, 51), PackedInt32Array(51, 52, 53), PackedInt32Array(48, 51, 53), PackedInt32Array(47, 48, 53, 54), PackedInt32Array(44, 47, 54, 55), PackedInt32Array(54, 56, 57, 55), PackedInt32Array(42, 44, 55, 58), PackedInt32Array(43, 42, 58), PackedInt32Array(43, 58, 59), PackedInt32Array(60, 61, 62, 63), PackedInt32Array(64, 65, 66, 67)])
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_7plgp"]
 vertices = PackedVector2Array(8, 8, -8, 8, -8, -8, 8, -8)
