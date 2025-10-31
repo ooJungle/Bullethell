@@ -6,7 +6,7 @@ extends CharacterBody2D
 @export var tempo_percepcao = 0.5 # A cada quantos segundos o inimigo recalcula o caminho.
 
 # --- Variáveis de Combate ---
-@export var player: Node2D
+@export var player: CharacterBody2D
 @export var forca_knockback = 600.0 # Força do empurrão ao receber knockback.
 const obj_tiro_azul = preload("res://Cenas/Projeteis/tiro_azul.tscn")
 
@@ -23,6 +23,8 @@ var tempo_knockback_atual = 0.0
 
 
 func _ready() -> void:
+	player = get_node_or_null("/root/Node2D/player")
+
 	add_to_group("enemies")
 	# O nome da função conectada foi mudado para a nova função estratégica
 	perception_timer.wait_time = tempo_percepcao

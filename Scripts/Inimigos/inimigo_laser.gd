@@ -6,7 +6,7 @@ extends CharacterBody2D
 @export var tempo_percepcao = 0.5
 
 # --- Variáveis de Combate e Estados ---
-@export var player: Node2D
+@export var player: CharacterBody2D
 @export_group("Timers do Ataque")
 @export var duracaoMira: float = 2.0
 @export var ducacaoLock: float = 0.5
@@ -37,6 +37,8 @@ var tempo_knockback_atual = 0.0
 @export var forca_knockback = 600.0
 
 func _ready() -> void:
+	player = get_node_or_null("/root/Node2D/player")
+
 	add_to_group("enemies")
 	
 	# O timer agora chama a nova função de decisão estratégica

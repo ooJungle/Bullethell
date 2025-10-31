@@ -2,7 +2,7 @@ extends CharacterBody2D
 
 # --- Variáveis de Movimento e Combate ---
 @export var velocidade = 100.0 # Representa a velocidade MÁXIMA BASE
-@export var player: Node2D
+@export var player: CharacterBody2D
 @export var forca_maxima_direcao = 200.0 # Quão rápido o inimigo pode virar.
 @export var forca_knockback = 450.0
 
@@ -22,6 +22,8 @@ var tempo_knockback = 0.0
 
 
 func _ready() -> void:
+	player = get_node_or_null("/root/Node2D/player")
+
 	add_to_group("enemies")
 	perception_timer.timeout.connect(makepath)
 	makepath()

@@ -6,7 +6,7 @@ extends CharacterBody2D
 @export var tempo_percepcao = 0.5
 
 # --- Variáveis de Combate ---
-@export var player: Node2D
+@export var player: CharacterBody2D
 @export var forca_knockback = 600.0
 @export var velocidade_projetil = 130.0
 const obj_tiro_roxo = preload("res://Cenas/Projeteis/tiro_central.tscn")
@@ -24,6 +24,8 @@ var tempo_knockback_atual = 0.0
 
 
 func _ready() -> void:
+	player = get_node_or_null("/root/Node2D/player")
+
 	add_to_group("enemies")
 	
 	# --- ROTAÇÃO INICIAL DO SPRITE ---

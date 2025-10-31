@@ -1,7 +1,7 @@
 extends CharacterBody2D
 @export var velocidade = 90.0
 @onready var sprite: AnimatedSprite2D = $sprite
-@export var player = Node2D
+@export var player: CharacterBody2D
 const obj_tiro_roxo = preload("res://Cenas/Projeteis/tiro_roxo.tscn")
 
 var timer = 0.0
@@ -10,6 +10,9 @@ var timer = 0.0
 var knockback = false
 var tempo_knockback = 0.0
 @export var forca_knockback = 600.0
+
+func _ready() -> void:
+	player = get_node_or_null("/root/Node2D/player")
 
 func shoot(velocidade_tiro: float):
 	if timer >= 1.2:
