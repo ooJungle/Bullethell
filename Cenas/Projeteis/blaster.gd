@@ -1,94 +1,96 @@
 extends Node2D
 
-@export var aim_duration: float = 0.6
-@export var laser_duration: float = 0.9
-@export var laser_width: float = 15.0
-@export var horizontal_laser_length: float = 1200.0
-@export var vertical_laser_length: float = 2400.0
-var orientation: String = "horizontal" 
+# --- Variáveis de Combate e Estados ---
+@export_group("Timers do Ataque")
+@export var duracaoMira: float = 1.0   # Duração do aviso (linha)
+@export var ducacaoLock: float = 0.3   # Duração do "lock" (mudança de cor)
+@export var duracaoTiro: float = 0.9   # Duração do laser ativo
 
-@onready var sprite = $Sprite2D
-@onready var laser_ray = $LaserArea/RayCast2D
-@onready var laser_area = $LaserArea
-@onready var laser_line: Line2D = $LaserArea/Line2D
-@onready var laser_colision = $LaserArea/CollisionShape2D
-@onready var aim_line: Line2D = $AimLine
+# --- Nós Filhos ---
+@onready var fire_point: Node2D = $FirePoint
+@onready var linha: Line2D = $FirePoint/linha
+@onready var linha_2: Line2D = $FirePoint/linha2
+@onready var laserbeam: Sprite2D = $FirePoint/Laserbeam
+@onready var ray_cast_2d: RayCast2D = $FirePoint/RayCast2D
 
-@export var player: CharacterBody2D
+var player: CharacterBody2D
 
-func _ready():
-	laser_area.add_to_group("laser")
-	if laser_line:
-		laser_line.visible = false
-		laser_line.width = laser_width
-		laser_line.default_color = Color(1, 0, 0, 1)
+# --- Máquina de Estados (FSM) ---
+enum Estado { MIRANDO, LOCKADO, ATIRANDO }
+var estadoAtual = Estado.MIRANDO
+var state_timer: float = 0.0
+var alvo_atingido_neste_tiro: bool = false
 
-	if aim_line:
-		aim_line.visible = true 
-		aim_line.width = 3.0
-		aim_line.default_color = Color(0.2, 0.4, 1, 0.6) 
-
-		var laser_length: float
-		match orientation:
-			"horizontal":
-				laser_length = horizontal_laser_length
-			"vertical":
-				laser_length = vertical_laser_length
-			"diagonal":
-				laser_length = horizontal_laser_length
-		aim_line.points = [Vector2.ZERO, Vector2(laser_length, 0)]
-
-	start_aiming_and_fire()
-
-func start_aiming_and_fire():
-	var laser_length: float
-	match orientation:
-		"horizontal":
-			laser_length = horizontal_laser_length
-		"vertical":
-			laser_length = vertical_laser_length
-		"diagonal":
-			laser_length = horizontal_laser_length
+func _ready() -> void:
+	# Pega a referência do player
+	player = get_node_or_null("/root/Node2D/player")
 	
-	laser_ray.target_position = Vector2(laser_length, 0)
-	laser_line.points[1] = Vector2(laser_length, 0)
+	# Apenas inicie a sequência de ataque.
+	mudar_para_estado(Estado.MIRANDO)
+
+func _process(delta: float) -> void:
+	if Global.paused:
+		return
+	
+	match estadoAtual:
+		Estado.MIRANDO:
+			modo_mira(delta)
+		Estado.LOCKADO:
+			modo_lockado(delta)
+		Estado.ATIRANDO:
+			modo_atirando(delta)
+
+func mudar_para_estado(novoEstado: Estado):
+	estadoAtual = novoEstado
+	linha.visible = false
+	linha_2.visible = false
+	laserbeam.visible = false
+	
+	match novoEstado:
+		Estado.MIRANDO:
+			state_timer = duracaoMira
+			linha.visible = true
+			linha_2.visible = true
+			# Cor de aviso inicial
+			linha.default_color = Color("ffd900dc") 
+			linha_2.default_color = Color("ffd900dc")
+		Estado.LOCKADO:
+			state_timer = ducacaoLock
+			linha.visible = true
+			linha_2.visible = true
+			# Cor de aviso final (antes do tiro)
+			linha.default_color = Color("ff7b00") 
+			linha_2.default_color = Color("ff7b00")
+		Estado.ATIRANDO:
+			state_timer = duracaoTiro
+			laserbeam.visible = true
+			alvo_atingido_neste_tiro = false
+
+func modo_mira(delta: float):
+	# Não precisamos mais mirar, o spawner já rotacionou o BlasterFixo.
+	# Apenas esperamos o timer.
+	state_timer -= delta * Global.fator_tempo
+	if state_timer <= 0:
+		mudar_para_estado(Estado.LOCKADO)
+
+func modo_lockado(delta: float):
+	# Apenas esperamos o timer.
+	state_timer -= delta * Global.fator_tempo
+	if state_timer <= 0:
+		mudar_para_estado(Estado.ATIRANDO)
 		
-	await get_tree().create_timer(aim_duration).timeout
-	
-	if aim_line:
-		aim_line.visible = false
+func modo_atirando(delta: float):
+	if not alvo_atingido_neste_tiro:
+		ray_cast_2d.force_raycast_update()
 		
-	fire_laser()
-
-func fire_laser():
-	laser_ray.enabled = true
-	if laser_line:
-		laser_line.visible = true
-		laser_line.points = [Vector2.ZERO, laser_ray.target_position]
-		
-	# 1. Pega o comprimento total do laser a partir do RayCast
-	var laser_comprimento = laser_ray.target_position.length()
+		if ray_cast_2d.is_colliding():
+			var collider = ray_cast_2d.get_collider()
+			print("Colidiu com o nó: ", collider.name)
+			print("Grupos deste nó: ", collider.get_groups())
+			if is_instance_valid(collider) and collider.is_in_group("player"):
+				player.take_damage(20)
+				alvo_atingido_neste_tiro = true 
 	
-	# 2. Cria uma nova forma de "hitbox" retangular
-	var new_laser_shape = RectangleShape2D.new()
-	
-	# 3. Define o tamanho desse "hitbox"
-	new_laser_shape.size = Vector2(laser_comprimento, laser_width)
-	
-	# 4. Aplica essa nova forma ao seu nó de colisão
-	laser_colision.shape = new_laser_shape
-	
-	# 5. Centraliza o "hitbox"
-	laser_colision.position = Vector2(laser_comprimento / 2.0, 0)
-		
-	laser_ray.force_raycast_update()
-	
-	await get_tree().create_timer(laser_duration).timeout
-	
-	laser_ray.enabled = false
-	if laser_line:
-		laser_line.visible = false
-	queue_free()
-
-func set_orientation(type: String):
-	orientation = type
+	state_timer -= delta * Global.fator_tempo
+	if state_timer <= 0:
+		queue_free()

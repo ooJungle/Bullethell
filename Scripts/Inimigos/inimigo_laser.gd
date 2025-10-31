@@ -1,8 +1,8 @@
 extends CharacterBody2D
 
 # --- Variáveis de Movimento e Percepção ---
-@export var velocidade = 150.0
-@export var forca_maxima_direcao = 200.0
+@export var velocidade = 100.0
+@export var forca_maxima_direcao = 150.0
 @export var tempo_percepcao = 0.5
 
 # --- Variáveis de Combate e Estados ---
@@ -56,9 +56,7 @@ func on_perception_timer_timeout() -> void:
 
 	perception_timer.wait_time = tempo_percepcao + randf_range(-0.3, 0.3)
 	perception_timer.start()
-# ================================================================
-# --- LÓGICA DE MOVIMENTO (PHYSICS) ---
-# ================================================================
+
 func _physics_process(delta: float) -> void:
 	if Global.paused or !visible:
 		return
@@ -95,11 +93,8 @@ func _physics_process(delta: float) -> void:
 	
 	move_and_slide()
 
-# ================================================================
-# --- LÓGICA DA MÁQUINA DE ESTADOS (PROCESS) ---
-# ================================================================
 func _process(delta: float) -> void:
-	if Global.paused:
+	if Global.paused or !visible:
 		return
 	
 	match estadoAtual:
@@ -114,9 +109,6 @@ func _process(delta: float) -> void:
 		Estado.COOLDOWN:
 			modo_cooldown(delta)
 
-# ================================================================
-# --- FUNÇÕES DA MÁQUINA DE ESTADOS ---
-# ================================================================
 func mudar_para_estado(novoEstado: Estado):
 	estadoAtual = novoEstado
 	linha.visible = false
@@ -182,9 +174,6 @@ func modo_cooldown(delta: float):
 	if state_timer <= 0:
 		mudar_para_estado(Estado.MIRANDO)
 
-# ================================================================
-# --- NOVA LÓGICA DE PLANEAMENTO DE ROTA ESTRATÉGICO ---
-# ================================================================
 func decidir_melhor_caminho() -> void:
 	# Só calcula um novo caminho se o inimigo estiver em um estado que permite movimento
 	if not is_instance_valid(player) or not estadoAtual in [Estado.IDLE, Estado.COOLDOWN]:

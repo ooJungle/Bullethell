@@ -94,12 +94,6 @@ func _physics_process(delta: float) -> void:
 	if (player.global_position - global_position).length() < 500:
 		shoot()
 
-
-# ================================================================
-# --- NOVA LÓGICA DE PLANEAMENTO DE ROTA ESTRATÉGICO ---
-# (Substitui a função 'recalcular_caminho' anterior)
-# ================================================================
-
 func decidir_melhor_caminho() -> void:
 	# Não recalcula um novo caminho se estiver no meio de um ataque
 	if not is_instance_valid(player) or atirando:
@@ -138,9 +132,6 @@ func decidir_melhor_caminho() -> void:
 	else:
 		navigation_agent.target_position = player.global_position
 
-
-# --- FUNÇÕES DE SUPORTE PARA A NOVA LÓGICA ---
-
 func calcular_comprimento_do_caminho(caminho: PackedVector2Array) -> float:
 	var distancia = 0.0
 	if caminho.size() < 2:
@@ -161,9 +152,6 @@ func encontrar_corpo_celeste_mais_proximo(grupo: String) -> Node2D:
 			min_dist = dist
 			mais_proximo = no
 	return mais_proximo
-
-
-# --- FUNÇÕES DE ATAQUE E OUTRAS (INALTERADAS) ---
 
 func shoot():
 	if ataque_aleatorio == 0:
