@@ -31,7 +31,7 @@ func _physics_process(delta: float) -> void:
 		var distancia = global_position.distance_to(body.global_position)
 		if distancia < 1.0: continue
 		
-		var forca = (forca_gravidade / distancia)
+		var forca = (forca_gravidade / distancia ** 1/6)
 		if "velocity" in body:
 			body.velocity += direcao * forca * delta * Global.fator_tempo
 
