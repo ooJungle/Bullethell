@@ -55,7 +55,7 @@ func _teleport_object(object: Node2D) -> void:
 	if not is_instance_valid(wormhole_exit):
 		print("ERRO: Buraco de Minhoca de saída não definido!")
 		return
-	if object.name == "buraco_negro":
+	if object.name.begins_with("buraco_negro"):
 		return
 	if object.name.begins_with("ponto"):
 		return
