@@ -1,5 +1,6 @@
-[gd_scene load_steps=10 format=3 uid="uid://cdqk51gsmwxbg"]
+[gd_scene load_steps=11 format=3 uid="uid://c11schcb8u7iy"]
 
+[ext_resource type="Script" uid="uid://bc6goug6s4slk" path="res://Cenas/portal_branco.gd" id="1_1ptd8"]
 [ext_resource type="Texture2D" uid="uid://dba7roywd1lm5" path="res://Sprites/spriteSheet_portalBranco.png" id="1_f7yd7"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_5xnuo"]
@@ -56,6 +57,7 @@ animations = [{
 radius = 30.066593
 
 [node name="Portal_branco" type="Area2D"]
+script = ExtResource("1_1ptd8")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_xvl8j")

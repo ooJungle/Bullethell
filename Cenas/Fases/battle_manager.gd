@@ -1,27 +1,216 @@
-extends Node
+extends Node2D
 
 @export var attack_sequence: Array[Dictionary] = [  # Defina padrões de ataques aqui
-	{"type": "blaster_wave", "count": 2, "delay": 0.5, "pattern": "horizontal"},  # Onda horizontal
-	{"type": "blaster_wave", "count": 4, "delay": 0.5, "pattern": "diagonal"},     # Diagonal
-	{"type": "blaster_wave", "count": 2, "delay": 0.5, "pattern": "vertical"},    # Vertical
-	{"type": "blaster_wave", "count": 4, "delay": 0.5, "pattern": "diagonal"},     # Diagonal
-	{"type": "blaster_wave", "count": 2, "delay": 0.5, "pattern": "horizontal"},  # Onda horizontal
-	{"type": "blaster_wave", "count": 3, "delay": 0.5, "pattern": "random"},     # Aleatória
-	{"type": "blaster_wave", "count": 2, "delay": 0.5, "pattern": "vertical"},    # Vertical
-	{"type": "blaster_wave", "count": 2, "delay": 0.5, "pattern": "horizontal"},  # Onda horizontal
-	{"type": "blaster_wave", "count": 4, "delay": 0.5, "pattern": "diagonal"},     # Diagonal
-	{"type": "blaster_wave", "count": 2, "delay": 0.5, "pattern": "vertical"},    # Vertical
-	{"type": "blaster_wave", "count": 4, "delay": 0.5, "pattern": "diagonal"},     # Diagonal
-	{"type": "blaster_wave", "count": 2, "delay": 0.5, "pattern": "horizontal"},  # Onda horizontal
-	{"type": "blaster_wave", "count": 3, "delay": 0.5, "pattern": "random"},     # Aleatória
-	{"type": "blaster_wave", "count": 2, "delay": 0.5, "pattern": "vertical"},    # Vertical
-	{"type": "blaster_wave", "count": 2, "delay": 0.5, "pattern": "horizontal"},  # Onda horizontal
-	{"type": "blaster_wave", "count": 4, "delay": 0.5, "pattern": "diagonal"},     # Diagonal
-	{"type": "blaster_wave", "count": 2, "delay": 0.5, "pattern": "vertical"},    # Vertical
-	{"type": "blaster_wave", "count": 4, "delay": 0.5, "pattern": "diagonal"},     # Diagonal
-	{"type": "blaster_wave", "count": 2, "delay": 0.5, "pattern": "horizontal"},  # Onda horizontal
-	{"type": "blaster_wave", "count": 3, "delay": 0.5, "pattern": "random"},     # Aleatória
-	{"type": "blaster_wave", "count": 2, "delay": 0.5, "pattern": "vertical"}    # Vertical
+	{"type": "blaster_wave", "count": 3, "delay": 0.6, "pattern": "horizontal"},  # Onda horizontal
+	{"type": "blaster_wave", "count": 4, "delay": 0.8, "pattern": "diagonal"},     # Diagonal
+	{"type": "blaster_wave", "count": 3, "delay": 0.6, "pattern": "vertical"},    # Vertical
+	{"type": "blaster_wave", "count": 4, "delay": 0.8, "pattern": "diagonal"},     # Diagonal
+	{"type": "blaster_wave", "count": 3, "delay": 0.6, "pattern": "horizontal"},  # Onda horizontal
+	{"type": "blaster_wave", "count": 3, "delay": 0.6, "pattern": "random"},     # Aleatória
+	{"type": "blaster_wave", "count": 3, "delay": 0.6, "pattern": "vertical"},    # Vertical
+	{"type": "blaster_wave", "count": 3, "delay": 0.6, "pattern": "horizontal"},  # Onda horizontal
+	{"type": "blaster_wave", "count": 4, "delay": 0.8, "pattern": "diagonal"},     # Diagonal
+	{"type": "blaster_wave", "count": 3, "delay": 0.6, "pattern": "vertical"},    # Vertical
+	{"type": "blaster_wave", "count": 4, "delay": 0.8, "pattern": "diagonal"},     # Diagonal
+	{"type": "blaster_wave", "count": 3, "delay": 0.6, "pattern": "horizontal"},  # Onda horizontal
+	{"type": "blaster_wave", "count": 3, "delay": 0.6, "pattern": "random"},     # Aleatória
+	{"type": "blaster_wave", "count": 3, "delay": 0.6, "pattern": "vertical"},    # Vertical
+	{"type": "blaster_wave", "count": 3, "delay": 0.6, "pattern": "horizontal"},  # Onda horizontal
+	{"type": "blaster_wave", "count": 4, "delay": 0.8, "pattern": "diagonal"},     # Diagonal
+	{"type": "blaster_wave", "count": 3, "delay": 0.6, "pattern": "vertical"},    # Vertical
+	{"type": "blaster_wave", "count": 4, "delay": 0.8, "pattern": "diagonal"},     # Diagonal
+	{"type": "blaster_wave", "count": 3, "delay": 0.6, "pattern": "horizontal"},  # Onda horizontal
+	{"type": "blaster_wave", "count": 3, "delay": 0.6, "pattern": "random"},     # Aleatória
+	{"type": "blaster_wave", "count": 3, "delay": 0.6, "pattern": "vertical"},    # Vertical
+	{"type": "blaster_wave", "count": 3, "delay": 0.6, "pattern": "horizontal"},  # Onda horizontal
+	{"type": "blaster_wave", "count": 4, "delay": 0.8, "pattern": "diagonal"},     # Diagonal
+	{"type": "blaster_wave", "count": 3, "delay": 0.6, "pattern": "vertical"},    # Vertical
+	{"type": "blaster_wave", "count": 4, "delay": 0.8, "pattern": "diagonal"},     # Diagonal
+	{"type": "blaster_wave", "count": 3, "delay": 0.6, "pattern": "horizontal"},  # Onda horizontal
+	{"type": "blaster_wave", "count": 3, "delay": 0.6, "pattern": "random"},     # Aleatória
+	{"type": "blaster_wave", "count": 3, "delay": 0.6, "pattern": "vertical"},    # Vertical
+	{"type": "blaster_wave", "count": 3, "delay": 0.6, "pattern": "horizontal"},  # Onda horizontal
+	{"type": "blaster_wave", "count": 4, "delay": 0.8, "pattern": "diagonal"},     # Diagonal
+	{"type": "blaster_wave", "count": 3, "delay": 0.6, "pattern": "vertical"},    # Vertical
+	{"type": "blaster_wave", "count": 4, "delay": 0.8, "pattern": "diagonal"},     # Diagonal
+	{"type": "blaster_wave", "count": 3, "delay": 0.6, "pattern": "horizontal"},  # Onda horizontal
+	{"type": "blaster_wave", "count": 3, "delay": 0.6, "pattern": "random"},     # Aleatória
+	{"type": "blaster_wave", "count": 3, "delay": 0.6, "pattern": "vertical"},    # Vertical
+	{"type": "blaster_wave", "count": 3, "delay": 0.6, "pattern": "horizontal"},  # Onda horizontal
+	{"type": "blaster_wave", "count": 4, "delay": 0.8, "pattern": "diagonal"},     # Diagonal
+	{"type": "blaster_wave", "count": 3, "delay": 0.6, "pattern": "vertical"},    # Vertical
+	{"type": "blaster_wave", "count": 4, "delay": 0.8, "pattern": "diagonal"},     # Diagonal
+	{"type": "blaster_wave", "count": 3, "delay": 0.6, "pattern": "horizontal"},  # Onda horizontal
+	{"type": "blaster_wave", "count": 3, "delay": 0.6, "pattern": "random"},     # Aleatória
+	{"type": "blaster_wave", "count": 3, "delay": 0.6, "pattern": "vertical"},    # Vertical
+	{"type": "blaster_wave", "count": 3, "delay": 0.6, "pattern": "horizontal"},  # Onda horizontal
+	{"type": "blaster_wave", "count": 4, "delay": 0.8, "pattern": "diagonal"},     # Diagonal
+	{"type": "blaster_wave", "count": 3, "delay": 0.6, "pattern": "vertical"},    # Vertical
+	{"type": "blaster_wave", "count": 4, "delay": 0.8, "pattern": "diagonal"},     # Diagonal
+	{"type": "blaster_wave", "count": 3, "delay": 0.6, "pattern": "horizontal"},  # Onda horizontal
+	{"type": "blaster_wave", "count": 3, "delay": 0.6, "pattern": "random"},     # Aleatória
+	{"type": "blaster_wave", "count": 3, "delay": 0.6, "pattern": "vertical"},    # Vertical
+	{"type": "blaster_wave", "count": 3, "delay": 0.6, "pattern": "horizontal"},  # Onda horizontal
+	{"type": "blaster_wave", "count": 4, "delay": 0.8, "pattern": "diagonal"},     # Diagonal
+	{"type": "blaster_wave", "count": 3, "delay": 0.6, "pattern": "vertical"},    # Vertical
+	{"type": "blaster_wave", "count": 4, "delay": 0.8, "pattern": "diagonal"},     # Diagonal
+	{"type": "blaster_wave", "count": 3, "delay": 0.6, "pattern": "horizontal"},  # Onda horizontal
+	{"type": "blaster_wave", "count": 3, "delay": 0.6, "pattern": "random"},     # Aleatória
+	{"type": "blaster_wave", "count": 3, "delay": 0.6, "pattern": "vertical"},    # Vertical
+	{"type": "blaster_wave", "count": 3, "delay": 0.6, "pattern": "horizontal"},  # Onda horizontal
+	{"type": "blaster_wave", "count": 4, "delay": 0.8, "pattern": "diagonal"},     # Diagonal
+	{"type": "blaster_wave", "count": 3, "delay": 0.6, "pattern": "vertical"},    # Vertical
+	{"type": "blaster_wave", "count": 4, "delay": 0.8, "pattern": "diagonal"},     # Diagonal
+	{"type": "blaster_wave", "count": 3, "delay": 0.6, "pattern": "horizontal"},  # Onda horizontal
+	{"type": "blaster_wave", "count": 3, "delay": 0.6, "pattern": "random"},     # Aleatória
+	{"type": "blaster_wave", "count": 3, "delay": 0.6, "pattern": "vertical"},    # Vertical
+	{"type": "blaster_wave", "count": 3, "delay": 0.6, "pattern": "horizontal"},  # Onda horizontal
+	{"type": "blaster_wave", "count": 4, "delay": 0.8, "pattern": "diagonal"},     # Diagonal
+	{"type": "blaster_wave", "count": 3, "delay": 0.6, "pattern": "vertical"},    # Vertical
+	{"type": "blaster_wave", "count": 4, "delay": 0.8, "pattern": "diagonal"},     # Diagonal
+	{"type": "blaster_wave", "count": 3, "delay": 0.6, "pattern": "horizontal"},  # Onda horizontal
+	{"type": "blaster_wave", "count": 3, "delay": 0.6, "pattern": "random"},     # Aleatória
+	{"type": "blaster_wave", "count": 3, "delay": 0.6, "pattern": "vertical"},    # Vertical
+	{"type": "blaster_wave", "count": 3, "delay": 0.6, "pattern": "horizontal"},  # Onda horizontal
+	{"type": "blaster_wave", "count": 4, "delay": 0.8, "pattern": "diagonal"},     # Diagonal
+	{"type": "blaster_wave", "count": 3, "delay": 0.6, "pattern": "vertical"},    # Vertical
+	{"type": "blaster_wave", "count": 4, "delay": 0.8, "pattern": "diagonal"},     # Diagonal
+	{"type": "blaster_wave", "count": 3, "delay": 0.6, "pattern": "horizontal"},  # Onda horizontal
+	{"type": "blaster_wave", "count": 3, "delay": 0.6, "pattern": "random"},     # Aleatória
+	{"type": "blaster_wave", "count": 3, "delay": 0.6, "pattern": "vertical"},    # Vertical
+	{"type": "blaster_wave", "count": 3, "delay": 0.6, "pattern": "horizontal"},  # Onda horizontal
+	{"type": "blaster_wave", "count": 4, "delay": 0.8, "pattern": "diagonal"},     # Diagonal
+	{"type": "blaster_wave", "count": 3, "delay": 0.6, "pattern": "vertical"},    # Vertical
+	{"type": "blaster_wave", "count": 4, "delay": 0.8, "pattern": "diagonal"},     # Diagonal
+	{"type": "blaster_wave", "count": 3, "delay": 0.6, "pattern": "horizontal"},  # Onda horizontal
+	{"type": "blaster_wave", "count": 3, "delay": 0.6, "pattern": "random"},     # Aleatória
+	{"type": "blaster_wave", "count": 3, "delay": 0.6, "pattern": "vertical"},    # Vertical
+	{"type": "blaster_wave", "count": 3, "delay": 0.6, "pattern": "horizontal"},  # Onda horizontal
+	{"type": "blaster_wave", "count": 4, "delay": 0.8, "pattern": "diagonal"},     # Diagonal
+	{"type": "blaster_wave", "count": 3, "delay": 0.6, "pattern": "vertical"},    # Vertical
+	{"type": "blaster_wave", "count": 4, "delay": 0.8, "pattern": "diagonal"},     # Diagonal
+	{"type": "blaster_wave", "count": 3, "delay": 0.6, "pattern": "horizontal"},  # Onda horizontal
+	{"type": "blaster_wave", "count": 3, "delay": 0.6, "pattern": "random"},     # Aleatória
+	{"type": "blaster_wave", "count": 3, "delay": 0.6, "pattern": "vertical"},    # Vertical
+	{"type": "blaster_wave", "count": 3, "delay": 0.6, "pattern": "horizontal"},  # Onda horizontal
+	{"type": "blaster_wave", "count": 4, "delay": 0.8, "pattern": "diagonal"},     # Diagonal
+	{"type": "blaster_wave", "count": 3, "delay": 0.6, "pattern": "vertical"},    # Vertical
+	{"type": "blaster_wave", "count": 4, "delay": 0.8, "pattern": "diagonal"},     # Diagonal
+	{"type": "blaster_wave", "count": 3, "delay": 0.6, "pattern": "horizontal"},  # Onda horizontal
+	{"type": "blaster_wave", "count": 3, "delay": 0.6, "pattern": "random"},     # Aleatória
+	{"type": "blaster_wave", "count": 3, "delay": 0.6, "pattern": "vertical"},    # Vertical
+	{"type": "blaster_wave", "count": 3, "delay": 0.6, "pattern": "horizontal"},  # Onda horizontal
+	{"type": "blaster_wave", "count": 4, "delay": 0.8, "pattern": "diagonal"},     # Diagonal
+	{"type": "blaster_wave", "count": 3, "delay": 0.6, "pattern": "vertical"},    # Vertical
+	{"type": "blaster_wave", "count": 4, "delay": 0.8, "pattern": "diagonal"},     # Diagonal
+	{"type": "blaster_wave", "count": 3, "delay": 0.6, "pattern": "horizontal"},  # Onda horizontal
+	{"type": "blaster_wave", "count": 3, "delay": 0.6, "pattern": "random"},     # Aleatória
+	{"type": "blaster_wave", "count": 3, "delay": 0.6, "pattern": "vertical"},    # Vertical
+	{"type": "blaster_wave", "count": 3, "delay": 0.6, "pattern": "horizontal"},  # Onda horizontal
+	{"type": "blaster_wave", "count": 4, "delay": 0.8, "pattern": "diagonal"},     # Diagonal
+	{"type": "blaster_wave", "count": 3, "delay": 0.6, "pattern": "vertical"},    # Vertical
+	{"type": "blaster_wave", "count": 4, "delay": 0.8, "pattern": "diagonal"},     # Diagonal
+	{"type": "blaster_wave", "count": 3, "delay": 0.6, "pattern": "horizontal"},  # Onda horizontal
+	{"type": "blaster_wave", "count": 3, "delay": 0.6, "pattern": "random"},     # Aleatória
+	{"type": "blaster_wave", "count": 3, "delay": 0.6, "pattern": "vertical"},    # Vertical
+	{"type": "blaster_wave", "count": 3, "delay": 0.6, "pattern": "horizontal"},  # Onda horizontal
+	{"type": "blaster_wave", "count": 4, "delay": 0.8, "pattern": "diagonal"},     # Diagonal
+	{"type": "blaster_wave", "count": 3, "delay": 0.6, "pattern": "vertical"},    # Vertical
+	{"type": "blaster_wave", "count": 4, "delay": 0.8, "pattern": "diagonal"},     # Diagonal
+	{"type": "blaster_wave", "count": 3, "delay": 0.6, "pattern": "horizontal"},  # Onda horizontal
+	{"type": "blaster_wave", "count": 3, "delay": 0.6, "pattern": "random"},     # Aleatória
+	{"type": "blaster_wave", "count": 3, "delay": 0.6, "pattern": "vertical"},    # Vertical
+	{"type": "blaster_wave", "count": 3, "delay": 0.6, "pattern": "horizontal"},  # Onda horizontal
+	{"type": "blaster_wave", "count": 4, "delay": 0.8, "pattern": "diagonal"},     # Diagonal
+	{"type": "blaster_wave", "count": 3, "delay": 0.6, "pattern": "vertical"},    # Vertical
+	{"type": "blaster_wave", "count": 4, "delay": 0.8, "pattern": "diagonal"},     # Diagonal
+	{"type": "blaster_wave", "count": 3, "delay": 0.6, "pattern": "horizontal"},  # Onda horizontal
+	{"type": "blaster_wave", "count": 3, "delay": 0.6, "pattern": "random"},     # Aleatória
+	{"type": "blaster_wave", "count": 3, "delay": 0.6, "pattern": "vertical"},    # Vertical
+	{"type": "blaster_wave", "count": 3, "delay": 0.6, "pattern": "horizontal"},  # Onda horizontal
+	{"type": "blaster_wave", "count": 4, "delay": 0.8, "pattern": "diagonal"},     # Diagonal
+	{"type": "blaster_wave", "count": 3, "delay": 0.6, "pattern": "vertical"},    # Vertical
+	{"type": "blaster_wave", "count": 4, "delay": 0.8, "pattern": "diagonal"},     # Diagonal
+	{"type": "blaster_wave", "count": 3, "delay": 0.6, "pattern": "horizontal"},  # Onda horizontal
+	{"type": "blaster_wave", "count": 3, "delay": 0.6, "pattern": "random"},     # Aleatória
+	{"type": "blaster_wave", "count": 3, "delay": 0.6, "pattern": "vertical"},    # Vertical
+	{"type": "blaster_wave", "count": 3, "delay": 0.6, "pattern": "horizontal"},  # Onda horizontal
+	{"type": "blaster_wave", "count": 4, "delay": 0.8, "pattern": "diagonal"},     # Diagonal
+	{"type": "blaster_wave", "count": 3, "delay": 0.6, "pattern": "vertical"},    # Vertical
+	{"type": "blaster_wave", "count": 4, "delay": 0.8, "pattern": "diagonal"},     # Diagonal
+	{"type": "blaster_wave", "count": 3, "delay": 0.6, "pattern": "horizontal"},  # Onda horizontal
+	{"type": "blaster_wave", "count": 3, "delay": 0.6, "pattern": "random"},     # Aleatória
+	{"type": "blaster_wave", "count": 3, "delay": 0.6, "pattern": "vertical"},    # Vertical
+	{"type": "blaster_wave", "count": 3, "delay": 0.6, "pattern": "horizontal"},  # Onda horizontal
+	{"type": "blaster_wave", "count": 4, "delay": 0.8, "pattern": "diagonal"},     # Diagonal
+	{"type": "blaster_wave", "count": 3, "delay": 0.6, "pattern": "vertical"},    # Vertical
+	{"type": "blaster_wave", "count": 4, "delay": 0.8, "pattern": "diagonal"},     # Diagonal
+	{"type": "blaster_wave", "count": 3, "delay": 0.6, "pattern": "horizontal"},  # Onda horizontal
+	{"type": "blaster_wave", "count": 3, "delay": 0.6, "pattern": "random"},     # Aleatória
+	{"type": "blaster_wave", "count": 3, "delay": 0.6, "pattern": "vertical"},    # Vertical
+	{"type": "blaster_wave", "count": 3, "delay": 0.6, "pattern": "horizontal"},  # Onda horizontal
+	{"type": "blaster_wave", "count": 4, "delay": 0.8, "pattern": "diagonal"},     # Diagonal
+	{"type": "blaster_wave", "count": 3, "delay": 0.6, "pattern": "vertical"},    # Vertical
+	{"type": "blaster_wave", "count": 4, "delay": 0.8, "pattern": "diagonal"},     # Diagonal
+	{"type": "blaster_wave", "count": 3, "delay": 0.6, "pattern": "horizontal"},  # Onda horizontal
+	{"type": "blaster_wave", "count": 3, "delay": 0.6, "pattern": "random"},     # Aleatória
+	{"type": "blaster_wave", "count": 3, "delay": 0.6, "pattern": "vertical"},    # Vertical
+	{"type": "blaster_wave", "count": 3, "delay": 0.6, "pattern": "horizontal"},  # Onda horizontal
+	{"type": "blaster_wave", "count": 4, "delay": 0.8, "pattern": "diagonal"},     # Diagonal
+	{"type": "blaster_wave", "count": 3, "delay": 0.6, "pattern": "vertical"},    # Vertical
+	{"type": "blaster_wave", "count": 4, "delay": 0.8, "pattern": "diagonal"},     # Diagonal
+	{"type": "blaster_wave", "count": 3, "delay": 0.6, "pattern": "horizontal"},  # Onda horizontal
+	{"type": "blaster_wave", "count": 3, "delay": 0.6, "pattern": "random"},     # Aleatória
+	{"type": "blaster_wave", "count": 3, "delay": 0.6, "pattern": "vertical"},    # Vertical
+	{"type": "blaster_wave", "count": 3, "delay": 0.6, "pattern": "horizontal"},  # Onda horizontal
+	{"type": "blaster_wave", "count": 4, "delay": 0.8, "pattern": "diagonal"},     # Diagonal
+	{"type": "blaster_wave", "count": 3, "delay": 0.6, "pattern": "vertical"},    # Vertical
+	{"type": "blaster_wave", "count": 4, "delay": 0.8, "pattern": "diagonal"},     # Diagonal
+	{"type": "blaster_wave", "count": 3, "delay": 0.6, "pattern": "horizontal"},  # Onda horizontal
+	{"type": "blaster_wave", "count": 3, "delay": 0.6, "pattern": "random"},     # Aleatória
+	{"type": "blaster_wave", "count": 3, "delay": 0.6, "pattern": "vertical"},    # Vertical
+	{"type": "blaster_wave", "count": 3, "delay": 0.6, "pattern": "horizontal"},  # Onda horizontal
+	{"type": "blaster_wave", "count": 4, "delay": 0.8, "pattern": "diagonal"},     # Diagonal
+	{"type": "blaster_wave", "count": 3, "delay": 0.6, "pattern": "vertical"},    # Vertical
+	{"type": "blaster_wave", "count": 4, "delay": 0.8, "pattern": "diagonal"},     # Diagonal
+	{"type": "blaster_wave", "count": 3, "delay": 0.6, "pattern": "horizontal"},  # Onda horizontal
+	{"type": "blaster_wave", "count": 3, "delay": 0.6, "pattern": "random"},     # Aleatória
+	{"type": "blaster_wave", "count": 3, "delay": 0.6, "pattern": "vertical"},    # Vertical
+	{"type": "blaster_wave", "count": 3, "delay": 0.6, "pattern": "horizontal"},  # Onda horizontal
+	{"type": "blaster_wave", "count": 4, "delay": 0.8, "pattern": "diagonal"},     # Diagonal
+	{"type": "blaster_wave", "count": 3, "delay": 0.6, "pattern": "vertical"},    # Vertical
+	{"type": "blaster_wave", "count": 4, "delay": 0.8, "pattern": "diagonal"},     # Diagonal
+	{"type": "blaster_wave", "count": 3, "delay": 0.6, "pattern": "horizontal"},  # Onda horizontal
+	{"type": "blaster_wave", "count": 3, "delay": 0.6, "pattern": "random"},     # Aleatória
+	{"type": "blaster_wave", "count": 3, "delay": 0.6, "pattern": "vertical"},    # Vertical
+	{"type": "blaster_wave", "count": 3, "delay": 0.6, "pattern": "horizontal"},  # Onda horizontal
+	{"type": "blaster_wave", "count": 4, "delay": 0.8, "pattern": "diagonal"},     # Diagonal
+	{"type": "blaster_wave", "count": 3, "delay": 0.6, "pattern": "vertical"},    # Vertical
+	{"type": "blaster_wave", "count": 4, "delay": 0.8, "pattern": "diagonal"},     # Diagonal
+	{"type": "blaster_wave", "count": 3, "delay": 0.6, "pattern": "horizontal"},  # Onda horizontal
+	{"type": "blaster_wave", "count": 3, "delay": 0.6, "pattern": "random"},     # Aleatória
+	{"type": "blaster_wave", "count": 3, "delay": 0.6, "pattern": "vertical"},    # Vertical
+	{"type": "blaster_wave", "count": 3, "delay": 0.6, "pattern": "horizontal"},  # Onda horizontal
+	{"type": "blaster_wave", "count": 4, "delay": 0.8, "pattern": "diagonal"},     # Diagonal
+	{"type": "blaster_wave", "count": 3, "delay": 0.6, "pattern": "vertical"},    # Vertical
+	{"type": "blaster_wave", "count": 4, "delay": 0.8, "pattern": "diagonal"},     # Diagonal
+	{"type": "blaster_wave", "count": 3, "delay": 0.6, "pattern": "horizontal"},  # Onda horizontal
+	{"type": "blaster_wave", "count": 3, "delay": 0.6, "pattern": "random"},     # Aleatória
+	{"type": "blaster_wave", "count": 3, "delay": 0.6, "pattern": "vertical"},    # Vertical
+	{"type": "blaster_wave", "count": 3, "delay": 0.6, "pattern": "horizontal"},  # Onda horizontal
+	{"type": "blaster_wave", "count": 4, "delay": 0.8, "pattern": "diagonal"},     # Diagonal
+	{"type": "blaster_wave", "count": 3, "delay": 0.6, "pattern": "vertical"},    # Vertical
+	{"type": "blaster_wave", "count": 4, "delay": 0.8, "pattern": "diagonal"},     # Diagonal
+	{"type": "blaster_wave", "count": 3, "delay": 0.6, "pattern": "horizontal"},  # Onda horizontal
+	{"type": "blaster_wave", "count": 3, "delay": 0.6, "pattern": "random"},     # Aleatória
+	{"type": "blaster_wave", "count": 3, "delay": 0.6, "pattern": "vertical"},    # Vertical
+	{"type": "blaster_wave", "count": 3, "delay": 0.6, "pattern": "horizontal"},  # Onda horizontal
+	{"type": "blaster_wave", "count": 4, "delay": 0.8, "pattern": "diagonal"},     # Diagonal
+	{"type": "blaster_wave", "count": 3, "delay": 0.6, "pattern": "vertical"},    # Vertical
+	{"type": "blaster_wave", "count": 4, "delay": 0.8, "pattern": "diagonal"},     # Diagonal
+	{"type": "blaster_wave", "count": 3, "delay": 0.6, "pattern": "horizontal"},  # Onda horizontal
+	{"type": "blaster_wave", "count": 3, "delay": 0.6, "pattern": "random"},     # Aleatória
+	{"type": "blaster_wave", "count": 3, "delay": 0.6, "pattern": "vertical"},    # Vertical
 ]
 
 var current_phase: int = 0
@@ -29,10 +218,20 @@ var is_attacking: bool = false
 
 @onready var spawner = get_parent().get_node("BlasterSpawner")
 
-func _ready():
-	start_battle()
+# Variável para garantir que a inicialização rode só uma vez
+var foi_inicializado = false
 
-func start_battle():
+func _ready():
+	visibility_changed.connect(_on_visibility_changed)
+	if visible:
+		inicializar()
+
+func _on_visibility_changed():
+	if visible and not foi_inicializado:
+		inicializar()
+
+func inicializar():
+	foi_inicializado = true
 	execute_next_phase()
 
 func execute_next_phase():

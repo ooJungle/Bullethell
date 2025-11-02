@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=4 uid="uid://dgvk00ax3rrbo"]
+[gd_scene load_steps=30 format=4 uid="uid://cyav1pug64gto"]
 
 [ext_resource type="Script" uid="uid://bqle0el6yjirx" path="res://Cenas/Fases/fase_0.gd" id="1_l7uc1"]
 [ext_resource type="PackedScene" uid="uid://c05h55i7hjr20" path="res://UI_UX/fundo.tscn" id="1_setcl"]
@@ -6,18 +6,21 @@
 [ext_resource type="Texture2D" uid="uid://btly5qbyu14jv" path="res://Sprites/teste tiles.png" id="3_qxyfa"]
 [ext_resource type="PackedScene" uid="uid://cw5ic42v3wep7" path="res://Cenas/player.tscn" id="4_2olo2"]
 [ext_resource type="PackedScene" uid="uid://d26majiwami8u" path="res://Cenas/Menu/PauseMenu.tscn" id="5_wbwhm"]
-[ext_resource type="PackedScene" uid="uid://cdqk51gsmwxbg" path="res://Cenas/Portal_branco.tscn" id="6_8l1lx"]
-[ext_resource type="PackedScene" uid="uid://c77pyqh2ugfxp" path="res://Portal_azul.tscn" id="7_gfvjn"]
+[ext_resource type="PackedScene" uid="uid://c11schcb8u7iy" path="res://Cenas/Portal_branco.tscn" id="6_8l1lx"]
+[ext_resource type="PackedScene" uid="uid://c77pyqh2ugfxp" path="res://Cenas/Portal_azul.tscn" id="7_gfvjn"]
 [ext_resource type="PackedScene" uid="uid://b2pnn1csceu83" path="res://UI_UX/mira.tscn" id="8_3tumv"]
 [ext_resource type="Script" uid="uid://bc6goug6s4slk" path="res://Cenas/portal_branco.gd" id="8_kwsdg"]
-[ext_resource type="Script" uid="uid://cpx7qjv5egdce" path="res://portal_azulasdasdasdasd.gd" id="10_4uowy"]
-[ext_resource type="Script" uid="uid://b5vat081jhy6k" path="res://portal_azul312431233123123123123.gd" id="10_gmavx"]
-[ext_resource type="Script" uid="uid://divnw7xkn5nty" path="res://portal_azul3212334924830942389.gd" id="12_2kwqn"]
+[ext_resource type="Script" uid="uid://cpx7qjv5egdce" path="res://Cenas/portal_azul6.gd" id="10_4uowy"]
+[ext_resource type="Script" uid="uid://b5vat081jhy6k" path="res://Cenas/portal_azul5.gd" id="10_gmavx"]
+[ext_resource type="Script" uid="uid://divnw7xkn5nty" path="res://Cenas/portal_azul4.gd" id="12_2kwqn"]
 [ext_resource type="PackedScene" uid="uid://xi2hrnn8tbmj" path="res://Cenas/buraco_negro.tscn" id="14_ciat0"]
 [ext_resource type="PackedScene" uid="uid://bqvstnda7b8kd" path="res://Cenas/Inimigos/inimigo_1.tscn" id="15_2gjbv"]
 [ext_resource type="PackedScene" uid="uid://2gn7h1kpcbh8" path="res://Cenas/Inimigos/inimigo_polvo.tscn" id="16_ciat0"]
+[ext_resource type="Script" uid="uid://3t3oktpmpjtt" path="res://Cenas/Fases/blaster_spawner.gd" id="17_ve75a"]
+[ext_resource type="PackedScene" uid="uid://nktj48qc0r0f" path="res://Cenas/Projeteis/Blaster.tscn" id="18_8de20"]
 [ext_resource type="PackedScene" uid="uid://bu7otdeikbwcr" path="res://Cenas/Inimigos/inimigo_laser.tscn" id="18_if8b4"]
 [ext_resource type="PackedScene" uid="uid://btwm7v5ywkigl" path="res://Cenas/Inimigos/inimigo_4.tscn" id="19_8de20"]
+[ext_resource type="Script" uid="uid://be3talp5xho6t" path="res://Cenas/Fases/battle_manager.gd" id="19_oy6jg"]
 [ext_resource type="PackedScene" uid="uid://buw23jdf15r6e" path="res://Cenas/Inimigos/inimigo_2.tscn" id="20_oy6jg"]
 [ext_resource type="PackedScene" uid="uid://c353olxkynf22" path="res://Cenas/buraco_de_minhoca.tscn" id="22_ve75a"]
 
@@ -156,8 +159,8 @@ texture = ExtResource("3_qxyfa")
 15:1/0 = 0
 
 [sub_resource type="TileSet" id="TileSet_pxeo3"]
-physics_layer_0/collision_layer = 255
-physics_layer_0/collision_mask = 255
+physics_layer_0/collision_layer = 223
+physics_layer_0/collision_mask = 223
 navigation_layer_0/layers = 255
 sources/0 = SubResource("TileSetAtlasSource_swkqp")
 sources/1 = SubResource("TileSetAtlasSource_6kjqg")
@@ -180,8 +183,8 @@ tile_set = SubResource("TileSet_pxeo3")
 
 [node name="player" parent="." instance=ExtResource("4_2olo2")]
 position = Vector2(7, 62)
-collision_layer = 1
-collision_mask = 1
+collision_layer = 33
+collision_mask = 33
 safe_margin = 0.08
 
 [node name="Camera2D" type="Camera2D" parent="player"]
@@ -206,7 +209,6 @@ metadata/_edit_use_anchors_ = true
 
 [node name="Portal_branco" parent="." instance=ExtResource("6_8l1lx")]
 position = Vector2(581, 0)
-script = ExtResource("8_kwsdg")
 
 [node name="Portal_azul" parent="." instance=ExtResource("7_gfvjn")]
 position = Vector2(1668, 2283)
@@ -224,133 +226,160 @@ script = ExtResource("8_kwsdg")
 position = Vector2(594, 1066)
 script = ExtResource("12_2kwqn")
 
-[node name="inimigo_4" parent="." node_paths=PackedStringArray("player") instance=ExtResource("19_8de20")]
+[node name="Fase3" type="Node2D" parent="."]
+
+[node name="inimigo_4" parent="Fase3" node_paths=PackedStringArray("player") instance=ExtResource("19_8de20")]
 visible = false
 position = Vector2(4435, 340)
-player = NodePath("../player")
+player = NodePath("../../player")
 
-[node name="inimigo_5" parent="." node_paths=PackedStringArray("player") instance=ExtResource("20_oy6jg")]
+[node name="inimigo_5" parent="Fase3" node_paths=PackedStringArray("player") instance=ExtResource("20_oy6jg")]
 visible = false
 position = Vector2(5430, 321)
-player = NodePath("../player")
+player = NodePath("../../player")
 
-[node name="inimigo_9" parent="." node_paths=PackedStringArray("player") instance=ExtResource("20_oy6jg")]
+[node name="inimigo_9" parent="Fase3" node_paths=PackedStringArray("player") instance=ExtResource("20_oy6jg")]
 visible = false
 position = Vector2(4439, 1326)
-player = NodePath("../player")
+player = NodePath("../../player")
 
-[node name="inimigo_10" parent="." node_paths=PackedStringArray("player") instance=ExtResource("20_oy6jg")]
+[node name="inimigo_10" parent="Fase3" node_paths=PackedStringArray("player") instance=ExtResource("20_oy6jg")]
 visible = false
 position = Vector2(4493, 2312)
-player = NodePath("../player")
+player = NodePath("../../player")
 
-[node name="inimigo_11" parent="." node_paths=PackedStringArray("player") instance=ExtResource("20_oy6jg")]
+[node name="inimigo_11" parent="Fase3" node_paths=PackedStringArray("player") instance=ExtResource("20_oy6jg")]
 visible = false
 position = Vector2(5350, 2301)
-player = NodePath("../player")
+player = NodePath("../../player")
 
-[node name="inimigo_12" parent="." node_paths=PackedStringArray("player") instance=ExtResource("19_8de20")]
+[node name="inimigo_12" parent="Fase3" node_paths=PackedStringArray("player") instance=ExtResource("19_8de20")]
 visible = false
 position = Vector2(4548, 2312)
-player = NodePath("../player")
+player = NodePath("../../player")
 
-[node name="inimigo_13" parent="." node_paths=PackedStringArray("player") instance=ExtResource("19_8de20")]
+[node name="inimigo_13" parent="Fase3" node_paths=PackedStringArray("player") instance=ExtResource("19_8de20")]
 visible = false
 position = Vector2(5260, 2305)
-player = NodePath("../player")
+player = NodePath("../../player")
 
-[node name="inimigo_15" parent="." node_paths=PackedStringArray("player") instance=ExtResource("19_8de20")]
+[node name="inimigo_15" parent="Fase3" node_paths=PackedStringArray("player") instance=ExtResource("19_8de20")]
 visible = false
 position = Vector2(4510, 1328)
-player = NodePath("../player")
+player = NodePath("../../player")
 
 [node name="Portal_azul5" parent="." instance=ExtResource("7_gfvjn")]
 position = Vector2(111, 1389)
 script = ExtResource("10_gmavx")
 
-[node name="buraco_negro" parent="." node_paths=PackedStringArray("wormhole_exit") instance=ExtResource("14_ciat0")]
+[node name="Fase2" type="Node2D" parent="."]
+
+[node name="buraco_negro" parent="Fase2" node_paths=PackedStringArray("wormhole_exit") instance=ExtResource("14_ciat0")]
 visible = false
 position = Vector2(3323, 1021)
 wormhole_exit = NodePath("../buraco_de_mihoca")
 
-[node name="buraco_de_mihoca" parent="." instance=ExtResource("22_ve75a")]
+[node name="buraco_de_mihoca" parent="Fase2" instance=ExtResource("22_ve75a")]
 visible = false
 position = Vector2(3333, -5)
 
-[node name="Inimigo laser" parent="." node_paths=PackedStringArray("player") instance=ExtResource("18_if8b4")]
+[node name="buraco_de_mihoca2" parent="Fase2" instance=ExtResource("22_ve75a")]
+visible = false
+position = Vector2(3333, 1949)
+
+[node name="Inimigo laser" parent="Fase2" node_paths=PackedStringArray("player") instance=ExtResource("18_if8b4")]
 visible = false
 position = Vector2(3665, 297)
-player = NodePath("../player")
+player = NodePath("../../player")
 
-[node name="Inimigo laser2" parent="." node_paths=PackedStringArray("player") instance=ExtResource("18_if8b4")]
+[node name="Inimigo laser5" parent="Fase2" node_paths=PackedStringArray("player") instance=ExtResource("18_if8b4")]
+visible = false
+position = Vector2(2866, 300)
+player = NodePath("../../player")
+
+[node name="Inimigo laser2" parent="Fase2" node_paths=PackedStringArray("player") instance=ExtResource("18_if8b4")]
 visible = false
 position = Vector2(2876, 1289)
-player = NodePath("../player")
+player = NodePath("../../player")
 
-[node name="Inimigo laser3" parent="." node_paths=PackedStringArray("player") instance=ExtResource("18_if8b4")]
+[node name="Inimigo laser3" parent="Fase2" node_paths=PackedStringArray("player") instance=ExtResource("18_if8b4")]
 visible = false
 position = Vector2(3708, 1289)
-player = NodePath("../player")
+player = NodePath("../../player")
 
-[node name="Inimigo laser4" parent="." node_paths=PackedStringArray("player") instance=ExtResource("18_if8b4")]
+[node name="Inimigo laser4" parent="Fase2" node_paths=PackedStringArray("player") instance=ExtResource("18_if8b4")]
 visible = false
 position = Vector2(2827, 2299)
-player = NodePath("../player")
+player = NodePath("../../player")
 
-[node name="Inimigo laser5" parent="." node_paths=PackedStringArray("player") instance=ExtResource("18_if8b4")]
-visible = false
-position = Vector2(3384, 2311)
-player = NodePath("../player")
-
-[node name="Inimigo laser6" parent="." node_paths=PackedStringArray("player") instance=ExtResource("18_if8b4")]
+[node name="Inimigo laser6" parent="Fase2" node_paths=PackedStringArray("player") instance=ExtResource("18_if8b4")]
 visible = false
 position = Vector2(3696, 2323)
-player = NodePath("../player")
+player = NodePath("../../player")
+
+[node name="BlasterSpawner" type="Node2D" parent="Fase2"]
+visible = false
+script = ExtResource("17_ve75a")
+blaster_scene = ExtResource("18_8de20")
+
+[node name="BattleManager" type="Node2D" parent="Fase2"]
+visible = false
+script = ExtResource("19_oy6jg")
 
 [node name="Portal_azul6" parent="." instance=ExtResource("7_gfvjn")]
 position = Vector2(-356, 1072)
 script = ExtResource("10_4uowy")
 
-[node name="inimigo_1" parent="." node_paths=PackedStringArray("player") instance=ExtResource("15_2gjbv")]
+[node name="Fase1" type="Node2D" parent="."]
+
+[node name="inimigo_1" parent="Fase1" node_paths=PackedStringArray("player") instance=ExtResource("15_2gjbv")]
 visible = false
 position = Vector2(2121, 309)
-player = NodePath("../player")
+player = NodePath("../../player")
 
-[node name="inimigo_polvo" parent="." node_paths=PackedStringArray("player") instance=ExtResource("16_ciat0")]
+[node name="inimigo_2" parent="Fase1" node_paths=PackedStringArray("player") instance=ExtResource("15_2gjbv")]
+visible = false
+position = Vector2(1337, 309)
+player = NodePath("../../player")
+
+[node name="inimigo_polvo" parent="Fase1" node_paths=PackedStringArray("player") instance=ExtResource("16_ciat0")]
 visible = false
 position = Vector2(1284, 1288)
-player = NodePath("../player")
+player = NodePath("../../player")
 
-[node name="inimigo_polvo2" parent="." node_paths=PackedStringArray("player") instance=ExtResource("16_ciat0")]
+[node name="inimigo_polvo2" parent="Fase1" node_paths=PackedStringArray("player") instance=ExtResource("16_ciat0")]
 visible = false
 position = Vector2(2098, 1297)
-player = NodePath("../player")
+player = NodePath("../../player")
 
-[node name="inimigo_3" parent="." node_paths=PackedStringArray("player") instance=ExtResource("15_2gjbv")]
+[node name="inimigo_3" parent="Fase1" node_paths=PackedStringArray("player") instance=ExtResource("15_2gjbv")]
 visible = false
 position = Vector2(2165, 2281)
-player = NodePath("../player")
+player = NodePath("../../player")
 
-[node name="inimigo_polvo4" parent="." node_paths=PackedStringArray("player") instance=ExtResource("16_ciat0")]
+[node name="inimigo_polvo4" parent="Fase1" node_paths=PackedStringArray("player") instance=ExtResource("16_ciat0")]
 visible = false
 position = Vector2(2080, 2288)
-player = NodePath("../player")
+player = NodePath("../../player")
 
-[node name="inimigo_polvo5" parent="." node_paths=PackedStringArray("player") instance=ExtResource("16_ciat0")]
+[node name="inimigo_polvo5" parent="Fase1" node_paths=PackedStringArray("player") instance=ExtResource("16_ciat0")]
 visible = false
 position = Vector2(1309, 2276)
-player = NodePath("../player")
+player = NodePath("../../player")
 
 [node name="Mira" parent="." instance=ExtResource("8_3tumv")]
 position = Vector2(598.563, 285.347)
 
 [node name="Timer" type="Timer" parent="."]
-wait_time = 300.0
+wait_time = 600.0
 
 [connection signal="body_entered" from="Portal_branco" to="Portal_branco" method="_on_body_entered"]
 [connection signal="body_entered" from="Portal_azul" to="Portal_azul" method="_on_body_entered"]
+[connection signal="body_entered" from="Portal_azul" to="Portal_azul" method="_on_portal_azul_body_entered"]
 [connection signal="body_entered" from="Portal_azul2" to="Portal_azul2" method="_on_body_entered"]
+[connection signal="body_entered" from="Portal_azul2" to="Portal_azul2" method="_on_portal_azul_2_body_entered"]
 [connection signal="body_entered" from="Portal_azul3" to="Portal_azul3" method="_on_body_entered"]
+[connection signal="body_entered" from="Portal_azul3" to="Portal_azul3" method="_on_portal_azul_3_body_entered"]
 [connection signal="body_entered" from="Portal_azul4" to="Portal_azul4" method="_on_body_entered"]
 [connection signal="body_entered" from="Portal_azul5" to="Portal_azul5" method="_on_body_entered"]
 [connection signal="body_entered" from="Portal_azul6" to="Portal_azul6" method="_on_body_entered"]
