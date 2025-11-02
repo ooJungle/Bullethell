@@ -374,12 +374,12 @@ position = Vector2(598.563, 285.347)
 wait_time = 600.0
 
 [connection signal="body_entered" from="Portal_branco" to="Portal_branco" method="_on_body_entered"]
-[connection signal="body_entered" from="Portal_azul" to="Portal_azul" method="_on_body_entered"]
 [connection signal="body_entered" from="Portal_azul" to="Portal_azul" method="_on_portal_azul_body_entered"]
-[connection signal="body_entered" from="Portal_azul2" to="Portal_azul2" method="_on_body_entered"]
+[connection signal="body_entered" from="Portal_azul" to="Portal_azul" method="_on_body_entered"]
 [connection signal="body_entered" from="Portal_azul2" to="Portal_azul2" method="_on_portal_azul_2_body_entered"]
-[connection signal="body_entered" from="Portal_azul3" to="Portal_azul3" method="_on_body_entered"]
+[connection signal="body_entered" from="Portal_azul2" to="Portal_azul2" method="_on_body_entered"]
 [connection signal="body_entered" from="Portal_azul3" to="Portal_azul3" method="_on_portal_azul_3_body_entered"]
+[connection signal="body_entered" from="Portal_azul3" to="Portal_azul3" method="_on_body_entered"]
 [connection signal="body_entered" from="Portal_azul4" to="Portal_azul4" method="_on_body_entered"]
 [connection signal="body_entered" from="Portal_azul5" to="Portal_azul5" method="_on_body_entered"]
 [connection signal="body_entered" from="Portal_azul6" to="Portal_azul6" method="_on_body_entered"]
