@@ -1,7 +1,7 @@
 extends Area2D
 
 # --- Variáveis de Configuração ---
-@export var forca_gravidade: float = 25000.0
+@export var forca_gravidade: float = 40000.0
 @export var wormhole_exit: Node2D
 const PontoDaEspiral = preload("res://Cenas/Projeteis/ponto_espiral.tscn")
 const projetil_espiral = preload("res://Cenas/Projeteis/projetil_espiral.tscn")

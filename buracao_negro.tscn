@@ -24,7 +24,7 @@ script = ExtResource("1_gvsbb")
 material = SubResource("ShaderMaterial_1bn8c")
 position = Vector2(-3, 3)
 rotation = 3.14159
-scale = Vector2(0.45, 0.36)
+scale = Vector2(5, 4)
 texture = ExtResource("3_a83hd")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
