@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=4 uid="uid://dgvk00ax3rrbo"]
+[gd_scene load_steps=25 format=4 uid="uid://dgvk00ax3rrbo"]
 
 [ext_resource type="Script" uid="uid://bqle0el6yjirx" path="res://Cenas/Fases/fase_0.gd" id="1_l7uc1"]
 [ext_resource type="PackedScene" uid="uid://c05h55i7hjr20" path="res://UI_UX/fundo.tscn" id="1_setcl"]
@@ -8,10 +8,6 @@
 [ext_resource type="PackedScene" uid="uid://d26majiwami8u" path="res://Cenas/Menu/PauseMenu.tscn" id="5_wbwhm"]
 [ext_resource type="PackedScene" uid="uid://cdqk51gsmwxbg" path="res://Cenas/Portal_branco.tscn" id="6_8l1lx"]
 [ext_resource type="PackedScene" uid="uid://b2pnn1csceu83" path="res://UI_UX/mira.tscn" id="8_3tumv"]
-[ext_resource type="Script" uid="uid://bc6goug6s4slk" path="res://Cenas/portal_branco.gd" id="8_kwsdg"]
-[ext_resource type="Script" path="res://portal_azulasdasdasdasd.gd" id="10_4uowy"]
-[ext_resource type="Script" path="res://portal_azul312431233123123123123.gd" id="10_gmavx"]
-[ext_resource type="Script" path="res://portal_azul3212334924830942389.gd" id="12_2kwqn"]
 [ext_resource type="PackedScene" uid="uid://xi2hrnn8tbmj" path="res://Cenas/buraco_negro.tscn" id="14_ciat0"]
 [ext_resource type="PackedScene" uid="uid://bqvstnda7b8kd" path="res://Cenas/Inimigos/inimigo_1.tscn" id="15_2gjbv"]
 [ext_resource type="PackedScene" uid="uid://2gn7h1kpcbh8" path="res://Cenas/Inimigos/inimigo_polvo.tscn" id="16_ciat0"]
@@ -200,6 +196,7 @@ theme_override_font_sizes/font_size = 24
 text = "00:00"
 
 [node name="PauseMenu" parent="player" instance=ExtResource("5_wbwhm")]
+unique_name_in_owner = true
 offset_left = -78.4848
 offset_top = 78.9558
 offset_right = -78.4848
@@ -208,58 +205,6 @@ metadata/_edit_use_anchors_ = true
 
 [node name="Portal_branco" parent="." instance=ExtResource("6_8l1lx")]
 position = Vector2(581, 0)
-
-[node name="Portal_azul" parent="."]
-_import_path = NodePath("")
-unique_name_in_owner = false
-process_mode = 0
-process_priority = 0
-process_physics_priority = 0
-process_thread_group = 0
-physics_interpolation_mode = 0
-auto_translate_mode = 0
-editor_description = ""
-position = Vector2(1668, 2283)
-script = ExtResource("8_kwsdg")
-
-[node name="Portal_azul2" parent="."]
-_import_path = NodePath("")
-unique_name_in_owner = false
-process_mode = 0
-process_priority = 0
-process_physics_priority = 0
-process_thread_group = 0
-physics_interpolation_mode = 0
-auto_translate_mode = 0
-editor_description = ""
-position = Vector2(3265, 2268)
-script = ExtResource("8_kwsdg")
-
-[node name="Portal_azul3" parent="."]
-_import_path = NodePath("")
-unique_name_in_owner = false
-process_mode = 0
-process_priority = 0
-process_physics_priority = 0
-process_thread_group = 0
-physics_interpolation_mode = 0
-auto_translate_mode = 0
-editor_description = ""
-position = Vector2(4951, 2272)
-script = ExtResource("8_kwsdg")
-
-[node name="Portal_azul4" parent="."]
-_import_path = NodePath("")
-unique_name_in_owner = false
-process_mode = 0
-process_priority = 0
-process_physics_priority = 0
-process_thread_group = 0
-physics_interpolation_mode = 0
-auto_translate_mode = 0
-editor_description = ""
-position = Vector2(594, 1066)
-script = ExtResource("12_2kwqn")
 
 [node name="Fase3" type="Node2D" parent="."]
 
@@ -302,19 +247,6 @@ player = NodePath("../../player")
 visible = false
 position = Vector2(4510, 1328)
 player = NodePath("../../player")
-
-[node name="Portal_azul5" parent="."]
-_import_path = NodePath("")
-unique_name_in_owner = false
-process_mode = 0
-process_priority = 0
-process_physics_priority = 0
-process_thread_group = 0
-physics_interpolation_mode = 0
-auto_translate_mode = 0
-editor_description = ""
-position = Vector2(111, 1389)
-script = ExtResource("10_gmavx")
 
 [node name="Fase2" type="Node2D" parent="."]
 
@@ -369,19 +301,6 @@ blaster_scene = ExtResource("18_8de20")
 [node name="BattleManager" type="Node2D" parent="Fase2"]
 visible = false
 script = ExtResource("19_oy6jg")
-
-[node name="Portal_azul6" parent="."]
-_import_path = NodePath("")
-unique_name_in_owner = false
-process_mode = 0
-process_priority = 0
-process_physics_priority = 0
-process_thread_group = 0
-physics_interpolation_mode = 0
-auto_translate_mode = 0
-editor_description = ""
-position = Vector2(-356, 1072)
-script = ExtResource("10_4uowy")
 
 [node name="Fase1" type="Node2D" parent="."]
 

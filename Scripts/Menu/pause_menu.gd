@@ -7,6 +7,7 @@ extends Control
 @onready var quit_button: Button = $CanvasLayer/VBoxContainer/QuitButton
 
 func start_pause() -> void:
+	Global.set_in_menu_state(true)
 	menu_container.show()
 	Global.paused = true
 	video_player.play()
@@ -17,12 +18,15 @@ func _on_resume_button_pressed() -> void:
 	despause_video_player.paused = false
 
 func _on_quit_button_pressed() -> void:
-	get_tree().quit()
+	Global.set_in_menu_state(true)
+	Global.paused = false
+	get_tree().change_scene_to_file("res://Cenas/Menus/menu_inicial.tscn")
 
 func _on_pause_video_finished() -> void:
 	video_player.paused = true
 
 func _on_pause_video_2_finished() -> void:
+	Global.set_in_menu_state(false)
 	despause_video_player.paused = true
 	menu_container.hide()
 	Global.paused = false
