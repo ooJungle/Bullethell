@@ -10,7 +10,6 @@ func _on_h_slider_value_changed(value: float) -> void:
 	
 func _on_back_button_pressed() -> void:
 	if Global.menu == 0:
-		Global.set_in_menu_state(true)
 		get_tree().change_scene_to_file("res://Cenas/Menu/MainMenu.tscn")
 	if Global.menu == 1:
-		get_tree().change_scene_to_file("res://Cenas/Menu/PauseMenu.tscn")
+		queue_free()

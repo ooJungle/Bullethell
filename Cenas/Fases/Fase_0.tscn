@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=4 uid="uid://dgvk00ax3rrbo"]
+[gd_scene load_steps=26 format=4 uid="uid://dgvk00ax3rrbo"]
 
 [ext_resource type="Script" uid="uid://bqle0el6yjirx" path="res://Cenas/Fases/fase_0.gd" id="1_l7uc1"]
 [ext_resource type="PackedScene" uid="uid://c05h55i7hjr20" path="res://UI_UX/fundo.tscn" id="1_setcl"]
@@ -6,7 +6,8 @@
 [ext_resource type="Texture2D" uid="uid://btly5qbyu14jv" path="res://Sprites/teste tiles.png" id="3_qxyfa"]
 [ext_resource type="PackedScene" uid="uid://cw5ic42v3wep7" path="res://Cenas/player.tscn" id="4_2olo2"]
 [ext_resource type="PackedScene" uid="uid://d26majiwami8u" path="res://Cenas/Menu/PauseMenu.tscn" id="5_wbwhm"]
-[ext_resource type="PackedScene" uid="uid://cdqk51gsmwxbg" path="res://Cenas/Portal_branco.tscn" id="6_8l1lx"]
+[ext_resource type="PackedScene" uid="uid://c11schcb8u7iy" path="res://Cenas/Portal_branco.tscn" id="6_8l1lx"]
+[ext_resource type="PackedScene" uid="uid://dfemr1maf8q5y" path="res://Cenas/Menu/SettingsMenu.tscn" id="7_ypqou"]
 [ext_resource type="PackedScene" uid="uid://b2pnn1csceu83" path="res://UI_UX/mira.tscn" id="8_3tumv"]
 [ext_resource type="PackedScene" uid="uid://xi2hrnn8tbmj" path="res://Cenas/buraco_negro.tscn" id="14_ciat0"]
 [ext_resource type="PackedScene" uid="uid://bqvstnda7b8kd" path="res://Cenas/Inimigos/inimigo_1.tscn" id="15_2gjbv"]
@@ -201,6 +202,7 @@ offset_left = -78.4848
 offset_top = 78.9558
 offset_right = -78.4848
 offset_bottom = 78.9558
+settings_menu_scene = ExtResource("7_ypqou")
 metadata/_edit_use_anchors_ = true
 
 [node name="Portal_branco" parent="." instance=ExtResource("6_8l1lx")]
