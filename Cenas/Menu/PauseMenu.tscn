@@ -64,6 +64,11 @@ layout_mode = 2
 theme_override_constants/outline_size = 4
 text = "Resume"
 
+[node name="SettingsButton" type="Button" parent="CanvasLayer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/outline_size = 4
+text = "Settings"
+
 [node name="QuitButton" type="Button" parent="CanvasLayer/VBoxContainer"]
 layout_mode = 2
 theme_override_constants/outline_size = 4
@@ -72,4 +77,5 @@ text = "Quit"
 [connection signal="finished" from="CanvasLayer/PauseVideo" to="." method="_on_pause_video_finished"]
 [connection signal="finished" from="CanvasLayer/DespauseVideo" to="." method="_on_pause_video_2_finished"]
 [connection signal="pressed" from="CanvasLayer/VBoxContainer/ResumeButton" to="." method="_on_resume_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/VBoxContainer/SettingsButton" to="." method="_on_settings_button_pressed"]
 [connection signal="pressed" from="CanvasLayer/VBoxContainer/QuitButton" to="." method="_on_quit_button_pressed"]
