@@ -13,5 +13,4 @@ func _on_back_button_pressed() -> void:
 		Global.set_in_menu_state(true)
 		get_tree().change_scene_to_file("res://Cenas/Menu/MainMenu.tscn")
 	if Global.menu == 1:
-		Global.set_in_menu_state(true)
 		get_tree().change_scene_to_file("res://Cenas/Menu/PauseMenu.tscn")
