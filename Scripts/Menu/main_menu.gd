@@ -9,7 +9,7 @@ func _ready() -> void:
 	# --- A CORREÇÃO PRINCIPAL ---
 	# Define o volume da música do menu com base no volume global
 	# assim que a cena é carregada.
-	menu_music_player.volume_db = linear_to_db(Global.volume)
+	menu_music_player.volume_db = linear_to_db(Global.volume * 4)
 	
 	# Toca a música do menu (se ela não estiver no Autoplay)
 	if not menu_music_player.playing:

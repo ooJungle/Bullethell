@@ -35,7 +35,7 @@ offset_top = 277.0
 offset_right = 512.0
 offset_bottom = 297.0
 scale = Vector2(3.32155, 2.56091)
-max_value = 4.0
+max_value = 1.4
 step = 0.01
 
 [node name="BackButton" type="Button" parent="."]

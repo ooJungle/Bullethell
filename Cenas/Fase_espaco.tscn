@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=4 uid="uid://cyvs5xiohypkv"]
+[gd_scene load_steps=14 format=4 uid="uid://vtcrh3j2rb3w"]
 
 [ext_resource type="PackedScene" uid="uid://c05h55i7hjr20" path="res://UI_UX/fundo.tscn" id="1_toe3p"]
 [ext_resource type="Texture2D" uid="uid://0hnxho8ngv6r" path="res://Sprites/tilesetCINZA.png" id="2_a6l73"]

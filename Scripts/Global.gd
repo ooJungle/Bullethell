@@ -1,7 +1,7 @@
 extends Node
 
 var menu = 0
-var volume = 2.0
+var volume = 0.8
 var vida = 300
 var paused = false
 var fator_tempo: float = 1.0
