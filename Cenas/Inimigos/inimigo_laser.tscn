@@ -57,6 +57,7 @@ position = Vector2(4, 0)
 shape = SubResource("CapsuleShape2D_wcglr")
 
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
+navigation_layers = 255
 debug_enabled = true
 
 [node name="PerceptionTimer" type="Timer" parent="."]

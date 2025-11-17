@@ -23,8 +23,6 @@ var tempo_knockback_atual = 0.0
 
 
 func _ready() -> void:
-	player = get_node_or_null("/root/Node2D/player")
-
 	add_to_group("enemies")
 
 	perception_timer.one_shot = true

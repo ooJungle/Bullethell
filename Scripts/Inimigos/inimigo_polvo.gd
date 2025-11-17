@@ -18,7 +18,7 @@ const obj_tiro_verde = preload("res://Cenas/Projeteis/tiro_polvo.tscn")
 @onready var sprite: AnimatedSprite2D = $sprite
 @onready var navigation_agent: NavigationAgent2D = $NavigationAgent2D
 @onready var perception_timer: Timer = $PerceptionTimer
-@onready var collision_area: Area2D = $CollisionArea
+@onready var collision_area: Area2D = $Area2D
 
 # --- Variáveis de Estado de Ataque ---
 var ataque_aleatorio = 0
@@ -34,7 +34,6 @@ var knockback = false
 var tempo_knockback_atual = 0.0
 
 func _ready() -> void:
-	player = get_node_or_null("/root/Node2D/player")
 
 	add_to_group("enemies")
 

@@ -22,8 +22,6 @@ var tempo_knockback = 0.0
 
 
 func _ready() -> void:
-	player = get_node_or_null("/root/Node2D/player")
-
 	add_to_group("enemies")
 	perception_timer.timeout.connect(makepath)
 	makepath()
