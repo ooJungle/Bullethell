@@ -31,6 +31,10 @@ func _ready() -> void:
 	perception_timer.wait_time = tempo_percepcao
 	perception_timer.timeout.connect(recalcular_caminho)
 	
+	player = get_node_or_null("/root/Node2D/player")
+	if not player:
+		player = get_node_or_null("/root/fase_teste/player")
+		
 	recalcular_caminho()
 
 

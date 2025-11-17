@@ -34,7 +34,6 @@ var knockback = false
 var tempo_knockback_atual = 0.0
 
 func _ready() -> void:
-
 	add_to_group("enemies")
 
 	randomize()
@@ -45,6 +44,10 @@ func _ready() -> void:
 	perception_timer.timeout.connect(on_perception_timer_timeout)
 	perception_timer.start()
 	
+	player = get_node_or_null("/root/Node2D/player")
+	if not player:
+		player = get_node_or_null("/root/fase_teste/player")
+
 func on_perception_timer_timeout() -> void:
 	if Global.paused or !visible:
 		return

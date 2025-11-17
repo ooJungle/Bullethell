@@ -20,6 +20,8 @@ var tempo_knockback_atual = 0.0
 
 func _ready() -> void:
 	player = get_node_or_null("/root/Node2D/player")
+	if not player:
+		player = get_node_or_null("/root/fase_teste/player")
 
 func shoot(velocidade_tiro: float):
 	if not atirando:

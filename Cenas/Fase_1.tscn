@@ -4,6 +4,5 @@
 
 [node name="fase_teste" type="Node2D"]
 
-[node name="inimigo_5" parent="." node_paths=PackedStringArray("player") instance=ExtResource("4_j42wr")]
+[node name="inimigo_5" parent="." instance=ExtResource("4_j42wr")]
 position = Vector2(-372, -159)
-player = NodePath("")
