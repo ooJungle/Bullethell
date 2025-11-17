@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=4 uid="uid://dgvk00ax3rrbo"]
+[gd_scene load_steps=30 format=4 uid="uid://dgvk00ax3rrbo"]
 
 [ext_resource type="Script" uid="uid://bqle0el6yjirx" path="res://Cenas/Fases/fase_0.gd" id="1_l7uc1"]
 [ext_resource type="PackedScene" uid="uid://c05h55i7hjr20" path="res://UI_UX/fundo.tscn" id="1_setcl"]
@@ -6,7 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://btly5qbyu14jv" path="res://Sprites/teste tiles.png" id="3_qxyfa"]
 [ext_resource type="PackedScene" uid="uid://cw5ic42v3wep7" path="res://Cenas/player.tscn" id="4_2olo2"]
 [ext_resource type="PackedScene" uid="uid://d26majiwami8u" path="res://Cenas/Menu/PauseMenu.tscn" id="5_wbwhm"]
-[ext_resource type="PackedScene" uid="uid://c11schcb8u7iy" path="res://Cenas/Portal_branco.tscn" id="6_8l1lx"]
+[ext_resource type="PackedScene" uid="uid://cdqk51gsmwxbg" path="res://Cenas/Portal_branco.tscn" id="6_8l1lx"]
 [ext_resource type="PackedScene" uid="uid://dfemr1maf8q5y" path="res://Cenas/Menu/SettingsMenu.tscn" id="7_ypqou"]
 [ext_resource type="PackedScene" uid="uid://b2pnn1csceu83" path="res://UI_UX/mira.tscn" id="8_3tumv"]
 [ext_resource type="PackedScene" uid="uid://xi2hrnn8tbmj" path="res://Cenas/buraco_negro.tscn" id="14_ciat0"]
@@ -18,7 +18,11 @@
 [ext_resource type="PackedScene" uid="uid://btwm7v5ywkigl" path="res://Cenas/Inimigos/inimigo_4.tscn" id="19_8de20"]
 [ext_resource type="Script" uid="uid://be3talp5xho6t" path="res://Cenas/Fases/battle_manager.gd" id="19_oy6jg"]
 [ext_resource type="PackedScene" uid="uid://buw23jdf15r6e" path="res://Cenas/Inimigos/inimigo_2.tscn" id="20_oy6jg"]
+[ext_resource type="PackedScene" path="res://Cenas/Portal_azul.tscn" id="20_ve75a"]
+[ext_resource type="Script" uid="uid://divnw7xkn5nty" path="res://Cenas/portal_azul4.gd" id="21_if8b4"]
+[ext_resource type="Script" uid="uid://b5vat081jhy6k" path="res://Cenas/portal_azul5.gd" id="22_8de20"]
 [ext_resource type="PackedScene" uid="uid://c353olxkynf22" path="res://Cenas/buraco_de_minhoca.tscn" id="22_ve75a"]
+[ext_resource type="Script" uid="uid://cpx7qjv5egdce" path="res://Cenas/portal_azul6.gd" id="23_oy6jg"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_pxeo3"]
 vertices = PackedVector2Array(2246, -342, 2246, 390, 1734, 390, 1194, -342, 1734, 634, 2230, 634, 2230, 1366, 1734, 1366, 1734, 1610, 2230, 1610, 2230, 2342, 1178, 2342, 1178, 1610, 1658, 1610, 1658, 1366, 1658, 634, 1178, 1366, 1178, 634, 1658, 390, 1194, 390, 3862, -342, 3862, 390, 3350, 390, 2810, -342, 3350, 634, 3846, 634, 3846, 1366, 3350, 1366, 3350, 1610, 3846, 1610, 3846, 2342, 2794, 2342, 2794, 1610, 3274, 1610, 3274, 1366, 3274, 634, 2794, 1366, 2794, 634, 3274, 390, 2810, 390, 5462, -342, 5462, 390, 4950, 390, 4410, -342, 4950, 634, 5446, 634, 5446, 1366, 4950, 1366, 4950, 1610, 5446, 1610, 5446, 2342, 4394, 2342, 4394, 1610, 4874, 1610, 4874, 1366, 4874, 634, 4394, 1366, 4394, 634, 4874, 390, 4410, 390, 630, 1446, -422, 1446, -422, 714, 630, 714, 630, 390, -422, 390, -422, -342, 630, -342)
@@ -346,5 +350,17 @@ position = Vector2(598.563, 285.347)
 
 [node name="Timer" type="Timer" parent="."]
 wait_time = 600.0
+
+[node name="Portal_azul" parent="." instance=ExtResource("20_ve75a")]
+position = Vector2(-345, 1132)
+script = ExtResource("21_if8b4")
+
+[node name="Portal_azul2" parent="." instance=ExtResource("20_ve75a")]
+position = Vector2(104, 1408)
+script = ExtResource("22_8de20")
+
+[node name="Portal_azul3" parent="." instance=ExtResource("20_ve75a")]
+position = Vector2(549, 1133)
+script = ExtResource("23_oy6jg")
 
 [connection signal="body_entered" from="Portal_branco" to="Portal_branco" method="_on_body_entered"]

@@ -14,3 +14,7 @@ func _process(delta: float) -> void:
 	
 func _on_timer_timeout() -> void:
 	get_tree().change_scene_to_file("res://Cenas/Menu/WinScene.tscn")
+
+
+func _on_portal_azul_body_entered(body: Node2D) -> void:
+	pass # Replace with function body.

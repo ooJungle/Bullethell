@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=4 uid="uid://7hxjdmej07vp"]
+[gd_scene load_steps=26 format=4 uid="uid://7hxjdmej07vp"]
 
 [ext_resource type="Texture2D" uid="uid://c876hd16x2x1y" path="res://Sprites/tileset_temp.png" id="1_hj6t5"]
 [ext_resource type="PackedScene" uid="uid://c05h55i7hjr20" path="res://UI_UX/fundo.tscn" id="1_r7g8p"]
@@ -16,7 +16,7 @@
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_2x8jn"]
 
-[sub_resource type="NavigationPolygon" id="NavigationPolygon_mhq7l"]
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_gosbl"]
 vertices = PackedVector2Array(8, 8, -8, 8, -8, -8, 8, -8)
 polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3)])
 outlines = Array[PackedVector2Array]([PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)])
@@ -29,10 +29,17 @@ texture = ExtResource("1_hj6t5")
 1:0/0 = 0
 2:0/0 = 0
 3:0/0 = 0
+3:0/0/navigation_layer_0/polygon = SubResource("NavigationPolygon_gosbl")
 4:0/0 = 0
-4:0/0/navigation_layer_0/polygon = SubResource("NavigationPolygon_mhq7l")
+4:0/0/navigation_layer_0/polygon = SubResource("NavigationPolygon_gosbl")
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_vljnb"]
+vertices = PackedVector2Array(8, 8, -8, 8, -8, -8, 8, -8)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)])
+agent_radius = 0.0
+
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_32wdk"]
 vertices = PackedVector2Array(8, 8, -8, 8, -8, -8, 8, -8)
 polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3)])
 outlines = Array[PackedVector2Array]([PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)])
@@ -54,6 +61,7 @@ texture = ExtResource("2_ju58k")
 5:0/0/navigation_layer_0/polygon = SubResource("NavigationPolygon_vljnb")
 6:0/0 = 0
 6:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+6:0/0/navigation_layer_0/polygon = SubResource("NavigationPolygon_32wdk")
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_r7g8p"]
 vertices = PackedVector2Array(8, 8, -8, 8, -8, -8, 8, -8)

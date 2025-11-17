@@ -10,3 +10,12 @@ func _on_body_entered(body: Node2D) -> void:
 	$"../Fase1/inimigo_12".visible = true
 	$"../Fase1/inimigo_13".visible = true
 	$"../Fase1/inimigo_15".visible = true
+
+func _on_portal_azul_body_entered(body: Node2D) -> void:
+	queue_free()
+	$"../Portal_azul".queue_free()
+	var filhos_fase_1 = $"../Fase1".get_children()
+	for filho in filhos_fase_1:
+		filho.queue_free()
+	$"../Fase1".queue_free()
+	body.position = Vector2(112.0, 1065.0)

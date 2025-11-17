@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://c11schcb8u7iy"]
+[gd_scene load_steps=11 format=3 uid="uid://cdqk51gsmwxbg"]
 
 [ext_resource type="Script" uid="uid://bc6goug6s4slk" path="res://Cenas/portal_branco.gd" id="1_1ptd8"]
 [ext_resource type="Texture2D" uid="uid://dba7roywd1lm5" path="res://Sprites/spriteSheet_portalBranco.png" id="1_f7yd7"]
@@ -62,6 +62,7 @@ script = ExtResource("1_1ptd8")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_xvl8j")
 animation = &"new_animation"
+autoplay = "new_animation"
 speed_scale = 1.75
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
