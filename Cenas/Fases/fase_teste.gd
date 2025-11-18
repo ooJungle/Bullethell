@@ -125,6 +125,8 @@ func spawn_enemy():
 	var quantity = randi() % 3
 	if quantity>1:
 		quantity=2
+	else:
+		quantity=1
 	for i in range(quantity):
 		# 1. Calcular peso total
 		var total_weight: int = 0
