@@ -111,9 +111,8 @@ func update_animation():
 func aplicar_knockback(direcao: Vector2):
 	knockback = true
 	tempo_knockback_atual = 0.0
-	velocity = direcao * forca_knockback
+	velocity = direcao * forca_knockback*2/3
 
-# --- CONEXÃO DE SINAIS ---
 func _on_collision_area_body_entered(body: Node2D) -> void:
 	if knockback or body == self:
 		return

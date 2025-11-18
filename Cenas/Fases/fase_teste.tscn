@@ -1,8 +1,9 @@
-[gd_scene load_steps=10 format=4 uid="uid://dq5arm2820s3g"]
+[gd_scene load_steps=11 format=4 uid="uid://dq5arm2820s3g"]
 
 [ext_resource type="Script" uid="uid://da1dl2bimc4ng" path="res://Cenas/Fases/fase_teste.gd" id="1_eo7wa"]
 [ext_resource type="Texture2D" uid="uid://tpc5pqukpb32" path="res://Sprites/tilesetGAMEJAM.png" id="2_q2gr4"]
 [ext_resource type="PackedScene" uid="uid://cw5ic42v3wep7" path="res://Cenas/player.tscn" id="3_epopl"]
+[ext_resource type="PackedScene" uid="uid://dfemr1maf8q5y" path="res://Cenas/Menu/SettingsMenu.tscn" id="5_4w6iw"]
 [ext_resource type="PackedScene" uid="uid://d26majiwami8u" path="res://Cenas/Menu/PauseMenu.tscn" id="9_8i3wu"]
 [ext_resource type="PackedScene" uid="uid://b2pnn1csceu83" path="res://UI_UX/mira.tscn" id="10_s120p"]
 
@@ -153,15 +154,17 @@ offset_right = 378.0
 offset_bottom = -188.0
 text = "Time: 00:00"
 
-[node name="Timer" type="Timer" parent="."]
-autostart = true
-
-[node name="PauseMenu" parent="." instance=ExtResource("9_8i3wu")]
-z_index = 1
+[node name="PauseMenu" parent="player" instance=ExtResource("9_8i3wu")]
+unique_name_in_owner = true
 offset_left = -78.4848
 offset_top = 78.9558
 offset_right = -78.4848
 offset_bottom = 78.9558
+settings_menu_scene = ExtResource("5_4w6iw")
+metadata/_edit_use_anchors_ = true
+
+[node name="Timer" type="Timer" parent="."]
+autostart = true
 
 [node name="Mira" parent="." instance=ExtResource("10_s120p")]
 z_index = 1

@@ -30,4 +30,4 @@ func _on_quit_button_pressed() -> void:
 
 func _on_play_endless_button_pressed() -> void:
 	Global.set_in_menu_state(false)
-	get_tree().change_scene_to_file("res://Cenas/Fases/Fase_0.tscn")
+	get_tree().change_scene_to_file("res://Cenas/Fases/fase_teste.tscn")

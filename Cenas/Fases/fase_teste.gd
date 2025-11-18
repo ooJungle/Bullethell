@@ -10,18 +10,20 @@ var map_top: float
 var map_bottom: float
 
 # Intervalo de spawn de inimigos
-var spawn_interval: float = 3
+var spawn_interval: float = 4
 var spawn_offset: float = 50.0
 var enemy_timer: Timer
+
+# Inimigos comuns têm peso 10, Inimigos raros (laser, caixinha e maguinhas) têm peso 2.5
 var enemies_list = [
-	"res://Cenas/Inimigos/inimigo_0.tscn",
-	"res://Cenas/Inimigos/inimigo_1.tscn",
-	"res://Cenas/Inimigos/inimigo_2.tscn",
-	"res://Cenas/Inimigos/inimigo_4.tscn",
-	"res://Cenas/Inimigos/Inimigo_5.tscn",
-	"res://Cenas/Inimigos/inimigo_6.tscn",
-	"res://Cenas/Inimigos/inimigo_laser.tscn",
-	"res://Cenas/Inimigos/inimigo_polvo.tscn"
+	{"path": "res://Cenas/Inimigos/inimigo_0.tscn", "weight": 10},
+	{"path": "res://Cenas/Inimigos/inimigo_1.tscn", "weight": 10},
+	{"path": "res://Cenas/Inimigos/inimigo_2.tscn", "weight": 2.5},
+	{"path": "res://Cenas/Inimigos/inimigo_4.tscn", "weight": 2.5},
+	{"path": "res://Cenas/Inimigos/Inimigo_5.tscn", "weight": 2.5},
+	{"path": "res://Cenas/Inimigos/inimigo_6.tscn", "weight": 10},
+	{"path": "res://Cenas/Inimigos/inimigo_laser.tscn", "weight": 2.5},
+	{"path": "res://Cenas/Inimigos/inimigo_polvo.tscn", "weight": 10}
 ]
 
 var player
@@ -43,10 +45,12 @@ func _ready() -> void:
 		cronometro_label.visible = true
 
 	cronometro_timer = get_node_or_null(cronometro_timer_path)
-	cronometro_timer.set_wait_time(1.0)
-	cronometro_timer.set_one_shot(false)
-	cronometro_timer.connect("timeout", Callable(self, "_update_cronometro"))
-	cronometro_timer.start()
+	if cronometro_timer:
+		cronometro_timer.set_wait_time(1.0)
+		cronometro_timer.set_one_shot(false)
+		if not cronometro_timer.is_connected("timeout", Callable(self, "_update_cronometro")):
+			cronometro_timer.connect("timeout", Callable(self, "_update_cronometro"))
+		cronometro_timer.start()
 
 	player = get_tree().get_current_scene().get_node("player")
 
@@ -84,6 +88,7 @@ func _ready() -> void:
 	enemy_timer.autostart = true
 	enemy_timer.connect("timeout", Callable(self, "spawn_enemy"))
 	add_child(enemy_timer)
+	spawn_enemy()
 
 func _update_cronometro_display(time_text: String) -> void:
 	if cronometro_label:
@@ -94,9 +99,14 @@ func _update_cronometro() -> void:
 		return
 		
 	total_time += 1
-	if total_time % (60) == 0 and total_time != 0:
+	if total_time % (60) == 0 and total_time != 0 and spawn_interval > 1.5:
 		spawn_interval -= 0.1
-
+		for enemy in enemies_list:
+			if "2" in enemy["path"] or "4" in enemy["path"] or "5" in enemy["path"] or "laser" in enemy["path"]:
+				enemy["weight"] += 0.75
+		if enemy_timer:
+			enemy_timer.wait_time = spawn_interval
+	
 	var minutes = total_time / 60
 	var seconds = total_time % 60
 	var formatted_time = "%02d:%02d" % [minutes, seconds]
@@ -112,11 +122,36 @@ func clamp_position_to_bounds(positionMap: Vector2) -> Vector2:
 	return positionMap
 
 func spawn_enemy():
-	var random_index = randi() % enemies_list.size()
-	_spawn_entity(enemies_list[random_index], Vector2.ZERO)
+	var quantity = randi() % 3
+	if quantity>1:
+		quantity=2
+	for i in range(quantity):
+		# 1. Calcular peso total
+		var total_weight: int = 0
+		for enemy_data in enemies_list:
+			total_weight += enemy_data["weight"]
+		
+		# 2. Sorteio
+		var random_val = randi() % total_weight
+		var current_sum = 0
+		var selected_path = ""
+		
+		# 3. Selecionar o inimigo baseado no peso
+		for enemy_data in enemies_list:
+			current_sum += enemy_data["weight"]
+			if random_val < current_sum:
+				selected_path = enemy_data["path"]
+				break
+		
+		# 4. Spawnar
+		if selected_path != "":
+			_spawn_entity(selected_path, Vector2.ZERO)
 
 func _spawn_entity(resource_path: String, positionLoc):
 	var camera = get_tree().get_current_scene().get_node("player/Camera2D")
+	if not camera: 
+		return
+
 	var camera_pos = camera.global_position
 	var viewport_size = get_viewport().get_visible_rect().size / 2
 	
@@ -128,18 +163,18 @@ func _spawn_entity(resource_path: String, positionLoc):
 
 	if positionLoc == Vector2.ZERO:
 		spawn_position = Vector2()
-		var side = randi() % 4  # 0 = top, 1 = bottom, 2 = left, 3 = right
+		var side = randi() % 4 # 0 = top, 1 = bottom, 2 = left, 3 = right
 		match side:
-			0:  # Top
+			0: # Top
 				spawn_position.x = randf_range(left, right)
 				spawn_position.y = top
-			1:  # Bottom
+			1: # Bottom
 				spawn_position.x = randf_range(left, right)
 				spawn_position.y = bottom
-			2:  # Left
+			2: # Left
 				spawn_position.x = left
 				spawn_position.y = randf_range(top, bottom)
-			3:  # Right
+			3: # Right
 				spawn_position.x = right
 				spawn_position.y = randf_range(top, bottom)
 	else:
@@ -155,7 +190,9 @@ func _spawn_entity(resource_path: String, positionLoc):
 		add_child(entity)
 
 func pause_timers():
-	enemy_timer.set_paused(true)
+	if enemy_timer:
+		enemy_timer.set_paused(true)
 
 func resume_timers():
-	enemy_timer.set_paused(false)
+	if enemy_timer:
+		enemy_timer.set_paused(false)

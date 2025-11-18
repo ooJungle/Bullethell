@@ -111,6 +111,7 @@ func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action_pressed("ui_cancel"):
 		if not Global.paused:
 			get_node("%PauseMenu").start_pause()
+			
 func take_damage(amount: int) -> void:
 	vida -= amount
 	Global.vida = vida

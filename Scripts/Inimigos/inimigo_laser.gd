@@ -11,7 +11,7 @@ extends CharacterBody2D
 @export var duracaoMira: float = 2.0
 @export var ducacaoLock: float = 0.5
 @export var duracaoTiro: float = 1.0
-@export var tiroCooldown: float = 8
+@export var tiroCooldown: float = 5
 
 # --- Nós Filhos ---
 @onready var sprite: Sprite2D = $Inimigo
@@ -234,7 +234,7 @@ func encontrar_corpo_celeste_mais_proximo(grupo: String) -> Node2D:
 func aplicar_knockback(direcao: Vector2):
 	knockback = true
 	tempo_knockback_atual = 0.0
-	velocity = direcao * forca_knockback
+	velocity = direcao * forca_knockback*2/3
 	if estadoAtual in [Estado.MIRANDO, Estado.LOCKADO, Estado.ATIRANDO]:
 		mudar_para_estado(Estado.COOLDOWN)
 

@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://bkhxrca0185x8"]
+[gd_scene load_steps=6 format=3 uid="uid://bkhxrca0185x8"]
 
 [ext_resource type="Script" uid="uid://bqfg2teqn6bny" path="res://Scripts/Inimigos/inimigo_qualquer.gd" id="1_2dlls"]
 [ext_resource type="Texture2D" uid="uid://d3y0qgm3dhi85" path="res://Sprites/Inimigos/placegolder inimigo laser.png" id="2_5y0nl"]
@@ -26,6 +26,10 @@ animations = [{
 radius = 15.0
 height = 58.0
 
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_bi4tf"]
+radius = 25.0
+height = 66.0
+
 [node name="inimigo_6" type="CharacterBody2D" groups=["inimigo"]]
 collision_layer = 0
 collision_mask = 2
@@ -41,3 +45,11 @@ offset = Vector2(2.5, 30)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 1)
 shape = SubResource("CapsuleShape2D_3kq0m")
+
+[node name="Area2D" type="Area2D" parent="."]
+position = Vector2(0, -6)
+collision_layer = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(0, 6)
+shape = SubResource("CapsuleShape2D_bi4tf")
