@@ -1,10 +1,10 @@
 extends Sprite2D
 
-@onready var mira: Sprite2D = $"."
+@onready var seta: Sprite2D = $"."
 
 func _process(_delta: float) -> void:
 	global_position = get_global_mouse_position()
 	if Global.is_in_menu:
-		mira.visible = false
+		seta.visible = true
 	else:
-		mira.visible = true
+		seta.visible = false

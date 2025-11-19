@@ -364,3 +364,4 @@ position = Vector2(549, 1133)
 script = ExtResource("23_oy6jg")
 
 [connection signal="body_entered" from="Portal_branco" to="Portal_branco" method="_on_body_entered"]
+[connection signal="body_entered" from="Portal_azul" to="." method="_on_portal_azul_body_entered"]

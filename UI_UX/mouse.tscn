@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://c1wgytysn225m"]
+
+[ext_resource type="Script" uid="uid://byk3evqc00mlj" path="res://UI_UX/seta.gd" id="2_2p3p3"]
+[ext_resource type="Texture2D" uid="uid://u2cc8u2tv2jc" path="res://Sprites/mousinho.png" id="3_gj1oj"]
+
+[node name="Mouse" type="Node2D"]
+
+[node name="seta" type="Sprite2D" parent="."]
+texture = ExtResource("3_gj1oj")
+script = ExtResource("2_2p3p3")
