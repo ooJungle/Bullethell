@@ -1,4 +1,5 @@
 extends Area2D
 
-func _on_body_entered(body: Node2D) -> void:
-	body.position = Vector2(112.0, 1065.0)
+func _on_body_entered(body):
+	if body.is_in_group("players"):
+		get_tree().change_scene_to_file("res://Cenas/Fases/HubInicial.tscn")

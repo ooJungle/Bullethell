@@ -28,6 +28,7 @@ scale = Vector2(5, 4)
 texture = ExtResource("3_a83hd")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+visible = false
 texture = ExtResource("4_fem07")
 
 [node name="campo_gravitacional" type="CollisionShape2D" parent="."]
