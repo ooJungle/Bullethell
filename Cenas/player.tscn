@@ -1,10 +1,12 @@
-[gd_scene load_steps=24 format=3 uid="uid://cw5ic42v3wep7"]
+[gd_scene load_steps=42 format=3 uid="uid://cw5ic42v3wep7"]
 
 [ext_resource type="Script" uid="uid://dxifkqojdxq0a" path="res://Scripts/player_moviment.gd" id="1_pmvhq"]
 [ext_resource type="Texture2D" uid="uid://bf5oc0wyh6l5l" path="res://Sprites/player_costas_spritesheet.png" id="2_yuqgu"]
 [ext_resource type="Texture2D" uid="uid://bagfj71s27lwp" path="res://Sprites/player_frente_spritesheet.png" id="3_jx05c"]
 [ext_resource type="Script" uid="uid://crfk7npa02onr" path="res://Scripts/PROVISORIO --- VIDA.gd" id="4_5p0qj"]
 [ext_resource type="Texture2D" uid="uid://cs32q1pddm5" path="res://Sprites/player_lado_spritesheet.png" id="4_8vhvd"]
+[ext_resource type="Texture2D" uid="uid://g3qcun4rwxa" path="res://Sprites/Gordin_Tut-Sheet.png" id="5_jx05c"]
+[ext_resource type="Texture2D" uid="uid://d0f6cf6ulwpjg" path="res://Sprites/seta.png" id="7_8vhvd"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_e2nbm"]
 atlas = ExtResource("2_yuqgu")
@@ -53,6 +55,66 @@ region = Rect2(64, 0, 64, 64)
 [sub_resource type="AtlasTexture" id="AtlasTexture_axwfv"]
 atlas = ExtResource("4_8vhvd")
 region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8tubf"]
+atlas = ExtResource("5_jx05c")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_a4yfx"]
+atlas = ExtResource("5_jx05c")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_alogn"]
+atlas = ExtResource("5_jx05c")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4j5ex"]
+atlas = ExtResource("5_jx05c")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dj8y3"]
+atlas = ExtResource("5_jx05c")
+region = Rect2(128, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wh05g"]
+atlas = ExtResource("5_jx05c")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8v2xp"]
+atlas = ExtResource("5_jx05c")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_t7cd8"]
+atlas = ExtResource("5_jx05c")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sjhg2"]
+atlas = ExtResource("5_jx05c")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jnm6q"]
+atlas = ExtResource("5_jx05c")
+region = Rect2(128, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ka0he"]
+atlas = ExtResource("5_jx05c")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rxqvy"]
+atlas = ExtResource("5_jx05c")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2umio"]
+atlas = ExtResource("5_jx05c")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5sl0s"]
+atlas = ExtResource("5_jx05c")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6bkmt"]
+atlas = ExtResource("5_jx05c")
+region = Rect2(128, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_yuqgu"]
 atlas = ExtResource("2_yuqgu")
@@ -121,6 +183,66 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_8tubf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_a4yfx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_alogn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4j5ex")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dj8y3")
+}],
+"loop": false,
+"name": &"ataque_costas",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wh05g")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8v2xp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_t7cd8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sjhg2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jnm6q")
+}],
+"loop": false,
+"name": &"ataque_frente",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ka0he")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rxqvy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2umio")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5sl0s")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6bkmt")
+}],
+"loop": false,
+"name": &"ataque_lado",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_yuqgu")
 }],
 "loop": true,
@@ -149,7 +271,10 @@ size = Vector2(20, 30)
 
 [sub_resource type="LabelSettings" id="LabelSettings_yuqgu"]
 
-[node name="player" type="CharacterBody2D" groups=["player"]]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_yuqgu"]
+size = Vector2(23, 28)
+
+[node name="player" type="CharacterBody2D" groups=["player", "players"]]
 collision_layer = 32
 collision_mask = 32
 safe_margin = 1.0
@@ -157,11 +282,11 @@ script = ExtResource("1_pmvhq")
 
 [node name="sprite" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_8tubf")
-animation = &"idle_lado"
+animation = &"ataque_lado"
 speed_scale = 1.7
 offset = Vector2(0, -8)
 
-[node name="hitbox" type="CollisionShape2D" parent="."]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-1, -8)
 shape = SubResource("RectangleShape2D_iersn")
 
@@ -178,4 +303,19 @@ horizontal_alignment = 1
 vertical_alignment = 1
 script = ExtResource("4_5p0qj")
 
+[node name="Hitbox" type="Area2D" parent="."]
+light_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
+position = Vector2(11.5, -13)
+shape = SubResource("RectangleShape2D_yuqgu")
+disabled = true
+
+[node name="SetaPivo" type="Node2D" parent="."]
+
+[node name="SpriteSeta" type="Sprite2D" parent="SetaPivo"]
+rotation = 1.5707964
+texture = ExtResource("7_8vhvd")
+
+[connection signal="animation_finished" from="sprite" to="." method="_on_sprite_animation_finished"]
 [connection signal="timeout" from="dano_timer" to="." method="_on_dano_timer_timeout"]

@@ -31,8 +31,8 @@ radius = 9.0
 height = 38.0
 
 [node name="inimigo_6" type="CharacterBody2D" groups=["inimigo"]]
-collision_layer = 0
-collision_mask = 2
+collision_layer = 2
+collision_mask = 3
 script = ExtResource("1_tbf7d")
 
 [node name="sprite" type="AnimatedSprite2D" parent="."]

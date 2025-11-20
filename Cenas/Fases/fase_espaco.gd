@@ -26,6 +26,11 @@ func _on_cristal_quebrado():
 		abrir_portal()
 
 func abrir_portal():
-	print("Todos os cristais quebrados! Portal aberto.")
+	
 	portal_volta.visible = true
 	colisao_portal.set_deferred("disabled", false)
+	
+	var player = get_tree().get_first_node_in_group("players")
+	
+	if player:
+		player.ativar_seta_guia(portal_volta.global_position)

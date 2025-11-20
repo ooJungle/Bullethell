@@ -1,6 +1,6 @@
 [gd_scene load_steps=11 format=3 uid="uid://bf4kxcsfswmtq"]
 
-[ext_resource type="Script" uid="uid://bc6goug6s4slk" path="res://Cenas/portal_branco.gd" id="1_u8cmn"]
+[ext_resource type="Script" uid="uid://csanxmph4pwqn" path="res://Cenas/portal_volta.gd" id="1_u8cmn"]
 [ext_resource type="Texture2D" uid="uid://dba7roywd1lm5" path="res://Sprites/spriteSheet_portalBranco.png" id="2_5a0o3"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_5xnuo"]
@@ -67,3 +67,5 @@ speed_scale = 1.75
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_ompmp")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

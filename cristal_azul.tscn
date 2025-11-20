@@ -1,6 +1,22 @@
-[gd_scene load_steps=2 format=3 uid="uid://c3oseobpuwlb8"]
+[gd_scene load_steps=4 format=3 uid="uid://c3oseobpuwlb8"]
 
 [ext_resource type="Script" uid="uid://q5r6b3b7clpj" path="res://cristal.gd" id="1_wtav8"]
+[ext_resource type="Texture2D" uid="uid://c0bmkdvxb3xfb" path="res://Sprites/cristal_azul.png" id="2_ay01c"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ay01c"]
+radius = 36.0
+height = 92.0
 
 [node name="cristal_azul" type="StaticBody2D"]
+light_mask = 1023
 script = ExtResource("1_wtav8")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(-13.374992, 1.875001)
+scale = Vector2(0.47666666, 0.47)
+texture = ExtResource("2_ay01c")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+light_mask = 1023
+position = Vector2(-14, 5)
+shape = SubResource("CapsuleShape2D_ay01c")
