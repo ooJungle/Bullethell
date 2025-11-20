@@ -12,7 +12,7 @@ var is_in_menu: bool = true
 
 var portais_ativos = {
 	"Fase_espaco": true,
-	"Fase_Plat": true, 
+	"Fase_plat": true, 
 	"Fase_RPG": true
 }
 

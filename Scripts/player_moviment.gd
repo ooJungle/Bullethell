@@ -135,17 +135,17 @@ func iniciar_ataque():
 
 func posicionar_hitbox():
 	if last_move_direction.y < 0: # Cima
-		hitbox.position = Vector2(0, -40)
-		hitbox.rotation_degrees = 0
-	elif last_move_direction.y > 0: # Baixo
-		hitbox.position = Vector2(0, 40)
-		hitbox.rotation_degrees = 180
-	elif last_move_direction.x > 0: # Direita
-		hitbox.position = Vector2(40, 0)
-		hitbox.rotation_degrees = 90
-	elif last_move_direction.x < 0: # Esquerda
-		hitbox.position = Vector2(-40, 0)
+		hitbox.position = Vector2(11.5, -10)
 		hitbox.rotation_degrees = -90
+	elif last_move_direction.y > 0: # Baixo
+		hitbox.position = Vector2(-11.5, -5)
+		hitbox.rotation_degrees = 90
+	elif last_move_direction.x > 0: # Direita
+		hitbox.position = Vector2(0, 0)
+		hitbox.rotation_degrees = 0
+	elif last_move_direction.x < 0: # Esquerda
+		hitbox.position = Vector2(0, -23)
+		hitbox.rotation_degrees = 180
 
 func verificar_dano_nos_inimigos():
 	# Espera a física atualizar a posição da hitbox

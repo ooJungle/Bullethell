@@ -134,6 +134,7 @@ metadata/_edit_use_anchors_ = true
 
 [node name="portal_volta" parent="." instance=ExtResource("6_u663p")]
 position = Vector2(6, 109)
+id_desta_fase = "Fase_RPG"
 
 [node name="cristal_azul" parent="." instance=ExtResource("7_282xx")]
 position = Vector2(-680, -414)
