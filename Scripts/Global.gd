@@ -2,7 +2,7 @@ extends Node
 
 
 var menu = 0
-var volume = 0.8
+var volume = 0.3
 
 var vida = 300
 var paused = false
