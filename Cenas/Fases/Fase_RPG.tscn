@@ -146,14 +146,21 @@ offset_bottom = 78.9558
 settings_menu_scene = ExtResource("4_xlyqc")
 metadata/_edit_use_anchors_ = true
 
-[node name="chroma" parent="player" instance=ExtResource("8_u3e22")]
-offset_left = -713.0
-offset_top = -431.0
-offset_right = 818.0
-offset_bottom = 463.0
-
 [node name="ColorRect" parent="." instance=ExtResource("8_282xx")]
 offset_left = -8250.0
 offset_top = -6927.0
 offset_right = 7771.0
 offset_bottom = 7835.0
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="chroma" parent="CanvasLayer" instance=ExtResource("8_u3e22")]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 0.0
+offset_top = 0.0
+offset_right = 0.0
+offset_bottom = 0.0
+grow_horizontal = 2
+grow_vertical = 2
