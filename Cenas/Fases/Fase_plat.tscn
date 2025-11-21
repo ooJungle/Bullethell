@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=4 uid="uid://bd1kjomv53gnt"]
+[gd_scene load_steps=14 format=4 uid="uid://bd1kjomv53gnt"]
 
 [ext_resource type="Script" uid="uid://rpmvree5m8p3" path="res://Cenas/Fases/fase_plat.gd" id="1_axnnm"]
 [ext_resource type="PackedScene" uid="uid://d2m240uv3u7nj" path="res://Cenas/fundo.tscn" id="2_ijx0c"]
@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://df0ogkh3kteiu" path="res://cristal_verde.tscn" id="5_ucltn"]
 [ext_resource type="PackedScene" uid="uid://dfemr1maf8q5y" path="res://Cenas/Menu/SettingsMenu.tscn" id="6_8j3os"]
 [ext_resource type="PackedScene" uid="uid://bf4kxcsfswmtq" path="res://Cenas/portal_volta.tscn" id="7_7vntg"]
+[ext_resource type="PackedScene" uid="uid://btmuqo7o24djd" path="res://chroma.tscn" id="9_i8j5m"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_g5322"]
 
@@ -153,3 +154,9 @@ offset_right = -78.4848
 offset_bottom = 78.9558
 settings_menu_scene = ExtResource("6_8j3os")
 metadata/_edit_use_anchors_ = true
+
+[node name="chroma" parent="player" instance=ExtResource("9_i8j5m")]
+offset_left = -719.0
+offset_top = -407.0
+offset_right = 812.0
+offset_bottom = 487.0
