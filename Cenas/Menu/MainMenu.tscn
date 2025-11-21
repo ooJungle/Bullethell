@@ -1,8 +1,16 @@
-[gd_scene load_steps=4 format=3 uid="uid://b1baf17wokydn"]
+[gd_scene load_steps=12 format=3 uid="uid://b1baf17wokydn"]
 
 [ext_resource type="Script" uid="uid://2lib0cu1aw2a" path="res://Scripts/Menu/main_menu.gd" id="1_2a42p"]
+[ext_resource type="Texture2D" uid="uid://bh4ikt3cqkxdt" path="res://Sprites/Menu/jogar.png" id="2_5tyou"]
 [ext_resource type="PackedScene" uid="uid://b2pnn1csceu83" path="res://UI_UX/mira.tscn" id="2_y2bdj"]
+[ext_resource type="Texture2D" uid="uid://bgvj4winy0elt" path="res://Sprites/Menu/opcoes.png" id="3_1ak8u"]
 [ext_resource type="AudioStream" uid="uid://c4aj72861f4y0" path="res://Sons e Musica/Musica Jogo.mp3" id="3_qpwnb"]
+[ext_resource type="Texture2D" uid="uid://4li17i80a4cf" path="res://Sprites/Menu/jogar_apagado.png" id="3_u4g8a"]
+[ext_resource type="Texture2D" uid="uid://kab53nhimna3" path="res://Sprites/Menu/infinito.png" id="4_on8c0"]
+[ext_resource type="Texture2D" uid="uid://ccu18y46la74d" path="res://Sprites/Menu/sair.png" id="4_u4g8a"]
+[ext_resource type="Texture2D" uid="uid://l8pyja0u527q" path="res://Sprites/Menu/infinito_apagado.png" id="5_5nkqo"]
+[ext_resource type="Texture2D" uid="uid://divbo35e3qmdx" path="res://Sprites/Menu/opcoes_apagado.png" id="7_qlikg"]
+[ext_resource type="Texture2D" uid="uid://dhpv31y0qpyuj" path="res://Sprites/Menu/sair_apagado.png" id="9_re7i5"]
 
 [node name="MainMenu" type="Control"]
 layout_mode = 3
@@ -15,45 +23,49 @@ offset_right = 1158.0
 offset_bottom = 656.0
 color = Color(0.500095, 0.50009507, 0.500095, 1)
 
-[node name="PlayButton" type="Button" parent="."]
+[node name="PlayButton" type="TextureButton" parent="."]
 layout_mode = 0
 offset_left = 426.0
 offset_top = 175.0
 offset_right = 541.0
 offset_bottom = 206.0
 scale = Vector2(2.24, 1.88)
-theme_override_constants/outline_size = 4
-text = "Play"
+texture_normal = ExtResource("2_5tyou")
+texture_hover = ExtResource("3_u4g8a")
+stretch_mode = 4
 
-[node name="PlayEndlessButton" type="Button" parent="."]
+[node name="PlayEndlessButton" type="TextureButton" parent="."]
 layout_mode = 0
 offset_left = 426.0
 offset_top = 245.0
 offset_right = 541.0
 offset_bottom = 276.0
 scale = Vector2(2.24, 1.88)
-theme_override_constants/outline_size = 4
-text = "Endless Mode"
+texture_normal = ExtResource("4_on8c0")
+texture_hover = ExtResource("5_5nkqo")
+stretch_mode = 0
 
-[node name="SettingsButton" type="Button" parent="."]
+[node name="SettingsButton" type="TextureButton" parent="."]
 layout_mode = 0
 offset_left = 426.0
 offset_top = 314.0
 offset_right = 541.0
 offset_bottom = 345.0
 scale = Vector2(2.24, 1.88)
-theme_override_constants/outline_size = 4
-text = "Settings"
+texture_normal = ExtResource("3_1ak8u")
+texture_hover = ExtResource("7_qlikg")
+stretch_mode = 4
 
-[node name="QuitButton" type="Button" parent="."]
+[node name="QuitButton" type="TextureButton" parent="."]
 layout_mode = 0
 offset_left = 426.0
 offset_top = 383.0
 offset_right = 541.0
 offset_bottom = 414.0
 scale = Vector2(2.24, 1.88)
-theme_override_constants/outline_size = 4
-text = "Quit"
+texture_normal = ExtResource("4_u4g8a")
+texture_hover = ExtResource("9_re7i5")
+stretch_mode = 4
 
 [node name="Mira" parent="." instance=ExtResource("2_y2bdj")]
 position = Vector2(598.563, 285.347)

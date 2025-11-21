@@ -1,9 +1,15 @@
-[gd_scene load_steps=5 format=3 uid="uid://d26majiwami8u"]
+[gd_scene load_steps=11 format=3 uid="uid://d26majiwami8u"]
 
 [ext_resource type="Script" uid="uid://o52wl5acbuc8" path="res://Scripts/Menu/pause_menu.gd" id="1_vp8nw"]
 [ext_resource type="VideoStream" uid="uid://bccjs2um4sifs" path="res://Sprites/Menu/PauseVideo.ogv" id="2_lmtvr"]
 [ext_resource type="VideoStream" uid="uid://dfh7k6b2d37hl" path="res://Sprites/Menu/DespauseVideo.ogv" id="3_jvxnt"]
 [ext_resource type="Texture2D" uid="uid://c7np1pw8eyl4c" path="res://Sprites/Menu/FundoPause.jpeg" id="4_lmtvr"]
+[ext_resource type="Texture2D" uid="uid://bh4ikt3cqkxdt" path="res://Sprites/Menu/jogar.png" id="5_cylht"]
+[ext_resource type="Texture2D" uid="uid://bgvj4winy0elt" path="res://Sprites/Menu/opcoes.png" id="6_xo07c"]
+[ext_resource type="Texture2D" uid="uid://4li17i80a4cf" path="res://Sprites/Menu/jogar_apagado.png" id="6_xwfrm"]
+[ext_resource type="Texture2D" uid="uid://ccu18y46la74d" path="res://Sprites/Menu/sair.png" id="7_a7kgo"]
+[ext_resource type="Texture2D" uid="uid://divbo35e3qmdx" path="res://Sprites/Menu/opcoes_apagado.png" id="8_eiucx"]
+[ext_resource type="Texture2D" uid="uid://dhpv31y0qpyuj" path="res://Sprites/Menu/sair_apagado.png" id="10_nmk0b"]
 
 [node name="PauseMenu" type="Control"]
 layout_mode = 3
@@ -62,20 +68,23 @@ offset_right = 542.0
 offset_bottom = 288.0
 scale = Vector2(2.60747, 2.75908)
 
-[node name="ResumeButton" type="Button" parent="CanvasLayer/VBoxContainer"]
+[node name="ResumeButton" type="TextureButton" parent="CanvasLayer/VBoxContainer"]
 layout_mode = 2
-theme_override_constants/outline_size = 4
-text = "Resume"
+texture_normal = ExtResource("5_cylht")
+texture_hover = ExtResource("6_xwfrm")
+stretch_mode = 4
 
-[node name="SettingsButton" type="Button" parent="CanvasLayer/VBoxContainer"]
+[node name="SettingsButton" type="TextureButton" parent="CanvasLayer/VBoxContainer"]
 layout_mode = 2
-theme_override_constants/outline_size = 4
-text = "Settings"
+texture_normal = ExtResource("6_xo07c")
+texture_hover = ExtResource("8_eiucx")
+stretch_mode = 4
 
-[node name="QuitButton" type="Button" parent="CanvasLayer/VBoxContainer"]
+[node name="QuitButton" type="TextureButton" parent="CanvasLayer/VBoxContainer"]
 layout_mode = 2
-theme_override_constants/outline_size = 4
-text = "Quit"
+texture_normal = ExtResource("7_a7kgo")
+texture_hover = ExtResource("10_nmk0b")
+stretch_mode = 4
 
 [connection signal="finished" from="CanvasLayer/PauseVideo" to="." method="_on_pause_video_finished"]
 [connection signal="finished" from="CanvasLayer/DespauseVideo" to="." method="_on_pause_video_2_finished"]
