@@ -1,6 +1,6 @@
 shader_type canvas_item;
 uniform sampler2D SCREEN_TEXTURE : hint_screen_texture, filter_linear_mipmap;
-uniform float ca_strength = 5.0;
+uniform float ca_strength = 10.0;
 
 void fragment() {
 	vec2 ca_offset = vec2(ca_strength, 0.0) * SCREEN_PIXEL_SIZE;

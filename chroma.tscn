@@ -5,7 +5,7 @@
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_qgx56"]
 shader = ExtResource("1_xwjh7")
-shader_parameter/ca_strength = 5.0
+shader_parameter/ca_strength = 10.0
 
 [node name="chroma" type="ColorRect"]
 material = SubResource("ShaderMaterial_qgx56")
