@@ -1,7 +1,7 @@
 extends ColorRect
 
 func _ready() -> void:
-	visible = true
+	visible = false
 	
 	var fase_1_concluida = Global.portais_ativos["Fase_espaco"] == false
 	var fase_2_concluida = Global.portais_ativos["Fase_plat"] == false
