@@ -19,6 +19,12 @@ config/features=PackedStringArray("4.5", "Forward Plus")
 PhantomCameraManager="*res://addons/phantom_camera/scripts/managers/phantom_camera_manager.gd"
 Global="*res://Global.tscn"
 
+[display]
+
+window/size/borderless=true
+window/size/transparent=true
+window/per_pixel_transparency/allowed=true
+
 [editor_plugins]
 
 enabled=PackedStringArray("res://addons/phantom_camera/plugin.cfg")
@@ -93,4 +99,7 @@ common/physics_interpolation=true
 [rendering]
 
 textures/canvas_textures/default_texture_filter=0
+renderer/rendering_method="gl_compatibility"
+renderer/rendering_method.mobile="gl_compatibility"
 environment/defaults/default_clear_color=Color(0.396889, 0.396889, 0.396889, 1)
+viewport/transparent_background=true
