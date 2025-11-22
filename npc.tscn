@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://curf7kbfg0nbf"]
+[gd_scene load_steps=14 format=3 uid="uid://curf7kbfg0nbf"]
 
 [ext_resource type="Texture2D" uid="uid://g3qcun4rwxa" path="res://Sprites/Gordin_Tut-Sheet.png" id="1_ideak"]
 [ext_resource type="Script" uid="uid://0kw07pahtqke" path="res://npc.gd" id="1_xxcha"]
@@ -13,15 +13,27 @@ region = Rect2(32, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ul7y6"]
 atlas = ExtResource("1_ideak")
-region = Rect2(64, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_bc6q4"]
-atlas = ExtResource("1_ideak")
 region = Rect2(96, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_mcvl2"]
 atlas = ExtResource("1_ideak")
-region = Rect2(128, 0, 32, 32)
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bc6q4"]
+atlas = ExtResource("1_ideak")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_d61ma"]
+atlas = ExtResource("1_ideak")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_slxoh"]
+atlas = ExtResource("1_ideak")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_l64hl"]
+atlas = ExtResource("1_ideak")
+region = Rect2(0, 0, 32, 32)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_d61ma"]
 animations = [{
@@ -32,17 +44,46 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_kh24r")
 }, {
-"duration": 1.0,
+"duration": 2.5,
 "texture": SubResource("AtlasTexture_ul7y6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mcvl2")
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_bc6q4")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_mcvl2")
+"texture": SubResource("AtlasTexture_d61ma")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_slxoh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_d61ma")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_slxoh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_d61ma")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_slxoh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_d61ma")
 }],
 "loop": true,
-"name": &"default",
+"name": &"falando",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_l64hl")
+}],
+"loop": true,
+"name": &"idle",
 "speed": 5.0
 }]
 
@@ -56,7 +97,7 @@ script = ExtResource("1_xxcha")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_d61ma")
-frame_progress = 0.7305102
+animation = &"falando"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CapsuleShape2D_slxoh")

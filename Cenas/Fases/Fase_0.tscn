@@ -192,7 +192,8 @@ id_da_fase = "Fase_espaco"
 position = Vector2(286, 958)
 
 [node name="NPC" parent="." node_paths=PackedStringArray("portal_alvo") instance=ExtResource("14_2kwqn")]
-position = Vector2(225, 48)
+position = Vector2(225, 46)
+scale = Vector2(1.1, 1.1)
 falas_padrao = Array[String](["Herói misterioso!", "O nosso mundo está sendo tomado por aberrações.", "Você precisa viajar pelas fendas da realidade e quebrar os cristais que estão fornecendo energia para essas criaturas...
 ", "Ande, salve o Universo!"])
 falas_pos_fase0 = Array[String](["Você está indo muito bem...", "Continue assim!"])
@@ -200,7 +201,7 @@ falas_pos_fase1 = Array[String](["Falta pouco...", "Até mais!"])
 portal_alvo = NodePath("../Portal_branco")
 
 [node name="player" parent="." instance=ExtResource("4_2olo2")]
-position = Vector2(7, 62)
+position = Vector2(35, 56)
 collision_layer = 33
 collision_mask = 33
 safe_margin = 0.08
@@ -231,6 +232,7 @@ metadata/_edit_use_anchors_ = true
 [node name="efeito" type="CanvasLayer" parent="."]
 
 [node name="chroma" parent="efeito" instance=ExtResource("13_gmavx")]
+visible = false
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
