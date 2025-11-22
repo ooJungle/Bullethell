@@ -14,6 +14,8 @@ var player_camera: Camera2D
 var navigation_region: NavigationRegion2D
 var arena_rect: Rect2
 
+var vida = 500
+
 func _ready():
 	player = get_node_or_null("/root/Node2D/player")
 	if not player:
@@ -476,3 +478,13 @@ func _spawn_bullets_in_area(rect: Rect2):
 
 		laser.global_position = spawn_pos
 		await get_tree().create_timer(delay).timeout
+
+func take_damage(amount: int) -> void:
+	vida -= amount
+	print("Boss tomou dano. Vida:", vida)
+	
+	if vida <= 0:
+		die()
+
+func die() -> void:
+	get_tree().change_scene_to_file("res://Cenas/Menu/WinScene.tscn")

@@ -122,11 +122,19 @@ func _physics_process(delta: float) -> void:
 		
 		var input_direction = Input.get_vector("move_left", "move_right", "move_up", "move_down")
 
+		# Garantir que o vetor esteja normalizado para diagonais
+		if input_direction.length() > 1.0:
+			input_direction = input_direction.normalized()
+		
 		if input_direction != Vector2.ZERO:
 			var target_velocity = input_direction * speed
 			velocity = velocity.move_toward(target_velocity, aceleracao * delta)
 		else:
 			velocity = velocity.move_toward(Vector2.ZERO, atrito * delta)
+		
+		# Se a velocidade for muito pequena, define como zero para evitar vibração
+		if velocity.length() < 0.1:
+			velocity = Vector2.ZERO
 			
 		if not atacando:
 			atualizar_animacao_movimento(input_direction)
@@ -134,8 +142,10 @@ func _physics_process(delta: float) -> void:
 	move_and_slide()
 	handle_enemy_bounce()
 
+	# Arredonda a posição para evitar subpixels
+	global_position = global_position.round()
+	
 # --- SISTEMA DE ATAQUE ---
-
 func iniciar_ataque():
 	atacando = true
 	pode_atacar = false
@@ -170,14 +180,11 @@ func posicionar_hitbox():
 
 func verificar_dano_nos_inimigos():
 	await get_tree().physics_frame
-	await get_tree().physics_frame
 	
 	var corpos = hitbox.get_overlapping_bodies()
 	
 	for corpo in corpos:
-		# Verifica inimigos OU cristais (use o grupo "inimigo" se for esse o nome)
-		if (corpo.is_in_group("inimigo") or corpo.is_in_group("cristais")) and corpo.has_method("take_damage"):
-			
+		if (corpo.is_in_group("inimigo") or corpo.is_in_group("cristais") or corpo.is_in_group("boss")) and corpo.has_method("take_damage"):
 			corpo.take_damage(dano_do_player)
 			
 			if corpo.is_in_group("inimigo") and "velocity" in corpo:
