@@ -34,8 +34,7 @@ func _physics_process(_delta):
 		if velocity.x != 0:
 			$sprite.flip_h = velocity.x < 0
 
-# Conecte o sinal "body_entered" da Area2D (Hitbox) neste script
-func _on_hitbox_body_entered(body):
+func _on_collision_area_body_entered(body: Node2D) -> void:
 	if body.is_in_group("Player"):
 		if body.has_method("take_damage"):
 			body.take_damage(damage)

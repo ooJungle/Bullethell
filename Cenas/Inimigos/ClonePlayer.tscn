@@ -254,3 +254,5 @@ position = Vector2(0, -1)
 shape = SubResource("CapsuleShape2D_tqfeg")
 
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
+
+[connection signal="body_entered" from="CollisionArea" to="." method="_on_collision_area_body_entered"]
