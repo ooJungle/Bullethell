@@ -1,7 +1,7 @@
 extends StaticBody2D 
 signal fui_quebrado
 
-@export var vida_maxima = 3
+@export var vida_maxima = 30
 var vida_atual = 0
 
 func _ready():

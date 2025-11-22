@@ -154,12 +154,11 @@ func verificar_dano_nos_inimigos():
 	var corpos = hitbox.get_overlapping_bodies()
 	
 	for corpo in corpos:
-		# Verifica inimigos OU cristais
-		if (corpo.is_in_group("enemies") or corpo.is_in_group("cristais")) and corpo.has_method("take_damage"):
+		if (corpo.is_in_group("inimigo") or corpo.is_in_group("cristais")) and corpo.has_method("take_damage"):
 			
 			corpo.take_damage(dano_do_player)
 			
-			if corpo.is_in_group("enemies") and "velocity" in corpo:
+			if corpo.is_in_group("inimigo") and "velocity" in corpo:
 				var direcao_empurrao = (corpo.global_position - global_position).normalized()
 				corpo.velocity += direcao_empurrao * 300
 
@@ -258,7 +257,7 @@ func handle_enemy_bounce():
 		for i in get_slide_collision_count():
 			var collision = get_slide_collision(i)
 			var collider = collision.get_collider()
-			if collider and collider.is_in_group("enemies"):
+			if collider and collider.is_in_group("inimigo"):
 				velocity.y = -forca_salto_inimigo
 				break
 			

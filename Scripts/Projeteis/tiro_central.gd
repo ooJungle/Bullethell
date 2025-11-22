@@ -1,6 +1,6 @@
 extends Area2D
 @export var player = Node2D
-@export var duration: float = 5.0
+@export var duration: float = 2.0
 @onready var centro = $centro
 var velocity: Vector2 = Vector2.ZERO
 var rotacao = 90.0

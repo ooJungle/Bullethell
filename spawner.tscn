@@ -1,0 +1,14 @@
+[gd_scene load_steps=2 format=3 uid="uid://cbxh4j6h2n34t"]
+
+[ext_resource type="Script" uid="uid://baa5w8hfmue23" path="res://spawner.gd" id="1_yp5lu"]
+
+[node name="Spawner" type="Node2D"]
+script = ExtResource("1_yp5lu")
+
+[node name="Timer" type="Timer" parent="."]
+autostart = true
+
+[node name="AreaDeSpawn" type="ReferenceRect" parent="."]
+offset_right = 40.0
+offset_bottom = 40.0
+border_width = 2.0

@@ -1,0 +1,68 @@
+[gd_scene load_steps=6 format=3 uid="uid://bu7otdeikbwcr"]
+
+[ext_resource type="Script" uid="uid://dpe1ob6rs5koo" path="res://Scripts/Inimigos/inimigo_laser.gd" id="1_nkaow"]
+[ext_resource type="Texture2D" uid="uid://0lg1tna0hnmk" path="res://Sprites/Inimigos/inimigo_REDONDO.png" id="2_nkaow"]
+[ext_resource type="Texture2D" uid="uid://cx6ixn88ac2ge" path="res://Sprites/Projeteis/laser.png" id="3_tykgi"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_0nkwv"]
+radius = 8.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_wcglr"]
+radius = 19.0
+height = 38.0
+
+[node name="Inimigo laser" type="CharacterBody2D" groups=["inimigo"]]
+collision_layer = 2
+collision_mask = 3
+script = ExtResource("1_nkaow")
+
+[node name="Inimigo" type="Sprite2D" parent="."]
+rotation = -1.5708
+scale = Vector2(0.75, 0.75)
+texture = ExtResource("2_nkaow")
+flip_v = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(3, 0)
+shape = SubResource("CircleShape2D_0nkwv")
+
+[node name="FirePoint" type="Node2D" parent="."]
+
+[node name="linha" type="Line2D" parent="FirePoint"]
+position = Vector2(31, 29.75)
+points = PackedVector2Array(0, 0, 1000, 0)
+width = 3.0
+default_color = Color(1, 0.482353, 0, 1)
+
+[node name="linha2" type="Line2D" parent="FirePoint"]
+position = Vector2(32, -29.75)
+points = PackedVector2Array(0, 0, 1000, 0)
+width = 3.0
+default_color = Color(1, 0.482353, 0, 1)
+
+[node name="Laserbeam" type="Sprite2D" parent="FirePoint" groups=["laser"]]
+visible = false
+position = Vector2(536, -4)
+scale = Vector2(30.9375, 8.16992)
+texture = ExtResource("3_tykgi")
+
+[node name="RayCast2D" type="RayCast2D" parent="FirePoint"]
+scale = Vector2(1.025, 30)
+target_position = Vector2(1000, 0)
+
+[node name="CollisionArea" type="Area2D" parent="."]
+collision_layer = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CollisionArea"]
+position = Vector2(4, 0)
+shape = SubResource("CapsuleShape2D_wcglr")
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
+navigation_layers = 255
+debug_enabled = true
+
+[node name="PerceptionTimer" type="Timer" parent="."]
+wait_time = 0.2
+autostart = true
+
+[connection signal="body_entered" from="CollisionArea" to="." method="_on_collision_area_body_entered"]

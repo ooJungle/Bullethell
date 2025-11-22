@@ -41,10 +41,3 @@ offset = Vector2(2.5, 30)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-2, 13)
 shape = SubResource("CapsuleShape2D_scw1g")
-
-[node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
-debug_enabled = true
-
-[node name="PerceptionTimer" type="Timer" parent="."]
-wait_time = 0.2
-autostart = true

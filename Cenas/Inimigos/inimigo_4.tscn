@@ -53,11 +53,4 @@ collision_layer = 2
 position = Vector2(-2, 13)
 shape = SubResource("CapsuleShape2D_4yw5t")
 
-[node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
-debug_enabled = true
-
-[node name="PerceptionTimer" type="Timer" parent="."]
-wait_time = 0.2
-autostart = true
-
 [connection signal="body_entered" from="CollisionArea" to="." method="_on_collision_area_body_entered"]

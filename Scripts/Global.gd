@@ -3,7 +3,7 @@ extends Node
 
 var menu = 0
 var volume = 0.3
-
+var dialogo_final_mostrado: bool = false
 var vida = 300
 var paused = false
 var fator_tempo: float = 1.0

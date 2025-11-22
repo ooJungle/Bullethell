@@ -5,11 +5,11 @@
 [ext_resource type="Texture2D" uid="uid://cx6ixn88ac2ge" path="res://Sprites/Projeteis/laser.png" id="3_tykgi"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_0nkwv"]
-radius = 8.0
+radius = 50.08992
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_wcglr"]
-radius = 19.0
-height = 38.0
+radius = 50.0
+height = 100.0
 
 [node name="Inimigo laser" type="CharacterBody2D" groups=["inimigo"]]
 collision_layer = 2
@@ -56,13 +56,5 @@ collision_layer = 2
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CollisionArea"]
 position = Vector2(4, 0)
 shape = SubResource("CapsuleShape2D_wcglr")
-
-[node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
-navigation_layers = 255
-debug_enabled = true
-
-[node name="PerceptionTimer" type="Timer" parent="."]
-wait_time = 0.2
-autostart = true
 
 [connection signal="body_entered" from="CollisionArea" to="." method="_on_collision_area_body_entered"]
