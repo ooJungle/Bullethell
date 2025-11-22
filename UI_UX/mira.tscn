@@ -9,6 +9,7 @@ atlas = ExtResource("1_6226f")
 region = Rect2(7, 7, 17, 17)
 
 [node name="mira" type="Node2D"]
+scale = Vector2(0.75, 0.75)
 
 [node name="mira" type="Sprite2D" parent="."]
 texture = SubResource("AtlasTexture_8gxhf")

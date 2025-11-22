@@ -1,6 +1,7 @@
-[gd_scene load_steps=3 format=3 uid="uid://c6gl5kktkjbc2"]
+[gd_scene load_steps=4 format=3 uid="uid://c6gl5kktkjbc2"]
 
 [ext_resource type="Script" uid="uid://d1shjlwjh0ka0" path="res://Cenas/Fases/admin_boss.gd" id="1_lpf2c"]
+[ext_resource type="Texture2D" uid="uid://u2cc8u2tv2jc" path="res://Sprites/mousinho.png" id="2_u3g42"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_lpf2c"]
 size = Vector2(40, 40)
@@ -9,6 +10,10 @@ size = Vector2(40, 40)
 script = ExtResource("1_lpf2c")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+z_index = 1
+position = Vector2(0.33334064, -0.4242469)
+scale = Vector2(4.333333, 3.8484848)
+texture = ExtResource("2_u3g42")
 
 [node name="Hitbox" type="CollisionShape2D" parent="."]
 
@@ -17,8 +22,11 @@ script = ExtResource("1_lpf2c")
 [node name="SelectionBox" type="ColorRect" parent="."]
 modulate = Color(1, 1, 1, 0.3019608)
 self_modulate = Color(0.5803922, 0.70980394, 0.8862745, 1)
-offset_right = 40.0
-offset_bottom = 40.0
+z_index = 1
+offset_left = -136.0
+offset_top = -103.0
+offset_right = 140.0
+offset_bottom = 122.0
 mouse_filter = 2
 
 [node name="Area2D" type="Area2D" parent="SelectionBox"]

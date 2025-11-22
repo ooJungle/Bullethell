@@ -32,11 +32,11 @@ func _physics_process(_delta):
 		
 		# Opcional: Virar o sprite
 		if velocity.x != 0:
-			$Sprite2D.flip_h = velocity.x < 0
+			$sprite.flip_h = velocity.x < 0
 
 # Conecte o sinal "body_entered" da Area2D (Hitbox) neste script
 func _on_hitbox_body_entered(body):
-	if body.name == "player": # Ou verifique body.is_in_group("Player")
+	if body.is_in_group("Player"):
 		if body.has_method("take_damage"):
 			body.take_damage(damage)
 		queue_free()

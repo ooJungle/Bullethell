@@ -25,10 +25,10 @@ color = Color(0.500095, 0.50009507, 0.500095, 1)
 
 [node name="PlayButton" type="TextureButton" parent="."]
 layout_mode = 0
-offset_left = 426.0
-offset_top = 175.0
-offset_right = 541.0
-offset_bottom = 206.0
+offset_left = 435.0
+offset_top = 189.0
+offset_right = 550.0
+offset_bottom = 220.0
 scale = Vector2(2.24, 1.88)
 texture_normal = ExtResource("2_5tyou")
 texture_hover = ExtResource("3_u4g8a")
@@ -36,10 +36,10 @@ stretch_mode = 4
 
 [node name="PlayEndlessButton" type="TextureButton" parent="."]
 layout_mode = 0
-offset_left = 426.0
-offset_top = 245.0
-offset_right = 541.0
-offset_bottom = 276.0
+offset_left = 435.0
+offset_top = 259.0
+offset_right = 550.0
+offset_bottom = 290.0
 scale = Vector2(2.24, 1.88)
 texture_normal = ExtResource("4_on8c0")
 texture_hover = ExtResource("5_5nkqo")
@@ -47,10 +47,10 @@ stretch_mode = 4
 
 [node name="SettingsButton" type="TextureButton" parent="."]
 layout_mode = 0
-offset_left = 426.0
-offset_top = 314.0
-offset_right = 541.0
-offset_bottom = 344.85107
+offset_left = 435.0
+offset_top = 328.0
+offset_right = 550.0
+offset_bottom = 358.85107
 scale = Vector2(2.24, 1.88)
 texture_normal = ExtResource("3_1ak8u")
 texture_hover = ExtResource("7_qlikg")
@@ -58,10 +58,10 @@ stretch_mode = 4
 
 [node name="QuitButton" type="TextureButton" parent="."]
 layout_mode = 0
-offset_left = 426.0
-offset_top = 383.0
-offset_right = 541.0
-offset_bottom = 414.0
+offset_left = 435.0
+offset_top = 397.0
+offset_right = 550.0
+offset_bottom = 428.0
 scale = Vector2(2.24, 1.88)
 texture_normal = ExtResource("4_u4g8a")
 texture_hover = ExtResource("9_re7i5")

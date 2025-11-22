@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://bpxk7epe337y1"]
+[gd_scene load_steps=24 format=3 uid="uid://bpxk7epe337y1"]
 
 [ext_resource type="Script" uid="uid://q8cms5vqvnj4" path="res://Scripts/Inimigos/inimigo_0.gd" id="1_mf6jg"]
 [ext_resource type="Texture2D" uid="uid://2vf1cnjbjpfl" path="res://Sprites/Sprite-Sheet-GatoZumbiCompleto.png" id="1_y3828"]
@@ -143,7 +143,11 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_mf6jg"]
-size = Vector2(16, 14)
+size = Vector2(16, 17)
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_57u7n"]
+radius = 6.0
+height = 14.0
 
 [node name="inimigo_0" type="CharacterBody2D" groups=["inimigo"]]
 collision_layer = 2
@@ -159,5 +163,12 @@ speed_scale = 1.5
 offset = Vector2(0, -6)
 
 [node name="hitbox" type="CollisionShape2D" parent="."]
-position = Vector2(1, -4)
+position = Vector2(1, -4.5)
 shape = SubResource("RectangleShape2D_mf6jg")
+
+[node name="CollisionArea" type="Area2D" parent="."]
+position = Vector2(1, -4)
+collision_layer = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CollisionArea"]
+shape = SubResource("CapsuleShape2D_57u7n")

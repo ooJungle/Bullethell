@@ -225,12 +225,14 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hnjue"]
-size = Vector2(20, 30)
+size = Vector2(18.75, 32.5)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_8jnw0"]
-size = Vector2(30, 37)
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_tqfeg"]
+radius = 8.0
 
 [node name="ClonePlayer" type="CharacterBody2D" groups=["inimigo"]]
+collision_layer = 2
+collision_mask = 3
 script = ExtResource("1_nh2gt")
 
 [node name="sprite" type="AnimatedSprite2D" parent="."]
@@ -240,15 +242,15 @@ speed_scale = 1.7
 offset = Vector2(0, -8)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-1, -8)
+position = Vector2(0, -9)
 shape = SubResource("RectangleShape2D_hnjue")
 
-[node name="Hitbox" type="Area2D" parent="."]
-light_mask = 2
+[node name="CollisionArea" type="Area2D" parent="."]
+position = Vector2(0, -8)
+collision_layer = 2
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
-position = Vector2(15, -11.5)
-shape = SubResource("RectangleShape2D_8jnw0")
-disabled = true
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CollisionArea"]
+position = Vector2(0, -1)
+shape = SubResource("CapsuleShape2D_tqfeg")
 
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
