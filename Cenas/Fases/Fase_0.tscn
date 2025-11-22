@@ -191,6 +191,11 @@ id_da_fase = "Fase_espaco"
 [node name="Portal_azul" parent="." instance=ExtResource("20_ve75a")]
 position = Vector2(286, 958)
 
+[node name="NPC" parent="." node_paths=PackedStringArray("portal_alvo") instance=ExtResource("14_2kwqn")]
+position = Vector2(225, 48)
+falas_do_npc = Array[String](["Herói misterioso!", "O nosso mundo está sendo tomado por aberrações!", "Você precisa viajar pelas fendas da realidade e quebrar os cristais que estão fornecendo energia para essas criaturas!", "Ande, salve o Universo!"])
+portal_alvo = NodePath("../Portal_branco")
+
 [node name="player" parent="." instance=ExtResource("4_2olo2")]
 position = Vector2(7, 62)
 collision_layer = 33
@@ -232,9 +237,5 @@ offset_right = 0.0
 offset_bottom = 0.0
 grow_horizontal = 2
 grow_vertical = 2
-
-[node name="NPC" parent="efeito" instance=ExtResource("14_2kwqn")]
-position = Vector2(225, 48)
-falas_do_npc = Array[String](["Herói misterioso!", "O nosso mundo está sendo tomado por aberrações!", "Você precisa viajar pelas fendas da realidade e quebrar os cristais que estão fornecendo energia para essas criaturas!", "Ande, salve o Universo!"])
 
 [connection signal="body_entered" from="Portal_branco" to="Portal_branco" method="_on_body_entered"]

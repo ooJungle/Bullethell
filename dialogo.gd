@@ -1,5 +1,7 @@
 extends CanvasLayer
 
+signal finished 
+
 @onready var background = $ColorRect
 @onready var text_label = $ColorRect/RichTextLabel
 
@@ -7,6 +9,8 @@ var dialogos: Array[String] = []
 var indice_atual: int = 0
 var is_active: bool = false
 var pode_avancar: bool = true
+
+var current_tween: Tween 
 
 func _ready():
 	visible = false
@@ -20,7 +24,6 @@ func start_dialogue(linhas_de_texto: Array[String]):
 	is_active = true
 	visible = true
 	
-	# Opcional: Pausa o jogo/player enquanto fala
 	Global.paused = true 
 	
 	mostrar_texto_atual()
@@ -34,11 +37,13 @@ func mostrar_texto_atual():
 	text_label.visible_ratio = 0.0
 	pode_avancar = false
 	
-	# Efeito de digitação (Tween)
-	var tween = create_tween()
-	var tempo = text_label.text.length() * 0.05 # Velocidade da digitação
-	tween.tween_property(text_label, "visible_ratio", 1.0, tempo)
-	tween.finished.connect(func(): pode_avancar = true)
+	if current_tween:
+		current_tween.kill()
+	
+	current_tween = create_tween()
+	var tempo = text_label.text.length() * 0.05 
+	current_tween.tween_property(text_label, "visible_ratio", 1.0, tempo)
+	current_tween.finished.connect(func(): pode_avancar = true)
 
 func _unhandled_input(event):
 	if not is_active:
@@ -49,8 +54,9 @@ func _unhandled_input(event):
 			indice_atual += 1
 			mostrar_texto_atual()
 		else:
-			# Se apertar enquanto digita, termina o texto instantaneamente
-			var tween = get_tree().create_tween() # Mata o tween anterior
+			if current_tween:
+				current_tween.kill()
+			
 			text_label.visible_ratio = 1.0
 			pode_avancar = true
 
@@ -58,3 +64,5 @@ func fechar_dialogo():
 	visible = false
 	is_active = false
 	Global.paused = false
+	
+	finished.emit()

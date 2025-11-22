@@ -148,7 +148,6 @@ func posicionar_hitbox():
 		hitbox.rotation_degrees = 180
 
 func verificar_dano_nos_inimigos():
-	# Espera a física atualizar a posição da hitbox
 	await get_tree().physics_frame
 	await get_tree().physics_frame
 	
@@ -177,15 +176,16 @@ func _on_sprite_animation_finished():
 		else:
 			sprite.play("idle_lado")
 
-# --- SISTEMA DA SETA GUIA ---
 
 func ativar_seta_guia(posicao_do_portal: Vector2):
 	alvo_seta = posicao_do_portal
 	if seta_pivo:
 		seta_pivo.visible = true
-		seta_pivo.z_index = 100 # Por cima de tudo
-
-# --- ANIMAÇÕES DE MOVIMENTO ---
+		seta_pivo.z_index = 100
+		
+func desativar_seta_guia():
+	if seta_pivo:
+		seta_pivo.visible = false
 
 func atualizar_animacao_movimento(input_direction: Vector2):
 	if velocity.length() > 10.0:
