@@ -4,9 +4,9 @@ extends Control
 @onready var video_player: VideoStreamPlayer = $CanvasLayer/PauseVideo
 @onready var despause_video_player: VideoStreamPlayer = $CanvasLayer/DespauseVideo
 @onready var menu_container: CanvasLayer = $CanvasLayer
-@onready var resume_button: Button = $CanvasLayer/VBoxContainer/ResumeButton
-@onready var quit_button: Button = $CanvasLayer/VBoxContainer/QuitButton
-@onready var settings_button: Button = $CanvasLayer/VBoxContainer/SettingsButton
+@onready var resume_button: TextureButton = $PlayButton
+@onready var quit_button: TextureButton = $QuitButton
+@onready var settings_button: TextureButton = $SettingsButton
 @onready var options: VBoxContainer = $CanvasLayer/VBoxContainer
 
 func _ready() -> void:
