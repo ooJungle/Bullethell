@@ -43,14 +43,14 @@ offset_bottom = 276.0
 scale = Vector2(2.24, 1.88)
 texture_normal = ExtResource("4_on8c0")
 texture_hover = ExtResource("5_5nkqo")
-stretch_mode = 0
+stretch_mode = 4
 
 [node name="SettingsButton" type="TextureButton" parent="."]
 layout_mode = 0
 offset_left = 426.0
 offset_top = 314.0
 offset_right = 541.0
-offset_bottom = 345.0
+offset_bottom = 344.85107
 scale = Vector2(2.24, 1.88)
 texture_normal = ExtResource("3_1ak8u")
 texture_hover = ExtResource("7_qlikg")
@@ -74,6 +74,7 @@ position = Vector2(598.563, 285.347)
 position = Vector2(-2, 0)
 stream = ExtResource("3_qpwnb")
 autoplay = true
+bus = &"musica"
 
 [connection signal="pressed" from="PlayButton" to="." method="_on_play_button_pressed"]
 [connection signal="pressed" from="PlayEndlessButton" to="." method="_on_play_endless_button_pressed"]
