@@ -1,6 +1,8 @@
 extends CharacterBody2D
 
 @onready var player: CharacterBody2D = $"."
+@onready var transparente: bool = true
+@onready var ativo: bool = true
 
 # --- COMBATE ---
 @onready var hitbox: Area2D = $Hitbox
@@ -53,6 +55,12 @@ func _ready() -> void:
 
 func _process(delta: float) -> void:
 	# --- ATUALIZAÇÃO VISUAL DA SETA ---
+	if transparente:
+		get_tree().get_root().set_transparent_background(true)
+		DisplayServer.window_set_flag(DisplayServer.WINDOW_FLAG_TRANSPARENT, true, 0)
+		DisplayServer.window_set_flag(DisplayServer.WINDOW_FLAG_BORDERLESS, true, 0)
+		ativo = false
+		transparente = false
 	if seta_pivo and seta_pivo.visible:
 		# 1. Cola a seta na posição do player + o ajuste de altura (cintura)
 		seta_pivo.global_position = global_position + offset_visual_seta
@@ -188,6 +196,8 @@ func desativar_seta_guia():
 
 func atualizar_animacao_movimento(input_direction: Vector2):
 	if velocity.length() > 10.0:
+		if ativo:
+			transparente = true
 		if input_direction.y < 0:
 			last_move_direction = Vector2.UP
 			sprite.flip_h = false

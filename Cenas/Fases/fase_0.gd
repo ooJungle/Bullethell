@@ -7,6 +7,9 @@ extends Node2D
 ]
 
 func _ready() -> void:
+	get_tree().get_root().set_transparent_background(true)
+	DisplayServer.window_set_flag(DisplayServer.WINDOW_FLAG_TRANSPARENT, true, 0)
+	DisplayServer.window_set_flag(DisplayServer.WINDOW_FLAG_BORDERLESS, true, 0)
 	$Timer.start()
 	Global.plataforma = false
 	
