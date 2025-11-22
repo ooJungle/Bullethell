@@ -19,12 +19,7 @@ var portais_ativos = {
 @onready var music_player = $MusicPlayer
 
 func _ready() -> void:
-	get_tree().get_root().transparent_bg = true
-	get_tree().get_root().set_transparent_background(true)
-	DisplayServer.window_set_flag(DisplayServer.WINDOW_FLAG_TRANSPARENT, true, 0)
-	DisplayServer.window_set_flag(DisplayServer.WINDOW_FLAG_BORDERLESS, true, 0)
 	Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
-	# Aplica o volume inicial (0.5) convertendo para dB
 	set_global_volume(volume)
 
 func set_in_menu_state(in_menu: bool):
