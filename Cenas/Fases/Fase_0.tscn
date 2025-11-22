@@ -163,7 +163,7 @@ script = ExtResource("1_l7uc1")
 offset_left = -1927.0
 offset_top = -1835.0
 offset_right = 1577.0
-offset_bottom = 6571.0
+offset_bottom = 5606.0
 
 [node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]
 navigation_polygon = SubResource("NavigationPolygon_pxeo3")
