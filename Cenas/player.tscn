@@ -255,9 +255,9 @@ wait_time = 0.5
 
 [node name="Label" type="Label" parent="."]
 offset_left = -20.0
-offset_top = -34.0
+offset_top = -51.0
 offset_right = 20.0
-offset_bottom = -11.0
+offset_bottom = -28.0
 label_settings = SubResource("LabelSettings_yuqgu")
 horizontal_alignment = 1
 vertical_alignment = 1

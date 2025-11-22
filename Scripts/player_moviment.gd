@@ -1,6 +1,8 @@
 extends CharacterBody2D
 
 @onready var player: CharacterBody2D = $"."
+
+# --- VARIÁVEIS DE JANELA (TRANSPARÊNCIA) ---
 @onready var transparente: bool = true
 @onready var ativo: bool = true
 
@@ -14,7 +16,7 @@ extends CharacterBody2D
 @onready var seta_pivo: Node2D = $SetaPivo
 var alvo_seta: Vector2 = Vector2.ZERO
 # Ajuste este valor para subir ou descer o centro da rotação da seta
-var offset_visual_seta: Vector2 = Vector2(0, -8) 
+var offset_visual_seta: Vector2 = Vector2(0, -8)
 
 # --- STATUS DO PLAYER ---
 @export var speed: float = 300.0
@@ -48,19 +50,21 @@ func _ready() -> void:
 	# --- CORREÇÃO DA ÓRBITA DA SETA ---
 	if seta_pivo:
 		seta_pivo.top_level = true # Desacopla do corpo
-		seta_pivo.visible = false 
+		seta_pivo.visible = false
 	
 	if not sprite.animation_finished.is_connected(_on_sprite_animation_finished):
 		sprite.animation_finished.connect(_on_sprite_animation_finished)
 
 func _process(delta: float) -> void:
-	# --- ATUALIZAÇÃO VISUAL DA SETA ---
+	# --- LÓGICA DE TRANSPARÊNCIA DA JANELA (INICIALIZAÇÃO) ---
 	if transparente:
 		get_tree().get_root().set_transparent_background(true)
 		DisplayServer.window_set_flag(DisplayServer.WINDOW_FLAG_TRANSPARENT, true, 0)
 		DisplayServer.window_set_flag(DisplayServer.WINDOW_FLAG_BORDERLESS, true, 0)
 		ativo = false
 		transparente = false
+
+	# --- ATUALIZAÇÃO VISUAL DA SETA ---
 	if seta_pivo and seta_pivo.visible:
 		# 1. Cola a seta na posição do player + o ajuste de altura (cintura)
 		seta_pivo.global_position = global_position + offset_visual_seta
@@ -68,7 +72,15 @@ func _process(delta: float) -> void:
 		seta_pivo.look_at(alvo_seta)
 
 func _physics_process(delta: float) -> void:
+	# --- CORREÇÃO: PARA A ANIMAÇÃO DURANTE DIÁLOGOS (PAUSE) ---
 	if Global.paused:
+		# Força a animação de parado quando o jogo está pausado
+		if last_move_direction.y < 0:
+			sprite.play("idle_costas")
+		elif last_move_direction.y > 0:
+			sprite.play("idle_frente")
+		else:
+			sprite.play("idle_lado")
 		return
 	
 	# Se estiver atacando, trava o movimento
@@ -142,6 +154,7 @@ func iniciar_ataque():
 	verificar_dano_nos_inimigos()
 
 func posicionar_hitbox():
+	# Ajuste estes valores conforme o desenho da sua espada
 	if last_move_direction.y < 0: # Cima
 		hitbox.position = Vector2(11.5, -10)
 		hitbox.rotation_degrees = -90
@@ -162,6 +175,7 @@ func verificar_dano_nos_inimigos():
 	var corpos = hitbox.get_overlapping_bodies()
 	
 	for corpo in corpos:
+		# Verifica inimigos OU cristais (use o grupo "inimigo" se for esse o nome)
 		if (corpo.is_in_group("inimigo") or corpo.is_in_group("cristais")) and corpo.has_method("take_damage"):
 			
 			corpo.take_damage(dano_do_player)
@@ -183,21 +197,22 @@ func _on_sprite_animation_finished():
 		else:
 			sprite.play("idle_lado")
 
+# --- SISTEMA DE GUIA (SETA) ---
 
 func ativar_seta_guia(posicao_do_portal: Vector2):
 	alvo_seta = posicao_do_portal
 	if seta_pivo:
 		seta_pivo.visible = true
 		seta_pivo.z_index = 100
-		
+
 func desativar_seta_guia():
 	if seta_pivo:
 		seta_pivo.visible = false
 
+# --- ANIMAÇÕES DE MOVIMENTO ---
+
 func atualizar_animacao_movimento(input_direction: Vector2):
 	if velocity.length() > 10.0:
-		if ativo:
-			transparente = true
 		if input_direction.y < 0:
 			last_move_direction = Vector2.UP
 			sprite.flip_h = false

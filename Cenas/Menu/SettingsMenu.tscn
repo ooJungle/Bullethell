@@ -14,6 +14,12 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_kuwkl")
 
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 0
+offset_right = 1158.0
+offset_bottom = 656.0
+color = Color(0.500095, 0.50009507, 0.500095, 1)
+
 [node name="VolumeLabel" type="RichTextLabel" parent="."]
 layout_mode = 0
 offset_left = 430.0

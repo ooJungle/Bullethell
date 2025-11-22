@@ -136,16 +136,6 @@ safe_margin = 0.08
 [node name="Camera2D" type="Camera2D" parent="player"]
 zoom = Vector2(1.5, 1.5)
 
-[node name="Label" type="Label" parent="player/Camera2D"]
-offset_left = 316.0
-offset_top = -207.0
-offset_right = 377.0
-offset_bottom = -173.0
-theme_override_constants/outline_size = 3
-theme_override_font_sizes/font_size = 24
-text = "00:00"
-metadata/_edit_use_anchors_ = true
-
 [node name="PauseMenu" parent="player" instance=ExtResource("5_i8j5m")]
 unique_name_in_owner = true
 offset_left = -78.4848
