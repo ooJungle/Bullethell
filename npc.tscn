@@ -1,6 +1,7 @@
-[gd_scene load_steps=9 format=3 uid="uid://curf7kbfg0nbf"]
+[gd_scene load_steps=11 format=3 uid="uid://curf7kbfg0nbf"]
 
 [ext_resource type="Texture2D" uid="uid://g3qcun4rwxa" path="res://Sprites/Gordin_Tut-Sheet.png" id="1_ideak"]
+[ext_resource type="Script" uid="uid://0kw07pahtqke" path="res://npc.gd" id="1_xxcha"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_xxcha"]
 atlas = ExtResource("1_ideak")
@@ -47,7 +48,11 @@ animations = [{
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_slxoh"]
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_ideak"]
+radius = 81.0
+
 [node name="NPC" type="CharacterBody2D"]
+script = ExtResource("1_xxcha")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_d61ma")
@@ -55,3 +60,8 @@ frame_progress = 0.7305102
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CapsuleShape2D_slxoh")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_ideak")
