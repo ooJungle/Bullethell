@@ -3,6 +3,7 @@ extends Node2D
 @onready var portal_volta = $portal_volta
 @onready var colisao_portal = $portal_volta/CollisionShape2D
 @onready var musica_inicio: AudioStreamPlayer2D = $AudioStreamPlayer2D
+var receba 
 
 var total_cristais = 0
 var cristais_quebrados = 0
