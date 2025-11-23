@@ -1,0 +1,113 @@
+[gd_scene load_steps=16 format=3 uid="uid://bpxvriv765sab"]
+
+[ext_resource type="Script" uid="uid://dkuonslenu4tk" path="res://Scripts/Inimigos/inimigo_fantasma.gd" id="1_bat2n"]
+[ext_resource type="Texture2D" uid="uid://bfx331vyknt83" path="res://Sprites/Sprite-Sheet-GatoFantasmaCompleto.png" id="2_y086o"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_s6g5e"]
+atlas = ExtResource("2_y086o")
+region = Rect2(0, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_riajc"]
+atlas = ExtResource("2_y086o")
+region = Rect2(32, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5dwig"]
+atlas = ExtResource("2_y086o")
+region = Rect2(64, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ietrw"]
+atlas = ExtResource("2_y086o")
+region = Rect2(96, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8k6de"]
+atlas = ExtResource("2_y086o")
+region = Rect2(128, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0d020"]
+atlas = ExtResource("2_y086o")
+region = Rect2(160, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_miy63"]
+atlas = ExtResource("2_y086o")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fwwet"]
+atlas = ExtResource("2_y086o")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8nd5y"]
+atlas = ExtResource("2_y086o")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7wqcv"]
+atlas = ExtResource("2_y086o")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_p3k80"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_s6g5e")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_riajc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5dwig")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ietrw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8k6de")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0d020")
+}],
+"loop": true,
+"name": &"Idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_miy63")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fwwet")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8nd5y")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7wqcv")
+}],
+"loop": false,
+"name": &"Walking",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_d4qcl"]
+radius = 8.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_d4qcl"]
+height = 20.0
+
+[node name="inimigo_fantasma" type="CharacterBody2D" groups=["inimigo"]]
+collision_layer = 2
+collision_mask = 3
+script = ExtResource("1_bat2n")
+
+[node name="sprite" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_p3k80")
+animation = &"Idle"
+speed_scale = 1.2
+offset = Vector2(0, -6)
+
+[node name="hitbox" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_d4qcl")
+
+[node name="CollisionArea" type="Area2D" parent="."]
+collision_layer = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CollisionArea"]
+shape = SubResource("CapsuleShape2D_d4qcl")

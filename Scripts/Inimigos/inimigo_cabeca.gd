@@ -85,7 +85,7 @@ func shoot():
 			var base_direction = Vector2.DOWN
 			if is_instance_valid(player):
 				base_direction = (player.global_position - global_position).normalized()
-			var angle_offset = deg_to_rad(i * 10)
+			var angle_offset = deg_to_rad(i * 5)
 			var final_direction = base_direction.rotated(angle_offset)
 			new_bullet.velocity = final_direction * velocidade_projetil
 			get_parent().add_child(new_bullet)

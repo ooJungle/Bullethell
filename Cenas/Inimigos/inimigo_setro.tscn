@@ -1,13 +1,13 @@
-[gd_scene load_steps=6 format=3 uid="uid://buw23jdf15r6e"]
+[gd_scene load_steps=6 format=3 uid="uid://cm67gv3v3peq0"]
 
-[ext_resource type="Script" uid="uid://yo02svsp2r60" path="res://Scripts/Inimigos/inimigo_setro.gd" id="1_scw1g"]
-[ext_resource type="Texture2D" uid="uid://bagxdjdchicjk" path="res://Sprites/Inimigos/atiradora.png" id="2_scw1g"]
+[ext_resource type="Script" uid="uid://yo02svsp2r60" path="res://Scripts/Inimigos/inimigo_setro.gd" id="1_a38lw"]
+[ext_resource type="Texture2D" uid="uid://bagxdjdchicjk" path="res://Sprites/Inimigos/atiradora.png" id="2_y5y4f"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_vhvaj"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("2_scw1g")
+"texture": ExtResource("2_y5y4f")
 }],
 "loop": true,
 "name": &"Idle",
@@ -15,7 +15,7 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("2_scw1g")
+"texture": ExtResource("2_y5y4f")
 }],
 "loop": true,
 "name": &"Walking",
@@ -33,7 +33,7 @@ height = 60.0
 [node name="inimigo_setro" type="CharacterBody2D" groups=["inimigo"]]
 collision_layer = 2
 collision_mask = 3
-script = ExtResource("1_scw1g")
+script = ExtResource("1_a38lw")
 
 [node name="sprite" type="AnimatedSprite2D" parent="."]
 position = Vector2(-2, -15)
