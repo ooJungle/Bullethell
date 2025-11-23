@@ -38,12 +38,12 @@ animations = [{
 }]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_7nq0h"]
-radius = 6.0
-height = 20.0
+radius = 11.0
+height = 22.0
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_qacp0"]
-radius = 7.0
-height = 20.0
+radius = 11.0
+height = 22.0
 
 [node name="inimigo_polvo" type="CharacterBody2D" groups=["inimigo"]]
 collision_layer = 2
@@ -56,7 +56,7 @@ animation = &"andando"
 frame_progress = 0.44515195
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, 6)
+position = Vector2(0, 7)
 shape = SubResource("CapsuleShape2D_7nq0h")
 
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
@@ -66,7 +66,7 @@ debug_enabled = true
 collision_layer = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-position = Vector2(0, 6)
+position = Vector2(0, 7)
 shape = SubResource("CapsuleShape2D_qacp0")
 
 [node name="PerceptionTimer" type="Timer" parent="."]

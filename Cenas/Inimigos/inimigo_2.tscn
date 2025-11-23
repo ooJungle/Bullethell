@@ -23,12 +23,12 @@ animations = [{
 }]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_scw1g"]
-radius = 13.0
-height = 50.0
+radius = 7.0
+height = 42.0
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_x1js8"]
-radius = 7.0
-height = 34.0
+radius = 22.0
+height = 60.0
 
 [node name="inimigo_2" type="CharacterBody2D" groups=["inimigo"]]
 collision_layer = 2
@@ -43,12 +43,12 @@ animation = &"Walking"
 offset = Vector2(2.5, 30)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-2, 13)
+position = Vector2(-2, 14)
 shape = SubResource("CapsuleShape2D_scw1g")
 
 [node name="CollisionArea" type="Area2D" parent="."]
 collision_layer = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CollisionArea"]
-position = Vector2(-2, 13)
+position = Vector2(-3, 10)
 shape = SubResource("CapsuleShape2D_x1js8")

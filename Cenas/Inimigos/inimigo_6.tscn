@@ -1,13 +1,43 @@
-[gd_scene load_steps=6 format=3 uid="uid://cup0raircu6at"]
+[gd_scene load_steps=12 format=3 uid="uid://cup0raircu6at"]
 
 [ext_resource type="Script" uid="uid://8j63cbnh1k54" path="res://Scripts/Inimigos/inimigo_6.gd" id="1_tbf7d"]
-[ext_resource type="Texture2D" uid="uid://d3y0qgm3dhi85" path="res://Sprites/Inimigos/placegolder inimigo laser.png" id="2_irq7h"]
+[ext_resource type="Texture2D" uid="uid://dk6i7l8df031s" path="res://Sprites/spriteSheetCabecaMonstro.png" id="2_tbf7d"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_irq7h"]
+atlas = ExtResource("2_tbf7d")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_a86e5"]
+atlas = ExtResource("2_tbf7d")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5mpmm"]
+atlas = ExtResource("2_tbf7d")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xrv6x"]
+atlas = ExtResource("2_tbf7d")
+region = Rect2(0, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mo01p"]
+atlas = ExtResource("2_tbf7d")
+region = Rect2(32, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ecqsi"]
+atlas = ExtResource("2_tbf7d")
+region = Rect2(64, 32, 32, 32)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_ao1cn"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("2_irq7h")
+"texture": SubResource("AtlasTexture_irq7h")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_a86e5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5mpmm")
 }],
 "loop": true,
 "name": &"Idle",
@@ -15,7 +45,13 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("2_irq7h")
+"texture": SubResource("AtlasTexture_xrv6x")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mo01p")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ecqsi")
 }],
 "loop": true,
 "name": &"Walking",
@@ -23,12 +59,12 @@ animations = [{
 }]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_3kq0m"]
-radius = 15.0
-height = 58.0
+radius = 3.0
+height = 6.0
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_tbf7d"]
-radius = 9.0
-height = 38.0
+radius = 5.0
+height = 10.0
 
 [node name="inimigo_6" type="CharacterBody2D" groups=["inimigo"]]
 collision_layer = 2
@@ -36,21 +72,19 @@ collision_mask = 3
 script = ExtResource("1_tbf7d")
 
 [node name="sprite" type="AnimatedSprite2D" parent="."]
-position = Vector2(0, -17)
+position = Vector2(-1.2999998, -5.800001)
 scale = Vector2(0.2, 0.2)
 sprite_frames = SubResource("SpriteFrames_ao1cn")
-animation = &"Idle"
+animation = &"Walking"
 offset = Vector2(2.5, 30)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, 1)
 shape = SubResource("CapsuleShape2D_3kq0m")
 
 [node name="CollisionArea" type="Area2D" parent="."]
 collision_layer = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CollisionArea"]
-position = Vector2(0, 1)
 shape = SubResource("CapsuleShape2D_tbf7d")
 
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]

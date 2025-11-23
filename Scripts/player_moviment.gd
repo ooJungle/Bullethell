@@ -64,17 +64,12 @@ func _process(delta: float) -> void:
 		ativo = false
 		transparente = false
 
-	# --- ATUALIZAÇÃO VISUAL DA SETA ---
 	if seta_pivo and seta_pivo.visible:
-		# 1. Cola a seta na posição do player + o ajuste de altura (cintura)
 		seta_pivo.global_position = global_position + offset_visual_seta
-		# 2. Gira para olhar o portal
 		seta_pivo.look_at(alvo_seta)
 
 func _physics_process(delta: float) -> void:
-	# --- CORREÇÃO: PARA A ANIMAÇÃO DURANTE DIÁLOGOS (PAUSE) ---
 	if Global.paused:
-		# Força a animação de parado quando o jogo está pausado
 		if last_move_direction.y < 0:
 			sprite.play("idle_costas")
 		elif last_move_direction.y > 0:
@@ -83,7 +78,11 @@ func _physics_process(delta: float) -> void:
 			sprite.play("idle_lado")
 		return
 	
-	# Se estiver atacando, trava o movimento
+	# Segurança contra travamento
+	if atacando and not sprite.animation in ["ataque_frente", "ataque_costas", "ataque_lado"]:
+		atacando = false
+		hitbox_colisao.disabled = true
+
 	if atacando:
 		velocity = Vector2.ZERO
 		move_and_slide()
@@ -122,7 +121,6 @@ func _physics_process(delta: float) -> void:
 		
 		var input_direction = Input.get_vector("move_left", "move_right", "move_up", "move_down")
 
-		# Garantir que o vetor esteja normalizado para diagonais
 		if input_direction.length() > 1.0:
 			input_direction = input_direction.normalized()
 		
@@ -132,7 +130,6 @@ func _physics_process(delta: float) -> void:
 		else:
 			velocity = velocity.move_toward(Vector2.ZERO, atrito * delta)
 		
-		# Se a velocidade for muito pequena, define como zero para evitar vibração
 		if velocity.length() < 0.1:
 			velocity = Vector2.ZERO
 			
@@ -164,7 +161,6 @@ func iniciar_ataque():
 	verificar_dano_nos_inimigos()
 
 func posicionar_hitbox():
-	# Ajuste estes valores conforme o desenho da sua espada
 	if last_move_direction.y < 0: # Cima
 		hitbox.position = Vector2(11.5, -10)
 		hitbox.rotation_degrees = -90

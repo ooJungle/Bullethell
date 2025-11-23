@@ -23,12 +23,12 @@ animations = [{
 }]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_scw1g"]
-radius = 13.0
-height = 50.0
+radius = 12.0
+height = 48.0
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_4yw5t"]
-radius = 7.0
-height = 34.0
+radius = 21.0
+height = 64.0
 
 [node name="inimigo_4" type="CharacterBody2D" groups=["inimigo"]]
 collision_layer = 2
@@ -50,7 +50,7 @@ shape = SubResource("CapsuleShape2D_scw1g")
 collision_layer = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CollisionArea"]
-position = Vector2(-2, 13)
+position = Vector2(-3, 13)
 shape = SubResource("CapsuleShape2D_4yw5t")
 
 [connection signal="body_entered" from="CollisionArea" to="." method="_on_collision_area_body_entered"]
