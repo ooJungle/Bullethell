@@ -23,12 +23,8 @@ var enemy_timer: Timer
 # Inimigos comuns têm peso 10, Inimigos raros (laser, caixinha e maguinhas) têm peso 2.5
 var enemies_list = [
 	{"path": "res://Cenas/Inimigos/inimigo_0.tscn", "weight": 10},
-	{"path": "res://Cenas/Inimigos/inimigo_1.tscn", "weight": 10},
-	{"path": "res://Cenas/Inimigos/inimigo_2.tscn", "weight": 2.5},
-	{"path": "res://Cenas/Inimigos/inimigo_4.tscn", "weight": 2.5},
 	{"path": "res://Cenas/Inimigos/Inimigo_5.tscn", "weight": 2.5},
 	{"path": "res://Cenas/Inimigos/inimigo_6.tscn", "weight": 10},
-	{"path": "res://Cenas/Inimigos/inimigo_laser.tscn", "weight": 2.5},
 	{"path": "res://Cenas/Inimigos/inimigo_polvo.tscn", "weight": 10},
 	{"path": "res://Cenas/Inimigos/inimigo_qualquer.tscn", "weight": 10}
 ]

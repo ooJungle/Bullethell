@@ -67,6 +67,7 @@ radius = 5.0
 height = 10.0
 
 [node name="inimigo_6" type="CharacterBody2D" groups=["inimigo"]]
+scale = Vector2(5, 5)
 collision_layer = 2
 collision_mask = 3
 script = ExtResource("1_tbf7d")

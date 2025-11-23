@@ -3,7 +3,7 @@ extends Area2D
 @export var duration: float = 2.0
 @onready var centro = $centro
 var velocity: Vector2 = Vector2.ZERO
-var rotacao = 90.0
+var rotacao = 120.0
 
 func _ready() -> void:
 	# conecta o sinal (pode também conectar no editor)
