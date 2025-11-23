@@ -1,7 +1,8 @@
-[gd_scene load_steps=12 format=3 uid="uid://b1baf17wokydn"]
+[gd_scene load_steps=20 format=3 uid="uid://b1baf17wokydn"]
 
 [ext_resource type="Script" uid="uid://2lib0cu1aw2a" path="res://Scripts/Menu/main_menu.gd" id="1_2a42p"]
 [ext_resource type="Texture2D" uid="uid://bh4ikt3cqkxdt" path="res://Sprites/Menu/jogar.png" id="2_5tyou"]
+[ext_resource type="Texture2D" uid="uid://dkp241rpl1va7" path="res://Sprites/spriteSheet_portalRoxo.png" id="2_qlikg"]
 [ext_resource type="PackedScene" uid="uid://b2pnn1csceu83" path="res://UI_UX/mira.tscn" id="2_y2bdj"]
 [ext_resource type="Texture2D" uid="uid://bgvj4winy0elt" path="res://Sprites/Menu/opcoes.png" id="3_1ak8u"]
 [ext_resource type="AudioStream" uid="uid://c4aj72861f4y0" path="res://Sons e Musica/Musica Jogo.mp3" id="3_qpwnb"]
@@ -12,57 +13,116 @@
 [ext_resource type="Texture2D" uid="uid://divbo35e3qmdx" path="res://Sprites/Menu/opcoes_apagado.png" id="7_qlikg"]
 [ext_resource type="Texture2D" uid="uid://dhpv31y0qpyuj" path="res://Sprites/Menu/sair_apagado.png" id="9_re7i5"]
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_re7i5"]
+atlas = ExtResource("2_qlikg")
+region = Rect2(0, 0, 101, 101)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ebne8"]
+atlas = ExtResource("2_qlikg")
+region = Rect2(101, 0, 101, 101)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8slqw"]
+atlas = ExtResource("2_qlikg")
+region = Rect2(202, 0, 101, 101)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_oxodj"]
+atlas = ExtResource("2_qlikg")
+region = Rect2(303, 0, 101, 101)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8vq3y"]
+atlas = ExtResource("2_qlikg")
+region = Rect2(404, 0, 101, 101)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yc0vd"]
+atlas = ExtResource("2_qlikg")
+region = Rect2(505, 0, 101, 101)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_inomf"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_re7i5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ebne8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8slqw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_oxodj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8vq3y")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yc0vd")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
 [node name="MainMenu" type="Control"]
 layout_mode = 3
-anchors_preset = 0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 script = ExtResource("1_2a42p")
 
 [node name="ColorRect" type="ColorRect" parent="."]
-layout_mode = 0
-offset_right = 1158.0
-offset_bottom = 656.0
-color = Color(0.500095, 0.50009507, 0.500095, 1)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0.103715636, 0.11139641, 1)
 
-[node name="PlayButton" type="TextureButton" parent="."]
-layout_mode = 0
-offset_left = 435.0
-offset_top = 189.0
-offset_right = 550.0
-offset_bottom = 220.0
-scale = Vector2(2.24, 1.88)
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -36.5
+offset_top = -40.0
+offset_right = 36.5
+offset_bottom = 40.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(3.5, 3.5)
+pivot_offset = Vector2(40, 30)
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="VBoxContainer"]
+position = Vector2(33.285713, 39.142857)
+scale = Vector2(3.5, 3.5)
+sprite_frames = SubResource("SpriteFrames_inomf")
+autoplay = "default"
+
+[node name="PlayButton" type="TextureButton" parent="VBoxContainer"]
+layout_mode = 2
 texture_normal = ExtResource("2_5tyou")
 texture_hover = ExtResource("3_u4g8a")
 stretch_mode = 4
 
-[node name="PlayEndlessButton" type="TextureButton" parent="."]
-layout_mode = 0
-offset_left = 435.0
-offset_top = 259.0
-offset_right = 550.0
-offset_bottom = 290.0
-scale = Vector2(2.24, 1.88)
+[node name="PlayEndlessButton" type="TextureButton" parent="VBoxContainer"]
+layout_mode = 2
 texture_normal = ExtResource("4_on8c0")
 texture_hover = ExtResource("5_5nkqo")
 stretch_mode = 4
 
-[node name="SettingsButton" type="TextureButton" parent="."]
-layout_mode = 0
-offset_left = 435.0
-offset_top = 328.0
-offset_right = 550.0
-offset_bottom = 358.85107
-scale = Vector2(2.24, 1.88)
+[node name="SettingsButton" type="TextureButton" parent="VBoxContainer"]
+layout_mode = 2
 texture_normal = ExtResource("3_1ak8u")
 texture_hover = ExtResource("7_qlikg")
 stretch_mode = 4
 
-[node name="QuitButton" type="TextureButton" parent="."]
-layout_mode = 0
-offset_left = 435.0
-offset_top = 397.0
-offset_right = 550.0
-offset_bottom = 428.0
-scale = Vector2(2.24, 1.88)
+[node name="QuitButton" type="TextureButton" parent="VBoxContainer"]
+layout_mode = 2
 texture_normal = ExtResource("4_u4g8a")
 texture_hover = ExtResource("9_re7i5")
 stretch_mode = 4
@@ -76,7 +136,7 @@ stream = ExtResource("3_qpwnb")
 autoplay = true
 bus = &"musica"
 
-[connection signal="pressed" from="PlayButton" to="." method="_on_play_button_pressed"]
-[connection signal="pressed" from="PlayEndlessButton" to="." method="_on_play_endless_button_pressed"]
-[connection signal="pressed" from="SettingsButton" to="." method="_on_settings_button_pressed"]
-[connection signal="pressed" from="QuitButton" to="." method="_on_quit_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/PlayButton" to="." method="_on_play_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/PlayEndlessButton" to="." method="_on_play_endless_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/SettingsButton" to="." method="_on_settings_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/QuitButton" to="." method="_on_quit_button_pressed"]
