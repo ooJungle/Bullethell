@@ -87,11 +87,3 @@ func encontrar_corpo_celeste_mais_proximo(grupo: String) -> Node2D:
 			mais_proximo = no
 			
 	return mais_proximo
-
-# (Opcional: Adicione esta função se o centro da espiral também puder causar dano)
-# func _on_body_entered(body: Node2D):
-# 	if body.is_in_group("players"):
-# 		if body.has_method("take_damage"):
-# 			body.take_damage(1)
-	# 	# Destruir ao colidir com o jogador ou paredes
-	# 	queue_free()
