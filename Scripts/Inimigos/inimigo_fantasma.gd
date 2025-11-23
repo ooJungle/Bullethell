@@ -84,5 +84,5 @@ func _on_collision_area_body_entered(body: Node2D) -> void:
 		aplicar_knockback(direcao)
 		body.take_damage(5)
 
-func take_damage(amount: int) -> void:
+func take_damage(_amount: int) -> void:
 	queue_free()

@@ -13,9 +13,9 @@ extends CharacterBody2D
 # --- Preloads dos Projéteis ---
 # Nota: Todos estão carregando o mesmo tiro_amarelo. 
 # Se quiser tiros com comportamentos diferentes, precisará criar cenas diferentes.
-const obj_tiro_roxo = preload("res://Cenas/Projeteis/tiro_amarelo.tscn")
-const obj_tiro_azul = preload("res://Cenas/Projeteis/tiro_amarelo.tscn")
-const obj_tiro_verde = preload("res://Cenas/Projeteis/tiro_amarelo.tscn")
+const obj_tiro_roxo = preload("res://Cenas/Projeteis/tiro_polvo.tscn")
+const obj_tiro_azul = preload("res://Cenas/Projeteis/tiro_polvo.tscn")
+const obj_tiro_verde = preload("res://Cenas/Projeteis/tiro_polvo.tscn")
 
 # --- Nós Filhos ---
 @onready var sprite: AnimatedSprite2D = $sprite

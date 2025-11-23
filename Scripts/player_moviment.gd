@@ -55,7 +55,7 @@ func _ready() -> void:
 	if not sprite.animation_finished.is_connected(_on_sprite_animation_finished):
 		sprite.animation_finished.connect(_on_sprite_animation_finished)
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	# --- LÓGICA DE TRANSPARÊNCIA DA JANELA (INICIALIZAÇÃO) ---
 	if transparente:
 		get_tree().get_root().set_transparent_background(true)
