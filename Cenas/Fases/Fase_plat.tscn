@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=4 uid="uid://bd1kjomv53gnt"]
+[gd_scene load_steps=15 format=4 uid="uid://bd1kjomv53gnt"]
 
 [ext_resource type="Script" uid="uid://rpmvree5m8p3" path="res://Cenas/Fases/fase_plat.gd" id="1_axnnm"]
 [ext_resource type="PackedScene" uid="uid://d2m240uv3u7nj" path="res://UI_UX/fundo.tscn" id="2_ijx0c"]
@@ -9,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://dfemr1maf8q5y" path="res://Cenas/Menu/SettingsMenu.tscn" id="6_8j3os"]
 [ext_resource type="PackedScene" uid="uid://bf4kxcsfswmtq" path="res://Cenas/portal_volta.tscn" id="7_7vntg"]
 [ext_resource type="PackedScene" uid="uid://btmuqo7o24djd" path="res://chroma.tscn" id="9_i8j5m"]
+[ext_resource type="PackedScene" uid="uid://2gn7h1kpcbh8" path="res://Cenas/Inimigos/inimigo_polvo.tscn" id="10_8j3os"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_g5322"]
 
@@ -157,3 +158,6 @@ offset_right = 0.0
 offset_bottom = 0.0
 grow_horizontal = 2
 grow_vertical = 2
+
+[node name="inimigo_polvo" parent="." instance=ExtResource("10_8j3os")]
+position = Vector2(178, 191)

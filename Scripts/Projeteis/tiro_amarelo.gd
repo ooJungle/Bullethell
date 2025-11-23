@@ -1,26 +1,33 @@
-extends Area2D
-@export var player = Node2D
+extends CharacterBody2D
+
 @export var damage: int = 1
-@export var duration: float = 2.0
-var velocity: Vector2 = Vector2.ZERO
+@export var duration: float = 3.0
+@export var speed: float = 500.0
+@export var max_bounces: int = 3
 
 func _ready() -> void:
-	# conecta o sinal (pode também conectar no editor)
-	connect("body_entered", Callable(self, "_on_body_entered"))
+	if velocity == Vector2.ZERO:
+		velocity = Vector2.RIGHT.rotated(rotation) * speed
 
-func _process(delta: float) -> void:
-	if Global.paused:
-		return
-	position += velocity * delta
+func _physics_process(delta: float) -> void:
+	var collision_info = move_and_collide(velocity * delta)
+	
+	if collision_info:
+		var collider = collision_info.get_collider()
+		
+		if collider.is_in_group("player"):
+			if collider.has_method("take_damage"):
+				collider.take_damage(damage)
+			queue_free()
+			return
+
+		if max_bounces > 0:
+			velocity = velocity.bounce(collision_info.get_normal())
+			rotation = velocity.angle()
+			max_bounces -= 1
+		else:
+			queue_free()
 
 	duration -= delta
 	if duration <= 0:
-		queue_free()
-
-func _on_body_entered(body: Node) -> void:
-	# debug: veja quem entrou
-	print("[bullet] body_entered:", body, "is_in_group players?", body.is_in_group("player"))
-	if body.is_in_group("player"):
-		if body.has_method("take_damage"):
-			body.take_damage(damage)
 		queue_free()

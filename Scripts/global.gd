@@ -19,6 +19,7 @@ var portais_ativos = {
 @onready var music_player = $MusicPlayer
 
 func _ready() -> void:
+	preload("res://Cenas/Fases/Fase_espaco.tscn")
 	get_tree().get_root().transparent_bg = true
 	get_tree().get_root().set_transparent_background(true)
 	DisplayServer.window_set_flag(DisplayServer.WINDOW_FLAG_TRANSPARENT, true, 0)

@@ -6,14 +6,17 @@ extends CharacterBody2D
 @export var tempo_percepcao = 0.5
 
 # --- Variáveis de Combate ---
-@export var player: CharacterBody2D
+@export var player: CharacterBody2D # Certifique-se que no Inspector isso está vazio ou correto
 @export var forca_knockback = 600.0
 @export var velocidade_projetil = 130.0
 
 # --- Preloads dos Projéteis ---
-const obj_tiro_roxo = preload("res://Cenas/Projeteis/tiro_polvo.tscn")
-const obj_tiro_azul = preload("res://Cenas/Projeteis/tiro_polvo.tscn")
-const obj_tiro_verde = preload("res://Cenas/Projeteis/tiro_polvo.tscn")
+# Nota: Todos estão carregando o mesmo tiro_amarelo. 
+# Se quiser tiros com comportamentos diferentes, precisará criar cenas diferentes.
+const obj_tiro_roxo = preload("res://Cenas/Projeteis/tiro_amarelo.tscn")
+const obj_tiro_azul = preload("res://Cenas/Projeteis/tiro_amarelo.tscn")
+const obj_tiro_verde = preload("res://Cenas/Projeteis/tiro_amarelo.tscn")
+
 # --- Nós Filhos ---
 @onready var sprite: AnimatedSprite2D = $sprite
 @onready var navigation_agent: NavigationAgent2D = $NavigationAgent2D
@@ -44,6 +47,7 @@ func _ready() -> void:
 	perception_timer.timeout.connect(on_perception_timer_timeout)
 	perception_timer.start()
 	
+	# Busca segura pelo player
 	player = get_node_or_null("/root/Node2D/player")
 	if not player:
 		player = get_node_or_null("/root/fase_teste/player")
@@ -86,10 +90,10 @@ func _physics_process(delta: float) -> void:
 		var velocidade_desejada = direcao_alvo * velocidade
 		var forca_direcao = velocidade_desejada - velocity
 		forca_direcao = forca_direcao.limit_length(forca_maxima_direcao)
-		velocity += forca_direcao * delta  * Global.fator_tempo
+		velocity += forca_direcao * delta * Global.fator_tempo
 		velocity = velocity.limit_length(velocidade)
 	else:
-		velocity = velocity.lerp(Vector2.ZERO, delta * 3.0  * Global.fator_tempo)
+		velocity = velocity.lerp(Vector2.ZERO, delta * 3.0 * Global.fator_tempo)
 
 	move_and_slide()
 	
@@ -97,7 +101,6 @@ func _physics_process(delta: float) -> void:
 		shoot()
 
 func decidir_melhor_caminho() -> void:
-	# Não recalcula um novo caminho se estiver no meio de um ataque
 	if not is_instance_valid(player) or atirando:
 		return
 
@@ -142,7 +145,6 @@ func calcular_comprimento_do_caminho(caminho: PackedVector2Array) -> float:
 		distancia += caminho[i].distance_to(caminho[i+1])
 	return distancia
 
-
 func encontrar_corpo_celeste_mais_proximo(grupo: String) -> Node2D:
 	var nos_no_grupo = get_tree().get_nodes_in_group(grupo)
 	var mais_proximo = null
@@ -156,6 +158,7 @@ func encontrar_corpo_celeste_mais_proximo(grupo: String) -> Node2D:
 	return mais_proximo
 
 func shoot():
+	# ATAQUE 0: Metralhadora giratória
 	if ataque_aleatorio == 0:
 		if not atirando:
 			direcao_ataque_fixa = (player.global_position - global_position).normalized()
@@ -176,6 +179,7 @@ func shoot():
 				atirando = false
 				ataque_aleatorio = randi_range(0, 4)
 
+	# ATAQUE 1: Explosão em círculo
 	if ataque_aleatorio == 1:
 		if attack_cooldown >= 3:
 			for i in range(11):
@@ -187,6 +191,7 @@ func shoot():
 			attack_cooldown = 0.0
 			ataque_aleatorio = randi_range(0, 4)
 
+	# ATAQUE 2: Tiro único simples
 	if ataque_aleatorio == 2:
 		if attack_cooldown >= 3:
 			var new_bullet = obj_tiro_roxo.instantiate()
@@ -197,23 +202,25 @@ func shoot():
 			attack_cooldown = 0.0
 			ataque_aleatorio = randi_range(0, 4)
 
+	# ATAQUE 3: Tiro Azul (AGORA SEM ATRIBUIR PLAYER)
 	if ataque_aleatorio == 3:
 		if attack_cooldown >= 3:
 			var new_bullet = obj_tiro_azul.instantiate()
 			var direction = (player.global_position - global_position).normalized()
-			new_bullet.player = player
+			# new_bullet.player = player  <--- REMOVIDO PARA EVITAR ERRO
 			new_bullet.global_position = global_position
 			new_bullet.velocity = direction * velocidade_projetil
 			get_parent().add_child(new_bullet)
 			attack_cooldown = 0.0
 			ataque_aleatorio = randi_range(0, 4)
 
+	# ATAQUE 4: Tiro Verde Múltiplo (AGORA SEM ATRIBUIR PLAYER)
 	if ataque_aleatorio == 4:
 		if attack_cooldown >= 3:
 			for i in range(4):
 				var new_bullet = obj_tiro_verde.instantiate()
 				var direction = (player.global_position - global_position).normalized()
-				new_bullet.player = player
+				# new_bullet.player = player <--- REMOVIDO PARA EVITAR ERRO
 				new_bullet.global_position = global_position
 				new_bullet.velocity = direction * velocidade_projetil
 				get_parent().add_child(new_bullet)
