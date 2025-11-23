@@ -21,7 +21,7 @@ polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3)])
 outlines = Array[PackedVector2Array]([PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)])
 agent_radius = 0.0
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_rtmoy"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_h5dsd"]
 texture = ExtResource("1_1c0qe")
 0:0/0 = 0
 0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
@@ -95,7 +95,7 @@ texture = ExtResource("1_1c0qe")
 [sub_resource type="TileSet" id="TileSet_ha45p"]
 physics_layer_0/collision_layer = 1
 navigation_layer_0/layers = 1
-sources/0 = SubResource("TileSetAtlasSource_rtmoy")
+sources/0 = SubResource("TileSetAtlasSource_h5dsd")
 
 [node name="Node2D" type="Node2D"]
 script = ExtResource("1_xlyqc")
