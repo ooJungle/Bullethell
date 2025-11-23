@@ -9,7 +9,8 @@ extends CharacterBody2D
 @export var player: CharacterBody2D
 @export var forca_knockback = 600.0
 @export var velocidade_projetil = 130.0
-const obj_tiro_roxo = preload("res://Cenas/Projeteis/tiro_central.tscn")
+# MANTIDO O SEU PRELOAD ORIGINAL:
+const obj_tiro_cabeca = preload("uid://c1jmoiulli385")
 
 # --- Nós Filhos ---
 @onready var sprite: AnimatedSprite2D = $sprite
@@ -21,16 +22,14 @@ const obj_tiro_roxo = preload("res://Cenas/Projeteis/tiro_central.tscn")
 var attack_cooldown = 0.0
 var knockback = false
 var tempo_knockback_atual = 0.0
-
+var is_shooting_anim = false 
 
 func _ready() -> void:
 	add_to_group("enemies")
 	
-	sprite.rotation_degrees = 90 
-
 	perception_timer.wait_time = tempo_percepcao
 	perception_timer.timeout.connect(recalcular_caminho)
-	
+		
 	player = get_node_or_null("/root/Node2D/player")
 	if not player:
 		player = get_node_or_null("/root/fase_teste/player")
@@ -42,17 +41,14 @@ func _physics_process(delta: float) -> void:
 	if Global.paused or !visible:
 		return
 	attack_cooldown += delta
-	
+
 	if not is_instance_valid(player):
 		velocity = Vector2.ZERO
 		move_and_slide()
 		return
 
-	# --- ROTAÇÃO E LÓGICA DE KNOCKBACK ---
-	# O inimigo sempre encara o jogador, a menos que esteja em knockback.
-	if not knockback:
-		look_at(player.global_position)
-	
+	look_at(player.global_position)
+	rotation_degrees -= 90
 	if knockback:
 		tempo_knockback_atual += delta
 		if tempo_knockback_atual >= 0.3:
@@ -61,12 +57,10 @@ func _physics_process(delta: float) -> void:
 		move_and_slide()
 		return
 
-	# --- LÓGICA DE MOVIMENTO COM PATHFINDING ---
 	var direcao_alvo = Vector2.ZERO
 	if not navigation_agent.is_navigation_finished():
 		direcao_alvo = global_position.direction_to(navigation_agent.get_next_path_position())
 
-	# Aplica a força de movimento suavemente
 	if direcao_alvo.length() > 0:
 		var velocidade_desejada = direcao_alvo * velocidade
 		var forca_direcao = velocidade_desejada - velocity
@@ -77,36 +71,29 @@ func _physics_process(delta: float) -> void:
 		velocity = velocity.lerp(Vector2.ZERO, delta * 3.0)
 
 	move_and_slide()
-	update_animation() # Usamos uma função de animação simplificada
-	
-	# Se o jogador estiver perto, tenta atirar.
+
 	if (player.global_position - global_position).length() < 500:
 		shoot()
 
-
-# --- FUNÇÕES DE LÓGICA ---
-
 func shoot():
+	sprite.play("tiro")
 	if attack_cooldown >= 3.0:
-		var new_bullet = obj_tiro_roxo.instantiate()
-		# A direção é simplesmente "para frente" (eixo X positivo) porque o 'look_at' já nos alinhou.
-		var direction = Vector2.RIGHT.rotated(global_rotation)
-		
-		new_bullet.global_position = global_position
-		new_bullet.velocity = direction * velocidade_projetil
-		get_parent().add_child(new_bullet)
+		for i in range(-1, 2):
+			var new_bullet = obj_tiro_cabeca.instantiate()
+			new_bullet.global_position = global_position
+			
+			var base_direction = Vector2.DOWN
+			if is_instance_valid(player):
+				base_direction = (player.global_position - global_position).normalized()
+			var angle_offset = deg_to_rad(i * 10)
+			var final_direction = base_direction.rotated(angle_offset)
+			new_bullet.velocity = final_direction * velocidade_projetil
+			get_parent().add_child(new_bullet)
 		attack_cooldown = 0.0
 
 func recalcular_caminho() -> void:
 	if is_instance_valid(player):
 		navigation_agent.target_position = player.global_position
-
-# Função de animação simplificada, sem flip_h.
-func update_animation():
-	if velocity.length() > 10:
-		sprite.play("Walking")
-	else:
-		sprite.play("Idle")
 
 func aplicar_knockback(direcao: Vector2):
 	knockback = true

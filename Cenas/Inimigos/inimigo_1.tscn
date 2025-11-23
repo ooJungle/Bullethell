@@ -1,6 +1,6 @@
 [gd_scene load_steps=16 format=3 uid="uid://bqvstnda7b8kd"]
 
-[ext_resource type="Script" uid="uid://dkuonslenu4tk" path="res://Scripts/Inimigos/inimigo_1.gd" id="1_miy63"]
+[ext_resource type="Script" uid="uid://dkuonslenu4tk" path="res://Scripts/Inimigos/inimigo_fantasma.gd" id="1_miy63"]
 [ext_resource type="Texture2D" uid="uid://bfx331vyknt83" path="res://Sprites/Sprite-Sheet-GatoFantasmaCompleto.png" id="1_s6g5e"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_s6g5e"]

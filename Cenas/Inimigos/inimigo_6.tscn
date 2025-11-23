@@ -1,6 +1,6 @@
 [gd_scene load_steps=12 format=3 uid="uid://cup0raircu6at"]
 
-[ext_resource type="Script" uid="uid://8j63cbnh1k54" path="res://Scripts/Inimigos/inimigo_6.gd" id="1_tbf7d"]
+[ext_resource type="Script" uid="uid://8j63cbnh1k54" path="res://Scripts/Inimigos/inimigo_cabeca.gd" id="1_tbf7d"]
 [ext_resource type="Texture2D" uid="uid://dk6i7l8df031s" path="res://Sprites/spriteSheetCabecaMonstro.png" id="2_tbf7d"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_irq7h"]
@@ -66,7 +66,7 @@ height = 6.0
 radius = 5.0
 height = 10.0
 
-[node name="inimigo_6" type="CharacterBody2D" groups=["inimigo"]]
+[node name="inimigo_cabeca" type="CharacterBody2D" groups=["inimigo"]]
 scale = Vector2(5, 5)
 collision_layer = 2
 collision_mask = 3

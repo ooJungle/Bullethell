@@ -1,0 +1,70 @@
+[gd_scene load_steps=9 format=3 uid="uid://brrewtd855sv0"]
+
+[ext_resource type="Script" uid="uid://8j63cbnh1k54" path="res://Scripts/Inimigos/inimigo_cabeca.gd" id="1_medv4"]
+[ext_resource type="Texture2D" uid="uid://dk6i7l8df031s" path="res://Sprites/spriteSheetCabecaMonstro.png" id="2_rqb5o"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_medv4"]
+atlas = ExtResource("2_rqb5o")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rqb5o"]
+atlas = ExtResource("2_rqb5o")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_l25ir"]
+atlas = ExtResource("2_rqb5o")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_i4f6p"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_medv4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rqb5o")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_l25ir")
+}],
+"loop": true,
+"name": &"tiro",
+"speed": 5.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_3kq0m"]
+radius = 13.0
+height = 26.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_tbf7d"]
+radius = 26.0
+height = 52.0
+
+[node name="inimigo_cabeca" type="CharacterBody2D" groups=["inimigo"]]
+collision_layer = 2
+collision_mask = 3
+script = ExtResource("1_medv4")
+
+[node name="sprite" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_i4f6p")
+animation = &"tiro"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -2)
+shape = SubResource("CapsuleShape2D_3kq0m")
+
+[node name="CollisionArea" type="Area2D" parent="."]
+collision_layer = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CollisionArea"]
+position = Vector2(0, -2)
+shape = SubResource("CapsuleShape2D_tbf7d")
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
+debug_enabled = true
+
+[node name="PerceptionTimer" type="Timer" parent="."]
+wait_time = 0.2
+autostart = true
+
+[connection signal="body_entered" from="CollisionArea" to="." method="_on_collision_area_body_entered"]

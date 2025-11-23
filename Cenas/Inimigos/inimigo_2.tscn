@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=3 uid="uid://buw23jdf15r6e"]
 
-[ext_resource type="Script" uid="uid://yo02svsp2r60" path="res://Scripts/Inimigos/inimigo_2.gd" id="1_scw1g"]
+[ext_resource type="Script" uid="uid://yo02svsp2r60" path="res://Scripts/Inimigos/inimigo_setro.gd" id="1_scw1g"]
 [ext_resource type="Texture2D" uid="uid://bagxdjdchicjk" path="res://Sprites/Inimigos/atiradora.png" id="2_scw1g"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_vhvaj"]
