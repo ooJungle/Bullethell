@@ -11,6 +11,8 @@
 [ext_resource type="PackedScene" uid="uid://btmuqo7o24djd" path="res://chroma.tscn" id="8_u3e22"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_gkdup"]
+vertices = PackedVector2Array(854, -134, 1046, -134, 1046, 166, 822, 166, 822, 314, 950, 314, 950, 774, 618, 774, 618, 314, 746, 314, 746, 166, 778, -134, 854, -486, 586, 166, 586, -134, 778, -410, 342, -486, 342, -410, 342, -346, 22, -346, -918, -550, -374, 326, -54, -230, 22, -230, -374, 390, -54, -346, -458, -346, -458, -90, -650, -90, -650, 58, -458, 58, -458, 250, -374, 250, -374, -230, 406, -230, 406, 390, 310, 390, 310, 506, 234, 506, 234, 390, -458, 326, -374, 538, -374, 506, 534, 506, 534, 742, -374, 742, -374, 614, -458, 538, -458, 614, -458, 678, -790, 678, -790, 58, -726, 58, -726, -90, -918, -90, 342, -550)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3), PackedInt32Array(4, 5, 6, 7), PackedInt32Array(7, 8, 9), PackedInt32Array(4, 7, 9, 3), PackedInt32Array(0, 3, 9, 10, 11, 12), PackedInt32Array(10, 13, 14, 11), PackedInt32Array(12, 11, 15), PackedInt32Array(16, 12, 15, 17), PackedInt32Array(17, 18, 19, 20), PackedInt32Array(21, 22, 19, 23, 24), PackedInt32Array(19, 22, 25), PackedInt32Array(26, 27, 28), PackedInt32Array(29, 30, 31), PackedInt32Array(32, 33, 22), PackedInt32Array(23, 34, 35, 36), PackedInt32Array(36, 37, 38, 39), PackedInt32Array(23, 36, 39), PackedInt32Array(23, 39, 24), PackedInt32Array(32, 22, 21), PackedInt32Array(31, 32, 21, 40), PackedInt32Array(41, 42, 38), PackedInt32Array(37, 43, 44, 45), PackedInt32Array(38, 37, 45, 46), PackedInt32Array(41, 38, 46), PackedInt32Array(47, 41, 46, 48), PackedInt32Array(48, 49, 50, 51), PackedInt32Array(47, 48, 51), PackedInt32Array(40, 47, 51, 52), PackedInt32Array(31, 40, 52, 29), PackedInt32Array(28, 29, 52, 53), PackedInt32Array(53, 54, 20, 26), PackedInt32Array(20, 55, 16), PackedInt32Array(20, 16, 17), PackedInt32Array(20, 19, 25), PackedInt32Array(20, 25, 26), PackedInt32Array(53, 26, 28)])
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_u663p"]
 vertices = PackedVector2Array(8, 8, -8, 8, -8, -8, 8, -8)
@@ -109,13 +111,13 @@ position = Vector2(6, 109)
 id_desta_fase = "Fase_RPG"
 
 [node name="cristal_azul" parent="." instance=ExtResource("7_282xx")]
-position = Vector2(-680, -414)
+position = Vector2(-774, -417)
 
 [node name="cristal_azul2" parent="." instance=ExtResource("7_282xx")]
-position = Vector2(824, 600)
+position = Vector2(876, 691)
 
 [node name="cristal_azul3" parent="." instance=ExtResource("7_282xx")]
-position = Vector2(-18, 635)
+position = Vector2(-158, 635)
 
 [node name="player" parent="." instance=ExtResource("2_2j5u3")]
 position = Vector2(7, 62)

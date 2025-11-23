@@ -115,13 +115,13 @@ tile_map_data = PackedByteArray("AADb/wkAAAAAAAIAAADb/woAAAAAAAMAAADc/wkAAAABAAI
 tile_set = SubResource("TileSet_47xyu")
 
 [node name="cristal_verde" parent="NavigationRegion2D" instance=ExtResource("5_ucltn")]
-position = Vector2(1443, -422)
+position = Vector2(1567, 10)
 
 [node name="cristal_verde2" parent="NavigationRegion2D" instance=ExtResource("5_ucltn")]
-position = Vector2(-1447, -306)
+position = Vector2(-1681, -765)
 
 [node name="cristal_verde3" parent="NavigationRegion2D" instance=ExtResource("5_ucltn")]
-position = Vector2(423, -1254)
+position = Vector2(593, -1240)
 
 [node name="portal_volta" parent="." instance=ExtResource("7_7vntg")]
 position = Vector2(-22, 521)
