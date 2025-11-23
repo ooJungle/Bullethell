@@ -1,55 +1,55 @@
-[gd_scene load_steps=19 format=3 uid="uid://burb4hginapym"]
+[gd_scene load_steps=19 format=3 uid="uid://d3rs2uxycy013"]
 
-[ext_resource type="Script" uid="uid://c24rkgo6l8gn3" path="res://Scripts/Inimigos/inimigo_zumbi.gd" id="1_m8kee"]
-[ext_resource type="Texture2D" uid="uid://43vonnfep7qg" path="res://Sprites/Inimigos/inimigo_horrendo.png" id="2_e8bdr"]
-[ext_resource type="Texture2D" uid="uid://2vf1cnjbjpfl" path="res://Sprites/Sprite-Sheet-GatoZumbiCompleto.png" id="2_rq2oo"]
+[ext_resource type="Script" uid="uid://c24rkgo6l8gn3" path="res://Scripts/Inimigos/inimigo_zumbi.gd" id="1_gib4c"]
+[ext_resource type="Texture2D" uid="uid://2vf1cnjbjpfl" path="res://Sprites/Sprite-Sheet-GatoZumbiCompleto.png" id="2_vqdn1"]
+[ext_resource type="Texture2D" uid="uid://43vonnfep7qg" path="res://Sprites/Inimigos/inimigo_horrendo.png" id="3_h801t"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_gyrmc"]
-atlas = ExtResource("2_rq2oo")
+atlas = ExtResource("2_vqdn1")
 region = Rect2(0, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_gklft"]
-atlas = ExtResource("2_rq2oo")
+atlas = ExtResource("2_vqdn1")
 region = Rect2(32, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_dw8sv"]
-atlas = ExtResource("2_rq2oo")
+atlas = ExtResource("2_vqdn1")
 region = Rect2(64, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_t82mm"]
-atlas = ExtResource("2_rq2oo")
+atlas = ExtResource("2_vqdn1")
 region = Rect2(96, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_vb5vw"]
-atlas = ExtResource("2_rq2oo")
+atlas = ExtResource("2_vqdn1")
 region = Rect2(128, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_povjr"]
-atlas = ExtResource("2_rq2oo")
+atlas = ExtResource("2_vqdn1")
 region = Rect2(160, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_lqu3a"]
-atlas = ExtResource("2_rq2oo")
+atlas = ExtResource("2_vqdn1")
 region = Rect2(0, 32, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_pwbcy"]
-atlas = ExtResource("2_rq2oo")
+atlas = ExtResource("2_vqdn1")
 region = Rect2(32, 32, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_bgcyo"]
-atlas = ExtResource("2_rq2oo")
+atlas = ExtResource("2_vqdn1")
 region = Rect2(64, 32, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_r2ris"]
-atlas = ExtResource("2_rq2oo")
+atlas = ExtResource("2_vqdn1")
 region = Rect2(96, 32, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_6r5mx"]
-atlas = ExtResource("2_rq2oo")
+atlas = ExtResource("2_vqdn1")
 region = Rect2(128, 32, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_uvbrr"]
-atlas = ExtResource("2_rq2oo")
+atlas = ExtResource("2_vqdn1")
 region = Rect2(160, 32, 32, 32)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_ry66y"]
@@ -97,7 +97,7 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("2_e8bdr")
+"texture": ExtResource("3_h801t")
 }],
 "loop": true,
 "name": &"Walking",
@@ -116,7 +116,7 @@ collision_mask = 3
 motion_mode = 1
 wall_min_slide_angle = 0.0
 safe_margin = 1.0
-script = ExtResource("1_m8kee")
+script = ExtResource("1_gib4c")
 
 [node name="sprite" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_ry66y")
