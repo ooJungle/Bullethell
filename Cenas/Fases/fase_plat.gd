@@ -2,10 +2,11 @@ extends Node2D
 
 @onready var portal_volta = $portal_volta
 @onready var colisao_portal = $portal_volta/CollisionShape2D
+@onready var musica_inicio: AudioStreamPlayer2D = $AudioStreamPlayer2D
 
 var total_cristais = 0
 var cristais_quebrados = 0
-@onready var musica_inicio: AudioStreamPlayer2D = $AudioStreamPlayer2D
+
 
 @export var nav_region: NavigationRegion2D
 @export var tilemap: TileMapLayer
