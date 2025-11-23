@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=4 uid="uid://drbeol373ocxe"]
+[gd_scene load_steps=15 format=4 uid="uid://drbeol373ocxe"]
 
 [ext_resource type="Texture2D" uid="uid://cuats4fupmos7" path="res://Sprites/tilesetAZUL.png" id="1_1c0qe"]
 [ext_resource type="Script" uid="uid://8h76fmmuw404" path="res://Cenas/Fases/fase_rpg.gd" id="1_xlyqc"]
@@ -9,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://c3oseobpuwlb8" path="res://cristal_azul.tscn" id="7_282xx"]
 [ext_resource type="PackedScene" uid="uid://d2m240uv3u7nj" path="res://UI_UX/fundo.tscn" id="8_282xx"]
 [ext_resource type="PackedScene" uid="uid://btmuqo7o24djd" path="res://chroma.tscn" id="8_u3e22"]
+[ext_resource type="AudioStream" uid="uid://cnq0eiwyt0vde" path="res://Sons e Musica/Boss_2.mp3" id="10_h5dsd"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_gkdup"]
 vertices = PackedVector2Array(854, -134, 1046, -134, 1046, 166, 822, 166, 822, 314, 950, 314, 950, 774, 618, 774, 618, 314, 746, 314, 746, 166, 778, -134, 854, -486, 586, 166, 586, -134, 778, -410, 342, -486, 342, -410, 342, -346, 22, -346, -918, -550, -374, 326, -54, -230, 22, -230, -374, 390, -54, -346, -458, -346, -458, -90, -650, -90, -650, 58, -458, 58, -458, 250, -374, 250, -374, -230, 406, -230, 406, 390, 310, 390, 310, 506, 234, 506, 234, 390, -458, 326, -374, 538, -374, 506, 534, 506, 534, 742, -374, 742, -374, 614, -458, 538, -458, 614, -458, 678, -790, 678, -790, 58, -726, 58, -726, -90, -918, -90, 342, -550)
@@ -156,3 +157,7 @@ offset_right = 0.0
 offset_bottom = 0.0
 grow_horizontal = 2
 grow_vertical = 2
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("10_h5dsd")
+bus = &"musica"
