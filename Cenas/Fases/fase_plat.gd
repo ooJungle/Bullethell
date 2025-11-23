@@ -7,7 +7,6 @@ extends Node2D
 var total_cristais = 0
 var cristais_quebrados = 0
 
-
 @export var nav_region: NavigationRegion2D
 @export var tilemap: TileMapLayer
 
@@ -17,14 +16,21 @@ var map_right: float
 var map_top: float
 var map_bottom: float
 
-# Intervalo de spawn de inimigos
+# --- CONTROLE DE SPAWN ---
 var spawn_interval: float = 3.5
 var spawn_offset: float = 50.0
 var enemy_timer: Timer
 
+# --- NOVAS VARIÁVEIS (CONTROLE DE ONDA/PAUSA) ---
+var inimigos_spawnados_contagem: int = 0
+var limite_inimigos_onda: int = 6
+var tempo_descanso: float = 20.0
+var rest_timer: Timer
+# ------------------------------------------------
+
 # Inimigos comuns têm peso 10, Inimigos raros (laser, caixinha e maguinhas) têm peso 2.5
 var enemies_list = [
-	{"path": "res://Cenas/Inimigos/inimigo_cabeca.tscn", "weight": 1000},
+	{"path": "res://Cenas/Inimigos/inimigo_zumbi.tscn", "weight": 100}
 ]
 
 var player
@@ -38,19 +44,12 @@ func _ready():
 
 	# Obtenha as posições globais dos limites
 	if nav_region is NavigationRegion2D:
-		# Tente encontrar o TileMap que é filho da NavigationRegion
 		if tilemap is TileMapLayer:
-			# Pega o retângulo de células usadas (ex: de (0,0) até (50, 30))
 			var used_rect: Rect2i = tilemap.get_used_rect()
-			
-			# Converte os cantos desse retângulo para posições de pixel GLOBAIS
 			var top_left_global: Vector2 = tilemap.to_global(tilemap.map_to_local(used_rect.position))
-			
-			# Precisamos do canto inferior direito
 			var bottom_right_pos = used_rect.position + used_rect.size
 			var bottom_right_global: Vector2 = tilemap.to_global(tilemap.map_to_local(bottom_right_pos))
 			
-			# Define as variáveis de limite
 			map_left = top_left_global.x
 			map_top = top_left_global.y
 			map_right = bottom_right_global.x
@@ -62,7 +61,7 @@ func _ready():
 	else:
 		printerr("Erro no BattleManager: A variável 'nav_region' não foi atribuída no Inspetor.")
 
-	# Cria e configura o Timer para inimigos
+	# --- CONFIGURAÇÃO DO TIMER DE INIMIGOS ---
 	enemy_timer = Timer.new()
 	enemy_timer.name = "EnemyTimer"
 	enemy_timer.wait_time = spawn_interval
@@ -70,6 +69,15 @@ func _ready():
 	enemy_timer.autostart = true
 	enemy_timer.connect("timeout", Callable(self, "spawn_enemy"))
 	add_child(enemy_timer)
+
+	# --- CONFIGURAÇÃO DO TIMER DE DESCANSO (NOVO) ---
+	rest_timer = Timer.new()
+	rest_timer.name = "RestTimer"
+	rest_timer.wait_time = tempo_descanso
+	rest_timer.one_shot = true # Só roda uma vez por pausa
+	rest_timer.timeout.connect(_on_rest_finished)
+	add_child(rest_timer)
+	# ------------------------------------------------
 
 	get_tree().get_root().set_transparent_background(true)
 	DisplayServer.window_set_flag(DisplayServer.WINDOW_FLAG_TRANSPARENT, true, 0)
@@ -91,22 +99,22 @@ func _ready():
 
 func controlar_audio():
 	var global_player = Global.music_player
-	var volume_original = global_player.volume_db
-	var tween_down = create_tween()
-	# Abaixa para -80dB (silêncio) em 2 segundos
-	tween_down.tween_property(global_player, "volume_db", -25.0, 6.0)
-	
-	await tween_down.finished
-	global_player.stream_paused = true
-	
-	musica_inicio.play()
-	await musica_inicio.finished
-	
-	global_player.stream_paused = false
-	
-	var tween_up = create_tween()
-	# Retorna o volume para o original que estava antes
-	tween_up.tween_property(global_player, "volume_db", volume_original, 6.0)
+	if global_player:
+		var volume_original = global_player.volume_db
+		var tween_down = create_tween()
+		tween_down.tween_property(global_player, "volume_db", -25.0, 6.0)
+		
+		await tween_down.finished
+		global_player.stream_paused = true
+		
+		if musica_inicio:
+			musica_inicio.play()
+			await musica_inicio.finished
+		
+		global_player.stream_paused = false
+		
+		var tween_up = create_tween()
+		tween_up.tween_property(global_player, "volume_db", volume_original, 6.0)
 	
 func _on_cristal_quebrado():
 	cristais_quebrados += 1
@@ -126,18 +134,28 @@ func is_within_map_bounds(positionMap: Vector2) -> bool:
 	return positionMap.x >= map_left and positionMap.x <= map_right and positionMap.y >= map_top and positionMap.y <= map_bottom
 
 func clamp_position_to_bounds(positionMap: Vector2) -> Vector2:
-	# Ajusta a posição para ficar dentro dos limites do mapa
 	positionMap.x = clamp(positionMap.x, map_left+275, map_right-275)
 	positionMap.y = clamp(positionMap.y, map_top+225, map_bottom-225)
 	return positionMap
 
 func spawn_enemy():
+	# Se por algum motivo o timer disparar durante o descanso, ignoramos
+	if !rest_timer.is_stopped():
+		return
+
 	var quantity = randi() % 3
-	if quantity>1:
-		quantity=2
+	if quantity > 1:
+		quantity = 2
 	else:
-		quantity=1
+		quantity = 1
+	
 	for i in range(quantity):
+		# --- VERIFICAÇÃO DE LIMITE DE ONDA ---
+		if inimigos_spawnados_contagem >= limite_inimigos_onda:
+			iniciar_descanso()
+			break # Para o loop 'for' imediatamente
+		# -------------------------------------
+
 		# 1. Calcular peso total
 		var total_weight: int = 0
 		for enemy_data in enemies_list:
@@ -158,6 +176,24 @@ func spawn_enemy():
 		# 4. Spawnar
 		if selected_path != "":
 			_spawn_entity(selected_path, Vector2.ZERO)
+			inimigos_spawnados_contagem += 1 # Incrementa contador
+	
+	# Verificação extra após o loop caso tenha atingido o limite exatamente agora
+	if inimigos_spawnados_contagem >= limite_inimigos_onda and rest_timer.is_stopped():
+		iniciar_descanso()
+
+# --- FUNÇÕES DE CONTROLE DE ONDA ---
+func iniciar_descanso():
+	print("Limite de 10 inimigos atingido. Pausando spawn por 20 segundos...")
+	enemy_timer.stop()
+	rest_timer.start()
+
+func _on_rest_finished():
+	print("Descanso acabou! Reiniciando spawn.")
+	inimigos_spawnados_contagem = 0 # Reseta a contagem
+	enemy_timer.start()
+	spawn_enemy() # Spawna um imediatamente para não esperar o intervalo
+# -----------------------------------
 
 func _spawn_entity(resource_path: String, positionLoc):
 	var camera = get_tree().get_current_scene().get_node("player/Camera2D")
@@ -167,7 +203,6 @@ func _spawn_entity(resource_path: String, positionLoc):
 	var camera_pos = camera.global_position
 	var viewport_size = get_viewport().get_visible_rect().size / 2
 	
-	# Calcule as bordas da câmera
 	var left = camera_pos.x - viewport_size.x - spawn_offset
 	var right = camera_pos.x + viewport_size.x + spawn_offset
 	var top = camera_pos.y - viewport_size.y - spawn_offset
@@ -175,7 +210,7 @@ func _spawn_entity(resource_path: String, positionLoc):
 
 	if positionLoc == Vector2.ZERO:
 		spawn_position = Vector2()
-		var side = randi() % 4 # 0 = top, 1 = bottom, 2 = left, 3 = right
+		var side = randi() % 4
 		match side:
 			0: # Top
 				spawn_position.x = randf_range(left, right)
