@@ -1,7 +1,8 @@
-[gd_scene load_steps=26 format=4 uid="uid://vtcrh3j2rb3w"]
+[gd_scene load_steps=27 format=4 uid="uid://vtcrh3j2rb3w"]
 
 [ext_resource type="Script" uid="uid://c026j0c7a8vyi" path="res://Cenas/Fases/fase_espaco.gd" id="1_msfmn"]
 [ext_resource type="Texture2D" uid="uid://0hnxho8ngv6r" path="res://Sprites/tilesetCINZA.png" id="2_a6l73"]
+[ext_resource type="PackedScene" uid="uid://dfemr1maf8q5y" path="res://Cenas/Menu/SettingsMenu.tscn" id="3_0lgwq"]
 [ext_resource type="PackedScene" uid="uid://cbxh4j6h2n34t" path="res://spawner.tscn" id="3_7rvbr"]
 [ext_resource type="Texture2D" uid="uid://btly5qbyu14jv" path="res://Sprites/teste tiles.png" id="3_x6llx"]
 [ext_resource type="PackedScene" uid="uid://bu7otdeikbwcr" path="res://Cenas/Inimigos/inimigo_laser.tscn" id="4_4t2da"]
@@ -207,6 +208,7 @@ offset_left = 3431.5151
 offset_top = -1960.0442
 offset_right = 3431.5151
 offset_bottom = -1960.0442
+settings_menu_scene = ExtResource("3_0lgwq")
 metadata/_edit_use_anchors_ = true
 
 [node name="Spawner" parent="." node_paths=PackedStringArray("navigation_region") instance=ExtResource("3_7rvbr")]

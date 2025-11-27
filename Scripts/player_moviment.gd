@@ -42,6 +42,8 @@ var pode_atacar: bool = true
 var atacando: bool = false
 var arma_atual_dados: Dictionary
 
+var pode_se_mexer: bool = true
+
 func _ready() -> void:
 	vida = vida_maxima
 	Global.vida = vida
@@ -119,22 +121,31 @@ func _physics_process(delta: float) -> void:
 		var forca_externa = calcular_forcas_externas()
 		velocity += forca_externa * delta
 		
-		var input_direction = Input.get_vector("move_left", "move_right", "move_up", "move_down")
+		if pode_se_mexer :
+			var input_direction = Input.get_vector("move_left", "move_right", "move_up", "move_down")
 
-		if input_direction.length() > 1.0:
-			input_direction = input_direction.normalized()
-		
-		if input_direction != Vector2.ZERO:
-			var target_velocity = input_direction * speed
-			velocity = velocity.move_toward(target_velocity, aceleracao * delta)
-		else:
-			velocity = velocity.move_toward(Vector2.ZERO, atrito * delta)
-		
-		if velocity.length() < 0.1:
-			velocity = Vector2.ZERO
+			if input_direction.length() > 1.0:
+				input_direction = input_direction.normalized()
 			
-		if not atacando:
-			atualizar_animacao_movimento(input_direction)
+			if input_direction != Vector2.ZERO:
+				var target_velocity = input_direction * speed
+				velocity = velocity.move_toward(target_velocity, aceleracao * delta)
+			else:
+				velocity = velocity.move_toward(Vector2.ZERO, atrito * delta)
+			
+			if velocity.length() < 0.1:
+				velocity = Vector2.ZERO
+				
+			if not atacando:
+				atualizar_animacao_movimento(input_direction)
+		else:
+			velocity = Vector2.ZERO
+			if last_move_direction.y < 0:
+				sprite.play("idle_costas")
+			elif last_move_direction.y > 0:
+				sprite.play("idle_frente")
+			else:
+				sprite.play("idle_lado")
 		
 	move_and_slide()
 	handle_enemy_bounce()

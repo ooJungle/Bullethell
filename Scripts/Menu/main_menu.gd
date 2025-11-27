@@ -16,9 +16,13 @@ func _ready() -> void:
 
 func _on_play_button_pressed() -> void:
 	Global.set_in_menu_state(false)
+	Transicao.transition()
+	await Transicao.on_transition_finished
 	get_tree().change_scene_to_file("res://Cenas/Fases/Fase_0.tscn")
 
 func _on_settings_button_pressed() -> void:
+	Transicao.transition()
+	await Transicao.on_transition_finished
 	get_tree().change_scene_to_file("res://Cenas/Menu/SettingsMenu.tscn")
 
 func _on_quit_button_pressed() -> void:
@@ -26,5 +30,7 @@ func _on_quit_button_pressed() -> void:
 
 
 func _on_play_endless_button_pressed() -> void:
+	Transicao.transition()
+	await Transicao.on_transition_finished
 	Global.set_in_menu_state(false)
 	get_tree().change_scene_to_file("res://Cenas/Fases/fase_teste.tscn")

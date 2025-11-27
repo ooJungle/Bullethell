@@ -1,5 +1,6 @@
 extends Node2D
 
+
 @export_multiline var falas_finais: Array[String] = [
 	"HAHAHAHAHAHAHAHAHAHAHAHAHAHAHAHAHAHAH...",
 	"HAHAHAHAHAHAHAHAHAHAHAHAHAHAHAHAHAHAH...",
@@ -12,10 +13,10 @@ func _ready() -> void:
 	DisplayServer.window_set_flag(DisplayServer.WINDOW_FLAG_BORDERLESS, true, 0)
 	$Timer.start()
 	Global.plataforma = false
-	
 	await get_tree().create_timer(1.0).timeout
 	verificar_fim_de_jogo()
-
+	
+	
 func _on_timer_timeout() -> void:
 	get_tree().change_scene_to_file("res://Cenas/Menu/WinScene.tscn")
 

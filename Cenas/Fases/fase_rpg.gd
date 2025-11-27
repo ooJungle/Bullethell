@@ -42,7 +42,6 @@ var pause_control
 
 func _ready():
 	player = get_tree().get_first_node_in_group("players")
-
 	# Obtenha as posições globais dos limites
 	if nav_region is NavigationRegion2D:
 		if tilemap is TileMapLayer:

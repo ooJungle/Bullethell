@@ -209,18 +209,18 @@ collision_layer = 33
 collision_mask = 33
 safe_margin = 0.08
 
-[node name="Camera2D" type="Camera2D" parent="player"]
-position = Vector2(48, 28)
-zoom = Vector2(1.5, 1.5)
-
 [node name="PauseMenu" parent="player" instance=ExtResource("5_wbwhm")]
 unique_name_in_owner = true
 offset_left = -78.4848
-offset_top = 78.9558
+offset_top = 78.95581
 offset_right = -78.4848
-offset_bottom = 78.9558
+offset_bottom = 78.95581
 settings_menu_scene = ExtResource("7_ypqou")
 metadata/_edit_use_anchors_ = true
+
+[node name="Camera2D" type="Camera2D" parent="player"]
+position = Vector2(48, 28)
+zoom = Vector2(1.5, 1.5)
 
 [node name="efeito" type="CanvasLayer" parent="."]
 

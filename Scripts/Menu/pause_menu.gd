@@ -50,10 +50,14 @@ func _on_pause_video_2_finished() -> void:
 	get_tree().paused = false
 
 func _on_settings_button_pressed() -> void:
+	Transicao.transition()
+	await Transicao.on_transition_finished 
 	options.hide()
 	var settings_instance = settings_menu_scene.instantiate()
-	$CanvasLayer.add_child(settings_instance)
+	add_child(settings_instance)
 	settings_instance.tree_exiting.connect(_on_settings_menu_closed)
 	
 func _on_settings_menu_closed():
+	Transicao.transition()
+	await Transicao.on_transition_finished
 	options.show()
