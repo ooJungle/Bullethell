@@ -1,5 +1,7 @@
 extends Area2D
 
+@onready var som_portal: AudioStreamPlayer = $AudioStreamPlayer
+
 @export var id_da_fase: String = "fase_espaco" 
 const cena_destino = "res://Cenas/Fases/Fase_espaco.tscn"
 
@@ -11,6 +13,7 @@ func _ready():
 			queue_free()
 
 func _on_body_entered(body):
+	som_portal.play()
 	var status = ResourceLoader.load_threaded_get_status(cena_destino)
 	if body.is_in_group("players"):
 		body.pode_se_mexer = false

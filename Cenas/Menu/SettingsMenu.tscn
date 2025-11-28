@@ -34,13 +34,13 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -36.0
-offset_top = -41.0
+offset_top = -77.0
 offset_right = 37.0
-offset_bottom = 16.0
+offset_bottom = 52.0
 grow_horizontal = 2
 grow_vertical = 2
-scale = Vector2(4, 4)
-pivot_offset = Vector2(40, 10)
+scale = Vector2(3, 3)
+pivot_offset = Vector2(40, 20)
 
 [node name="Sprite2D" type="Sprite2D" parent="VBoxContainer"]
 position = Vector2(34.25, -3.5)
@@ -68,6 +68,22 @@ theme_override_icons/grabber_disabled = ExtResource("2_pklp7")
 max_value = 1.4
 step = 0.01
 
+[node name="musica" type="HSlider" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_icons/grabber = ExtResource("2_pklp7")
+theme_override_icons/grabber_highlight = ExtResource("2_pklp7")
+theme_override_icons/grabber_disabled = ExtResource("2_pklp7")
+max_value = 1.0
+step = 0.01
+
+[node name="sfx" type="HSlider" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_icons/grabber = ExtResource("2_pklp7")
+theme_override_icons/grabber_highlight = ExtResource("2_pklp7")
+theme_override_icons/grabber_disabled = ExtResource("2_pklp7")
+max_value = 1.0
+step = 0.01
+
 [node name="BackButton" type="TextureButton" parent="VBoxContainer"]
 layout_mode = 2
 texture_normal = ExtResource("3_5t7sp")
@@ -78,4 +94,6 @@ stretch_mode = 4
 position = Vector2(752, 374)
 
 [connection signal="value_changed" from="VBoxContainer/HSlider" to="." method="_on_h_slider_value_changed"]
+[connection signal="value_changed" from="VBoxContainer/musica" to="." method="_on_musica_value_changed"]
+[connection signal="value_changed" from="VBoxContainer/sfx" to="." method="_on_sfx_value_changed"]
 [connection signal="pressed" from="VBoxContainer/BackButton" to="." method="_on_back_button_pressed"]

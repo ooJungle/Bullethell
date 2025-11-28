@@ -1,6 +1,7 @@
 extends CharacterBody2D
 
 @onready var player: CharacterBody2D = $"."
+@onready var som_ataque: AudioStreamPlayer = $AudioStreamPlayer
 
 # --- VARIÁVEIS DE JANELA (TRANSPARÊNCIA) ---
 @onready var transparente: bool = true
@@ -220,7 +221,7 @@ func iniciar_ataque(com_projetil: bool):
 	elif last_move_direction.x != 0:
 		sprite.play("ataque_lado")
 		sprite.flip_h = (last_move_direction.x < 0)
-
+	som_ataque.play()
 	verificar_dano_nos_inimigos()
 
 func lancar_projetil():

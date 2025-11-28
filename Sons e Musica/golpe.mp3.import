@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://yiq4b3oftl0o"
+path="res://.godot/imported/golpe.mp3-45e4b196b0a9186fd67b70bd439d3c54.mp3str"
+
+[deps]
+
+source_file="res://Sons e Musica/golpe.mp3"
+dest_files=["res://.godot/imported/golpe.mp3-45e4b196b0a9186fd67b70bd439d3c54.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

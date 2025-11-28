@@ -1,9 +1,12 @@
 extends Area2D
 
+@onready var som_portal: AudioStreamPlayer = $AudioStreamPlayer
+
 # Adicione uma export variável para a cena do boss
 @export var boss_scene: PackedScene
 
 func _on_body_entered(body: Node2D) -> void:
+	som_portal.play()
 	body.pode_se_mexer = false
 	if body.has_method("desativar_seta_guia"):
 			body.desativar_seta_guia()
