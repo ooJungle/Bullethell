@@ -51,13 +51,12 @@ func _on_pause_video_2_finished() -> void:
 
 func _on_settings_button_pressed() -> void:
 	Transicao.transition()
-	await Transicao.on_transition_finished 
+	await Transicao.on_transition_finished
 	options.hide()
 	var settings_instance = settings_menu_scene.instantiate()
-	add_child(settings_instance)
+	menu_container.add_child(settings_instance)
 	settings_instance.tree_exiting.connect(_on_settings_menu_closed)
+	Global.menu=1
 	
 func _on_settings_menu_closed():
-	Transicao.transition()
-	await Transicao.on_transition_finished
 	options.show()

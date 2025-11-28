@@ -1,10 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://dfemr1maf8q5y"]
+[gd_scene load_steps=7 format=3 uid="uid://dfemr1maf8q5y"]
 
 [ext_resource type="Script" uid="uid://qjhobuv743o" path="res://Scripts/Menu/settings_menu.gd" id="1_kuwkl"]
 [ext_resource type="Texture2D" uid="uid://bv0wedkpwp1iy" path="res://Sprites/Menu/engrenagem.png" id="2_pklp7"]
 [ext_resource type="Texture2D" uid="uid://befy8vw0wpvbi" path="res://Sprites/Menu/volume.png" id="2_pv77c"]
 [ext_resource type="Texture2D" uid="uid://c6m8k8f0g24qd" path="res://Sprites/Menu/voltar.png" id="3_5t7sp"]
 [ext_resource type="Texture2D" uid="uid://ci1d6v1r3bbal" path="res://Sprites/Menu/voltar_apagado.png" id="4_5t7sp"]
+[ext_resource type="PackedScene" uid="uid://b2pnn1csceu83" path="res://UI_UX/mira.tscn" id="6_itx6s"]
 
 [node name="SettingsMenu" type="Control"]
 process_mode = 3
@@ -72,6 +73,9 @@ layout_mode = 2
 texture_normal = ExtResource("3_5t7sp")
 texture_hover = ExtResource("4_5t7sp")
 stretch_mode = 4
+
+[node name="mira" parent="." instance=ExtResource("6_itx6s")]
+position = Vector2(752, 374)
 
 [connection signal="value_changed" from="VBoxContainer/HSlider" to="." method="_on_h_slider_value_changed"]
 [connection signal="pressed" from="VBoxContainer/BackButton" to="." method="_on_back_button_pressed"]
