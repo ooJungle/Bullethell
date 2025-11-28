@@ -1,4 +1,4 @@
-[gd_scene load_steps=37 format=3 uid="uid://boiseqw4vt174"]
+[gd_scene load_steps=38 format=3 uid="uid://boiseqw4vt174"]
 
 [ext_resource type="Script" uid="uid://64mr6fapr8q7" path="res://inimigo_pulo.gd" id="1_4raon"]
 [ext_resource type="Texture2D" uid="uid://c7irpdbwlcvxs" path="res://Sprites/sombra.png" id="2_l142b"]
@@ -232,6 +232,10 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_l142b"]
+radius = 12.0
+height = 56.0
+
 [node name="Inimigo_pulo" type="CharacterBody2D"]
 collision_layer = 2
 collision_mask = 2
@@ -250,6 +254,13 @@ texture = ExtResource("2_l142b")
 [node name="Sprite" type="AnimatedSprite2D" parent="Visual"]
 sprite_frames = SubResource("SpriteFrames_u3ndf")
 animation = &"idle"
-frame_progress = 0.58049333
+frame_progress = 0.27366677
 
 [node name="Hitbox_dano" type="Area2D" parent="Visual"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Visual/Hitbox_dano"]
+position = Vector2(0, 10)
+shape = SubResource("CapsuleShape2D_l142b")
+
+[node name="SpawnerTiro" type="Marker2D" parent="Visual"]
+position = Vector2(0, 32)
