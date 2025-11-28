@@ -1,9 +1,10 @@
-[gd_scene load_steps=17 format=4 uid="uid://bd1kjomv53gnt"]
+[gd_scene load_steps=19 format=4 uid="uid://bd1kjomv53gnt"]
 
 [ext_resource type="Script" uid="uid://rpmvree5m8p3" path="res://Cenas/Fases/fase_plat.gd" id="1_axnnm"]
 [ext_resource type="PackedScene" uid="uid://d2m240uv3u7nj" path="res://UI_UX/fundo.tscn" id="2_ijx0c"]
 [ext_resource type="Texture2D" uid="uid://dtrd0b6lu844q" path="res://Sprites/tilesetVERDE.png" id="3_7vntg"]
 [ext_resource type="PackedScene" uid="uid://cw5ic42v3wep7" path="res://Cenas/player.tscn" id="4_ucltn"]
+[ext_resource type="PackedScene" uid="uid://dqkd2v8c08jsp" path="res://Cenas/tocha.tscn" id="5_47xyu"]
 [ext_resource type="PackedScene" uid="uid://d26majiwami8u" path="res://Cenas/Menu/PauseMenu.tscn" id="5_i8j5m"]
 [ext_resource type="PackedScene" uid="uid://df0ogkh3kteiu" path="res://cristal_verde.tscn" id="5_ucltn"]
 [ext_resource type="PackedScene" uid="uid://dfemr1maf8q5y" path="res://Cenas/Menu/SettingsMenu.tscn" id="6_8j3os"]
@@ -14,6 +15,9 @@
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_g5322"]
 
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_wbt8w"]
+polygon = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_7vntg"]
 vertices = PackedVector2Array(8, 8, -8, 8, -8, -8, 8, -8)
 polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3)])
@@ -23,36 +27,52 @@ agent_radius = 0.0
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_wbt8w"]
 texture = ExtResource("3_7vntg")
 0:0/0 = 0
+0:0/0/occlusion_layer_0/polygon_0/polygon = SubResource("OccluderPolygon2D_wbt8w")
 0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 1:0/0 = 0
+1:0/0/occlusion_layer_0/polygon_0/polygon = SubResource("OccluderPolygon2D_wbt8w")
 1:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 2:0/0 = 0
+2:0/0/occlusion_layer_0/polygon_0/polygon = SubResource("OccluderPolygon2D_wbt8w")
 2:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 3:0/0 = 0
+3:0/0/occlusion_layer_0/polygon_0/polygon = SubResource("OccluderPolygon2D_wbt8w")
 3:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 4:0/0 = 0
+4:0/0/occlusion_layer_0/polygon_0/polygon = SubResource("OccluderPolygon2D_wbt8w")
 4:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 5:0/0 = 0
+5:0/0/occlusion_layer_0/polygon_0/polygon = SubResource("OccluderPolygon2D_wbt8w")
 5:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 6:0/0 = 0
+6:0/0/occlusion_layer_0/polygon_0/polygon = SubResource("OccluderPolygon2D_wbt8w")
 6:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 7:0/0 = 0
+7:0/0/occlusion_layer_0/polygon_0/polygon = SubResource("OccluderPolygon2D_wbt8w")
 7:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 0:1/0 = 0
+0:1/0/occlusion_layer_0/polygon_0/polygon = SubResource("OccluderPolygon2D_wbt8w")
 0:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 1:1/0 = 0
+1:1/0/occlusion_layer_0/polygon_0/polygon = SubResource("OccluderPolygon2D_wbt8w")
 1:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 2:1/0 = 0
+2:1/0/occlusion_layer_0/polygon_0/polygon = SubResource("OccluderPolygon2D_wbt8w")
 2:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 3:1/0 = 0
+3:1/0/occlusion_layer_0/polygon_0/polygon = SubResource("OccluderPolygon2D_wbt8w")
 3:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 4:1/0 = 0
+4:1/0/occlusion_layer_0/polygon_0/polygon = SubResource("OccluderPolygon2D_wbt8w")
 4:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 5:1/0 = 0
+5:1/0/occlusion_layer_0/polygon_0/polygon = SubResource("OccluderPolygon2D_wbt8w")
 5:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 6:1/0 = 0
+6:1/0/occlusion_layer_0/polygon_0/polygon = SubResource("OccluderPolygon2D_wbt8w")
 6:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 7:1/0 = 0
+7:1/0/occlusion_layer_0/polygon_0/polygon = SubResource("OccluderPolygon2D_wbt8w")
 7:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 0:2/0 = 0
 0:2/0/navigation_layer_0/polygon = SubResource("NavigationPolygon_7vntg")
@@ -67,8 +87,10 @@ texture = ExtResource("3_7vntg")
 5:2/0 = 0
 5:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 6:2/0 = 0
+6:2/0/occlusion_layer_0/polygon_0/polygon = SubResource("OccluderPolygon2D_wbt8w")
 6:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 7:2/0 = 0
+7:2/0/occlusion_layer_0/polygon_0/polygon = SubResource("OccluderPolygon2D_wbt8w")
 7:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 0:3/0 = 0
 0:3/0/navigation_layer_0/polygon = SubResource("NavigationPolygon_7vntg")
@@ -83,8 +105,10 @@ texture = ExtResource("3_7vntg")
 5:3/0 = 0
 5:3/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 6:3/0 = 0
+6:3/0/occlusion_layer_0/polygon_0/polygon = SubResource("OccluderPolygon2D_wbt8w")
 6:3/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 7:3/0 = 0
+7:3/0/occlusion_layer_0/polygon_0/polygon = SubResource("OccluderPolygon2D_wbt8w")
 7:3/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 0:4/0 = 0
 0:4/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
@@ -96,6 +120,7 @@ texture = ExtResource("3_7vntg")
 1:5/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 
 [sub_resource type="TileSet" id="TileSet_47xyu"]
+occlusion_layer_0/light_mask = 1
 physics_layer_0/collision_layer = 255
 physics_layer_0/collision_mask = 255
 navigation_layer_0/layers = 1
@@ -135,6 +160,105 @@ position = Vector2(-1681, -765)
 
 [node name="cristal_verde3" parent="NavigationRegion2D" instance=ExtResource("5_ucltn")]
 position = Vector2(593, -1240)
+
+[node name="tocha" parent="NavigationRegion2D" instance=ExtResource("5_47xyu")]
+position = Vector2(-1727, -415)
+
+[node name="tocha2" parent="NavigationRegion2D" instance=ExtResource("5_47xyu")]
+position = Vector2(-1569, -415)
+
+[node name="tocha3" parent="NavigationRegion2D" instance=ExtResource("5_47xyu")]
+position = Vector2(-1409, -417)
+
+[node name="tocha4" parent="NavigationRegion2D" instance=ExtResource("5_47xyu")]
+position = Vector2(-1025, -705)
+
+[node name="tocha5" parent="NavigationRegion2D" instance=ExtResource("5_47xyu")]
+position = Vector2(-864, -705)
+
+[node name="tocha6" parent="NavigationRegion2D" instance=ExtResource("5_47xyu")]
+position = Vector2(-705, -704)
+
+[node name="tocha7" parent="NavigationRegion2D" instance=ExtResource("5_47xyu")]
+position = Vector2(-542, -702)
+
+[node name="tocha8" parent="NavigationRegion2D" instance=ExtResource("5_47xyu")]
+position = Vector2(-384, -703)
+
+[node name="tocha9" parent="NavigationRegion2D" instance=ExtResource("5_47xyu")]
+position = Vector2(-431, -543)
+
+[node name="tocha10" parent="NavigationRegion2D" instance=ExtResource("5_47xyu")]
+position = Vector2(-734, -64)
+
+[node name="tocha11" parent="NavigationRegion2D" instance=ExtResource("5_47xyu")]
+position = Vector2(-867, -64)
+
+[node name="tocha12" parent="NavigationRegion2D" instance=ExtResource("5_47xyu")]
+position = Vector2(-479, -1)
+
+[node name="tocha13" parent="NavigationRegion2D" instance=ExtResource("5_47xyu")]
+position = Vector2(-349, -2)
+
+[node name="tocha14" parent="NavigationRegion2D" instance=ExtResource("5_47xyu")]
+position = Vector2(-225, -4)
+
+[node name="tocha15" parent="NavigationRegion2D" instance=ExtResource("5_47xyu")]
+position = Vector2(223, 93)
+
+[node name="tocha16" parent="NavigationRegion2D" instance=ExtResource("5_47xyu")]
+position = Vector2(352, 95)
+
+[node name="tocha17" parent="NavigationRegion2D" instance=ExtResource("5_47xyu")]
+position = Vector2(475, 93)
+
+[node name="tocha18" parent="NavigationRegion2D" instance=ExtResource("5_47xyu")]
+position = Vector2(638, 61)
+
+[node name="tocha19" parent="NavigationRegion2D" instance=ExtResource("5_47xyu")]
+position = Vector2(794, 64)
+
+[node name="tocha20" parent="NavigationRegion2D" instance=ExtResource("5_47xyu")]
+position = Vector2(1250, 352)
+
+[node name="tocha21" parent="NavigationRegion2D" instance=ExtResource("5_47xyu")]
+position = Vector2(1376, 350)
+
+[node name="tocha22" parent="NavigationRegion2D" instance=ExtResource("5_47xyu")]
+position = Vector2(1631, 351)
+
+[node name="tocha23" parent="NavigationRegion2D" instance=ExtResource("5_47xyu")]
+position = Vector2(1503, 352)
+
+[node name="tocha24" parent="NavigationRegion2D" instance=ExtResource("5_47xyu")]
+position = Vector2(1088, -83)
+
+[node name="tocha25" parent="NavigationRegion2D" instance=ExtResource("5_47xyu")]
+position = Vector2(1251, -77)
+
+[node name="tocha26" parent="NavigationRegion2D" instance=ExtResource("5_47xyu")]
+position = Vector2(1408, -77)
+
+[node name="tocha27" parent="NavigationRegion2D" instance=ExtResource("5_47xyu")]
+position = Vector2(1568, -80)
+
+[node name="tocha28" parent="NavigationRegion2D" instance=ExtResource("5_47xyu")]
+position = Vector2(-1532, 509)
+
+[node name="tocha29" parent="NavigationRegion2D" instance=ExtResource("5_47xyu")]
+position = Vector2(-1375, 511)
+
+[node name="tocha30" parent="NavigationRegion2D" instance=ExtResource("5_47xyu")]
+position = Vector2(-1220, 509)
+
+[node name="tocha31" parent="NavigationRegion2D" instance=ExtResource("5_47xyu")]
+position = Vector2(-1056, 510)
+
+[node name="tocha32" parent="NavigationRegion2D" instance=ExtResource("5_47xyu")]
+position = Vector2(-895, 511)
+
+[node name="tocha33" parent="NavigationRegion2D" instance=ExtResource("5_47xyu")]
+position = Vector2(-736, 510)
 
 [node name="portal_volta" parent="." instance=ExtResource("7_7vntg")]
 position = Vector2(-22, 521)
@@ -185,3 +309,87 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
+
+[node name="tocha" parent="." instance=ExtResource("5_47xyu")]
+position = Vector2(354, -963)
+
+[node name="tocha2" parent="." instance=ExtResource("5_47xyu")]
+position = Vector2(478, -963)
+
+[node name="tocha3" parent="." instance=ExtResource("5_47xyu")]
+position = Vector2(677, -703)
+
+[node name="tocha4" parent="." instance=ExtResource("5_47xyu")]
+position = Vector2(832, -704)
+
+[node name="tocha5" parent="." instance=ExtResource("5_47xyu")]
+position = Vector2(-1793, -1377)
+
+[node name="tocha6" parent="." instance=ExtResource("5_47xyu")]
+position = Vector2(-1631, -1380)
+
+[node name="tocha7" parent="." instance=ExtResource("5_47xyu")]
+position = Vector2(-1469, -1378)
+
+[node name="tocha8" parent="." instance=ExtResource("5_47xyu")]
+position = Vector2(-1309, -1376)
+
+[node name="tocha9" parent="." instance=ExtResource("5_47xyu")]
+position = Vector2(-1151, -1378)
+
+[node name="tocha10" parent="." instance=ExtResource("5_47xyu")]
+position = Vector2(-989, -1376)
+
+[node name="tocha11" parent="." instance=ExtResource("5_47xyu")]
+position = Vector2(-830, -1376)
+
+[node name="tocha12" parent="." instance=ExtResource("5_47xyu")]
+position = Vector2(-672, -1376)
+
+[node name="tocha13" parent="." instance=ExtResource("5_47xyu")]
+position = Vector2(-510, -1377)
+
+[node name="tocha14" parent="." instance=ExtResource("5_47xyu")]
+position = Vector2(-351, -1376)
+
+[node name="tocha15" parent="." instance=ExtResource("5_47xyu")]
+position = Vector2(-192, -1376)
+
+[node name="tocha16" parent="." instance=ExtResource("5_47xyu")]
+position = Vector2(-30, -1376)
+
+[node name="tocha17" parent="." instance=ExtResource("5_47xyu")]
+position = Vector2(127, -1377)
+
+[node name="tocha18" parent="." instance=ExtResource("5_47xyu")]
+position = Vector2(285, -1376)
+
+[node name="tocha19" parent="." instance=ExtResource("5_47xyu")]
+position = Vector2(448, -1376)
+
+[node name="tocha20" parent="." instance=ExtResource("5_47xyu")]
+position = Vector2(611, -1376)
+
+[node name="tocha21" parent="." instance=ExtResource("5_47xyu")]
+position = Vector2(770, -1377)
+
+[node name="tocha22" parent="." instance=ExtResource("5_47xyu")]
+position = Vector2(932, -1376)
+
+[node name="tocha23" parent="." instance=ExtResource("5_47xyu")]
+position = Vector2(1089, -1378)
+
+[node name="tocha24" parent="." instance=ExtResource("5_47xyu")]
+position = Vector2(1250, -1379)
+
+[node name="tocha25" parent="." instance=ExtResource("5_47xyu")]
+position = Vector2(1408, -1380)
+
+[node name="tocha26" parent="." instance=ExtResource("5_47xyu")]
+position = Vector2(1568, -1377)
+
+[node name="tocha27" parent="." instance=ExtResource("5_47xyu")]
+position = Vector2(1732, -1377)
+
+[node name="tocha28" parent="." instance=ExtResource("5_47xyu")]
+position = Vector2(1889, -1375)
