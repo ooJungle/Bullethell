@@ -301,7 +301,7 @@ offset_bottom = 0.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("10_h5dsd")
 bus = &"musica"
 
@@ -318,7 +318,6 @@ mouse_filter = 2
 
 [node name="fog" type="ColorRect" parent="."]
 material = SubResource("ShaderMaterial_bisrh")
-anchors_preset = -1
 offset_left = -1328.0
 offset_top = -931.0
 offset_right = 1456.0
