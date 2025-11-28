@@ -1,9 +1,13 @@
-[gd_scene load_steps=36 format=3 uid="uid://boiseqw4vt174"]
+[gd_scene load_steps=37 format=3 uid="uid://boiseqw4vt174"]
 
 [ext_resource type="Script" uid="uid://64mr6fapr8q7" path="res://inimigo_pulo.gd" id="1_4raon"]
 [ext_resource type="Texture2D" uid="uid://c7irpdbwlcvxs" path="res://Sprites/sombra.png" id="2_l142b"]
 [ext_resource type="Texture2D" uid="uid://csumwuthc2y0l" path="res://Sprites/Inimigos/Cloak_Abaixando-Sheet.png" id="3_nj713"]
 [ext_resource type="Texture2D" uid="uid://5kqgf8dqo6o0" path="res://Sprites/Inimigos/Cloak_Pulando-Sheet.png" id="4_jmm1j"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_4raon"]
+radius = 12.0
+height = 64.0
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_oey4e"]
 atlas = ExtResource("3_nj713")
@@ -228,20 +232,24 @@ animations = [{
 "speed": 5.0
 }]
 
-[node name="inimigo_pulo" type="CharacterBody2D"]
+[node name="Inimigo_pulo" type="CharacterBody2D"]
+collision_layer = 2
+collision_mask = 2
 script = ExtResource("1_4raon")
 
-[node name="sombra" type="Sprite2D" parent="."]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(1, 7)
+shape = SubResource("CapsuleShape2D_4raon")
+
+[node name="Sombra" type="Sprite2D" parent="."]
 position = Vector2(0, 19)
 texture = ExtResource("2_l142b")
 
-[node name="visual" type="Node2D" parent="."]
+[node name="Visual" type="Node2D" parent="."]
 
-[node name="sprite" type="AnimatedSprite2D" parent="visual"]
+[node name="Sprite" type="AnimatedSprite2D" parent="Visual"]
 sprite_frames = SubResource("SpriteFrames_u3ndf")
 animation = &"idle"
-frame_progress = 0.6791754
+frame_progress = 0.58049333
 
-[node name="hitbox" type="Area2D" parent="visual"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="Hitbox_dano" type="Area2D" parent="Visual"]

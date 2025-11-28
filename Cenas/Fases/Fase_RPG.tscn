@@ -1,10 +1,11 @@
-[gd_scene load_steps=23 format=4 uid="uid://drbeol373ocxe"]
+[gd_scene load_steps=24 format=4 uid="uid://drbeol373ocxe"]
 
 [ext_resource type="Texture2D" uid="uid://cuats4fupmos7" path="res://Sprites/tilesetAZUL.png" id="1_1c0qe"]
 [ext_resource type="Script" uid="uid://8h76fmmuw404" path="res://Cenas/Fases/fase_rpg.gd" id="1_xlyqc"]
 [ext_resource type="PackedScene" uid="uid://cw5ic42v3wep7" path="res://Cenas/player.tscn" id="2_2j5u3"]
 [ext_resource type="PackedScene" uid="uid://d26majiwami8u" path="res://Cenas/Menu/PauseMenu.tscn" id="3_1c0qe"]
 [ext_resource type="PackedScene" uid="uid://dqkd2v8c08jsp" path="res://Cenas/tocha.tscn" id="3_bisrh"]
+[ext_resource type="PackedScene" uid="uid://boiseqw4vt174" path="res://Cenas/Inimigos/inimigo_pulo.tscn" id="4_ppeux"]
 [ext_resource type="PackedScene" uid="uid://dfemr1maf8q5y" path="res://Cenas/Menu/SettingsMenu.tscn" id="4_xlyqc"]
 [ext_resource type="PackedScene" uid="uid://bf4kxcsfswmtq" path="res://Cenas/portal_volta.tscn" id="6_u663p"]
 [ext_resource type="PackedScene" uid="uid://c3oseobpuwlb8" path="res://cristal_azul.tscn" id="7_282xx"]
@@ -250,6 +251,69 @@ position = Vector2(686, 288)
 [node name="tocha30" parent="NavigationRegion2D" instance=ExtResource("3_bisrh")]
 position = Vector2(884, 286)
 
+[node name="inimigo_pulo" parent="NavigationRegion2D" instance=ExtResource("4_ppeux")]
+position = Vector2(702, 680)
+
+[node name="inimigo_pulo2" parent="NavigationRegion2D" instance=ExtResource("4_ppeux")]
+position = Vector2(894, 533)
+
+[node name="inimigo_pulo3" parent="NavigationRegion2D" instance=ExtResource("4_ppeux")]
+position = Vector2(189, 116)
+
+[node name="inimigo_pulo4" parent="NavigationRegion2D" instance=ExtResource("4_ppeux")]
+position = Vector2(392, 640)
+
+[node name="inimigo_pulo5" parent="NavigationRegion2D" instance=ExtResource("4_ppeux")]
+position = Vector2(-99, 643)
+
+[node name="inimigo_pulo6" parent="NavigationRegion2D" instance=ExtResource("4_ppeux")]
+position = Vector2(-579, 606)
+
+[node name="inimigo_pulo7" parent="NavigationRegion2D" instance=ExtResource("4_ppeux")]
+position = Vector2(-621, 206)
+
+[node name="inimigo_pulo8" parent="NavigationRegion2D" instance=ExtResource("4_ppeux")]
+position = Vector2(-615, -271)
+
+[node name="inimigo_pulo9" parent="NavigationRegion2D" instance=ExtResource("4_ppeux")]
+position = Vector2(-206, -471)
+
+[node name="inimigo_pulo10" parent="NavigationRegion2D" instance=ExtResource("4_ppeux")]
+position = Vector2(688, 71)
+
+[node name="inimigo_pulo11" parent="NavigationRegion2D" instance=ExtResource("4_ppeux")]
+position = Vector2(958, -59)
+
+[node name="Inimigo_pulo" parent="NavigationRegion2D" instance=ExtResource("4_ppeux")]
+position = Vector2(-844, -325)
+
+[node name="Inimigo_pulo2" parent="NavigationRegion2D" instance=ExtResource("4_ppeux")]
+position = Vector2(-601, -481)
+
+[node name="Inimigo_pulo3" parent="NavigationRegion2D" instance=ExtResource("4_ppeux")]
+position = Vector2(-727, 582)
+
+[node name="Inimigo_pulo4" parent="NavigationRegion2D" instance=ExtResource("4_ppeux")]
+position = Vector2(-615, 380)
+
+[node name="Inimigo_pulo5" parent="NavigationRegion2D" instance=ExtResource("4_ppeux")]
+position = Vector2(-291, 650)
+
+[node name="Inimigo_pulo6" parent="NavigationRegion2D" instance=ExtResource("4_ppeux")]
+position = Vector2(63, 680)
+
+[node name="Inimigo_pulo7" parent="NavigationRegion2D" instance=ExtResource("4_ppeux")]
+position = Vector2(695, 506)
+
+[node name="Inimigo_pulo8" parent="NavigationRegion2D" instance=ExtResource("4_ppeux")]
+position = Vector2(813, 94)
+
+[node name="Inimigo_pulo9" parent="NavigationRegion2D" instance=ExtResource("4_ppeux")]
+position = Vector2(712, -53)
+
+[node name="Inimigo_pulo10" parent="NavigationRegion2D" instance=ExtResource("4_ppeux")]
+position = Vector2(260, -410)
+
 [node name="portal_volta" parent="." instance=ExtResource("6_u663p")]
 position = Vector2(6, 109)
 id_desta_fase = "Fase_RPG"
@@ -318,7 +382,6 @@ mouse_filter = 2
 
 [node name="fog" type="ColorRect" parent="."]
 material = SubResource("ShaderMaterial_bisrh")
-anchors_preset = -1
 offset_left = -1328.0
 offset_top = -931.0
 offset_right = 1456.0
