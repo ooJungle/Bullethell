@@ -1,4 +1,4 @@
-[gd_scene load_steps=38 format=3 uid="uid://cw5ic42v3wep7"]
+[gd_scene load_steps=40 format=3 uid="uid://cw5ic42v3wep7"]
 
 [ext_resource type="Script" uid="uid://dxifkqojdxq0a" path="res://Scripts/player_moviment.gd" id="1_pmvhq"]
 [ext_resource type="Texture2D" uid="uid://bf5oc0wyh6l5l" path="res://Sprites/player_costas_spritesheet.png" id="2_yuqgu"]
@@ -234,6 +234,16 @@ size = Vector2(20, 29)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_yuqgu"]
 size = Vector2(30, 37)
 
+[sub_resource type="Gradient" id="Gradient_ybr15"]
+offsets = PackedFloat32Array(0.78698224)
+colors = PackedColorArray(0.82206786, 0.0012204034, 0.9174733, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_4q8k4"]
+gradient = SubResource("Gradient_ybr15")
+width = 49
+height = 4
+fill_to = Vector2(0, 0)
+
 [node name="player" type="CharacterBody2D" groups=["player", "players"]]
 collision_layer = 32
 collision_mask = 32
@@ -278,6 +288,15 @@ disabled = true
 [node name="SpriteSeta" type="Sprite2D" parent="SetaPivo"]
 rotation = 1.5707964
 texture = ExtResource("7_8vhvd")
+
+[node name="BarraCarga" type="TextureProgressBar" parent="."]
+offset_left = -24.0
+offset_top = -34.0
+offset_right = 25.0
+offset_bottom = -30.0
+max_value = 1.5
+step = 0.01
+texture_progress = SubResource("GradientTexture2D_4q8k4")
 
 [connection signal="animation_finished" from="sprite" to="." method="_on_sprite_animation_finished"]
 [connection signal="timeout" from="dano_timer" to="." method="_on_dano_timer_timeout"]

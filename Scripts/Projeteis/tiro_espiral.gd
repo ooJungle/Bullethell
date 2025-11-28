@@ -10,6 +10,7 @@ func _on_body_entered(body: Node) -> void:
 		if body.has_method("take_damage"):
 			body.take_damage(1)
 		queue_free()
-
+	if body is TileMap or body is TileMapLayer or body is StaticBody2D:
+		queue_free()
 func _physics_process(delta: float) -> void:
 	position = position.rotated(9*delta*Global.fator_tempo)

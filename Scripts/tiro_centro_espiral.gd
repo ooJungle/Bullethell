@@ -4,7 +4,7 @@ extends Area2D
 @onready var centro = $centro
 var velocity: Vector2 = Vector2.ZERO
 var rotacao = 90.0
-const obj_tiro_roxo = preload("res://Cenas/tiro_roxo.tscn")
+const obj_tiro_roxo = preload("res://Cenas/Projeteis/tiro_roxo.tscn")
 
 func _ready() -> void:
 	# conecta o sinal (pode também conectar no editor)

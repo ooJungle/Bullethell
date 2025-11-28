@@ -37,3 +37,5 @@ func _on_body_entered(body: Node) -> void:
 		if body.has_method("take_damage"):
 			body.take_damage(damage)
 		queue_free()
+	if body is TileMap or body is TileMapLayer or body is StaticBody2D:
+		queue_free()

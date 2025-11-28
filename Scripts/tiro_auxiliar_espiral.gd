@@ -11,5 +11,7 @@ func _on_body_entered(body: Node) -> void:
 		Global.vida -= 1
 		Global.Tomou_ano()
 	queue_free()
+	if body is TileMap or body is TileMapLayer or body is StaticBody2D:
+		queue_free()
 	if body.name == "TileMapLayer":
 		queue_free()

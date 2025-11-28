@@ -11,11 +11,13 @@ extends CharacterBody2D
 @onready var hitbox_colisao: CollisionShape2D = $Hitbox/CollisionShape2D
 @onready var sprite: AnimatedSprite2D = $sprite
 @onready var dano_timer: Timer = $dano_timer
+@onready var barra_carga: TextureProgressBar = $BarraCarga
+
+const SWORD_BEAM_SCENE = preload("res://Cenas/Projeteis/sword_beam.tscn") 
 
 # --- GUIAS (SETA) ---
 @onready var seta_pivo: Node2D = $SetaPivo
 var alvo_seta: Vector2 = Vector2.ZERO
-# Ajuste este valor para subir ou descer o centro da rotação da seta
 var offset_visual_seta: Vector2 = Vector2(0, -8)
 
 # --- STATUS DO PLAYER ---
@@ -28,6 +30,7 @@ var offset_visual_seta: Vector2 = Vector2(0, -8)
 @export var raio_max_aceleracao: float = 500.0
 @export var fator_tempo_minimo: float = 0.2
 @export var dano_do_player: int = 10
+@export var tempo_para_carregar: float = 1.5
 
 var vida_maxima: int = 300
 var vida: int = vida_maxima
@@ -42,6 +45,10 @@ var pode_atacar: bool = true
 var atacando: bool = false
 var arma_atual_dados: Dictionary
 
+# VARIÁVEIS DE CARGA
+var carga_atual: float = 0.0
+var esta_carregando: bool = false
+
 var pode_se_mexer: bool = true
 
 func _ready() -> void:
@@ -49,16 +56,19 @@ func _ready() -> void:
 	Global.vida = vida
 	hitbox_colisao.disabled = true
 	
-	# --- CORREÇÃO DA ÓRBITA DA SETA ---
+	if barra_carga:
+		barra_carga.visible = false
+		barra_carga.max_value = tempo_para_carregar
+		barra_carga.value = 0
+	
 	if seta_pivo:
-		seta_pivo.top_level = true # Desacopla do corpo
+		seta_pivo.top_level = true 
 		seta_pivo.visible = false
 	
 	if not sprite.animation_finished.is_connected(_on_sprite_animation_finished):
 		sprite.animation_finished.connect(_on_sprite_animation_finished)
 
-func _process(_delta: float) -> void:
-	# --- LÓGICA DE TRANSPARÊNCIA DA JANELA (INICIALIZAÇÃO) ---
+func _process(delta: float) -> void:
 	if transparente:
 		get_tree().get_root().set_transparent_background(true)
 		DisplayServer.window_set_flag(DisplayServer.WINDOW_FLAG_TRANSPARENT, true, 0)
@@ -78,9 +88,12 @@ func _physics_process(delta: float) -> void:
 			sprite.play("idle_frente")
 		else:
 			sprite.play("idle_lado")
+		if barra_carga:
+			barra_carga.visible = false
+			esta_carregando = false 
+			carga_atual = 0.0
 		return
 	
-	# Segurança contra travamento
 	if atacando and not sprite.animation in ["ataque_frente", "ataque_costas", "ataque_lado"]:
 		atacando = false
 		hitbox_colisao.disabled = true
@@ -90,11 +103,9 @@ func _physics_process(delta: float) -> void:
 		move_and_slide()
 		return
 
-	# Input de Ataque (Input Map: "attack")
-	if Input.is_action_just_pressed("attack") and pode_atacar and tem_arma:
-		iniciar_ataque()
+	# Processa a lógica de segurar ou clicar rápido
+	processar_ataque_carregado(delta)
 
-	# Lógica de Plataforma
 	if Global.plataforma:
 		if not is_on_floor():
 			velocity += get_gravity() * delta
@@ -114,7 +125,6 @@ func _physics_process(delta: float) -> void:
 		if Input.is_action_just_released("ui_accept") and velocity.y < 0:
 			velocity.y *= 0.5
 	
-	# Lógica Top-Down
 	else:
 		atualizar_fator_tempo()
 
@@ -150,43 +160,94 @@ func _physics_process(delta: float) -> void:
 	move_and_slide()
 	handle_enemy_bounce()
 
-	# Arredonda a posição para evitar subpixels
 	global_position = global_position.round()
+
+# --- SISTEMA DE CARGA E ATAQUE ---
+
+func processar_ataque_carregado(delta: float):
+	if Input.is_action_pressed("attack") and pode_atacar and tem_arma:
+		esta_carregando = true
+		if barra_carga and pode_se_mexer:
+			barra_carga.visible = true
+			
+		carga_atual += delta
+		if carga_atual > tempo_para_carregar:
+			carga_atual = tempo_para_carregar
+			if barra_carga:
+				barra_carga.modulate = Color(1, 0.2, 0.2) # Vermelho quando pronto
+		
+		if barra_carga:
+			barra_carga.value = carga_atual
+			
+	elif Input.is_action_just_released("attack"):
+		if esta_carregando:
+			# SE CARREGOU TUDO: Ataque Forte (Com Projétil)
+			if carga_atual >= tempo_para_carregar:
+				iniciar_ataque(true) 
+			
+			# SE NÃO CARREGOU (CLICK RÁPIDO): Ataque Normal (Sem Projétil)
+			else:
+				iniciar_ataque(false)
+		
+		resetar_carga()
 	
-# --- SISTEMA DE ATAQUE ---
-func iniciar_ataque():
+	elif not Input.is_action_pressed("attack") and esta_carregando:
+		resetar_carga()
+
+func resetar_carga():
+	esta_carregando = false
+	carga_atual = 0.0
+	if barra_carga:
+		barra_carga.value = 0.0
+		barra_carga.visible = false
+		barra_carga.modulate = Color.WHITE
+
+func iniciar_ataque(com_projetil: bool):
 	atacando = true
 	pode_atacar = false
 	hitbox_colisao.disabled = false
 	
 	posicionar_hitbox()
 	
-	if last_move_direction.y < 0: # Costas
+	# Só lança o projétil se for um ataque carregado
+	if com_projetil:
+		lancar_projetil()
+	
+	if last_move_direction.y < 0:
 		sprite.play("ataque_costas")
-	elif last_move_direction.y > 0: # Frente
+	elif last_move_direction.y > 0:
 		sprite.play("ataque_frente")
-	elif last_move_direction.x != 0: # Lado
+	elif last_move_direction.x != 0:
 		sprite.play("ataque_lado")
 		sprite.flip_h = (last_move_direction.x < 0)
 
 	verificar_dano_nos_inimigos()
 
+func lancar_projetil():
+	var beam = SWORD_BEAM_SCENE.instantiate()
+	var offset = last_move_direction * 20.0 
+	beam.global_position = global_position + offset + Vector2(0, -15)
+	beam.direction = last_move_direction
+	beam.rotation = last_move_direction.angle()
+	get_tree().current_scene.add_child(beam)
+
 func posicionar_hitbox():
-	if last_move_direction.y < 0: # Cima
+	if last_move_direction.y < 0:
 		hitbox.position = Vector2(11.5, -10)
 		hitbox.rotation_degrees = -90
-	elif last_move_direction.y > 0: # Baixo
+	elif last_move_direction.y > 0:
 		hitbox.position = Vector2(-11.5, -5)
 		hitbox.rotation_degrees = 90
-	elif last_move_direction.x > 0: # Direita
+	elif last_move_direction.x > 0:
 		hitbox.position = Vector2(0, 0)
 		hitbox.rotation_degrees = 0
-	elif last_move_direction.x < 0: # Esquerda
+	elif last_move_direction.x < 0:
 		hitbox.position = Vector2(0, -23)
 		hitbox.rotation_degrees = 180
 
 func verificar_dano_nos_inimigos():
 	await get_tree().physics_frame
+	await get_tree().physics_frame # Espera 2 frames para garantir colisão
 	
 	var corpos = hitbox.get_overlapping_bodies()
 	
