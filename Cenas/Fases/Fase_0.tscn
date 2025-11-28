@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=4 uid="uid://dgvk00ax3rrbo"]
+[gd_scene load_steps=27 format=4 uid="uid://dgvk00ax3rrbo"]
 
 [ext_resource type="Script" uid="uid://bqle0el6yjirx" path="res://Cenas/Fases/fase_0.gd" id="1_l7uc1"]
 [ext_resource type="PackedScene" uid="uid://d2m240uv3u7nj" path="res://UI_UX/fundo.tscn" id="1_setcl"]
@@ -13,6 +13,7 @@
 [ext_resource type="PackedScene" uid="uid://btmuqo7o24djd" path="res://chroma.tscn" id="13_gmavx"]
 [ext_resource type="PackedScene" uid="uid://curf7kbfg0nbf" path="res://npc.tscn" id="14_2kwqn"]
 [ext_resource type="Shader" uid="uid://cdki4y1u5d4ne" path="res://Cenas/Fases/Fase_0.gdshader" id="16_qn66s"]
+[ext_resource type="Texture2D" uid="uid://b3xw4on0rl8mn" path="res://Sprites/Inimigos/rosto_mal.png" id="17_d716y"]
 [ext_resource type="PackedScene" uid="uid://dqkd2v8c08jsp" path="res://Cenas/tocha.tscn" id="17_tumva"]
 [ext_resource type="PackedScene" uid="uid://of3w43relaht" path="res://Cenas/Portal_azul.tscn" id="20_ve75a"]
 [ext_resource type="PackedScene" uid="uid://dybqvnmb765cl" path="res://Portal_verde.tscn" id="22_if8b4"]
@@ -282,6 +283,14 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
+
+[node name="ImagemFinal" type="TextureRect" parent="Ambiente"]
+offset_left = 88.0
+offset_top = -304.0
+offset_right = 158.0
+offset_bottom = -214.0
+scale = Vector2(17, 17)
+texture = ExtResource("17_d716y")
 
 [node name="tocha" parent="." instance=ExtResource("17_tumva")]
 position = Vector2(591, -241)
