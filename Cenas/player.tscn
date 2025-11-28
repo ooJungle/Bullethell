@@ -1,4 +1,4 @@
-[gd_scene load_steps=40 format=3 uid="uid://cw5ic42v3wep7"]
+[gd_scene load_steps=41 format=3 uid="uid://cw5ic42v3wep7"]
 
 [ext_resource type="Script" uid="uid://dxifkqojdxq0a" path="res://Scripts/player_moviment.gd" id="1_pmvhq"]
 [ext_resource type="Texture2D" uid="uid://bf5oc0wyh6l5l" path="res://Sprites/player_costas_spritesheet.png" id="2_yuqgu"]
@@ -9,6 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://cahr62u3ueaec" path="res://Sprites/Protag_Swing_Espada-Sheet.png" id="6_4q8k4"]
 [ext_resource type="Texture2D" uid="uid://d3n2k4ydxps1p" path="res://Sprites/Protag_Lado_Atk_Espada-Sheet.png" id="7_2enhl"]
 [ext_resource type="Texture2D" uid="uid://d0f6cf6ulwpjg" path="res://Sprites/seta.png" id="7_8vhvd"]
+[ext_resource type="AudioStream" uid="uid://yiq4b3oftl0o" path="res://Sons e Musica/golpe.mp3" id="10_4q8k4"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_e2nbm"]
 atlas = ExtResource("2_yuqgu")
@@ -297,6 +298,10 @@ offset_bottom = -30.0
 max_value = 1.5
 step = 0.01
 texture_progress = SubResource("GradientTexture2D_4q8k4")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("10_4q8k4")
+bus = &"sfx"
 
 [connection signal="animation_finished" from="sprite" to="." method="_on_sprite_animation_finished"]
 [connection signal="timeout" from="dano_timer" to="." method="_on_dano_timer_timeout"]

@@ -2,7 +2,7 @@ extends Node2D
 
 @onready var portal_volta = $portal_volta
 @onready var colisao_portal = $portal_volta/CollisionShape2D
-@onready var musica_inicio: AudioStreamPlayer2D = $AudioStreamPlayer2D
+@onready var musica_inicio: AudioStreamPlayer = $AudioStreamPlayer2D
 
 var total_cristais = 0
 var cristais_quebrados = 0
@@ -102,7 +102,7 @@ func controlar_audio():
 	if global_player:
 		var volume_original = global_player.volume_db
 		var tween_down = create_tween()
-		tween_down.tween_property(global_player, "volume_db", -25.0, 6.0)
+		tween_down.tween_property(global_player, "volume_db", -25.0, 4.0)
 		
 		await tween_down.finished
 		global_player.stream_paused = true
@@ -114,7 +114,7 @@ func controlar_audio():
 		global_player.stream_paused = false
 		
 		var tween_up = create_tween()
-		tween_up.tween_property(global_player, "volume_db", volume_original, 6.0)
+		tween_up.tween_property(global_player, "volume_db", volume_original, 4.0)
 	
 func _on_cristal_quebrado():
 	cristais_quebrados += 1
