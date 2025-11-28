@@ -11,4 +11,3 @@ func _ready() -> void:
 	else:
 		visible = false
 		print("sem fundo")
-	print("ESTADO DOS PORTAIS: ", p1_ativo, " | ", p2_ativo, " | ", p3_ativo)

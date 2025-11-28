@@ -41,19 +41,14 @@ func _ready():
 
 	# Obtenha as posições globais dos limites
 	if nav_region is NavigationRegion2D:
-		# Tente encontrar o TileMap que é filho da NavigationRegion
 		if tilemap is TileMapLayer:
-			# Pega o retângulo de células usadas (ex: de (0,0) até (50, 30))
 			var used_rect: Rect2i = tilemap.get_used_rect()
 			
-			# Converte os cantos desse retângulo para posições de pixel GLOBAIS
 			var top_left_global: Vector2 = tilemap.to_global(tilemap.map_to_local(used_rect.position))
 			
-			# Precisamos do canto inferior direito
 			var bottom_right_pos = used_rect.position + used_rect.size
 			var bottom_right_global: Vector2 = tilemap.to_global(tilemap.map_to_local(bottom_right_pos))
 			
-			# Define as variáveis de limite
 			map_left = top_left_global.x
 			map_top = top_left_global.y
 			map_right = bottom_right_global.x
@@ -65,7 +60,6 @@ func _ready():
 	else:
 		printerr("Erro no BattleManager: A variável 'nav_region' não foi atribuída no Inspetor.")
 
-	# Cria e configura o Timer para inimigos
 	enemy_timer = Timer.new()
 	enemy_timer.name = "EnemyTimer"
 	enemy_timer.wait_time = spawn_interval

@@ -41,7 +41,6 @@ func iniciar_dialogo_automatico():
 # --- FUNÇÃO DO EFEITO VISUAL ---
 func animar_pulso_final():
 	if not color_rect:
-		print("ERRO: Nó Chroma não encontrado para o pulso!")
 		return
 		
 	var material = color_rect.material as ShaderMaterial

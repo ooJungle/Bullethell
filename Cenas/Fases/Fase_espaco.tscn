@@ -19,7 +19,7 @@
 [ext_resource type="PackedScene" uid="uid://c6woybm3rk543" path="res://cristal_vermelho.tscn" id="10_lpm77"]
 [ext_resource type="PackedScene" uid="uid://btmuqo7o24djd" path="res://chroma.tscn" id="11_knx60"]
 [ext_resource type="AudioStream" uid="uid://dxf5nvye1lu10" path="res://Sons e Musica/Boss_3.mp3" id="17_8nlod"]
-[ext_resource type="Shader" uid="uid://cdki4y1u5d4ne" path="res://Cenas/Fases/Fase_0.gdshader" id="20_0au1x"]
+[ext_resource type="Shader" uid="uid://cyy2w5soru1ax" path="res://Cenas/Fases/Fase_espaco.gdshader" id="20_0au1x"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_pxeo3"]
 vertices = PackedVector2Array(10683, 2167, -3729, 2167, -3729, -5813, 10683, -5813)
@@ -202,13 +202,10 @@ sources/1 = SubResource("TileSetAtlasSource_6kjqg")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_h0w8i"]
 shader = ExtResource("20_0au1x")
-shader_parameter/brightness = 0.98000004655
-shader_parameter/contrast = 1.0
-shader_parameter/saturation = 1.3050000619875
-shader_parameter/tint_color = Color(1, 1, 1, 1)
-shader_parameter/tint_strength = 1.0
-shader_parameter/vignette_intensity = 5.0
-shader_parameter/vignette_opacity = 0.3570000169575
+shader_parameter/player_position = Vector2(0.5, 0.5)
+shader_parameter/dark_color = Color(0, 0, 0, 1)
+shader_parameter/radius = 0.0010000000475
+shader_parameter/softness = 0.9200000437
 
 [node name="Node2D" type="Node2D"]
 script = ExtResource("1_msfmn")
@@ -242,13 +239,15 @@ offset_right = 13127.0
 offset_bottom = 4333.0
 
 [node name="buraco_negro2" parent="." node_paths=PackedStringArray("wormhole_exit") instance=ExtResource("4_a6l73")]
+z_index = 5
 position = Vector2(5520, -1912)
-forca_gravidade = 18000.0
+forca_gravidade = 25000.0
 wormhole_exit = NodePath("../buraco_de_mihoca")
 
 [node name="buraco_negro" parent="." node_paths=PackedStringArray("wormhole_exit") instance=ExtResource("4_a6l73")]
+z_index = 5
 position = Vector2(810, -1985)
-forca_gravidade = 18000.0
+forca_gravidade = 25000.0
 wormhole_exit = NodePath("../buraco_de_mihoca")
 
 [node name="portal_volta" parent="." instance=ExtResource("7_ipj78")]
@@ -256,135 +255,169 @@ position = Vector2(3199, -1274)
 id_desta_fase = "Fase_espaco"
 
 [node name="buraco_de_mihoca" parent="." instance=ExtResource("5_x6llx")]
+z_index = 5
 position = Vector2(3171, -2126)
 
 [node name="buraco_negro13" parent="." node_paths=PackedStringArray("wormhole_exit") instance=ExtResource("8_ghwsk")]
+z_index = 5
 position = Vector2(2226, 1510)
 wormhole_exit = NodePath("../buraco_de_mihoca")
 
 [node name="buraco_negro14" parent="." node_paths=PackedStringArray("wormhole_exit") instance=ExtResource("8_ghwsk")]
+z_index = 5
 position = Vector2(4148, 1483)
 wormhole_exit = NodePath("../buraco_de_mihoca")
 
 [node name="buraco_negro15" parent="." node_paths=PackedStringArray("wormhole_exit") instance=ExtResource("8_ghwsk")]
+z_index = 5
 position = Vector2(6072, 1534)
 wormhole_exit = NodePath("../buraco_de_mihoca")
 
 [node name="buraco_negro16" parent="." node_paths=PackedStringArray("wormhole_exit") instance=ExtResource("8_ghwsk")]
+z_index = 5
 position = Vector2(7152, 1248)
 wormhole_exit = NodePath("../buraco_de_mihoca")
 
 [node name="buraco_negro17" parent="." node_paths=PackedStringArray("wormhole_exit") instance=ExtResource("8_ghwsk")]
+z_index = 5
 position = Vector2(-1636, 822)
 wormhole_exit = NodePath("../buraco_de_mihoca")
 
 [node name="buraco_negro18" parent="." node_paths=PackedStringArray("wormhole_exit") instance=ExtResource("8_ghwsk")]
+z_index = 5
 position = Vector2(-872, 1404)
 wormhole_exit = NodePath("../buraco_de_mihoca")
 
 [node name="buraco_negro19" parent="." node_paths=PackedStringArray("wormhole_exit") instance=ExtResource("8_ghwsk")]
+z_index = 5
 position = Vector2(114, 1506)
 wormhole_exit = NodePath("../buraco_de_mihoca")
 
 [node name="buraco_negro20" parent="." node_paths=PackedStringArray("wormhole_exit") instance=ExtResource("8_ghwsk")]
+z_index = 5
 position = Vector2(1170, 1532)
 wormhole_exit = NodePath("../buraco_de_mihoca")
 
 [node name="buraco_negro21" parent="." node_paths=PackedStringArray("wormhole_exit") instance=ExtResource("8_ghwsk")]
+z_index = 5
 position = Vector2(3383, -5310)
 wormhole_exit = NodePath("../buraco_de_mihoca")
 
 [node name="buraco_negro23" parent="." node_paths=PackedStringArray("wormhole_exit") instance=ExtResource("8_ghwsk")]
+z_index = 5
 position = Vector2(7227, -4505)
 wormhole_exit = NodePath("../buraco_de_mihoca")
 
 [node name="buraco_negro26" parent="." node_paths=PackedStringArray("wormhole_exit") instance=ExtResource("8_ghwsk")]
+z_index = 5
 position = Vector2(-810, -5306)
 wormhole_exit = NodePath("../buraco_de_mihoca")
 
 [node name="buraco_negro27" parent="." node_paths=PackedStringArray("wormhole_exit") instance=ExtResource("8_ghwsk")]
+z_index = 5
 position = Vector2(325, -5290)
 wormhole_exit = NodePath("../buraco_de_mihoca")
 
 [node name="buraco_negro28" parent="." node_paths=PackedStringArray("wormhole_exit") instance=ExtResource("8_ghwsk")]
+z_index = 5
 position = Vector2(2404, -5278)
 wormhole_exit = NodePath("../buraco_de_mihoca")
 
 [node name="buraco_negro29" parent="." node_paths=PackedStringArray("wormhole_exit") instance=ExtResource("8_ghwsk")]
+z_index = 5
 position = Vector2(7961, -1726)
 wormhole_exit = NodePath("../buraco_de_mihoca")
 
 [node name="buraco_negro30" parent="." node_paths=PackedStringArray("wormhole_exit") instance=ExtResource("8_ghwsk")]
+z_index = 5
 position = Vector2(8121, -2718)
 wormhole_exit = NodePath("../buraco_de_mihoca")
 
 [node name="buraco_negro31" parent="." node_paths=PackedStringArray("wormhole_exit") instance=ExtResource("8_ghwsk")]
+z_index = 5
 position = Vector2(7764, -3692)
 wormhole_exit = NodePath("../buraco_de_mihoca")
 
 [node name="buraco_negro33" parent="." node_paths=PackedStringArray("wormhole_exit") instance=ExtResource("8_ghwsk")]
+z_index = 5
 position = Vector2(-2589, -814)
 wormhole_exit = NodePath("../buraco_de_mihoca")
 
 [node name="buraco_negro34" parent="." node_paths=PackedStringArray("wormhole_exit") instance=ExtResource("8_ghwsk")]
+z_index = 5
 position = Vector2(-2288, 214)
 wormhole_exit = NodePath("../buraco_de_mihoca")
 
 [node name="buraco_negro35" parent="." node_paths=PackedStringArray("wormhole_exit") instance=ExtResource("8_ghwsk")]
+z_index = 5
 position = Vector2(7833, 426)
 wormhole_exit = NodePath("../buraco_de_mihoca")
 
 [node name="buraco_negro36" parent="." node_paths=PackedStringArray("wormhole_exit") instance=ExtResource("8_ghwsk")]
+z_index = 5
 position = Vector2(8095, -673)
 wormhole_exit = NodePath("../buraco_de_mihoca")
 
 [node name="buraco_negro37" parent="." node_paths=PackedStringArray("wormhole_exit") instance=ExtResource("8_ghwsk")]
+z_index = 5
 position = Vector2(-1618, -4745)
 wormhole_exit = NodePath("../buraco_de_mihoca")
 
 [node name="buraco_negro38" parent="." node_paths=PackedStringArray("wormhole_exit") instance=ExtResource("8_ghwsk")]
+z_index = 5
 position = Vector2(3249, 1494)
 wormhole_exit = NodePath("../buraco_de_mihoca")
 
 [node name="buraco_negro39" parent="." node_paths=PackedStringArray("wormhole_exit") instance=ExtResource("8_ghwsk")]
+z_index = 5
 position = Vector2(5192, 1576)
 wormhole_exit = NodePath("../buraco_de_mihoca")
 
 [node name="buraco_negro41" parent="." node_paths=PackedStringArray("wormhole_exit") instance=ExtResource("8_ghwsk")]
+z_index = 5
 position = Vector2(-2671, -1903)
 wormhole_exit = NodePath("../buraco_de_mihoca")
 
 [node name="buraco_negro43" parent="." node_paths=PackedStringArray("wormhole_exit") instance=ExtResource("8_ghwsk")]
+z_index = 5
 position = Vector2(-2331, -3929)
 wormhole_exit = NodePath("../buraco_de_mihoca")
 
 [node name="buraco_negro44" parent="." node_paths=PackedStringArray("wormhole_exit") instance=ExtResource("8_ghwsk")]
+z_index = 5
 position = Vector2(-2721, -3035)
 wormhole_exit = NodePath("../buraco_de_mihoca")
 
 [node name="buraco_negro22" parent="." node_paths=PackedStringArray("wormhole_exit") instance=ExtResource("8_ghwsk")]
+z_index = 5
 position = Vector2(6445, -5023)
 wormhole_exit = NodePath("../buraco_de_mihoca")
 
 [node name="buraco_negro45" parent="." node_paths=PackedStringArray("wormhole_exit") instance=ExtResource("8_ghwsk")]
+z_index = 5
 position = Vector2(5481, -5276)
 wormhole_exit = NodePath("../buraco_de_mihoca")
 
 [node name="buraco_negro46" parent="." node_paths=PackedStringArray("wormhole_exit") instance=ExtResource("8_ghwsk")]
+z_index = 5
 position = Vector2(4418, -5242)
 wormhole_exit = NodePath("../buraco_de_mihoca")
 
 [node name="buraco_negro47" parent="." node_paths=PackedStringArray("wormhole_exit") instance=ExtResource("8_ghwsk")]
+z_index = 5
 position = Vector2(1360, -5258)
 wormhole_exit = NodePath("../buraco_de_mihoca")
 
 [node name="cristal_vermelho" parent="." instance=ExtResource("10_lpm77")]
+z_index = 5
 position = Vector2(5351, -736)
 
 [node name="cristal_vermelho2" parent="." instance=ExtResource("10_lpm77")]
+z_index = 5
 position = Vector2(2193, -3454)
 
 [node name="cristal_vermelho3" parent="." instance=ExtResource("10_lpm77")]
+z_index = 5
 position = Vector2(141, -1629)
 
 [node name="player" parent="." instance=ExtResource("4_38wma")]
