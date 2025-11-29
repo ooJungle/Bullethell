@@ -30,8 +30,9 @@ var rest_timer: Timer
 
 # Inimigos comuns têm peso 10, Inimigos raros (laser, caixinha e maguinhas) têm peso 2.5
 var enemies_list = [
-	{"path": "res://Cenas/Inimigos/inimigo_zumbi.tscn", "weight": 100}
-]
+	{"path": "res://Cenas/Inimigos/inimigo_zumbi.tscn", "weight": 100},
+	{"path": "res://Cenas/Inimigos/inimigo_bola.tscn", "weight": 100}
+	]
 
 var player
 var spawn_position
@@ -191,48 +192,42 @@ func _on_rest_finished():
 	spawn_enemy()
 
 func _spawn_entity(resource_path: String, positionLoc):
-	var camera = get_tree().get_current_scene().get_node("player/Camera2D")
-	if not camera: 
-		return
-
-	var camera_pos = camera.global_position
-	var viewport_size = get_viewport().get_visible_rect().size / 2
-	
-	var left = camera_pos.x - viewport_size.x - spawn_offset
-	var right = camera_pos.x + viewport_size.x + spawn_offset
-	var top = camera_pos.y - viewport_size.y - spawn_offset
-	var bottom = camera_pos.y + viewport_size.y + spawn_offset
-
-	# 1. Sorteia a posição inicial (pode cair no buraco)
-	if positionLoc == Vector2.ZERO:
-		spawn_position = Vector2()
-		var side = randi() % 4
-		match side:
-			0: # Top
-				spawn_position.x = randf_range(left, right)
-				spawn_position.y = top
-			1: # Bottom
-				spawn_position.x = randf_range(left, right)
-				spawn_position.y = bottom
-			2: # Left
-				spawn_position.x = left
-				spawn_position.y = randf_range(top, bottom)
-			3: # Right
-				spawn_position.x = right
-				spawn_position.y = randf_range(top, bottom)
-	else:
+	# Se já veio com posição definida (ex: lógica específica), usa ela
+	if positionLoc != Vector2.ZERO:
 		spawn_position = positionLoc
+	else:
+		# --- LÓGICA DE SPAWN CIRCULAR AO REDOR DO PLAYER ---
+		if not is_instance_valid(player):
+			return # Se não tem player, não spawna
+			
+		# 1. Escolhe um ângulo aleatório (360 graus)
+		var angulo_aleatorio = randf() * TAU
+		
+		# 2. Escolhe uma distância (longe o suficiente para ser fora da tela, mas não longe demais)
+		# spawn_offset aqui funciona como raio mínimo
+		var distancia = randf_range(550.0, 800.0) 
+		
+		# 3. Calcula a posição baseada no ângulo e distância
+		var offset_vetor = Vector2(cos(angulo_aleatorio), sin(angulo_aleatorio)) * distancia
+		spawn_position = player.global_position + offset_vetor
 
-	if not is_within_map_bounds(spawn_position):
-		spawn_position = clamp_position_to_bounds(spawn_position)
-
-	if nav_region:
+	# --- PROTEÇÃO DE LIMITES DO MAPA ---
+	# Só aplica o clamp se os limites foram definidos corretamente (se o mapa tem tamanho real)
+	if map_right > map_left + 100: 
+		if not is_within_map_bounds(spawn_position):
+			spawn_position = clamp_position_to_bounds(spawn_position)
+	
+	# --- VALIDAÇÃO DE CHÃO (NAVIGATION) ---
+	# Impede que nasçam dentro de paredes ou buracos
+	if nav_region: 
 		var mapa_rid = nav_region.get_navigation_map()
-		var posicao_no_chao = NavigationServer2D.map_get_closest_point(mapa_rid, spawn_position)
-		spawn_position = posicao_no_chao
-
+		# Puxa para o chão válido mais próximo
+		spawn_position = NavigationServer2D.map_get_closest_point(mapa_rid, spawn_position)
+	
+	# --- CRIAÇÃO DO INIMIGO ---
 	var resource = load(resource_path)
 	if resource:
 		var entity = resource.instantiate()
 		entity.position = spawn_position
-		add_child(entity)
+		# call_deferred é essencial para evitar travamentos (lag) durante o jogo
+		call_deferred("add_child", entity)

@@ -3,7 +3,7 @@ extends Area2D
 @export var player: Node2D
 @export var damage: int = 1
 @export var speed: float = 130.0
-@export var duration: float = 2.0
+@export var duration: float = 10.0
 @export var steering_strength: float = 5.0  # quanto mais alto, mais rápido a bala ajusta a direção
 
 var velocity: Vector2 = Vector2.ZERO

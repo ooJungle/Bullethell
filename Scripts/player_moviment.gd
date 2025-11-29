@@ -221,6 +221,7 @@ func iniciar_ataque(com_projetil: bool):
 	elif last_move_direction.x != 0:
 		sprite.play("ataque_lado")
 		sprite.flip_h = (last_move_direction.x < 0)
+	som_ataque.pitch_scale = randi_range(-5,1)
 	som_ataque.play()
 	verificar_dano_nos_inimigos()
 

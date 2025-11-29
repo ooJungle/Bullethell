@@ -13,7 +13,7 @@ extends CharacterBody2D
 @onready var perception_timer: Timer = $PerceptionTimer
 
 # --- Disparos ---
-const obj_tiro_verde = preload("res://Cenas/Projeteis/tiro_verde.tscn")
+const obj_tiro_azul = preload("res://Cenas/Projeteis/projetil_espiral.tscn")
 var timer = 0.0
 
 var knockback = false
@@ -105,9 +105,8 @@ func _on_collision_area_body_entered(body: Node2D) -> void:
 
 func shoot():
 	if timer >= 4:
-		var new_bullet = obj_tiro_verde.instantiate()
+		var new_bullet = obj_tiro_azul.instantiate()
 		var direction = (player.global_position - global_position).normalized()
-		new_bullet.player = player
 		new_bullet.global_position = global_position
 		new_bullet.velocity = direction * 150 
 		get_parent().add_child(new_bullet)

@@ -1,5 +1,8 @@
 extends Node
 
+const espaco = preload("res://Cenas/Fases/Fase_espaco.tscn")
+const plat = preload("res://Cenas/Fases/Fase_plat.tscn")
+const RPG = preload("res://Cenas/Fases/Fase_RPG.tscn")
 
 var menu = 0
 var volume = 0.3
@@ -19,7 +22,7 @@ var portais_ativos = {
 @onready var music_player = $MusicPlayer
 
 func _ready() -> void:
-	preload("res://Cenas/Fases/Fase_espaco.tscn")
+
 	get_tree().get_root().transparent_bg = true
 	get_tree().get_root().set_transparent_background(true)
 	DisplayServer.window_set_flag(DisplayServer.WINDOW_FLAG_TRANSPARENT, true, 0)
