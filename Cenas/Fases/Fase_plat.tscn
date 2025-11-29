@@ -136,8 +136,10 @@ shader_parameter/tint_strength = 0.2000000095
 shader_parameter/vignette_intensity = 0.4
 shader_parameter/vignette_opacity = 0.702000033345
 
-[node name="Node2D" type="Node2D"]
+[node name="Node2D" type="Node2D" node_paths=PackedStringArray("nav_region", "tilemap")]
 script = ExtResource("1_axnnm")
+nav_region = NodePath("NavigationRegion2D")
+tilemap = NodePath("NavigationRegion2D/TileMapLayer")
 
 [node name="ColorRect" parent="." instance=ExtResource("2_ijx0c")]
 offset_left = -86229.0
