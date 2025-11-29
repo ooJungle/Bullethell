@@ -1,11 +1,80 @@
-[gd_scene load_steps=7 format=3 uid="uid://dfemr1maf8q5y"]
+[gd_scene load_steps=22 format=3 uid="uid://dfemr1maf8q5y"]
 
 [ext_resource type="Script" uid="uid://qjhobuv743o" path="res://Scripts/Menu/settings_menu.gd" id="1_kuwkl"]
 [ext_resource type="Texture2D" uid="uid://bv0wedkpwp1iy" path="res://Sprites/Menu/engrenagem.png" id="2_pklp7"]
 [ext_resource type="Texture2D" uid="uid://befy8vw0wpvbi" path="res://Sprites/Menu/volume.png" id="2_pv77c"]
 [ext_resource type="Texture2D" uid="uid://c6m8k8f0g24qd" path="res://Sprites/Menu/voltar.png" id="3_5t7sp"]
 [ext_resource type="Texture2D" uid="uid://ci1d6v1r3bbal" path="res://Sprites/Menu/voltar_apagado.png" id="4_5t7sp"]
+[ext_resource type="Texture2D" uid="uid://dan4evjg78mw4" path="res://Sprites/Menu/barra_vazia.png" id="4_f8bue"]
+[ext_resource type="Texture2D" uid="uid://cxqrdqbgyhgd2" path="res://Sprites/Menu/engrenagem_apagada.png" id="4_iikuj"]
+[ext_resource type="Texture2D" uid="uid://h0dw25qsoisn" path="res://Sprites/Menu/barra_cheia.png" id="5_eke6s"]
 [ext_resource type="PackedScene" uid="uid://b2pnn1csceu83" path="res://UI_UX/mira.tscn" id="6_itx6s"]
+[ext_resource type="Texture2D" uid="uid://ui26r4aqnuj0" path="res://Sprites/Menu/geral.png" id="7_eke6s"]
+[ext_resource type="Texture2D" uid="uid://c3016t7l6mf0v" path="res://Sprites/Menu/muscia.png" id="8_iikuj"]
+[ext_resource type="Texture2D" uid="uid://ycc5sda0x8k8" path="res://Sprites/Menu/sfx.png" id="9_07vh6"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_eke6s"]
+texture = ExtResource("4_f8bue")
+texture_margin_left = 4.0
+texture_margin_top = 4.0
+texture_margin_right = 4.0
+texture_margin_bottom = 4.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_0skdv"]
+texture = ExtResource("5_eke6s")
+texture_margin_left = 4.0
+texture_margin_top = 4.0
+texture_margin_right = 4.0
+texture_margin_bottom = 4.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_yjacv"]
+texture = ExtResource("5_eke6s")
+texture_margin_left = 4.0
+texture_margin_top = 4.0
+texture_margin_right = 4.0
+texture_margin_bottom = 4.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_iikuj"]
+texture = ExtResource("4_f8bue")
+texture_margin_left = 4.0
+texture_margin_top = 4.0
+texture_margin_right = 4.0
+texture_margin_bottom = 4.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_jl1f5"]
+texture = ExtResource("5_eke6s")
+texture_margin_left = 4.0
+texture_margin_top = 4.0
+texture_margin_right = 4.0
+texture_margin_bottom = 4.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_rpt6p"]
+texture = ExtResource("5_eke6s")
+texture_margin_left = 4.0
+texture_margin_top = 4.0
+texture_margin_right = 4.0
+texture_margin_bottom = 4.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_07vh6"]
+texture = ExtResource("4_f8bue")
+texture_margin_left = 4.0
+texture_margin_top = 4.0
+texture_margin_right = 4.0
+texture_margin_bottom = 4.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_prh8q"]
+texture = ExtResource("5_eke6s")
+texture_margin_left = 4.0
+texture_margin_top = 4.0
+texture_margin_right = 4.0
+texture_margin_bottom = 4.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_lsvci"]
+texture = ExtResource("5_eke6s")
+texture_margin_left = 4.0
+texture_margin_top = 4.0
+texture_margin_right = 4.0
+texture_margin_bottom = 4.0
 
 [node name="SettingsMenu" type="Control"]
 process_mode = 3
@@ -22,9 +91,13 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_left = -3.0
+offset_top = -30.0
+offset_right = -3.0
+offset_bottom = -30.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0.500095, 0.50009507, 0.500095, 1)
+color = Color(0, 0.101960786, 0.10980392, 1)
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 layout_mode = 1
@@ -40,47 +113,44 @@ offset_bottom = 52.0
 grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(3, 3)
-pivot_offset = Vector2(40, 20)
+pivot_offset = Vector2(40, 40)
 
 [node name="Sprite2D" type="Sprite2D" parent="VBoxContainer"]
 position = Vector2(34.25, -3.5)
-scale = Vector2(1.5, 1.5)
+scale = Vector2(2, 2)
 texture = ExtResource("2_pv77c")
 offset = Vector2(0, -10)
-
-[node name="VolumeLabel" type="RichTextLabel" parent="VBoxContainer"]
-layout_mode = 2
-theme_override_constants/outline_size = 4
-theme_override_font_sizes/normal_font_size = 20
-theme_override_font_sizes/bold_font_size = 20
-theme_override_font_sizes/bold_italics_font_size = 20
-theme_override_font_sizes/italics_font_size = 20
-theme_override_font_sizes/mono_font_size = 20
-bbcode_enabled = true
-text = "Volume"
-scroll_active = false
 
 [node name="HSlider" type="HSlider" parent="VBoxContainer"]
 layout_mode = 2
 theme_override_icons/grabber = ExtResource("2_pklp7")
-theme_override_icons/grabber_highlight = ExtResource("2_pklp7")
+theme_override_icons/grabber_highlight = ExtResource("4_iikuj")
 theme_override_icons/grabber_disabled = ExtResource("2_pklp7")
+theme_override_styles/slider = SubResource("StyleBoxTexture_eke6s")
+theme_override_styles/grabber_area = SubResource("StyleBoxTexture_0skdv")
+theme_override_styles/grabber_area_highlight = SubResource("StyleBoxTexture_yjacv")
 max_value = 1.4
 step = 0.01
 
 [node name="musica" type="HSlider" parent="VBoxContainer"]
 layout_mode = 2
 theme_override_icons/grabber = ExtResource("2_pklp7")
-theme_override_icons/grabber_highlight = ExtResource("2_pklp7")
+theme_override_icons/grabber_highlight = ExtResource("4_iikuj")
 theme_override_icons/grabber_disabled = ExtResource("2_pklp7")
+theme_override_styles/slider = SubResource("StyleBoxTexture_iikuj")
+theme_override_styles/grabber_area = SubResource("StyleBoxTexture_jl1f5")
+theme_override_styles/grabber_area_highlight = SubResource("StyleBoxTexture_rpt6p")
 max_value = 1.0
 step = 0.01
 
 [node name="sfx" type="HSlider" parent="VBoxContainer"]
 layout_mode = 2
 theme_override_icons/grabber = ExtResource("2_pklp7")
-theme_override_icons/grabber_highlight = ExtResource("2_pklp7")
-theme_override_icons/grabber_disabled = ExtResource("2_pklp7")
+theme_override_icons/grabber_highlight = ExtResource("4_iikuj")
+theme_override_icons/grabber_disabled = ExtResource("4_iikuj")
+theme_override_styles/slider = SubResource("StyleBoxTexture_07vh6")
+theme_override_styles/grabber_area = SubResource("StyleBoxTexture_prh8q")
+theme_override_styles/grabber_area_highlight = SubResource("StyleBoxTexture_lsvci")
 max_value = 1.0
 step = 0.01
 
@@ -89,6 +159,18 @@ layout_mode = 2
 texture_normal = ExtResource("3_5t7sp")
 texture_hover = ExtResource("4_5t7sp")
 stretch_mode = 4
+
+[node name="geral" type="Sprite2D" parent="VBoxContainer"]
+position = Vector2(-33.666668, 11.333334)
+texture = ExtResource("7_eke6s")
+
+[node name="mus" type="Sprite2D" parent="VBoxContainer"]
+position = Vector2(-38.666668, 39.333336)
+texture = ExtResource("8_iikuj")
+
+[node name="sfx2" type="Sprite2D" parent="VBoxContainer"]
+position = Vector2(-21.000002, 68)
+texture = ExtResource("9_07vh6")
 
 [node name="mira" parent="." instance=ExtResource("6_itx6s")]
 position = Vector2(752, 374)
