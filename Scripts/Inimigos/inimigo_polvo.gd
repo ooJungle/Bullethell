@@ -1,29 +1,22 @@
 extends CharacterBody2D
 
-# --- Variáveis de Movimento e Percepção ---
 @export var velocidade = 90.0
 @export var forca_maxima_direcao = 180.0
 @export var tempo_percepcao = 0.5
 
-# --- Variáveis de Combate ---
-@export var player: CharacterBody2D # Certifique-se que no Inspector isso está vazio ou correto
+@export var player: CharacterBody2D
 @export var forca_knockback = 600.0
 @export var velocidade_projetil = 130.0
 
-# --- Preloads dos Projéteis ---
-# Nota: Todos estão carregando o mesmo tiro_amarelo. 
-# Se quiser tiros com comportamentos diferentes, precisará criar cenas diferentes.
 const obj_tiro_roxo = preload("res://Cenas/Projeteis/tiro_polvo.tscn")
 const obj_tiro_azul = preload("res://Cenas/Projeteis/tiro_polvo.tscn")
 const obj_tiro_verde = preload("res://Cenas/Projeteis/tiro_polvo.tscn")
 
-# --- Nós Filhos ---
 @onready var sprite: AnimatedSprite2D = $sprite
 @onready var navigation_agent: NavigationAgent2D = $NavigationAgent2D
 @onready var perception_timer: Timer = $PerceptionTimer
 @onready var collision_area: Area2D = $Area2D
 
-# --- Variáveis de Estado de Ataque ---
 var ataque_aleatorio = 0
 var attack_cooldown = 0.0
 var tempo_entre_tiros = 0.0
@@ -32,13 +25,11 @@ var rotacao_ataque = 200.0
 var atirando = false
 var direcao_ataque_fixa: Vector2 = Vector2.ZERO
 
-# --- Variáveis de Estado de Knockback ---
 var knockback = false
 var tempo_knockback_atual = 0.0
 
 func _ready() -> void:
 	add_to_group("enemies")
-
 	randomize()
 	ataque_aleatorio = randi_range(0, 4)
 	
@@ -47,7 +38,6 @@ func _ready() -> void:
 	perception_timer.timeout.connect(on_perception_timer_timeout)
 	perception_timer.start()
 	
-	# Busca segura pelo player
 	player = get_node_or_null("/root/Node2D/player")
 	if not player:
 		player = get_node_or_null("/root/fase_teste/player")
@@ -57,7 +47,6 @@ func on_perception_timer_timeout() -> void:
 		return
 	
 	decidir_melhor_caminho()
-
 	perception_timer.wait_time = tempo_percepcao + randf_range(-0.3, 0.3)
 	perception_timer.start()
 
@@ -108,11 +97,9 @@ func decidir_melhor_caminho() -> void:
 	var pos_atual = global_position
 	var pos_player = player.global_position
 
-	# --- ROTA A: Custo do caminho direto ---
 	var caminho_direto = NavigationServer2D.map_get_path(mapa_rid, pos_atual, pos_player, true)
 	var custo_caminho_direto = calcular_comprimento_do_caminho(caminho_direto)
 	
-	# --- ROTA B: Custo do caminho pelo Buraco Negro ---
 	var custo_caminho_buraco = INF
 	var buraco_negro_alvo = null
 	
@@ -131,7 +118,6 @@ func decidir_melhor_caminho() -> void:
 		custo_caminho_buraco = custo_ate_buraco + custo_da_saida
 		buraco_negro_alvo = buraco_negro_proximo
 
-	# --- A DECISÃO ---
 	if custo_caminho_buraco < custo_caminho_direto:
 		navigation_agent.target_position = buraco_negro_alvo.global_position
 	else:
@@ -158,7 +144,6 @@ func encontrar_corpo_celeste_mais_proximo(grupo: String) -> Node2D:
 	return mais_proximo
 
 func shoot():
-	# ATAQUE 0: Metralhadora giratória
 	if ataque_aleatorio == 0:
 		if not atirando:
 			direcao_ataque_fixa = (player.global_position - global_position).normalized()
@@ -179,7 +164,6 @@ func shoot():
 				atirando = false
 				ataque_aleatorio = randi_range(0, 4)
 
-	# ATAQUE 1: Explosão em círculo
 	if ataque_aleatorio == 1:
 		if attack_cooldown >= 3:
 			for i in range(11):
@@ -191,7 +175,6 @@ func shoot():
 			attack_cooldown = 0.0
 			ataque_aleatorio = randi_range(0, 4)
 
-	# ATAQUE 2: Tiro único simples
 	if ataque_aleatorio == 2:
 		if attack_cooldown >= 3:
 			var new_bullet = obj_tiro_roxo.instantiate()
@@ -202,25 +185,21 @@ func shoot():
 			attack_cooldown = 0.0
 			ataque_aleatorio = randi_range(0, 4)
 
-	# ATAQUE 3: Tiro Azul (AGORA SEM ATRIBUIR PLAYER)
 	if ataque_aleatorio == 3:
 		if attack_cooldown >= 3:
 			var new_bullet = obj_tiro_azul.instantiate()
 			var direction = (player.global_position - global_position).normalized()
-			# new_bullet.player = player  <--- REMOVIDO PARA EVITAR ERRO
 			new_bullet.global_position = global_position
 			new_bullet.velocity = direction * velocidade_projetil
 			get_parent().add_child(new_bullet)
 			attack_cooldown = 0.0
 			ataque_aleatorio = randi_range(0, 4)
 
-	# ATAQUE 4: Tiro Verde Múltiplo (AGORA SEM ATRIBUIR PLAYER)
 	if ataque_aleatorio == 4:
 		if attack_cooldown >= 3:
 			for i in range(4):
 				var new_bullet = obj_tiro_verde.instantiate()
 				var direction = (player.global_position - global_position).normalized()
-				# new_bullet.player = player <--- REMOVIDO PARA EVITAR ERRO
 				new_bullet.global_position = global_position
 				new_bullet.velocity = direction * velocidade_projetil
 				get_parent().add_child(new_bullet)
@@ -239,3 +218,6 @@ func _on_collision_area_body_entered(body: Node2D) -> void:
 		var direcao = (global_position - body.global_position).normalized()
 		aplicar_knockback(direcao)
 		body.take_damage(5)
+
+func take_damage(_amount: int) -> void:	
+	queue_free()

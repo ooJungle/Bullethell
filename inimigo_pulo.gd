@@ -1,12 +1,13 @@
 extends CharacterBody2D
 
 @export var velocidade = 120.0
+@export var velocidade_tiro = 300.0
 @export var gravidade_z: float = 900.0
 @export var forca_pulo: float = 350.0
 @export var distancia_ativacao: float = 450.0 
 @export var forca_knockback = 450.0
 
-const projetil_cena = preload("uid://blnx5hrelwktk")
+const projetil_cena = preload("uid://cffsdsp6r8ihg")
 
 var player: Node2D
 var altura_z: float = 0.0
@@ -82,19 +83,13 @@ func disparar_onda_roxa():
 		print("ERRO: Cena do projétil não atribuída no Inspector do inimigo.")
 		return
 	
-	var tiro = projetil_cena.instantiate()
-	
-	tiro.global_position = spawner_tiro.global_position
-	if is_instance_valid(player):
-		var direcao = (player.global_position - global_position).normalized()
-		
-		if "direction" in tiro:
-			tiro.direction = direcao
-		tiro.rotation = direcao.angle()
-	else:
-		tiro.direction = Vector2.RIGHT
-		
-	get_tree().current_scene.call_deferred("add_child", tiro)
+	for i in range(6):
+		var new_bullet = projetil_cena.instantiate()
+		new_bullet.global_position = spawner_tiro.global_position
+		var direcao = (player.global_position - global_position).normalized().rotated(deg_to_rad(360.0 / 6.0 * i))
+		new_bullet.rotation = direcao.angle()
+		new_bullet.velocity = direcao * velocidade_tiro
+		get_tree().current_scene.call_deferred("add_child", new_bullet)
 
 func controlar_tempo_pulo(delta: float):
 	if not is_instance_valid(player): return

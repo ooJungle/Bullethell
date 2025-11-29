@@ -4,9 +4,15 @@ extends Area2D
 @export var duration: float = 6.0
 var velocity: Vector2 = Vector2.ZERO
 
-func _ready() -> void:
-	# conecta o sinal (pode também conectar no editor)
+@onready var sprite: AnimatedSprite2D = $sprite
+
+func _ready():
 	connect("body_entered", Callable(self, "_on_body_entered"))
+	sprite.animation = "variacoes"
+	sprite.pause()
+	var total_frames = sprite.sprite_frames.get_frame_count(sprite.animation)
+	var frame_aleatorio = randi() % total_frames
+	sprite.frame = frame_aleatorio
 
 func _process(delta: float) -> void:
 	if Global.paused:

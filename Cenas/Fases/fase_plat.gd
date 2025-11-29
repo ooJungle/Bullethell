@@ -166,23 +166,19 @@ func spawn_enemy():
 		var current_sum = 0
 		var selected_path = ""
 		
-		# 3. Selecionar o inimigo baseado no peso
 		for enemy_data in enemies_list:
 			current_sum += enemy_data["weight"]
 			if random_val < current_sum:
 				selected_path = enemy_data["path"]
 				break
 		
-		# 4. Spawnar
 		if selected_path != "":
 			_spawn_entity(selected_path, Vector2.ZERO)
-			inimigos_spawnados_contagem += 1 # Incrementa contador
+			inimigos_spawnados_contagem += 1
 	
-	# Verificação extra após o loop caso tenha atingido o limite exatamente agora
 	if inimigos_spawnados_contagem >= limite_inimigos_onda and rest_timer.is_stopped():
 		iniciar_descanso()
 
-# --- FUNÇÕES DE CONTROLE DE ONDA ---
 func iniciar_descanso():
 	print("Limite de 10 inimigos atingido. Pausando spawn por 20 segundos...")
 	enemy_timer.stop()
@@ -190,10 +186,9 @@ func iniciar_descanso():
 
 func _on_rest_finished():
 	print("Descanso acabou! Reiniciando spawn.")
-	inimigos_spawnados_contagem = 0 # Reseta a contagem
+	inimigos_spawnados_contagem = 0
 	enemy_timer.start()
-	spawn_enemy() # Spawna um imediatamente para não esperar o intervalo
-# -----------------------------------
+	spawn_enemy()
 
 func _spawn_entity(resource_path: String, positionLoc):
 	var camera = get_tree().get_current_scene().get_node("player/Camera2D")
@@ -208,6 +203,7 @@ func _spawn_entity(resource_path: String, positionLoc):
 	var top = camera_pos.y - viewport_size.y - spawn_offset
 	var bottom = camera_pos.y + viewport_size.y + spawn_offset
 
+	# 1. Sorteia a posição inicial (pode cair no buraco)
 	if positionLoc == Vector2.ZERO:
 		spawn_position = Vector2()
 		var side = randi() % 4
@@ -229,6 +225,11 @@ func _spawn_entity(resource_path: String, positionLoc):
 
 	if not is_within_map_bounds(spawn_position):
 		spawn_position = clamp_position_to_bounds(spawn_position)
+
+	if nav_region:
+		var mapa_rid = nav_region.get_navigation_map()
+		var posicao_no_chao = NavigationServer2D.map_get_closest_point(mapa_rid, spawn_position)
+		spawn_position = posicao_no_chao
 
 	var resource = load(resource_path)
 	if resource:
