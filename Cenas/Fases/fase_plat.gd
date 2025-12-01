@@ -23,7 +23,7 @@ var enemy_timer: Timer
 
 # --- NOVAS VARIÁVEIS (CONTROLE DE ONDA/PAUSA) ---
 var inimigos_spawnados_contagem: int = 0
-var limite_inimigos_onda: int = 6
+var limite_inimigos_onda: int = 5
 var tempo_descanso: float = 20.0
 var rest_timer: Timer
 # ------------------------------------------------

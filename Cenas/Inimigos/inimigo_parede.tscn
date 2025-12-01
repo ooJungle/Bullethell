@@ -1,0 +1,93 @@
+[gd_scene load_steps=13 format=3 uid="uid://crl0o5hjuoci8"]
+
+[ext_resource type="Script" uid="uid://cd1gfvuxaee5u" path="res://Scripts/Inimigos/inimigo_parede.gd" id="1_8ofrx"]
+[ext_resource type="Texture2D" uid="uid://dajldujl4obmi" path="res://Sprites/Inimigos/lesma.png" id="2_i24pn"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8cav2"]
+atlas = ExtResource("2_i24pn")
+region = Rect2(0, 0, 35, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_a3rm2"]
+atlas = ExtResource("2_i24pn")
+region = Rect2(35, 0, 35, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yxpuu"]
+atlas = ExtResource("2_i24pn")
+region = Rect2(70, 0, 35, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0q302"]
+atlas = ExtResource("2_i24pn")
+region = Rect2(105, 0, 35, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lrkrg"]
+atlas = ExtResource("2_i24pn")
+region = Rect2(140, 0, 35, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pydet"]
+atlas = ExtResource("2_i24pn")
+region = Rect2(175, 0, 35, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_au25w"]
+atlas = ExtResource("2_i24pn")
+region = Rect2(210, 0, 35, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_cl5ks"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8cav2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_a3rm2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yxpuu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0q302")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lrkrg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pydet")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_au25w")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_uuqmx"]
+size = Vector2(16, 16)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_8ofrx"]
+radius = 8.0
+
+[node name="InimigoParede" type="CharacterBody2D"]
+collision_mask = 128
+motion_mode = 1
+wall_min_slide_angle = 0.0
+script = ExtResource("1_8ofrx")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_cl5ks")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_uuqmx")
+
+[node name="RayCast_Parede" type="RayCast2D" parent="."]
+position = Vector2(3, 0)
+target_position = Vector2(0, 20)
+collision_mask = 128
+
+[node name="RayCast_Frente" type="RayCast2D" parent="."]
+target_position = Vector2(20, 0)
+collision_mask = 128
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_8ofrx")

@@ -1,16 +1,15 @@
 extends CharacterBody2D
 
 # --- Variáveis de Movimento e Combate ---
-@export var velocidade = 100.0 # Velocidade MÁXIMA BASE
+@export var velocidade = 80.0 # Velocidade MÁXIMA BASE
 @export var player: CharacterBody2D
 @export var forca_maxima_direcao = 200.0 # Aceleração/Curva
 @export var forca_knockback = 450.0
 
 # --- Nós Filhos ---
 @onready var sprite: AnimatedSprite2D = $sprite
-@onready var navigation_agent := $NavigationAgent2D as NavigationAgent2D
+# NavigationAgent e Timer removidos daqui
 @onready var area_deteccao: Area2D = $Area2D
-@onready var perception_timer: Timer = $PerceptionTimer
 
 # --- Disparos ---
 const obj_tiro_azul = preload("res://Cenas/Projeteis/projetil_espiral.tscn")
@@ -22,15 +21,11 @@ var tempo_knockback = 0.0
 func _ready() -> void:
 	add_to_group("enemies")
 	
-	perception_timer.wait_time = 0.5
-	perception_timer.timeout.connect(makepath)
-	perception_timer.start()
+	# Lógica do timer de navegação removida
 	
 	player = get_node_or_null("/root/Node2D/player")
 	if not player:
 		player = get_node_or_null("/root/fase_teste/player")
-		
-	call_deferred("makepath")
 
 func _physics_process(delta: float) -> void:
 	if Global.paused or !visible:
@@ -51,11 +46,12 @@ func _physics_process(delta: float) -> void:
 		move_and_slide()
 		return
 
+	# --- ALTERAÇÃO AQUI: Lógica direta ---
 	var direcao_alvo = Vector2.ZERO
 	
-	if not navigation_agent.is_navigation_finished():
-		var next_path_position = navigation_agent.get_next_path_position()
-		direcao_alvo = global_position.direction_to(next_path_position)
+	if is_instance_valid(player):
+		# Pega a direção direta para o player em vez de usar o NavigationAgent
+		direcao_alvo = global_position.direction_to(player.global_position)
 
 	if direcao_alvo.length() > 0:
 		var velocidade_desejada = direcao_alvo * velocidade * Global.fator_tempo
@@ -73,12 +69,7 @@ func _physics_process(delta: float) -> void:
 	if is_instance_valid(player) and (player.global_position - global_position).length() < 500:
 		shoot()
 
-
-func makepath() -> void:
-	if is_instance_valid(player):
-		# Define o destino do agente como a posição do player.
-		# O NavigationAgent cuidará de calcular como chegar lá desviando das paredes.
-		navigation_agent.target_position = player.global_position
+# Função makepath removida pois não é mais necessária
 
 func update_animation_and_flip():
 	if velocity.length() > 10:

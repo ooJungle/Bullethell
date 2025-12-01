@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=4 uid="uid://bd1kjomv53gnt"]
+[gd_scene load_steps=20 format=4 uid="uid://bd1kjomv53gnt"]
 
 [ext_resource type="Script" uid="uid://rpmvree5m8p3" path="res://Cenas/Fases/fase_plat.gd" id="1_axnnm"]
 [ext_resource type="PackedScene" uid="uid://d2m240uv3u7nj" path="res://UI_UX/fundo.tscn" id="2_ijx0c"]
@@ -12,6 +12,7 @@
 [ext_resource type="PackedScene" uid="uid://btmuqo7o24djd" path="res://chroma.tscn" id="9_i8j5m"]
 [ext_resource type="AudioStream" uid="uid://bo1fwbkouv0lf" path="res://Sons e Musica/Boss_1.mp3" id="10_8j3os"]
 [ext_resource type="Shader" uid="uid://cdki4y1u5d4ne" path="res://Cenas/Fases/Fase_0.gdshader" id="11_wbt8w"]
+[ext_resource type="PackedScene" uid="uid://crl0o5hjuoci8" path="res://Cenas/Inimigos/inimigo_parede.tscn" id="13_3uevf"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_g5322"]
 
@@ -395,3 +396,117 @@ position = Vector2(1732, -1377)
 
 [node name="tocha28" parent="." instance=ExtResource("5_47xyu")]
 position = Vector2(1889, -1375)
+
+[node name="InimigoParede" parent="." instance=ExtResource("13_3uevf")]
+position = Vector2(-1060, 135)
+
+[node name="InimigoParede2" parent="." instance=ExtResource("13_3uevf")]
+position = Vector2(-392, -245)
+
+[node name="InimigoParede3" parent="." instance=ExtResource("13_3uevf")]
+position = Vector2(-839, -601)
+
+[node name="InimigoParede4" parent="." instance=ExtResource("13_3uevf")]
+position = Vector2(-1536, -402)
+
+[node name="InimigoParede5" parent="." instance=ExtResource("13_3uevf")]
+position = Vector2(-1376, -217)
+
+[node name="InimigoParede6" parent="." instance=ExtResource("13_3uevf")]
+position = Vector2(317, -217)
+
+[node name="InimigoParede7" parent="." instance=ExtResource("13_3uevf")]
+position = Vector2(439, -217)
+
+[node name="InimigoParede8" parent="." instance=ExtResource("13_3uevf")]
+position = Vector2(699, -89)
+
+[node name="InimigoParede9" parent="." instance=ExtResource("13_3uevf")]
+position = Vector2(1107, -664)
+
+[node name="InimigoParede10" parent="." instance=ExtResource("13_3uevf")]
+position = Vector2(1263, -664)
+
+[node name="InimigoParede11" parent="." instance=ExtResource("13_3uevf")]
+position = Vector2(1389, -328)
+
+[node name="InimigoParede12" parent="." instance=ExtResource("13_3uevf")]
+position = Vector2(1552, -329)
+
+[node name="InimigoParede13" parent="." instance=ExtResource("13_3uevf")]
+position = Vector2(1282, 105)
+
+[node name="InimigoParede14" parent="." instance=ExtResource("13_3uevf")]
+position = Vector2(1579, 107)
+
+[node name="InimigoParede15" parent="." instance=ExtResource("13_3uevf")]
+position = Vector2(1431, 106)
+
+[node name="InimigoParede16" parent="." instance=ExtResource("13_3uevf")]
+position = Vector2(345, -1176)
+
+[node name="InimigoParede18" parent="." instance=ExtResource("13_3uevf")]
+position = Vector2(623, -1176)
+
+[node name="InimigoParede19" parent="." instance=ExtResource("13_3uevf")]
+position = Vector2(795, -1177)
+
+[node name="InimigoParede20" parent="." instance=ExtResource("13_3uevf")]
+position = Vector2(-931, -954)
+
+[node name="InimigoParede22" parent="." instance=ExtResource("13_3uevf")]
+position = Vector2(-675, -954)
+
+[node name="InimigoParede23" parent="." instance=ExtResource("13_3uevf")]
+position = Vector2(-495, -954)
+
+[node name="InimigoParede24" parent="." instance=ExtResource("13_3uevf")]
+position = Vector2(-927, 133)
+
+[node name="InimigoParede25" parent="." instance=ExtResource("13_3uevf")]
+position = Vector2(-785, 136)
+
+[node name="InimigoParede26" parent="." instance=ExtResource("13_3uevf")]
+position = Vector2(-782, 9)
+
+[node name="InimigoParede27" parent="." instance=ExtResource("13_3uevf")]
+position = Vector2(-730, -603)
+
+[node name="InimigoParede28" parent="." instance=ExtResource("13_3uevf")]
+position = Vector2(-441, -631)
+
+[node name="InimigoParede29" parent="." instance=ExtResource("13_3uevf")]
+position = Vector2(-1658, -664)
+
+[node name="InimigoParede32" parent="." instance=ExtResource("13_3uevf")]
+position = Vector2(-1527, -665)
+
+[node name="InimigoParede34" parent="." instance=ExtResource("13_3uevf")]
+position = Vector2(-1385, -664)
+
+[node name="InimigoParede35" parent="." instance=ExtResource("13_3uevf")]
+position = Vector2(-1503, -217)
+
+[node name="InimigoParede36" parent="." instance=ExtResource("13_3uevf")]
+position = Vector2(-1224, -216)
+
+[node name="InimigoParede38" parent="." instance=ExtResource("13_3uevf")]
+position = Vector2(-1513, 647)
+
+[node name="InimigoParede40" parent="." instance=ExtResource("13_3uevf")]
+position = Vector2(-593, 648)
+
+[node name="InimigoParede41" parent="." instance=ExtResource("13_3uevf")]
+position = Vector2(-312, 648)
+
+[node name="InimigoParede43" parent="." instance=ExtResource("13_3uevf")]
+position = Vector2(300, 645)
+
+[node name="InimigoParede44" parent="." instance=ExtResource("13_3uevf")]
+position = Vector2(503, 641)
+
+[node name="InimigoParede45" parent="." instance=ExtResource("13_3uevf")]
+position = Vector2(962, 648)
+
+[node name="InimigoParede47" parent="." instance=ExtResource("13_3uevf")]
+position = Vector2(1631, 643)

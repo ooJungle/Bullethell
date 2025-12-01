@@ -1,9 +1,9 @@
 extends CharacterBody2D
 
 @export var damage: int = 1
-@export var duration: float = 3.0
+@export var duration: float = 10.0
 @export var speed: float = 500.0
-@export var max_bounces: int = 3
+@export var max_bounces: int = 1000
 
 func _ready() -> void:
 	if velocity == Vector2.ZERO:
