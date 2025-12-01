@@ -3,20 +3,32 @@
 [ext_resource type="Texture2D" uid="uid://xici2bepchya" path="res://Sprites/concavo.png" id="1_7qrga"]
 [ext_resource type="Script" uid="uid://c6idweuta3buu" path="res://Cenas/Inimigos/sword_beam.gd" id="1_dyecq"]
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_dyecq"]
-radius = 21.0
-height = 44.0
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_t3wtv"]
+radius = 11.0
 
-[node name="SwordBeam" type="Area2D"]
-collision_layer = 4
-collision_mask = 255
+[node name="SwordBeam" type="Node2D"]
 script = ExtResource("1_dyecq")
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("1_7qrga")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-17, 0)
-shape = SubResource("CapsuleShape2D_dyecq")
+[node name="Area1" type="Area2D" parent="."]
+collision_layer = 255
+collision_mask = 255
 
-[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+[node name="CollisionPolygon2D" type="CollisionShape2D" parent="Area1"]
+position = Vector2(-13, -6)
+rotation = -0.7853982
+scale = Vector2(0.99999994, 0.99999994)
+shape = SubResource("CapsuleShape2D_t3wtv")
+
+[node name="Area2" type="Area2D" parent="."]
+collision_layer = 255
+collision_mask = 255
+
+[node name="CollisionPolygon2D2" type="CollisionShape2D" parent="Area2"]
+position = Vector2(-13.000001, 8)
+rotation = -2.3561945
+shape = SubResource("CapsuleShape2D_t3wtv")

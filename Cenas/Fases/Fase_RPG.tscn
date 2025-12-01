@@ -314,6 +314,9 @@ position = Vector2(712, -53)
 [node name="Inimigo_pulo10" parent="NavigationRegion2D" instance=ExtResource("4_ppeux")]
 position = Vector2(260, -410)
 
+[node name="Inimigo_pulo11" parent="NavigationRegion2D" instance=ExtResource("4_ppeux")]
+position = Vector2(-242, 298)
+
 [node name="portal_volta" parent="." instance=ExtResource("6_u663p")]
 position = Vector2(6, 109)
 id_desta_fase = "Fase_RPG"
