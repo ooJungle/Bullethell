@@ -15,7 +15,8 @@ position = Vector2(0.33334064, -0.4242469)
 scale = Vector2(4.333333, 3.8484848)
 texture = ExtResource("2_u3g42")
 
-[node name="Hitbox" type="CollisionShape2D" parent="."]
+[node name="Hitbox" type="CollisionPolygon2D" parent="."]
+polygon = PackedVector2Array(-44, -69, 58, 22, 14, 27, 33, 62, 7, 73, -10, 39, -43, 64)
 
 [node name="Visuals" type="Node2D" parent="."]
 

@@ -13,7 +13,7 @@ func take_damage(amount: int) -> void:
 
 	modulate = Color(10, 10, 10)
 	var tween = create_tween()
-	tween.tween_property(self, "modulate", Color.WHITE, 0.1)
+	tween.tween_property(self, "modulate", Color.RED, 0.1)
 	
 	if vida_atual <= 0:
 		quebrar()

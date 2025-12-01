@@ -33,6 +33,14 @@ var offset_visual_seta: Vector2 = Vector2(0, -8)
 @export var dano_do_player: int = 10
 @export var tempo_para_carregar: float = 1.5
 
+@export_group("Dash")
+@export var dash_speed: float = 1500.0
+@export var dash_duration: float = 0.15
+@export var dash_cooldown: float = 0.6
+
+var is_dashing: bool = false
+var can_dash: bool = true
+
 var vida_maxima: int = 300
 var vida: int = vida_maxima
 var buraco_negro_proximo: Node2D = null
@@ -94,7 +102,14 @@ func _physics_process(delta: float) -> void:
 			esta_carregando = false 
 			carga_atual = 0.0
 		return
-	
+
+	if is_dashing:
+		move_and_slide()
+		return
+
+	if Input.is_action_just_pressed("dash"):
+		iniciar_dash()
+
 	if atacando and not sprite.animation in ["ataque_frente", "ataque_costas", "ataque_lado"]:
 		atacando = false
 		hitbox_colisao.disabled = true
@@ -427,6 +442,27 @@ func encontrar_corpo_celeste_mais_proximo(grupo: String) -> Node2D:
 			mais_proximo = no
 			
 	return mais_proximo
+
+func iniciar_dash():
+	if not can_dash or is_dashing or atacando:
+		return
+
+	is_dashing = true
+	can_dash = false
+	sprite.modulate = Color(0.5, 1.5, 2.0, 0.7) 
+	
+	var dash_dir = Input.get_vector("move_left", "move_right", "move_up", "move_down")
+	if dash_dir == Vector2.ZERO:
+		dash_dir = last_move_direction
+	velocity = dash_dir.normalized() * dash_speed
+	await get_tree().create_timer(dash_duration).timeout
+	
+	is_dashing = false
+	velocity = Vector2.ZERO
+	sprite.modulate = Color.WHITE
+	
+	await get_tree().create_timer(dash_cooldown).timeout
+	can_dash = true
 
 func _on_dano_timer_timeout() -> void:
 	sprite.modulate = Color(1.0, 1.0, 1.0)

@@ -482,7 +482,8 @@ func _spawn_bullets_in_area(rect: Rect2):
 func take_damage(amount: int) -> void:
 	vida -= amount
 	print("Boss tomou dano. Vida:", vida)
-	
+	var tween = create_tween()
+	tween.tween_property(self, "modulate", Color.WHITE, 0.1)
 	if vida <= 0:
 		die()
 
