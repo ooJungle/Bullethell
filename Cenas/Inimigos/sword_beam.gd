@@ -3,7 +3,7 @@ extends Node2D
 @onready var Area_1: Area2D = $Area1
 @onready var Area_2: Area2D = $Area2
 
-var damage = 2
+var damage = 20
 var speed = 400
 var direction = Vector2.RIGHT
 

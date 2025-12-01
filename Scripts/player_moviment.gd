@@ -353,9 +353,10 @@ func _unhandled_input(event: InputEvent) -> void:
 			get_node("%PauseMenu").start_pause()
 			
 func take_damage(amount: int) -> void:
-	vida -= amount
-	Global.vida = vida
-	print("Player tomou dano. Vida:", vida)
+	if not is_dashing:
+		vida -= amount
+		Global.vida = vida
+		print("Player tomou dano. Vida:", vida)
 	
 	dano()
 	if vida <= 0:

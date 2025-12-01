@@ -14,7 +14,9 @@ var player_camera: Camera2D
 var navigation_region: NavigationRegion2D
 var arena_rect: Rect2
 
-var vida = 500
+var tween_dano: Tween
+
+var vida = 325
 
 func _ready():
 	player = get_node_or_null("/root/Node2D/player")
@@ -482,10 +484,13 @@ func _spawn_bullets_in_area(rect: Rect2):
 func take_damage(amount: int) -> void:
 	vida -= amount
 	print("Boss tomou dano. Vida:", vida)
-	var tween = create_tween()
-	tween.tween_property(self, "modulate", Color.WHITE, 0.1)
-	if vida <= 0:
-		die()
+	if tween_dano:
+		tween_dano.kill()
+		modulate = Color(2.5, 0.0, 0.0, 1.0) 
+		tween_dano = create_tween()
+		tween_dano.tween_property(self, "modulate", Color.WHITE, 0.15).set_trans(Tween.TRANS_SINE)
+		if vida <= 0:
+			die()
 
 func die() -> void:
 	get_tree().change_scene_to_file("res://Cenas/Menu/WinScene.tscn")
