@@ -1,6 +1,6 @@
 extends Polygon2D
 
-@export var raio: float = 200.0
+@export var raio: float = 180.0
 @export var segmentos: int = 32
 # 'set = set_abertura' garante que a forma atualize quando mudamos o valor no Inspector
 @export_range(0.0, 1.0) var abertura: float = 0.0 : set = set_abertura

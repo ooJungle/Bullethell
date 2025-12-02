@@ -1,7 +1,7 @@
 extends CharacterBody2D
 
 @export var velocidade: float = 200.0
-@export var raio_da_roda: float = 195.0
+@export var raio_da_roda: float = 170.0
 var tween_dano: Tween
 
 func _ready() -> void:

@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://t8ghk7m4ee6n"]
+[gd_scene load_steps=13 format=3 uid="uid://t8ghk7m4ee6n"]
 
 [ext_resource type="Script" uid="uid://dmqb3sadnhdkh" path="res://Scripts/roda_de_dialogo.gd" id="1_fkij7"]
 [ext_resource type="Script" uid="uid://quhrmdh30maj" path="res://Scripts/cursor.gd" id="2_7fsk6"]
@@ -9,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://d31w57yocc33b" path="res://Cenas/Projeteis/bola_amarelo.tscn" id="5_h43rx"]
 [ext_resource type="Script" uid="uid://bypd1fjdycmqb" path="res://Scripts/roda_visual.gd" id="6_fkij7"]
 [ext_resource type="PackedScene" uid="uid://bikpslb418lrb" path="res://Cenas/Projeteis/bola_azul.tscn" id="6_pchii"]
+[ext_resource type="Texture2D" uid="uid://cl5ckdckl7p6i" path="res://Sprites/universo.png" id="9_efyx1"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fwti7"]
 size = Vector2(13, 13)
@@ -40,6 +41,9 @@ shape = SubResource("RectangleShape2D_fwti7")
 
 [node name="SubViewport" type="SubViewport" parent="."]
 process_mode = 3
+
+[node name="Sprite2D" type="Sprite2D" parent="SubViewport"]
+texture = ExtResource("9_efyx1")
 
 [node name="RodaVisual" type="Polygon2D" parent="."]
 process_mode = 3
