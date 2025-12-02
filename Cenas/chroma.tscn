@@ -1,0 +1,17 @@
+[gd_scene load_steps=4 format=3 uid="uid://btmuqo7o24djd"]
+
+[ext_resource type="Shader" uid="uid://c3uql6er5kyq" path="res://Scripts/chroma.gdshader" id="1_xwjh7"]
+[ext_resource type="Script" uid="uid://dn5pg8jejgaxi" path="res://Scripts/chroma.gd" id="2_qgx56"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_qgx56"]
+shader = ExtResource("1_xwjh7")
+shader_parameter/ca_strength = 10.0
+
+[node name="chroma" type="ColorRect"]
+material = SubResource("ShaderMaterial_qgx56")
+offset_left = -162.0
+offset_top = -101.0
+offset_right = 1369.0
+offset_bottom = 793.0
+color = Color(1, 1, 1, 0)
+script = ExtResource("2_qgx56")

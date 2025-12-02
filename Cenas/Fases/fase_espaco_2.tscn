@@ -106,8 +106,8 @@ zoom = Vector2(1.5, 1.5)
 process_callback = 0
 
 [node name="portal_volta" parent="." instance=ExtResource("4_dvivw")]
-visible = false
 position = Vector2(29, 61)
+id_desta_fase = "fase_espaco"
 
 [node name="Node2D" type="Node2D" parent="."]
 

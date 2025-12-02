@@ -1,0 +1,27 @@
+[gd_scene load_steps=2 format=3 uid="uid://b4qdyri6plwbq"]
+
+[ext_resource type="Script" uid="uid://d4j0f4y3p5c4d" path="res://Scripts/dialogo.gd" id="1_y0g0c"]
+
+[node name="Dialogo" type="CanvasLayer"]
+script = ExtResource("1_y0g0c")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -167.0
+grow_horizontal = 2
+grow_vertical = 0
+color = Color(0.007843138, 0.003921569, 0.078431375, 0.4392157)
+
+[node name="RichTextLabel" type="RichTextLabel" parent="ColorRect"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 0.035
+anchor_bottom = 0.24000001
+offset_left = 40.0
+offset_top = 17.0
+offset_right = 1072.68
+offset_bottom = 108.92
+scroll_active = false

@@ -1,0 +1,42 @@
+[gd_scene load_steps=9 format=3 uid="uid://t8ghk7m4ee6n"]
+
+[ext_resource type="Script" uid="uid://dmqb3sadnhdkh" path="res://Cenas/roda_de_dialogo.gd" id="1_fkij7"]
+[ext_resource type="Script" uid="uid://quhrmdh30maj" path="res://cursor.gd" id="2_7fsk6"]
+[ext_resource type="Script" uid="uid://ctugynww2wd6p" path="res://centro_de_tiros.gd" id="2_fm8an"]
+[ext_resource type="PackedScene" uid="uid://c1jmoiulli385" path="res://Cenas/Projeteis/Tiro_cabeca.tscn" id="4_fkij7"]
+[ext_resource type="Texture2D" uid="uid://casncw7kd6idj" path="res://Sprites/estrela.png" id="4_fwti7"]
+[ext_resource type="Script" uid="uid://bypd1fjdycmqb" path="res://Cenas/roda_visual.gd" id="6_fkij7"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_fwti7"]
+size = Vector2(13, 13)
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_dra8l"]
+viewport_path = NodePath("SubViewport")
+
+[node name="RodaDeDialogo" type="Node2D"]
+process_mode = 3
+script = ExtResource("1_fkij7")
+
+[node name="CentroDeTiros" type="Node2D" parent="."]
+script = ExtResource("2_fm8an")
+bala_cena = ExtResource("4_fkij7")
+
+[node name="Cursor" type="CharacterBody2D" parent="."]
+process_mode = 3
+z_index = 1
+script = ExtResource("2_7fsk6")
+
+[node name="Sprite2D" type="Sprite2D" parent="Cursor"]
+texture = ExtResource("4_fwti7")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Cursor"]
+shape = SubResource("RectangleShape2D_fwti7")
+
+[node name="SubViewport" type="SubViewport" parent="."]
+process_mode = 3
+
+[node name="RodaVisual" type="Polygon2D" parent="."]
+process_mode = 3
+texture = SubResource("ViewportTexture_dra8l")
+script = ExtResource("6_fkij7")
+segmentos = 36

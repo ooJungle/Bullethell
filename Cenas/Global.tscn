@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://0uqofhtck81g"]
+
+[ext_resource type="Script" uid="uid://2vasfqf5xboy" path="res://Scripts/global.gd" id="1_4mbhf"]
+[ext_resource type="AudioStream" uid="uid://c6ptlwshn3obi" path="res://Sons e Musica/Musica_ambiente.mp3" id="2_hnvys"]
+
+[node name="Global" type="Node"]
+script = ExtResource("1_4mbhf")
+
+[node name="MusicPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_hnvys")
+bus = &"musica"

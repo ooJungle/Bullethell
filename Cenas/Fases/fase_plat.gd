@@ -122,6 +122,7 @@ func _on_cristal_quebrado():
 	print("Cristal quebrado! ", cristais_quebrados, "/", total_cristais)
 	
 	if cristais_quebrados >= total_cristais:
+		Global.plataforma = true
 		abrir_portal()
 
 func abrir_portal():

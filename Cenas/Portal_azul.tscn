@@ -1,7 +1,7 @@
 [gd_scene load_steps=12 format=3 uid="uid://of3w43relaht"]
 
 [ext_resource type="Texture2D" uid="uid://dilhbwpsphdq4" path="res://Sprites/spriteSheet_portalAzul.png" id="1_mbms6"]
-[ext_resource type="Script" uid="uid://c7fg8q3e0irow" path="res://portal_azul.gd" id="1_uwvjx"]
+[ext_resource type="Script" uid="uid://c7fg8q3e0irow" path="res://Scripts/portal_azul.gd" id="1_uwvjx"]
 [ext_resource type="AudioStream" uid="uid://cc275cfqq7684" path="res://Sons e Musica/portaltp.mp3" id="3_t32tx"]
 
 

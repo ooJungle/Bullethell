@@ -1,6 +1,6 @@
 [gd_scene load_steps=14 format=3 uid="uid://df3k86d0us6lx"]
 
-[ext_resource type="Script" uid="uid://cses71lwafinm" path="res://Cenas/npc_rpg.gd" id="1_px6j3"]
+[ext_resource type="Script" uid="uid://cses71lwafinm" path="res://Scripts/npc_rpg.gd" id="1_px6j3"]
 [ext_resource type="Texture2D" uid="uid://g3qcun4rwxa" path="res://Sprites/Gordin_Tut-Sheet.png" id="2_0l21d"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_xxcha"]
