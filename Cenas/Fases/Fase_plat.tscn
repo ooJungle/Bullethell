@@ -390,117 +390,155 @@ position = Vector2(1889, -1375)
 
 [node name="InimigoParede" parent="." instance=ExtResource("13_3uevf")]
 position = Vector2(-1060, 135)
+motion_mode = 0
 
 [node name="InimigoParede2" parent="." instance=ExtResource("13_3uevf")]
-position = Vector2(-392, -245)
+position = Vector2(-392, -249)
+motion_mode = 0
 
 [node name="InimigoParede3" parent="." instance=ExtResource("13_3uevf")]
 position = Vector2(-839, -601)
+motion_mode = 0
 
 [node name="InimigoParede4" parent="." instance=ExtResource("13_3uevf")]
 position = Vector2(-1536, -402)
+motion_mode = 0
 
 [node name="InimigoParede5" parent="." instance=ExtResource("13_3uevf")]
 position = Vector2(-1376, -217)
+motion_mode = 0
 
 [node name="InimigoParede6" parent="." instance=ExtResource("13_3uevf")]
 position = Vector2(317, -217)
+motion_mode = 0
 
 [node name="InimigoParede7" parent="." instance=ExtResource("13_3uevf")]
 position = Vector2(439, -217)
+motion_mode = 0
 
 [node name="InimigoParede8" parent="." instance=ExtResource("13_3uevf")]
 position = Vector2(699, -89)
+motion_mode = 0
 
 [node name="InimigoParede9" parent="." instance=ExtResource("13_3uevf")]
 position = Vector2(1107, -664)
+motion_mode = 0
 
 [node name="InimigoParede10" parent="." instance=ExtResource("13_3uevf")]
 position = Vector2(1263, -664)
+motion_mode = 0
 
 [node name="InimigoParede11" parent="." instance=ExtResource("13_3uevf")]
 position = Vector2(1389, -328)
+motion_mode = 0
 
 [node name="InimigoParede12" parent="." instance=ExtResource("13_3uevf")]
 position = Vector2(1552, -329)
+motion_mode = 0
 
 [node name="InimigoParede13" parent="." instance=ExtResource("13_3uevf")]
 position = Vector2(1282, 105)
+motion_mode = 0
 
 [node name="InimigoParede14" parent="." instance=ExtResource("13_3uevf")]
 position = Vector2(1579, 107)
+motion_mode = 0
 
 [node name="InimigoParede15" parent="." instance=ExtResource("13_3uevf")]
 position = Vector2(1431, 106)
+motion_mode = 0
 
 [node name="InimigoParede16" parent="." instance=ExtResource("13_3uevf")]
 position = Vector2(345, -1176)
+motion_mode = 0
 
 [node name="InimigoParede18" parent="." instance=ExtResource("13_3uevf")]
 position = Vector2(623, -1176)
+motion_mode = 0
 
 [node name="InimigoParede19" parent="." instance=ExtResource("13_3uevf")]
 position = Vector2(795, -1177)
+motion_mode = 0
 
 [node name="InimigoParede20" parent="." instance=ExtResource("13_3uevf")]
 position = Vector2(-931, -954)
+motion_mode = 0
 
 [node name="InimigoParede22" parent="." instance=ExtResource("13_3uevf")]
 position = Vector2(-675, -954)
+motion_mode = 0
 
 [node name="InimigoParede23" parent="." instance=ExtResource("13_3uevf")]
 position = Vector2(-495, -954)
+motion_mode = 0
 
 [node name="InimigoParede24" parent="." instance=ExtResource("13_3uevf")]
 position = Vector2(-927, 133)
+motion_mode = 0
 
 [node name="InimigoParede25" parent="." instance=ExtResource("13_3uevf")]
 position = Vector2(-785, 136)
+motion_mode = 0
 
 [node name="InimigoParede26" parent="." instance=ExtResource("13_3uevf")]
 position = Vector2(-782, 9)
+motion_mode = 0
 
 [node name="InimigoParede27" parent="." instance=ExtResource("13_3uevf")]
-position = Vector2(-730, -603)
+position = Vector2(-730, -600)
+motion_mode = 0
 
 [node name="InimigoParede28" parent="." instance=ExtResource("13_3uevf")]
 position = Vector2(-441, -631)
+motion_mode = 0
 
 [node name="InimigoParede29" parent="." instance=ExtResource("13_3uevf")]
 position = Vector2(-1658, -664)
+motion_mode = 0
 
 [node name="InimigoParede32" parent="." instance=ExtResource("13_3uevf")]
 position = Vector2(-1527, -665)
+motion_mode = 0
 
 [node name="InimigoParede34" parent="." instance=ExtResource("13_3uevf")]
 position = Vector2(-1385, -664)
+motion_mode = 0
 
 [node name="InimigoParede35" parent="." instance=ExtResource("13_3uevf")]
 position = Vector2(-1503, -217)
+motion_mode = 0
 
 [node name="InimigoParede36" parent="." instance=ExtResource("13_3uevf")]
 position = Vector2(-1224, -216)
+motion_mode = 0
 
 [node name="InimigoParede38" parent="." instance=ExtResource("13_3uevf")]
 position = Vector2(-1513, 647)
+motion_mode = 0
 
 [node name="InimigoParede40" parent="." instance=ExtResource("13_3uevf")]
 position = Vector2(-593, 648)
+motion_mode = 0
 
 [node name="InimigoParede41" parent="." instance=ExtResource("13_3uevf")]
 position = Vector2(-312, 648)
+motion_mode = 0
 
 [node name="InimigoParede43" parent="." instance=ExtResource("13_3uevf")]
 position = Vector2(300, 645)
+motion_mode = 0
 
 [node name="InimigoParede44" parent="." instance=ExtResource("13_3uevf")]
 position = Vector2(503, 641)
+motion_mode = 0
 
 [node name="InimigoParede45" parent="." instance=ExtResource("13_3uevf")]
 position = Vector2(962, 648)
+motion_mode = 0
 
 [node name="InimigoParede47" parent="." instance=ExtResource("13_3uevf")]
 position = Vector2(1631, 643)
+motion_mode = 0
 
 [node name="cristal_verde" parent="." instance=ExtResource("14_qkknj")]
 position = Vector2(1490, 14)
