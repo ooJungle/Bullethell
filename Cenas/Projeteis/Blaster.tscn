@@ -1,7 +1,8 @@
 [gd_scene load_steps=3 format=3 uid="uid://nktj48qc0r0f"]
 
-[ext_resource type="Script" uid="uid://bvi74nmu58wnv" path="res://Cenas/Projeteis/blaster.gd" id="1_a1j0g"]
+[ext_resource type="Script" uid="uid://bvi74nmu58wnv" path="res://Scripts/Inimigos/blaster.gd" id="1_a1j0g"]
 [ext_resource type="Texture2D" uid="uid://cx6ixn88ac2ge" path="res://Sprites/Projeteis/laser.png" id="2_4h1ry"]
+
 
 [node name="Blaster" type="Node2D"]
 script = ExtResource("1_a1j0g")

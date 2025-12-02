@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://2lib0cu1aw2a" path="res://Scripts/Menu/main_menu.gd" id="1_2a42p"]
 [ext_resource type="Texture2D" uid="uid://bh4ikt3cqkxdt" path="res://Sprites/Menu/jogar.png" id="2_5tyou"]
-[ext_resource type="Texture2D" uid="uid://dkp241rpl1va7" path="res://Sprites/spriteSheet_portalRoxo.png" id="2_qlikg"]
+[ext_resource type="Texture2D" uid="uid://dkp241rpl1va7" path="res://Sprites/Sheets/spriteSheet_portalRoxo.png" id="2_qlikg"]
 [ext_resource type="PackedScene" uid="uid://b2pnn1csceu83" path="res://UI_UX/mira.tscn" id="2_y2bdj"]
 [ext_resource type="Texture2D" uid="uid://bgvj4winy0elt" path="res://Sprites/Menu/opcoes.png" id="3_1ak8u"]
 [ext_resource type="AudioStream" uid="uid://c4aj72861f4y0" path="res://Sons e Musica/Musica Jogo.mp3" id="3_qpwnb"]
@@ -12,6 +12,7 @@
 [ext_resource type="Texture2D" uid="uid://l8pyja0u527q" path="res://Sprites/Menu/infinito_apagado.png" id="5_5nkqo"]
 [ext_resource type="Texture2D" uid="uid://divbo35e3qmdx" path="res://Sprites/Menu/opcoes_apagado.png" id="7_qlikg"]
 [ext_resource type="Texture2D" uid="uid://dhpv31y0qpyuj" path="res://Sprites/Menu/sair_apagado.png" id="9_re7i5"]
+
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_re7i5"]
 atlas = ExtResource("2_qlikg")

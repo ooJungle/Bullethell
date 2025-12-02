@@ -1,7 +1,8 @@
 [gd_scene load_steps=6 format=3 uid="uid://cm67gv3v3peq0"]
 
-[ext_resource type="Script" uid="uid://yo02svsp2r60" path="res://Scripts/Inimigos/inimigo_setro.gd" id="1_a38lw"]
-[ext_resource type="Texture2D" uid="uid://bagxdjdchicjk" path="res://Sprites/Inimigos/atiradora.png" id="2_y5y4f"]
+[ext_resource type="Script" uid="uid://yo02svsp2r60" path="res://Scripts/Geral/inimigo_setro.gd" id="1_a38lw"]
+[ext_resource type="Texture2D" uid="uid://bagxdjdchicjk" path="res://Sprites/Tilesets/Inimigos/atiradora.png" id="2_y5y4f"]
+
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_vhvaj"]
 animations = [{

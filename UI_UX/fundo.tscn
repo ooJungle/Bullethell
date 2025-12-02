@@ -1,6 +1,7 @@
 [gd_scene load_steps=2 format=3 uid="uid://d2m240uv3u7nj"]
 
-[ext_resource type="Script" uid="uid://bpjj1tyyrywvi" path="res://Scripts/fundo.gd" id="1_3harl"]
+[ext_resource type="Script" uid="uid://bpjj1tyyrywvi" path="res://Scripts/Geral/fundo.gd" id="1_3harl"]
+
 
 [node name="ColorRect" type="ColorRect"]
 modulate = Color(0, 0, 0, 1)

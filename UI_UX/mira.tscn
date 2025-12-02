@@ -1,8 +1,9 @@
 [gd_scene load_steps=5 format=3 uid="uid://b2pnn1csceu83"]
 
-[ext_resource type="Texture2D" uid="uid://docwey45yb1wx" path="res://Sprites/PROVISORIO -- mira.png" id="1_6226f"]
+[ext_resource type="Texture2D" uid="uid://docwey45yb1wx" path="res://Sprites/Geral/PROVISORIO -- mira.png" id="1_6226f"]
 [ext_resource type="Script" uid="uid://dainjljwr8y73" path="res://UI_UX/mira.gd" id="2_7n58y"]
 [ext_resource type="PackedScene" uid="uid://c1wgytysn225m" path="res://UI_UX/mouse.tscn" id="3_x6oug"]
+
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_8gxhf"]
 atlas = ExtResource("1_6226f")

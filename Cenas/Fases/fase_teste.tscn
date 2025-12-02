@@ -1,8 +1,8 @@
 [gd_scene load_steps=12 format=4 uid="uid://dq5arm2820s3g"]
 
-[ext_resource type="Script" uid="uid://da1dl2bimc4ng" path="res://Cenas/Fases/fase_teste.gd" id="1_eo7wa"]
-[ext_resource type="Texture2D" uid="uid://tpc5pqukpb32" path="res://Sprites/tilesetGAMEJAM.png" id="2_q2gr4"]
-[ext_resource type="PackedScene" uid="uid://cw5ic42v3wep7" path="res://Cenas/player.tscn" id="3_epopl"]
+[ext_resource type="Script" uid="uid://dj2c7kdukomi" path="res://Scripts/Projeteis/Fases/fase_teste.gd" id="1_eo7wa"]
+[ext_resource type="Texture2D" uid="uid://tpc5pqukpb32" path="res://Sprites/Tilesets/tilesetGAMEJAM.png" id="2_q2gr4"]
+[ext_resource type="PackedScene" uid="uid://cw5ic42v3wep7" path="res://Cenas/Geral/player.tscn" id="3_epopl"]
 [ext_resource type="PackedScene" uid="uid://dfemr1maf8q5y" path="res://Cenas/Menu/SettingsMenu.tscn" id="5_4w6iw"]
 [ext_resource type="PackedScene" uid="uid://d2m240uv3u7nj" path="res://UI_UX/fundo.tscn" id="7_axsth"]
 [ext_resource type="PackedScene" uid="uid://d26majiwami8u" path="res://Cenas/Menu/PauseMenu.tscn" id="9_8i3wu"]

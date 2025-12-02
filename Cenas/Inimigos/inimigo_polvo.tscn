@@ -1,7 +1,7 @@
 [gd_scene load_steps=9 format=3 uid="uid://2gn7h1kpcbh8"]
 
-[ext_resource type="Script" uid="uid://bpw4rey8dmhx5" path="res://Scripts/Inimigos/inimigo_polvo.gd" id="1_7nq0h"]
-[ext_resource type="Texture2D" uid="uid://c8ev27nrgotn" path="res://Sprites/Inimigos/spriteSheetPolvo.png" id="2_qacp0"]
+[ext_resource type="Script" uid="uid://bpw4rey8dmhx5" path="res://Scripts/Geral/inimigo_polvo.gd" id="1_7nq0h"]
+[ext_resource type="Texture2D" uid="uid://c8ev27nrgotn" path="res://Sprites/Tilesets/Inimigos/spriteSheetPolvo.png" id="2_qacp0"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_7sk66"]
 atlas = ExtResource("2_qacp0")

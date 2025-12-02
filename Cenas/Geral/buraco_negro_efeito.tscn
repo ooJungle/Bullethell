@@ -1,0 +1,59 @@
+[gd_scene load_steps=5 format=3 uid="uid://dqryqp2hxfnc0"]
+
+[ext_resource type="Texture2D" uid="uid://diglcam8poj7g" path="res://Sprites/Geral/buraconegro.png" id="2_wyo5y"]
+[ext_resource type="Texture2D" uid="uid://43vonnfep7qg" path="res://Sprites/Tilesets/Inimigos/inimigo_horrendo.png" id="3_cghek"]
+
+[sub_resource type="Shader" id="Shader_qcslw"]
+code = "// Shader para Godot 4.x (versões 4.2+)
+// Versão SEM ROTAÇÃO (APENAS PINCH/LENTE) E SEM O CENTRO PRETO
+shader_type canvas_item;
+
+uniform sampler2D SCREEN_TEXTURE : hint_screen_texture, filter_nearest;
+
+uniform float distortion_strength = 0.15; // Força da \"puxada\" para o centro
+uniform float falloff = 1.5;
+
+render_mode unshaded;
+
+void fragment() {
+    vec2 centered_uv = UV - vec2(0.5);
+    float distance_from_center = length(centered_uv);
+    float mask = 1.0 - pow(distance_from_center * 2.0, falloff);
+
+    // Efeito de Puxar (Pinch/Gravitacional)
+    vec2 pull_offset = normalize(centered_uv) * distortion_strength * mask;
+
+    // Agora o offset total é apenas o efeito de puxar
+    vec2 total_offset = pull_offset; 
+    
+    vec2 distorted_screen_uv = SCREEN_UV - total_offset;
+    
+    vec3 background_color = texture(SCREEN_TEXTURE, distorted_screen_uv).rgb;
+    
+    // --- LINHAS DO CENTRO PRETO REMOVIDAS ---
+    // float black_hole_radius = 0.15;
+    // float black_mask = 1.0 - smoothstep(black_hole_radius, black_hole_radius + 0.05, distance_from_center);
+
+    // A cor final agora é apenas a cor do fundo distorcido
+    vec3 final_color = background_color; // <-- ANTES ERA: mix(background_color, vec3(0.0), black_mask);
+    
+    // Define a cor final, usando a máscara geral para a transparência nas bordas
+    COLOR = vec4(final_color, mask);
+}"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_2uvms"]
+shader = SubResource("Shader_qcslw")
+shader_parameter/distortion_strength = 0.15
+shader_parameter/falloff = 1.5
+
+[node name="Buraco negro efeito" type="Node2D"]
+
+[node name="Buraco negro" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_2uvms")
+position = Vector2(95.5, 53.5)
+scale = Vector2(1.06061, 1.16162)
+texture = ExtResource("3_cghek")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(100, 50)
+texture = ExtResource("2_wyo5y")

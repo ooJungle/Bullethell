@@ -1,7 +1,8 @@
 [gd_scene load_steps=4 format=3 uid="uid://bikpslb418lrb"]
 
-[ext_resource type="Script" uid="uid://ctu3es2oefwqm" path="res://Scripts/bola_vermelho.gd" id="1_wvhey"]
+[ext_resource type="Script" uid="uid://ctu3es2oefwqm" path="res://Scripts/Geral/bola_vermelho.gd" id="1_wvhey"]
 [ext_resource type="Texture2D" uid="uid://d3uj6m5qwmyev" path="res://Sprites/Projeteis/bola_azul.png" id="2_wnebc"]
+
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_g8jtw"]
 radius = 7.0

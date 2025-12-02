@@ -1,7 +1,8 @@
 [gd_scene load_steps=4 format=3 uid="uid://d31w57yocc33b"]
 
-[ext_resource type="Script" uid="uid://ctu3es2oefwqm" path="res://Scripts/bola_vermelho.gd" id="1_87x8o"]
+[ext_resource type="Script" uid="uid://ctu3es2oefwqm" path="res://Scripts/Geral/bola_vermelho.gd" id="1_87x8o"]
 [ext_resource type="Texture2D" uid="uid://6upbxq5qfqs6" path="res://Sprites/Projeteis/bola_amarelo.png" id="2_sbxnx"]
+
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_g8jtw"]
 radius = 7.0

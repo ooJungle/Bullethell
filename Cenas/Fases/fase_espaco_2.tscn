@@ -1,13 +1,14 @@
 [gd_scene load_steps=12 format=4 uid="uid://cfdba3cyiaxu2"]
 
-[ext_resource type="Texture2D" uid="uid://c86py1otnghao" path="res://Sprites/tilsesetVERMELHO.png" id="1_bim4w"]
-[ext_resource type="Script" uid="uid://dgr3wj7x8jbi" path="res://Cenas/Fases/fase_espaco_2.gd" id="1_rhh3j"]
-[ext_resource type="PackedScene" uid="uid://cw5ic42v3wep7" path="res://Cenas/player.tscn" id="3_g1h7p"]
-[ext_resource type="PackedScene" uid="uid://bf4kxcsfswmtq" path="res://Cenas/portal_volta.tscn" id="4_dvivw"]
-[ext_resource type="Script" uid="uid://3t3oktpmpjtt" path="res://Cenas/Fases/blaster_spawner.gd" id="5_8mtgn"]
+[ext_resource type="Texture2D" uid="uid://c86py1otnghao" path="res://Sprites/Tilesets/tilsesetVERMELHO.png" id="1_bim4w"]
+[ext_resource type="Script" uid="uid://dgr3wj7x8jbi" path="res://Scripts/Projeteis/Fases/fase_espaco_2.gd" id="1_rhh3j"]
+[ext_resource type="PackedScene" uid="uid://cw5ic42v3wep7" path="res://Cenas/Geral/player.tscn" id="3_g1h7p"]
+[ext_resource type="PackedScene" uid="uid://bf4kxcsfswmtq" path="res://Cenas/Geral/portal_volta.tscn" id="4_dvivw"]
+[ext_resource type="Script" uid="uid://3t3oktpmpjtt" path="res://Scripts/Projeteis/Fases/blaster_spawner.gd" id="5_8mtgn"]
 [ext_resource type="PackedScene" uid="uid://nktj48qc0r0f" path="res://Cenas/Projeteis/Blaster.tscn" id="6_27d66"]
-[ext_resource type="Script" uid="uid://be3talp5xho6t" path="res://Cenas/Fases/battle_manager.gd" id="7_k2jx6"]
+[ext_resource type="Script" uid="uid://be3talp5xho6t" path="res://Scripts/Projeteis/Fases/battle_manager.gd" id="7_k2jx6"]
 [ext_resource type="PackedScene" uid="uid://d2m240uv3u7nj" path="res://UI_UX/fundo.tscn" id="8_27d66"]
+
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_u663p"]
 vertices = PackedVector2Array(8, 8, -8, 8, -8, -8, 8, -8)

@@ -1,0 +1,15 @@
+[gd_scene load_steps=4 format=3 uid="uid://rr4ddlu5jthi"]
+
+[ext_resource type="Script" uid="uid://3t3oktpmpjtt" path="res://Scripts/Projeteis/Fases/blaster_spawner.gd" id="2_ik5d6"]
+[ext_resource type="PackedScene" uid="uid://nktj48qc0r0f" path="res://Cenas/Projeteis/Blaster.tscn" id="3_qfdmg"]
+[ext_resource type="Script" uid="uid://be3talp5xho6t" path="res://Scripts/Projeteis/Fases/battle_manager.gd" id="4_4uv34"]
+
+
+[node name="Node2D" type="Node2D"]
+
+[node name="BlasterSpawner" type="Node2D" parent="."]
+script = ExtResource("2_ik5d6")
+blaster_scene = ExtResource("3_qfdmg")
+
+[node name="BattleManager" type="Node2D" parent="."]
+script = ExtResource("4_4uv34")

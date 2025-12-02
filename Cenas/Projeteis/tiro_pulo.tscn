@@ -1,7 +1,8 @@
 [gd_scene load_steps=8 format=3 uid="uid://cffsdsp6r8ihg"]
 
-[ext_resource type="Script" uid="uid://bddfc0l66qmc2" path="res://Scripts/tiro_pulo.gd" id="1_r6n7v"]
-[ext_resource type="Texture2D" uid="uid://drhycv2omty1n" path="res://Sprites/Estilhacos_aZUL-Sheet.png" id="2_68c4b"]
+[ext_resource type="Script" uid="uid://bddfc0l66qmc2" path="res://Scripts/Projeteis/tiro_pulo.gd" id="1_r6n7v"]
+[ext_resource type="Texture2D" uid="uid://drhycv2omty1n" path="res://Sprites/Geral/Estilhacos_aZUL-Sheet.png" id="2_68c4b"]
+
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_twcgm"]
 atlas = ExtResource("2_68c4b")

@@ -1,7 +1,7 @@
 [gd_scene load_steps=12 format=3 uid="uid://bbjrok2rqavod"]
 
-[ext_resource type="Script" uid="uid://cdryynmnjj3d7" path="res://Scripts/Inimigos/inimigo_lesma2.gd" id="1_qqfms"]
-[ext_resource type="Texture2D" uid="uid://dajldujl4obmi" path="res://Sprites/Inimigos/lesma.png" id="2_pe7ny"]
+[ext_resource type="Script" uid="uid://cdryynmnjj3d7" path="res://Scripts/Geral/inimigo_lesma2.gd" id="1_qqfms"]
+[ext_resource type="Texture2D" uid="uid://dajldujl4obmi" path="res://Sprites/Tilesets/Inimigos/lesma.png" id="2_pe7ny"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_4gjv5"]
 atlas = ExtResource("2_pe7ny")
@@ -69,7 +69,7 @@ script = ExtResource("1_qqfms")
 [node name="Sprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_2wggq")
 animation = &"andando"
-frame_progress = 0.84964967
+frame_progress = 0.51791924
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_ff1jp")

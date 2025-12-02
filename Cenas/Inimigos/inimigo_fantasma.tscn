@@ -1,7 +1,8 @@
 [gd_scene load_steps=16 format=3 uid="uid://bpxvriv765sab"]
 
-[ext_resource type="Script" uid="uid://dkuonslenu4tk" path="res://Scripts/Inimigos/inimigo_fantasma.gd" id="1_bat2n"]
-[ext_resource type="Texture2D" uid="uid://bfx331vyknt83" path="res://Sprites/Sprite-Sheet-GatoFantasmaCompleto.png" id="2_y086o"]
+[ext_resource type="Script" uid="uid://dkuonslenu4tk" path="res://Scripts/Geral/inimigo_fantasma.gd" id="1_bat2n"]
+[ext_resource type="Texture2D" uid="uid://bfx331vyknt83" path="res://Sprites/Sheets/Sprite-Sheet-GatoFantasmaCompleto.png" id="2_y086o"]
+
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_s6g5e"]
 atlas = ExtResource("2_y086o")
