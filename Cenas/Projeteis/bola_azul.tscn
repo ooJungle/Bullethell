@@ -1,0 +1,17 @@
+[gd_scene load_steps=4 format=3 uid="uid://bikpslb418lrb"]
+
+[ext_resource type="Script" uid="uid://ctu3es2oefwqm" path="res://Scripts/bola_vermelho.gd" id="1_wvhey"]
+[ext_resource type="Texture2D" uid="uid://d3uj6m5qwmyev" path="res://Sprites/Projeteis/bola_azul.png" id="2_wnebc"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_g8jtw"]
+radius = 7.0
+
+[node name="bola_azul" type="Area2D"]
+script = ExtResource("1_wvhey")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+visibility_layer = 512
+texture = ExtResource("2_wnebc")
+
+[node name="hitbox" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_g8jtw")

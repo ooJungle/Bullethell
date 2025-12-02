@@ -17,8 +17,8 @@ config/features=PackedStringArray("4.5", "Forward Plus")
 [autoload]
 
 PhantomCameraManager="*res://addons/phantom_camera/scripts/managers/phantom_camera_manager.gd"
-Global="*res://Global.tscn"
-Dialogo="*res://dialogo.tscn"
+Global="*res://Cenas/Global.tscn"
+Dialogo="*res://Cenas/dialogo.tscn"
 Transicao="*res://Cenas/Transicao.tscn"
 RodaManager="*res://Scripts/roda_manager.gd"
 

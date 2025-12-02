@@ -1,33 +1,48 @@
-[gd_scene load_steps=8 format=3 uid="uid://t8ghk7m4ee6n"]
+[gd_scene load_steps=12 format=3 uid="uid://t8ghk7m4ee6n"]
 
-[ext_resource type="Texture2D" uid="uid://ddhafrj5c8u0y" path="res://Sprites/roda.png" id="1_4o6u4"]
-[ext_resource type="Script" uid="uid://dmqb3sadnhdkh" path="res://Cenas/roda_de_dialogo.gd" id="1_fkij7"]
-[ext_resource type="Script" uid="uid://quhrmdh30maj" path="res://cursor.gd" id="2_7fsk6"]
-[ext_resource type="Script" uid="uid://ctugynww2wd6p" path="res://centro_de_tiros.gd" id="2_fm8an"]
-[ext_resource type="PackedScene" uid="uid://blnx5hrelwktk" path="res://Cenas/Projeteis/tiro_roxo.tscn" id="3_3r8ys"]
+[ext_resource type="Script" uid="uid://dmqb3sadnhdkh" path="res://Scripts/roda_de_dialogo.gd" id="1_fkij7"]
+[ext_resource type="Script" uid="uid://quhrmdh30maj" path="res://Scripts/cursor.gd" id="2_7fsk6"]
+[ext_resource type="Script" uid="uid://ctugynww2wd6p" path="res://Scripts/centro_de_tiros.gd" id="2_fm8an"]
+[ext_resource type="PackedScene" uid="uid://c2o45cqeior7b" path="res://Cenas/Projeteis/bola_vermelho.tscn" id="3_gcqkt"]
+[ext_resource type="PackedScene" uid="uid://2uvcadfvurcv" path="res://Cenas/Projeteis/bola_rosa.tscn" id="4_efyx1"]
 [ext_resource type="Texture2D" uid="uid://casncw7kd6idj" path="res://Sprites/estrela.png" id="4_fwti7"]
+[ext_resource type="PackedScene" uid="uid://d31w57yocc33b" path="res://Cenas/Projeteis/bola_amarelo.tscn" id="5_h43rx"]
+[ext_resource type="Script" uid="uid://bypd1fjdycmqb" path="res://Scripts/roda_visual.gd" id="6_fkij7"]
+[ext_resource type="PackedScene" uid="uid://bikpslb418lrb" path="res://Cenas/Projeteis/bola_azul.tscn" id="6_pchii"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fwti7"]
 size = Vector2(13, 13)
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_dra8l"]
+viewport_path = NodePath("SubViewport")
 
 [node name="RodaDeDialogo" type="Node2D"]
 process_mode = 3
 script = ExtResource("1_fkij7")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-scale = Vector2(3, 3)
-texture = ExtResource("1_4o6u4")
-
 [node name="CentroDeTiros" type="Node2D" parent="."]
 script = ExtResource("2_fm8an")
-bala_cena = ExtResource("3_3r8ys")
+bala_cena_vermelho = ExtResource("3_gcqkt")
+bala_cena_rosa = ExtResource("4_efyx1")
+bala_cena_amarelo = ExtResource("5_h43rx")
+bala_cena_azul = ExtResource("6_pchii")
 
 [node name="Cursor" type="CharacterBody2D" parent="."]
+process_mode = 3
+z_index = 1
 script = ExtResource("2_7fsk6")
 
 [node name="Sprite2D" type="Sprite2D" parent="Cursor"]
 texture = ExtResource("4_fwti7")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Cursor"]
-position = Vector2(0.5, -0.5)
 shape = SubResource("RectangleShape2D_fwti7")
+
+[node name="SubViewport" type="SubViewport" parent="."]
+process_mode = 3
+
+[node name="RodaVisual" type="Polygon2D" parent="."]
+process_mode = 3
+texture = SubResource("ViewportTexture_dra8l")
+script = ExtResource("6_fkij7")
+segmentos = 36

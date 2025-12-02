@@ -1,11 +1,11 @@
 [gd_scene load_steps=12 format=4 uid="uid://cprb4i2e2sign"]
 
-[ext_resource type="Script" uid="uid://dq84f1ig8vc0l" path="res://fase_plat_2.gd" id="1_36qp4"]
-[ext_resource type="PackedScene" uid="uid://cqvnwh1djj47x" path="res://abismo.tscn" id="2_eag30"]
+[ext_resource type="Script" uid="uid://dq84f1ig8vc0l" path="res://Scripts/fase_plat_2.gd" id="1_36qp4"]
+[ext_resource type="PackedScene" uid="uid://cqvnwh1djj47x" path="res://Cenas/abismo.tscn" id="2_eag30"]
 [ext_resource type="PackedScene" uid="uid://wcw14f7tv4my" path="res://UI_UX/fundo_plat.tscn" id="2_p5rqd"]
 [ext_resource type="Texture2D" uid="uid://dtrd0b6lu844q" path="res://Sprites/tilesetVERDE.png" id="3_p5rqd"]
 [ext_resource type="PackedScene" uid="uid://cw5ic42v3wep7" path="res://Cenas/player.tscn" id="4_igggf"]
-[ext_resource type="Script" uid="uid://bavp5jofa842y" path="res://abismo_2.gd" id="5_6uyw8"]
+[ext_resource type="Script" uid="uid://bavp5jofa842y" path="res://Scripts/abismo_2.gd" id="5_6uyw8"]
 [ext_resource type="PackedScene" uid="uid://crl0o5hjuoci8" path="res://Cenas/Inimigos/inimigo_parede.tscn" id="6_72s7c"]
 [ext_resource type="PackedScene" uid="uid://bf4kxcsfswmtq" path="res://Cenas/portal_volta.tscn" id="7_f8xmv"]
 

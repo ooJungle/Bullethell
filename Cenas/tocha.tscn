@@ -1,7 +1,7 @@
 [gd_scene load_steps=10 format=3 uid="uid://dqkd2v8c08jsp"]
 
 [ext_resource type="Texture2D" uid="uid://54jtk4jsgpnx" path="res://Sprites/tocha_sheet.png" id="1_l8bwk"]
-[ext_resource type="Script" uid="uid://b4hue6m46xrip" path="res://luz.gd" id="2_5v1uc"]
+[ext_resource type="Script" uid="uid://b4hue6m46xrip" path="res://Scripts/luz.gd" id="2_5v1uc"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_t6vco"]
 atlas = ExtResource("1_l8bwk")
