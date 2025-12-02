@@ -1,6 +1,7 @@
-[gd_scene load_steps=7 format=3 uid="uid://t8ghk7m4ee6n"]
+[gd_scene load_steps=8 format=3 uid="uid://t8ghk7m4ee6n"]
 
 [ext_resource type="Texture2D" uid="uid://ddhafrj5c8u0y" path="res://Sprites/roda.png" id="1_4o6u4"]
+[ext_resource type="Script" uid="uid://dmqb3sadnhdkh" path="res://Cenas/roda_de_dialogo.gd" id="1_fkij7"]
 [ext_resource type="Script" uid="uid://quhrmdh30maj" path="res://cursor.gd" id="2_7fsk6"]
 [ext_resource type="Script" uid="uid://ctugynww2wd6p" path="res://centro_de_tiros.gd" id="2_fm8an"]
 [ext_resource type="PackedScene" uid="uid://blnx5hrelwktk" path="res://Cenas/Projeteis/tiro_roxo.tscn" id="3_3r8ys"]
@@ -10,9 +11,11 @@
 size = Vector2(13, 13)
 
 [node name="RodaDeDialogo" type="Node2D"]
+process_mode = 3
+script = ExtResource("1_fkij7")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-scale = Vector2(1.5, 1.5)
+scale = Vector2(3, 3)
 texture = ExtResource("1_4o6u4")
 
 [node name="CentroDeTiros" type="Node2D" parent="."]

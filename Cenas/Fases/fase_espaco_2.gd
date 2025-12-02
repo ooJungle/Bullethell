@@ -13,7 +13,3 @@ func abrir_portal():
 		
 	if player:
 		player.ativar_seta_guia(portal_volta.global_position)
-
-func _process(delta: float) -> void:
-	if battle_manager.contagem > 57:
-		abrir_portal()

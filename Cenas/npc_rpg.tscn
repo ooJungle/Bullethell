@@ -1,38 +1,38 @@
 [gd_scene load_steps=14 format=3 uid="uid://df3k86d0us6lx"]
 
-[ext_resource type="Script" uid="uid://bjks1t1exe687" path="res://npc_rpg.gd" id="1_huumo"]
-[ext_resource type="Texture2D" uid="uid://g3qcun4rwxa" path="res://Sprites/Gordin_Tut-Sheet.png" id="2_hpnmq"]
+[ext_resource type="Script" uid="uid://cses71lwafinm" path="res://Cenas/npc_rpg.gd" id="1_px6j3"]
+[ext_resource type="Texture2D" uid="uid://g3qcun4rwxa" path="res://Sprites/Gordin_Tut-Sheet.png" id="2_0l21d"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_xxcha"]
-atlas = ExtResource("2_hpnmq")
+atlas = ExtResource("2_0l21d")
 region = Rect2(0, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_kh24r"]
-atlas = ExtResource("2_hpnmq")
+atlas = ExtResource("2_0l21d")
 region = Rect2(32, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ul7y6"]
-atlas = ExtResource("2_hpnmq")
+atlas = ExtResource("2_0l21d")
 region = Rect2(96, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_mcvl2"]
-atlas = ExtResource("2_hpnmq")
+atlas = ExtResource("2_0l21d")
 region = Rect2(32, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_bc6q4"]
-atlas = ExtResource("2_hpnmq")
+atlas = ExtResource("2_0l21d")
 region = Rect2(0, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_d61ma"]
-atlas = ExtResource("2_hpnmq")
+atlas = ExtResource("2_0l21d")
 region = Rect2(0, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_slxoh"]
-atlas = ExtResource("2_hpnmq")
+atlas = ExtResource("2_0l21d")
 region = Rect2(32, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_l64hl"]
-atlas = ExtResource("2_hpnmq")
+atlas = ExtResource("2_0l21d")
 region = Rect2(0, 0, 32, 32)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_d61ma"]
@@ -93,7 +93,7 @@ animations = [{
 radius = 81.0
 
 [node name="NPC_RPG" type="CharacterBody2D"]
-script = ExtResource("1_huumo")
+script = ExtResource("1_px6j3")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_d61ma")

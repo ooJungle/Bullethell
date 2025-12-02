@@ -20,6 +20,7 @@ PhantomCameraManager="*res://addons/phantom_camera/scripts/managers/phantom_came
 Global="*res://Global.tscn"
 Dialogo="*res://dialogo.tscn"
 Transicao="*res://Cenas/Transicao.tscn"
+RodaManager="*res://Scripts/roda_manager.gd"
 
 [display]
 
