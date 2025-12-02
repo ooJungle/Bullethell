@@ -106,7 +106,6 @@ func _physics_process(delta: float) -> void:
 	if is_dashing:
 		move_and_slide()
 		return
-
 	if Input.is_action_just_pressed("dash"):
 		iniciar_dash()
 
@@ -127,7 +126,7 @@ func _physics_process(delta: float) -> void:
 			velocity += get_gravity() * delta
 		var direction := Input.get_axis("move_left", "move_right")
 		if direction:
-			velocity.x = direction * SPEED
+			velocity.x = direction * SPEED * 1.5
 		else:
 			velocity.x = move_toward(velocity.x, 0, SPEED)
 		
@@ -136,7 +135,7 @@ func _physics_process(delta: float) -> void:
 		elif direction < 0:
 			sprite.flip_h = true
 		if Input.is_action_just_pressed("ui_accept") and is_on_floor():
-			velocity.y = JUMP_VELOCITY
+			velocity.y = JUMP_VELOCITY * 1.3
 		
 		if Input.is_action_just_released("ui_accept") and velocity.y < 0:
 			velocity.y *= 0.5

@@ -22,10 +22,13 @@ var state_timer: float = 0.0
 var alvo_atingido_neste_tiro: bool = false
 
 func _ready() -> void:
-	# Pega a referência do player
+	if linha:
+		linha.points[1] = Vector2(5000, 0)
+	if linha_2:
+		linha_2.points[1] = Vector2(5000, 0)
+		
 	player = get_node_or_null("/root/Node2D/player")
 	
-	# Apenas inicie a sequência de ataque.
 	mudar_para_estado(Estado.MIRANDO)
 
 func _process(delta: float) -> void:

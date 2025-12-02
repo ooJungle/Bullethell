@@ -1,12 +1,13 @@
 extends Node2D
+var contagem: int = 0
 
 @export var attack_sequence: Array[Dictionary] = [  # Defina padrões de ataques aqui
-	{"type": "blaster_wave", "count": 3, "delay": 0.6, "pattern": "horizontal"},  # Onda horizontal
-	{"type": "blaster_wave", "count": 4, "delay": 0.8, "pattern": "diagonal"},     # Diagonal
-	{"type": "blaster_wave", "count": 3, "delay": 0.6, "pattern": "vertical"},    # Vertical
-	{"type": "blaster_wave", "count": 4, "delay": 0.8, "pattern": "diagonal"},     # Diagonal
-	{"type": "blaster_wave", "count": 3, "delay": 0.6, "pattern": "horizontal"},  # Onda horizontal
-	{"type": "blaster_wave", "count": 3, "delay": 0.6, "pattern": "random"},     # Aleatória
+	{"type": "blaster_wave", "count": 9, "delay": randf_range(1.5, 3.0), "pattern": "horizontal"},  # Onda horizontal
+	{"type": "blaster_wave", "count": 10, "delay": randf_range(1.5, 3.0), "pattern": "diagonal"},     # Diagonal
+	{"type": "blaster_wave", "count": 9, "delay": randf_range(1.5, 3.0), "pattern": "vertical"},    # Vertical
+	{"type": "blaster_wave", "count": 10, "delay": randf_range(1.5, 3.0), "pattern": "diagonal"},     # Diagonal
+	{"type": "blaster_wave", "count": 9, "delay": randf_range(1.5, 3.0), "pattern": "horizontal"},  # Onda horizontal
+	{"type": "blaster_wave", "count": 11, "delay": randf_range(0.5, 3.0), "pattern": "random"},     # Aleatória
 ]
 
 var current_phase: int = 0
@@ -49,3 +50,4 @@ func spawn_blaster_wave(count: int, delay: float, pattern: String):
 	for i in range(count):
 		spawner.spawn_blaster(pattern)
 		await get_tree().create_timer(delay).timeout
+		contagem += 1

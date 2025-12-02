@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=4 uid="uid://bd1kjomv53gnt"]
+[gd_scene load_steps=21 format=4 uid="uid://bd1kjomv53gnt"]
 
 [ext_resource type="Script" uid="uid://rpmvree5m8p3" path="res://Cenas/Fases/fase_plat.gd" id="1_axnnm"]
 [ext_resource type="PackedScene" uid="uid://d2m240uv3u7nj" path="res://UI_UX/fundo.tscn" id="2_ijx0c"]
@@ -9,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://df0ogkh3kteiu" path="res://cristal_verde.tscn" id="5_ucltn"]
 [ext_resource type="PackedScene" uid="uid://dfemr1maf8q5y" path="res://Cenas/Menu/SettingsMenu.tscn" id="6_8j3os"]
 [ext_resource type="PackedScene" uid="uid://bf4kxcsfswmtq" path="res://Cenas/portal_volta.tscn" id="7_7vntg"]
+[ext_resource type="Script" uid="uid://2nthye853e2g" path="res://Cenas/portal_volta_plat.gd" id="7_qkknj"]
 [ext_resource type="PackedScene" uid="uid://btmuqo7o24djd" path="res://chroma.tscn" id="9_i8j5m"]
 [ext_resource type="AudioStream" uid="uid://bo1fwbkouv0lf" path="res://Sons e Musica/Boss_1.mp3" id="10_8j3os"]
 [ext_resource type="Shader" uid="uid://cdki4y1u5d4ne" path="res://Cenas/Fases/Fase_0.gdshader" id="11_wbt8w"]
@@ -265,12 +266,10 @@ position = Vector2(-736, 510)
 
 [node name="portal_volta" parent="." instance=ExtResource("7_7vntg")]
 position = Vector2(-22, 521)
-id_desta_fase = "Fase_plat"
+script = ExtResource("7_qkknj")
 
 [node name="player" parent="." instance=ExtResource("4_ucltn")]
 position = Vector2(-141, -301)
-collision_layer = 33
-collision_mask = 33
 safe_margin = 0.08
 
 [node name="Camera2D" type="Camera2D" parent="player"]

@@ -1,6 +1,6 @@
 [gd_scene load_steps=27 format=3 uid="uid://gdx4dmcsfy4l"]
 
-[ext_resource type="Script" uid="uid://den7kmot2egue" path="res://Cenas/Inimigos/inimigo_bola.gd" id="1_0oe2p"]
+[ext_resource type="Script" uid="uid://den7kmot2egue" path="res://Scripts/inimigo_bola.gd" id="1_0oe2p"]
 [ext_resource type="Texture2D" uid="uid://kpxy4dwyilpw" path="res://Sprites/Inimigos/Inimigo_Bolas-Sheet.png" id="2_0oe2p"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_m3yd2"]

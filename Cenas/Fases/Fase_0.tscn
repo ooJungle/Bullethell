@@ -11,7 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://dfemr1maf8q5y" path="res://Cenas/Menu/SettingsMenu.tscn" id="7_ypqou"]
 [ext_resource type="PackedScene" uid="uid://b2pnn1csceu83" path="res://UI_UX/mira.tscn" id="8_3tumv"]
 [ext_resource type="PackedScene" uid="uid://btmuqo7o24djd" path="res://chroma.tscn" id="13_gmavx"]
-[ext_resource type="PackedScene" uid="uid://curf7kbfg0nbf" path="res://npc.tscn" id="14_2kwqn"]
+[ext_resource type="PackedScene" uid="uid://curf7kbfg0nbf" path="res://Cenas/npc.tscn" id="14_2kwqn"]
 [ext_resource type="Shader" uid="uid://cdki4y1u5d4ne" path="res://Cenas/Fases/Fase_0.gdshader" id="16_qn66s"]
 [ext_resource type="Texture2D" uid="uid://b3xw4on0rl8mn" path="res://Sprites/Inimigos/rosto_mal.png" id="17_d716y"]
 [ext_resource type="PackedScene" uid="uid://dqkd2v8c08jsp" path="res://Cenas/tocha.tscn" id="17_tumva"]
