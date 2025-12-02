@@ -1,6 +1,7 @@
 [gd_scene load_steps=2 format=3 uid="uid://wcw14f7tv4my"]
 
-[ext_resource type="Script" uid="uid://bpjj1tyyrywvi" path="res://Scripts/fundo.gd" id="1_xpp3c"]
+[ext_resource type="Script" uid="uid://bpjj1tyyrywvi" path="res://Scripts/Geral/fundo.gd" id="1_xpp3c"]
+
 
 [node name="ColorRect" type="ColorRect"]
 offset_right = 1000.0

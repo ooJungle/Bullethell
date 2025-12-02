@@ -1,12 +1,13 @@
 [gd_scene load_steps=35 format=3 uid="uid://b7hg2agiuhiw7"]
 
-[ext_resource type="Script" uid="uid://ddjqfbl75igk5" path="res://Cenas/Inimigos/clone_player.gd" id="1_nh2gt"]
-[ext_resource type="Texture2D" uid="uid://bf5oc0wyh6l5l" path="res://Sprites/player_costas_spritesheet.png" id="2_tqfeg"]
-[ext_resource type="Texture2D" uid="uid://bagfj71s27lwp" path="res://Sprites/player_frente_spritesheet.png" id="3_0bgjw"]
-[ext_resource type="Texture2D" uid="uid://cs32q1pddm5" path="res://Sprites/player_lado_spritesheet.png" id="4_r15t2"]
-[ext_resource type="Texture2D" uid="uid://dtdb6gdbnur8a" path="res://Sprites/Protag_Costas__SwingEspada-Sheet.png" id="5_v7elt"]
-[ext_resource type="Texture2D" uid="uid://cahr62u3ueaec" path="res://Sprites/Protag_Swing_Espada-Sheet.png" id="6_fdes5"]
-[ext_resource type="Texture2D" uid="uid://d3n2k4ydxps1p" path="res://Sprites/Protag_Lado_Atk_Espada-Sheet.png" id="7_g11yk"]
+[ext_resource type="Script" uid="uid://ddjqfbl75igk5" path="res://Scripts/Inimigos/clone_player.gd" id="1_nh2gt"]
+[ext_resource type="Texture2D" uid="uid://bf5oc0wyh6l5l" path="res://Sprites/Sheets/player_costas_spritesheet.png" id="2_tqfeg"]
+[ext_resource type="Texture2D" uid="uid://bagfj71s27lwp" path="res://Sprites/Sheets/player_frente_spritesheet.png" id="3_0bgjw"]
+[ext_resource type="Texture2D" uid="uid://cs32q1pddm5" path="res://Sprites/Sheets/player_lado_spritesheet.png" id="4_r15t2"]
+[ext_resource type="Texture2D" uid="uid://dtdb6gdbnur8a" path="res://Sprites/Sheets/Protag_Costas__SwingEspada-Sheet.png" id="5_v7elt"]
+[ext_resource type="Texture2D" uid="uid://cahr62u3ueaec" path="res://Sprites/Sheets/Protag_Swing_Espada-Sheet.png" id="6_fdes5"]
+[ext_resource type="Texture2D" uid="uid://d3n2k4ydxps1p" path="res://Sprites/Sheets/Protag_Lado_Atk_Espada-Sheet.png" id="7_g11yk"]
+
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_e2nbm"]
 atlas = ExtResource("2_tqfeg")

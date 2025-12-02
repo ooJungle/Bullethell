@@ -4,6 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://d10lk88fslwii" path="res://Sprites/Menu/gameover.png" id="2_4qvgj"]
 [ext_resource type="PackedScene" uid="uid://b2pnn1csceu83" path="res://UI_UX/mira.tscn" id="3_g8j1v"]
 
+
 [node name="LostScene" type="Control"]
 layout_mode = 3
 anchors_preset = 15

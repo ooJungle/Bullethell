@@ -1,7 +1,8 @@
 [gd_scene load_steps=6 format=3 uid="uid://btwm7v5ywkigl"]
 
-[ext_resource type="Script" uid="uid://dikk4m0y8l6jn" path="res://Scripts/Inimigos/inimigo_lanca.gd" id="1_bpwg1"]
-[ext_resource type="Texture2D" uid="uid://bb83m0qrgn7uc" path="res://Sprites/Inimigos/inimigo_4.png" id="2_j8h06"]
+[ext_resource type="Script" uid="uid://dikk4m0y8l6jn" path="res://Scripts/Geral/inimigo_lanca.gd" id="1_bpwg1"]
+[ext_resource type="Texture2D" uid="uid://bb83m0qrgn7uc" path="res://Sprites/Tilesets/Inimigos/inimigo_4.png" id="2_j8h06"]
+
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_jeuxd"]
 animations = [{

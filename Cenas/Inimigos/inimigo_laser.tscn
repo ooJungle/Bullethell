@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=3 uid="uid://bu7otdeikbwcr"]
 
-[ext_resource type="Script" uid="uid://dpe1ob6rs5koo" path="res://Scripts/Inimigos/inimigo_laser.gd" id="1_nkaow"]
-[ext_resource type="Texture2D" uid="uid://0lg1tna0hnmk" path="res://Sprites/Inimigos/inimigo_REDONDO.png" id="2_nkaow"]
+[ext_resource type="Script" uid="uid://dpe1ob6rs5koo" path="res://Scripts/Geral/inimigo_laser.gd" id="1_nkaow"]
+[ext_resource type="Texture2D" uid="uid://0lg1tna0hnmk" path="res://Sprites/Tilesets/Inimigos/inimigo_REDONDO.png" id="2_nkaow"]
 [ext_resource type="Texture2D" uid="uid://cx6ixn88ac2ge" path="res://Sprites/Projeteis/laser.png" id="3_tykgi"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_0nkwv"]

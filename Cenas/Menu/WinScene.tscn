@@ -3,6 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://d10lk88fslwii" path="res://Sprites/Menu/gameover.png" id="1_kpdlx"]
 [ext_resource type="PackedScene" uid="uid://b2pnn1csceu83" path="res://UI_UX/mira.tscn" id="2_626ym"]
 
+
 [node name="WinScene" type="Control"]
 layout_mode = 3
 anchors_preset = 15

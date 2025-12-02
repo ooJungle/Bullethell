@@ -1,6 +1,7 @@
 [gd_scene load_steps=2 format=3 uid="uid://bbwie1lhuoig4"]
 
-[ext_resource type="Texture2D" uid="uid://di3jqpa6647us" path="res://Sprites/Esfera_Branca.png" id="1_3jcso"]
+[ext_resource type="Texture2D" uid="uid://di3jqpa6647us" path="res://Sprites/Geral/Esfera_Branca.png" id="1_3jcso"]
+
 
 [node name="Zone" type="Node2D"]
 

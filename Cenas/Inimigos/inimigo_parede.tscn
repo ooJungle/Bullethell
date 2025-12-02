@@ -1,7 +1,8 @@
 [gd_scene load_steps=13 format=3 uid="uid://crl0o5hjuoci8"]
 
-[ext_resource type="Script" uid="uid://cd1gfvuxaee5u" path="res://Scripts/Inimigos/inimigo_parede.gd" id="1_8ofrx"]
-[ext_resource type="Texture2D" uid="uid://dajldujl4obmi" path="res://Sprites/Inimigos/lesma.png" id="2_i24pn"]
+[ext_resource type="Script" uid="uid://cd1gfvuxaee5u" path="res://Scripts/Geral/inimigo_parede.gd" id="1_8ofrx"]
+[ext_resource type="Texture2D" uid="uid://dajldujl4obmi" path="res://Sprites/Tilesets/Inimigos/lesma.png" id="2_i24pn"]
+
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_8cav2"]
 atlas = ExtResource("2_i24pn")

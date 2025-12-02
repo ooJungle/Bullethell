@@ -1,8 +1,9 @@
 [gd_scene load_steps=19 format=3 uid="uid://burb4hginapym"]
 
-[ext_resource type="Script" uid="uid://c24rkgo6l8gn3" path="res://Scripts/Inimigos/inimigo_zumbi.gd" id="1_m8kee"]
-[ext_resource type="Texture2D" uid="uid://43vonnfep7qg" path="res://Sprites/Inimigos/inimigo_horrendo.png" id="2_e8bdr"]
-[ext_resource type="Texture2D" uid="uid://2vf1cnjbjpfl" path="res://Sprites/Sprite-Sheet-GatoZumbiCompleto.png" id="2_rq2oo"]
+[ext_resource type="Script" uid="uid://c24rkgo6l8gn3" path="res://Scripts/Geral/inimigo_zumbi.gd" id="1_m8kee"]
+[ext_resource type="Texture2D" uid="uid://43vonnfep7qg" path="res://Sprites/Tilesets/Inimigos/inimigo_horrendo.png" id="2_e8bdr"]
+[ext_resource type="Texture2D" uid="uid://2vf1cnjbjpfl" path="res://Sprites/Sheets/Sprite-Sheet-GatoZumbiCompleto.png" id="2_rq2oo"]
+
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_gyrmc"]
 atlas = ExtResource("2_rq2oo")

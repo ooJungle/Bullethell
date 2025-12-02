@@ -12,6 +12,7 @@
 [ext_resource type="Texture2D" uid="uid://dhpv31y0qpyuj" path="res://Sprites/Menu/sair_apagado.png" id="10_nmk0b"]
 [ext_resource type="PackedScene" uid="uid://b2pnn1csceu83" path="res://UI_UX/mira.tscn" id="11_eiucx"]
 
+
 [node name="PauseMenu" type="Control"]
 layout_mode = 3
 anchors_preset = 15

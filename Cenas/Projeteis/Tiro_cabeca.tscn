@@ -1,7 +1,8 @@
 [gd_scene load_steps=4 format=3 uid="uid://c1jmoiulli385"]
 
-[ext_resource type="Script" uid="uid://ce1ne1kw04ynq" path="res://Scripts/tiro_cabeca.gd" id="1_421lw"]
+[ext_resource type="Script" uid="uid://ce1ne1kw04ynq" path="res://Scripts/Projeteis/tiro_cabeca.gd" id="1_421lw"]
 [ext_resource type="Texture2D" uid="uid://cji7qclrufkti" path="res://Sprites/Projeteis/tiro_cabeca.png" id="2_hmrur"]
+
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_g8jtw"]
 radius = 7.0

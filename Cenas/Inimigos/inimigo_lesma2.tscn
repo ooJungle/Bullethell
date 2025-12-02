@@ -1,0 +1,78 @@
+[gd_scene load_steps=12 format=3 uid="uid://bbjrok2rqavod"]
+
+[ext_resource type="Script" uid="uid://cdryynmnjj3d7" path="res://Scripts/Geral/inimigo_lesma2.gd" id="1_qqfms"]
+[ext_resource type="Texture2D" uid="uid://dajldujl4obmi" path="res://Sprites/Tilesets/Inimigos/lesma.png" id="2_pe7ny"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4gjv5"]
+atlas = ExtResource("2_pe7ny")
+region = Rect2(0, 0, 35, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cxu1g"]
+atlas = ExtResource("2_pe7ny")
+region = Rect2(35, 0, 35, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_805wo"]
+atlas = ExtResource("2_pe7ny")
+region = Rect2(70, 0, 35, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_w3hng"]
+atlas = ExtResource("2_pe7ny")
+region = Rect2(105, 0, 35, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7egtw"]
+atlas = ExtResource("2_pe7ny")
+region = Rect2(140, 0, 35, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ac871"]
+atlas = ExtResource("2_pe7ny")
+region = Rect2(175, 0, 35, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6ncqh"]
+atlas = ExtResource("2_pe7ny")
+region = Rect2(210, 0, 35, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_2wggq"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4gjv5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cxu1g")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_805wo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_w3hng")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7egtw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ac871")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6ncqh")
+}],
+"loop": true,
+"name": &"andando",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ff1jp"]
+radius = 7.0
+
+[node name="Inimigo lesma" type="CharacterBody2D"]
+script = ExtResource("1_qqfms")
+
+[node name="Sprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_2wggq")
+animation = &"andando"
+frame_progress = 0.51791924
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_ff1jp")
+
+[node name="RayCast2D" type="RayCast2D" parent="."]
+target_position = Vector2(0, 15)

@@ -1,7 +1,8 @@
 [gd_scene load_steps=9 format=3 uid="uid://brrewtd855sv0"]
 
-[ext_resource type="Script" uid="uid://8j63cbnh1k54" path="res://Scripts/Inimigos/inimigo_cabeca.gd" id="1_medv4"]
-[ext_resource type="Texture2D" uid="uid://dk6i7l8df031s" path="res://Sprites/spriteSheetCabecaMonstro.png" id="2_rqb5o"]
+[ext_resource type="Script" uid="uid://8j63cbnh1k54" path="res://Scripts/Geral/inimigo_cabeca.gd" id="1_medv4"]
+[ext_resource type="Texture2D" uid="uid://dk6i7l8df031s" path="res://Sprites/Sheets/spriteSheetCabecaMonstro.png" id="2_rqb5o"]
+
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_medv4"]
 atlas = ExtResource("2_rqb5o")

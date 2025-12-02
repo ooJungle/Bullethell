@@ -17,10 +17,10 @@ config/features=PackedStringArray("4.5", "Forward Plus")
 [autoload]
 
 PhantomCameraManager="*res://addons/phantom_camera/scripts/managers/phantom_camera_manager.gd"
-Global="*res://Cenas/Global.tscn"
-Dialogo="*res://Cenas/dialogo.tscn"
-Transicao="*res://Cenas/Transicao.tscn"
-RodaManager="*res://Scripts/roda_manager.gd"
+Global="*res://Cenas/Geral/Global.tscn"
+Dialogo="*res://Cenas/Geral/dialogo.tscn"
+Transicao="*res://Scripts/Projeteis/Fases/Transicao.tscn"
+RodaManager="*res://Scripts/Geral/roda_manager.gd"
 
 [display]
 

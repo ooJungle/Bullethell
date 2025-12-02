@@ -1,7 +1,8 @@
 [gd_scene load_steps=4 format=3 uid="uid://c6gl5kktkjbc2"]
 
-[ext_resource type="Script" uid="uid://d1shjlwjh0ka0" path="res://Cenas/Fases/admin_boss.gd" id="1_lpf2c"]
-[ext_resource type="Texture2D" uid="uid://u2cc8u2tv2jc" path="res://Sprites/mousinho.png" id="2_u3g42"]
+[ext_resource type="Script" uid="uid://d1shjlwjh0ka0" path="res://Scripts/Projeteis/Fases/admin_boss.gd" id="1_lpf2c"]
+[ext_resource type="Texture2D" uid="uid://u2cc8u2tv2jc" path="res://Sprites/Geral/mousinho.png" id="2_u3g42"]
+
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_lpf2c"]
 size = Vector2(40, 40)
