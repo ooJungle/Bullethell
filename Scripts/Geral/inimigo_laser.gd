@@ -22,6 +22,7 @@ extends CharacterBody2D
 @onready var laserbeam: Sprite2D = $FirePoint/Laserbeam
 @onready var ray_cast_2d: RayCast2D = $FirePoint/RayCast2D
 @onready var collision_area: Area2D = $CollisionArea
+@onready var audio_stream_player_2d: AudioStreamPlayer2D = $AudioStreamPlayer2D
 
 # --- Máquina de Estados (FSM) ---
 enum Estado { IDLE, MIRANDO, LOCKADO, ATIRANDO, COOLDOWN }
@@ -143,7 +144,7 @@ func modo_lockado(delta: float):
 	state_timer -= delta * Global.fator_tempo
 	if state_timer <= 0:
 		mudar_para_estado(Estado.ATIRANDO)
-		
+		audio_stream_player_2d.play()
 func modo_atirando(delta: float):
 	fire_point.rotation = locked_angle
 	if not alvo_atingido_neste_tiro:
