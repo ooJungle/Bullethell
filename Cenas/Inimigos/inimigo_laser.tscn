@@ -29,26 +29,27 @@ shape = SubResource("CircleShape2D_0nkwv")
 [node name="FirePoint" type="Node2D" parent="."]
 
 [node name="linha" type="Line2D" parent="FirePoint"]
-position = Vector2(31, 29.75)
+position = Vector2(44.234592, 29.75)
+scale = Vector2(5.411531, 1)
 points = PackedVector2Array(0, 0, 1000, 0)
 width = 3.0
 default_color = Color(1, 0.482353, 0, 1)
 
 [node name="linha2" type="Line2D" parent="FirePoint"]
-position = Vector2(32, -29.75)
+position = Vector2(45.234592, -29.75)
+scale = Vector2(5.411531, 1)
 points = PackedVector2Array(0, 0, 1000, 0)
 width = 3.0
 default_color = Color(1, 0.482353, 0, 1)
 
 [node name="Laserbeam" type="Sprite2D" parent="FirePoint" groups=["laser"]]
-visible = false
-position = Vector2(536, -4)
-scale = Vector2(30.9375, 8.16992)
+position = Vector2(2748.5, -4)
+scale = Vector2(169.21875, 8.16992)
 texture = ExtResource("3_tykgi")
 
 [node name="RayCast2D" type="RayCast2D" parent="FirePoint"]
 scale = Vector2(1.025, 30)
-target_position = Vector2(1000, 0)
+target_position = Vector2(5324.878, 0)
 
 [node name="CollisionArea" type="Area2D" parent="."]
 collision_layer = 2
