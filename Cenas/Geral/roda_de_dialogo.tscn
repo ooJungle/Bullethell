@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://t8ghk7m4ee6n"]
+[gd_scene load_steps=15 format=3 uid="uid://t8ghk7m4ee6n"]
 
 [ext_resource type="Script" uid="uid://dg2dn223k17pc" path="res://Scripts/Geral/roda_de_dialogo.gd" id="1_fkij7"]
 [ext_resource type="Script" uid="uid://bmk2bmosmf05v" path="res://Scripts/Geral/cursor.gd" id="2_7fsk6"]
@@ -9,12 +9,14 @@
 [ext_resource type="PackedScene" uid="uid://d31w57yocc33b" path="res://Cenas/Projeteis/bola_amarelo.tscn" id="5_h43rx"]
 [ext_resource type="Script" uid="uid://bypd1fjdycmqb" path="res://Scripts/Geral/roda_visual.gd" id="6_fkij7"]
 [ext_resource type="PackedScene" uid="uid://bikpslb418lrb" path="res://Cenas/Projeteis/bola_azul.tscn" id="6_pchii"]
-
+[ext_resource type="Texture2D" uid="uid://cl5ckdckl7p6i" path="res://Sprites/universo.png" id="9_efyx1"]
+[ext_resource type="Script" uid="uid://cvsbgdd61s6gt" path="res://Cenas/Geral/arcos_de_opcoes.gd" id="10_53pcd"]
+[ext_resource type="Script" uid="uid://dlc1e384bh631" path="res://Cenas/Geral/conteiner_tiros.gd" id="12_4xbma"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fwti7"]
 size = Vector2(13, 13)
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_dra8l"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_53pcd"]
 viewport_path = NodePath("SubViewport")
 
 [node name="RodaDeDialogo" type="Node2D"]
@@ -31,6 +33,8 @@ bala_cena_azul = ExtResource("6_pchii")
 [node name="Cursor" type="CharacterBody2D" parent="."]
 process_mode = 3
 z_index = 1
+collision_layer = 64
+collision_mask = 64
 script = ExtResource("2_7fsk6")
 
 [node name="Sprite2D" type="Sprite2D" parent="Cursor"]
@@ -42,8 +46,25 @@ shape = SubResource("RectangleShape2D_fwti7")
 [node name="SubViewport" type="SubViewport" parent="."]
 process_mode = 3
 
+[node name="Sprite2D" type="Sprite2D" parent="SubViewport"]
+texture = ExtResource("9_efyx1")
+centered = false
+
 [node name="RodaVisual" type="Polygon2D" parent="."]
 process_mode = 3
-texture = SubResource("ViewportTexture_dra8l")
+texture = SubResource("ViewportTexture_53pcd")
 script = ExtResource("6_fkij7")
 segmentos = 36
+
+[node name="ArcosDeOpcoes" type="Node2D" parent="."]
+script = ExtResource("10_53pcd")
+raio = 180.0
+espessura = 10.0
+espacamento_padding = 0.01
+desenhar_linhas = null
+cor_linha = null
+espessura_linha = null
+
+[node name="ConteinerTiros" type="Polygon2D" parent="."]
+clip_children = 1
+script = ExtResource("12_4xbma")
