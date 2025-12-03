@@ -9,6 +9,7 @@ extends Node2D
 @export var intervalo_tiro: float = 0.1
 
 var tempo_tiro = 0.0
+var tiro: int = 0
 
 func _process(delta: float):
 	# 1. Gira o spawner constantemente
@@ -22,17 +23,32 @@ func _process(delta: float):
 
 func atirar():
 	if not bala_cena_vermelho: return
-
-	var bala = bala_cena_vermelho.instantiate()
-
-	get_parent().add_child(bala)
-	bala.top_level = true 
-	bala.global_position = global_position
+	
+	var bala # Variável declarada localmente
+	
+	tiro = randi_range(1,4)
+	if tiro == 1:
+		bala = bala_cena_vermelho.instantiate()
+	elif tiro == 2:
+		bala = bala_cena_amarelo.instantiate()
+	elif tiro == 3:
+		bala = bala_cena_rosa.instantiate()
+	else:
+		bala = bala_cena_azul.instantiate()	
+		
+	var conteiner = get_node_or_null("../ConteinerTiros")
+	if conteiner:
+		conteiner.add_child(bala)
+	else:
+		get_parent().add_child(bala)
+	
+	bala.top_level = false 
+	
+	bala.position = position
+	
 	var direcao = Vector2.RIGHT.rotated(rotation)
-
+	
 	if "velocity" in bala:
-		bala.velocity = direcao * 150.0
-
+		bala.velocity = direcao * 150.0 
+	
 	bala.rotation = direcao.angle()
-
-	get_parent().add_child(bala)
