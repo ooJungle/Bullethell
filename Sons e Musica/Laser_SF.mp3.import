@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://3joxybnj71qi"
+path="res://.godot/imported/Laser_SF.mp3-68ceaa5ea4631a1949fd37055741e8d7.mp3str"
+
+[deps]
+
+source_file="res://Sons e Musica/Laser_SF.mp3"
+dest_files=["res://.godot/imported/Laser_SF.mp3-68ceaa5ea4631a1949fd37055741e8d7.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4
