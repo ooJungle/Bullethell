@@ -444,7 +444,7 @@ func encontrar_corpo_celeste_mais_proximo(grupo: String) -> Node2D:
 	return mais_proximo
 
 func iniciar_dash():
-	if not can_dash or is_dashing or atacando:
+	if not can_dash or is_dashing or atacando or not pode_se_mexer:
 		return
 
 	is_dashing = true

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cl5ckdckl7p6i"
-path="res://.godot/imported/universo.png-98eb70d9fed5d5eab52fb095f204a768.ctex"
+uid="uid://bi413ca1gnytt"
+path="res://.godot/imported/npc_RPG.png-d0de106736342cd3f45c48d94d06c087.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/universo.png"
-dest_files=["res://.godot/imported/universo.png-98eb70d9fed5d5eab52fb095f204a768.ctex"]
+source_file="res://Sprites/Sheets/npc_RPG.png"
+dest_files=["res://.godot/imported/npc_RPG.png-d0de106736342cd3f45c48d94d06c087.ctex"]
 
 [params]
 
