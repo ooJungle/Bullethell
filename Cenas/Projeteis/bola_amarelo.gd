@@ -1,6 +1,6 @@
 extends Area2D
 @export var player = Node2D
-@export var damage: int = 1
+@export var damage: int = 30
 @export var duration: float = 10.0
 var velocity: Vector2 = Vector2.ZERO
 
@@ -19,7 +19,7 @@ func _process(delta: float) -> void:
 func _on_body_entered(body: Node) -> void:
 	if body.is_in_group("player"):
 		if body.has_method("take_damage"):
-			body.take_damage(damage, 0, 0)
+			body.take_damage(damage, 0,0 )
 		queue_free()
 	if body is TileMap or body is TileMapLayer or body is StaticBody2D:
 		queue_free()

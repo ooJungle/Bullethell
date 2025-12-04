@@ -1,73 +1,160 @@
 @tool
 extends Node2D
 
-# --- Configurações Visuais dos Arcos ---
-@export_group("Geometria dos Arcos")
+@export var velocidade_rotacao: float = 0.5
+
+# --- VISUAL ---
+@export_group("Geometria")
 @export var raio: float = 130.0:
 	set(v): raio = v; queue_redraw()
 @export var espessura: float = 25.0:
 	set(v): espessura = v; queue_redraw()
-@export_range(0.0, 0.5) var espacamento_padding: float = 0.05:
-	set(v): espacamento_padding = v; queue_redraw()
-@export var segmentos_suavidade: int = 64
+@export var padding: float = 0.05:
+	set(v): padding = v; queue_redraw()
+@export var suavidade: int = 64
 
-# --- Configurações das Linhas Divisórias (NOVO) ---
 @export_group("Divisórias")
 @export var desenhar_linhas: bool = true:
 	set(v): desenhar_linhas = v; queue_redraw()
-@export var cor_linha: Color = Color.BLACK:
-	set(v): cor_linha = v; queue_redraw()
-@export var espessura_linha: float = 3.0:
-	set(v): espessura_linha = v; queue_redraw()
+@export var cor_linha: Color = Color.BLACK
+@export var espessura_linha: float = 3.0
 
-# --- Definição das Opções ---
+# --- OPÇÕES (Agora baseadas em Porcentagem 0-100) ---
 @export_group("Opções")
 @export var opcoes_config: Array[Dictionary] = [
-	{"cor": Color.TOMATO, "nome": "Agressivo"}, 
-	{"cor": Color.CORNFLOWER_BLUE, "nome": "Defensivo"},
-	{"cor": Color.LIME_GREEN, "nome": "Neutro"}
-]: set = set_opcoes_config
+	{"cor": Color.TOMATO, "nome": "Agressivo", "peso": 33.33}, 
+	{"cor": Color.CORNFLOWER_BLUE, "nome": "Defensivo", "peso": 33.33},
+	{"cor": Color.LIME_GREEN, "nome": "Neutro", "peso": 33.33}
+]:
+	set(v):
+		opcoes_config = v
+		queue_redraw()
 
+# Variáveis internas
+var indice_selecionado: int = -1 
+
+func _process(delta: float) -> void:
+	if not Engine.is_editor_hint():
+		rotation += velocidade_rotacao * delta
 
 func _draw() -> void:
-	var qtd_opcoes = opcoes_config.size()
-	if qtd_opcoes == 0: return
+	if opcoes_config.is_empty(): return
 	
-	var angulo_total_por_opcao = TAU / qtd_opcoes
-	var largura_angular_arco = angulo_total_por_opcao - (espacamento_padding * 2)
+	# Calcula o total atual (deve ser sempre próximo de 100)
+	var peso_total = 0.0
+	for op in opcoes_config: peso_total += op.get("peso", 33.3)
 	
-	# Gira para começar do topo (-90 graus)
-	var rotacao_inicial = -PI / 2 
-	
-	# 1. DESENHA OS ARCOS COLORIDOS
-	for i in range(qtd_opcoes):
-		var angulo_centro_opcao = (i * angulo_total_por_opcao) + rotacao_inicial
-		var angulo_inicio = angulo_centro_opcao - (largura_angular_arco / 2.0)
-		var angulo_fim = angulo_inicio + largura_angular_arco
-		
-		var cor_arco = opcoes_config[i].get("cor", Color.WHITE)
-		
-		draw_arc(Vector2.ZERO, raio, angulo_inicio, angulo_fim, segmentos_suavidade, cor_arco, espessura, true)
+	var angulo_atual = -PI / 2
+	var raio_linha_fim = raio + (espessura / 2.0)
+	var raio_linha_inicio = 0
 
-	# 2. DESENHA AS LINHAS DIVISÓRIAS (NOVO)
+	# 1. DESENHA LINHAS (Fundo)
 	if desenhar_linhas:
-		# Calcula até onde a linha vai (borda externa do arco)
-		var raio_externo = raio + (espessura / 2.0)
-		
-		for i in range(qtd_opcoes):
-			# Calcula o ângulo EXATAMENTE entre duas opções
-			# (Centro da opção atual + metade do tamanho dela)
-			var angulo_divisoria = (i * angulo_total_por_opcao) + rotacao_inicial + (angulo_total_por_opcao / 2.0)
+		var angulo_temp = angulo_atual
+		for i in range(opcoes_config.size()):
+			var peso = opcoes_config[i].get("peso", 33.3)
+			var tamanho_angular = (peso / peso_total) * TAU if peso_total > 0 else 0
 			
-			# Cria o vetor de direção
-			var direcao = Vector2(cos(angulo_divisoria), sin(angulo_divisoria))
-			
-			# Define ponto inicial (centro) e final (borda)
-			var ponto_inicial = Vector2.ZERO
-			var ponto_final = direcao * raio_externo
-			
-			draw_line(ponto_inicial, ponto_final, cor_linha, espessura_linha)
+			var angulo_linha = angulo_temp + tamanho_angular
+			var dir = Vector2(cos(angulo_linha), sin(angulo_linha))
+			draw_line(dir * raio_linha_inicio, dir * raio_linha_fim, cor_linha, espessura_linha)
+			angulo_temp += tamanho_angular
 
-func set_opcoes_config(valor):
-	opcoes_config = valor
-	queue_redraw()
+	# 2. DESENHA ARCOS (Frente)
+	for i in range(opcoes_config.size()):
+		var op = opcoes_config[i]
+		var peso = op.get("peso", 33.3)
+		var tamanho_angular = (peso / peso_total) * TAU if peso_total > 0 else 0
+		
+		var raio_desenho = raio
+		var espessura_desenho = espessura
+		var cor = op.get("cor", Color.WHITE)
+		
+		if i == indice_selecionado:
+			raio_desenho += 5.0
+			espessura_desenho += 4.0
+			cor = cor.lightened(0.2)
+
+		var inicio = angulo_atual + padding
+		var fim = angulo_atual + tamanho_angular - padding
+		
+		draw_arc(Vector2.ZERO, raio_desenho, inicio, fim, suavidade, cor, espessura_desenho, true)
+		angulo_atual += tamanho_angular
+
+# --- LÓGICA DE SOMA ZERO (A Mágica Acontece Aqui) ---
+func aplicar_mudanca_percentual(indice_alvo: int, variacao: float):
+	if indice_alvo < 0 or indice_alvo >= opcoes_config.size(): return
+	
+	# 1. Define limites para ninguém sumir (mínimo 10%)
+	# O máximo é 100 menos o mínimo dos outros (ex: 100 - 10 - 10 = 80)
+	var minimo = 2.0
+	var maximo = 100.0 - (minimo * (opcoes_config.size() - 1))
+	
+	# 2. Calcula quanto o alvo quer mudar
+	var peso_atual = opcoes_config[indice_alvo].get("peso", 33.3)
+	var novo_peso = clamp(peso_atual + variacao, minimo, maximo)
+	
+	# 3. Calcula a mudança REAL (caso o clamp tenha cortado)
+	var diferenca_real = novo_peso - peso_atual
+	
+	if diferenca_real == 0: return # Nada a fazer
+	
+	# 4. Aplica a mudança no alvo
+	animar_peso(indice_alvo, novo_peso)
+	
+	# 5. Distribui o PREJUÍZO (ou lucro) igualmente entre os outros
+	var outros_indices = []
+	for i in range(opcoes_config.size()):
+		if i != indice_alvo: outros_indices.append(i)
+	
+	# Se eu ganhei 10, os outros dois perdem 5 cada (10 / 2)
+	var subtracao_por_irmao = diferenca_real / float(outros_indices.size())
+	
+	for i in outros_indices:
+		var p = opcoes_config[i].get("peso", 33.3)
+		animar_peso(i, p - subtracao_por_irmao)
+
+func animar_peso(indice: int, alvo: float):
+	var tween = create_tween()
+	var inicial = opcoes_config[indice].get("peso", 33.3)
+	
+	tween.tween_method(
+		func(val): 
+			opcoes_config[indice]["peso"] = val
+			queue_redraw(),
+		inicial,
+		alvo,
+		1.5 # Duração rápida e responsiva
+	).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_OUT)
+
+# --- FUNÇÕES DE DETECÇÃO (Mantidas) ---
+func detectar_indice_no_mouse(posicao_global_cursor: Vector2) -> int:
+	var pos_local = to_local(posicao_global_cursor)
+	if pos_local.length() < 10.0: return -1
+
+	var angulo_toque = atan2(pos_local.y, pos_local.x)
+	var angulo_normalizado = fposmod(angulo_toque - (-PI/2), TAU)
+	
+	var peso_total = 0.0
+	for op in opcoes_config: peso_total += op.get("peso", 33.3)
+	
+	var angulo_percorrido = 0.0
+	
+	for i in range(opcoes_config.size()):
+		var peso = opcoes_config[i].get("peso", 33.3)
+		var tamanho_fatia = (peso / peso_total) * TAU
+		
+		if angulo_normalizado < (angulo_percorrido + tamanho_fatia):
+			if i != indice_selecionado:
+				indice_selecionado = i
+				queue_redraw()
+			return i
+		angulo_percorrido += tamanho_fatia
+	
+	if opcoes_config.size() > 0: return opcoes_config.size() - 1
+	return -1
+
+func detectar_opcao_no_mouse(posicao_global_cursor: Vector2) -> Dictionary:
+	var idx = detectar_indice_no_mouse(posicao_global_cursor)
+	if idx != -1: return opcoes_config[idx]
+	return {}
