@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://v6rib7vdfplh"]
+
+[ext_resource type="Texture2D" uid="uid://cx6ixn88ac2ge" path="res://Sprites/Projeteis/laser.png" id="1_qfsiv"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8g78q"]
+size = Vector2(2690, 20.75)
+
+[node name="mini laser" type="Area2D"]
+
+[node name="Laserbeam" type="Sprite2D" parent="." groups=["laser"]]
+position = Vector2(1345.0001, 9)
+scale = Vector2(84.065, 3)
+texture = ExtResource("1_qfsiv")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
+position = Vector2(1345, 10)
+shape = SubResource("RectangleShape2D_8g78q")

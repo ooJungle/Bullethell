@@ -50,6 +50,7 @@ laser=""
 player=""
 inimigo=""
 boss=""
+cristal=""
 
 [input]
 

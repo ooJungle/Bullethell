@@ -1,9 +1,15 @@
-[gd_scene load_steps=7 format=3 uid="uid://c6woybm3rk543"]
+[gd_scene load_steps=9 format=3 uid="uid://c6woybm3rk543"]
 
+[ext_resource type="Shader" uid="uid://8liu0yw68l4l" path="res://Cenas/Geral/cristal_vermelho.gdshader" id="1_i2l3p"]
 [ext_resource type="Script" uid="uid://q5r6b3b7clpj" path="res://Scripts/Geral/cristal.gd" id="1_v6luj"]
 [ext_resource type="Texture2D" uid="uid://ba2myg4gn6kjp" path="res://Sprites/Geral/cristal_vermelho.png" id="2_v6luj"]
 [ext_resource type="Texture2D" uid="uid://bt5socl2sy4jw" path="res://UI_UX/efeito_distorcao.png" id="4_av7e6"]
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_t4omw"]
+shader = ExtResource("1_i2l3p")
+shader_parameter/ativo = false
+shader_parameter/cor_energia = Color(1, 0.4, 0.4, 1)
+shader_parameter/intensidade_pulso = 0.2
 
 [sub_resource type="Shader" id="Shader_nps87"]
 code = "shader_type canvas_item;
@@ -56,8 +62,10 @@ shader_parameter/intensity = 8.0
 radius = 36.0
 height = 92.0
 
-[node name="cristal_vermelho" type="StaticBody2D"]
+[node name="cristal_vermelho" type="StaticBody2D" groups=["cristal"]]
 light_mask = 1023
+z_index = 1
+material = SubResource("ShaderMaterial_t4omw")
 script = ExtResource("1_v6luj")
 
 [node name="efeito_cristal" type="Sprite2D" parent="."]

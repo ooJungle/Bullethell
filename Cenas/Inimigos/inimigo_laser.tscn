@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://bu7otdeikbwcr"]
+[gd_scene load_steps=9 format=3 uid="uid://bu7otdeikbwcr"]
 
 [ext_resource type="Script" uid="uid://dpe1ob6rs5koo" path="res://Scripts/Geral/inimigo_laser.gd" id="1_nkaow"]
 [ext_resource type="Texture2D" uid="uid://0lg1tna0hnmk" path="res://Sprites/Tilesets/Inimigos/inimigo_REDONDO.png" id="2_nkaow"]
@@ -8,6 +8,15 @@
 [sub_resource type="CircleShape2D" id="CircleShape2D_0nkwv"]
 radius = 37.01351
 
+[sub_resource type="Gradient" id="Gradient_qr2jw"]
+offsets = PackedFloat32Array(0, 0.49333334, 1)
+colors = PackedColorArray(0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_6rh2l"]
+gradient = SubResource("Gradient_qr2jw")
+fill_from = Vector2(0, 1)
+fill_to = Vector2(1, 1)
+
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_wcglr"]
 radius = 56.0
 height = 112.0
@@ -16,6 +25,9 @@ height = 112.0
 collision_layer = 2
 collision_mask = 3
 script = ExtResource("1_nkaow")
+abertura_leque = 66.115
+grau_de_tortura = 18.402
+tempo_vida_maximo = 10.0
 
 [node name="Inimigo" type="Sprite2D" parent="."]
 rotation = -1.5708
@@ -44,13 +56,18 @@ width = 3.0
 default_color = Color(1, 0.482353, 0, 1)
 
 [node name="Laserbeam" type="Sprite2D" parent="FirePoint" groups=["laser"]]
+visible = false
 position = Vector2(2748.5, -4)
 scale = Vector2(169.21875, 8.16992)
 texture = ExtResource("3_tykgi")
 
 [node name="RayCast2D" type="RayCast2D" parent="FirePoint"]
-scale = Vector2(1.025, 30)
-target_position = Vector2(5324.878, 0)
+scale = Vector2(1.401, 41)
+target_position = Vector2(3895.0747, 0)
+
+[node name="ImpactLight" type="Sprite2D" parent="FirePoint"]
+modulate = Color(1, 0, 0, 0.75686276)
+texture = SubResource("GradientTexture2D_6rh2l")
 
 [node name="CollisionArea" type="Area2D" parent="."]
 collision_layer = 2
@@ -59,7 +76,8 @@ collision_layer = 2
 position = Vector2(4, 0)
 shape = SubResource("CapsuleShape2D_wcglr")
 
-[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("4_qr2jw")
+bus = &"sfx"
 
 [connection signal="body_entered" from="CollisionArea" to="." method="_on_collision_area_body_entered"]
