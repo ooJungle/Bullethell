@@ -1,0 +1,74 @@
+[gd_scene load_steps=9 format=3 uid="uid://c00quj52am6p7"]
+
+[ext_resource type="Script" uid="uid://2h70jus0bsth" path="res://Scripts/Inimigos/inimigo_polvo_2.gd" id="1_lkhev"]
+[ext_resource type="Texture2D" uid="uid://c8ev27nrgotn" path="res://Sprites/Tilesets/Inimigos/spriteSheetPolvo.png" id="2_7l2g0"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7sk66"]
+atlas = ExtResource("2_7l2g0")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_chvrd"]
+atlas = ExtResource("2_7l2g0")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nhmfn"]
+atlas = ExtResource("2_7l2g0")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_75ksd"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7sk66")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_chvrd")
+}],
+"loop": true,
+"name": &"andando",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nhmfn")
+}],
+"loop": true,
+"name": &"atirando",
+"speed": 5.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_7nq0h"]
+radius = 11.0
+height = 22.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_qacp0"]
+radius = 11.0
+height = 22.0
+
+[node name="inimigo_polvo2" type="CharacterBody2D" groups=["inimigo"]]
+collision_layer = 2
+collision_mask = 3
+script = ExtResource("1_lkhev")
+
+[node name="sprite" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_75ksd")
+animation = &"andando"
+frame_progress = 0.44515195
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 7)
+shape = SubResource("CapsuleShape2D_7nq0h")
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
+debug_enabled = true
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(0, 7)
+shape = SubResource("CapsuleShape2D_qacp0")
+
+[node name="PerceptionTimer" type="Timer" parent="."]
+wait_time = 0.2
+autostart = true

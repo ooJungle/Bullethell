@@ -4,6 +4,7 @@ extends CharacterBody2D
 @export var velocidade = 90.0
 @export var forca_maxima_direcao = 180.0
 @export var tempo_percepcao = 0.5
+var timer: float = 0.0
 
 # --- Variáveis de Combate ---
 @export var player: CharacterBody2D
@@ -22,20 +23,25 @@ const obj_tiro_cabeca = preload("uid://c1jmoiulli385")
 var attack_cooldown = 0.0
 var knockback = false
 var tempo_knockback_atual = 0.0
-var is_shooting_anim = false
+var is_shooting_anim = false 
 
 func _ready() -> void:
 	add_to_group("enemies")
+	
 	perception_timer.wait_time = tempo_percepcao
 	perception_timer.timeout.connect(recalcular_caminho)
-	
+		
 	player = get_node_or_null("/root/Node2D/player")
 	if not player:
 		player = get_node_or_null("/root/fase_teste/player")
-	
+		
 	recalcular_caminho()
 
+
 func _physics_process(delta: float) -> void:
+	timer += delta
+	if timer >= 15:
+		take_damage(1)
 	if Global.paused or !visible:
 		return
 	attack_cooldown += delta
@@ -47,7 +53,6 @@ func _physics_process(delta: float) -> void:
 
 	look_at(player.global_position)
 	rotation_degrees -= 90
-	
 	if knockback:
 		tempo_knockback_atual += delta
 		if tempo_knockback_atual >= 0.3:
@@ -84,7 +89,6 @@ func shoot():
 			var base_direction = Vector2.DOWN
 			if is_instance_valid(player):
 				base_direction = (player.global_position - global_position).normalized()
-			
 			var angle_offset = deg_to_rad(i * 5)
 			var final_direction = base_direction.rotated(angle_offset)
 			new_bullet.velocity = final_direction * velocidade_projetil
@@ -98,7 +102,7 @@ func recalcular_caminho() -> void:
 func aplicar_knockback(direcao: Vector2):
 	knockback = true
 	tempo_knockback_atual = 0.0
-	velocity = direcao * forca_knockback * 2.0/3.0
+	velocity = direcao * forca_knockback*2/3
 
 func _on_collision_area_body_entered(body: Node2D) -> void:
 	if knockback or body == self:
@@ -108,5 +112,6 @@ func _on_collision_area_body_entered(body: Node2D) -> void:
 		aplicar_knockback(direcao)
 		body.take_damage(5)
 
-func take_damage(_amount: int) -> void:
+func take_damage(_amount: int) -> void:	
+	Global.inimigo_morreu.emit()
 	queue_free()

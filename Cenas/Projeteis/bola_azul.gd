@@ -1,7 +1,7 @@
 extends Area2D
 @export var player = Node2D
 @export var damage: int = 30
-@export var velocidade_roda: float = 1
+@export var velocidade_roda: float = 0.25
 @export var arco: float = 0.5
 @export var duration: float = 10.0
 var velocity: Vector2 = Vector2.ZERO

@@ -22,9 +22,9 @@ extends Node2D
 # --- OPÇÕES (Agora baseadas em Porcentagem 0-100) ---
 @export_group("Opções")
 @export var opcoes_config: Array[Dictionary] = [
-	{"cor": Color.TOMATO, "nome": "Agressivo", "peso": 33.33}, 
-	{"cor": Color.CORNFLOWER_BLUE, "nome": "Defensivo", "peso": 33.33},
-	{"cor": Color.LIME_GREEN, "nome": "Neutro", "peso": 33.33}
+	{"cor": Color.TOMATO, "nome": "Agressivo", "peso": 33.33},
+	{"cor": Color.YELLOW, "nome": "Neutro", "peso": 33.33},
+	{"cor": Color.LIME_GREEN, "nome": "Defensivo", "peso": 33.33}
 ]:
 	set(v):
 		opcoes_config = v
@@ -40,7 +40,6 @@ func _process(delta: float) -> void:
 func _draw() -> void:
 	if opcoes_config.is_empty(): return
 	
-	# Calcula o total atual (deve ser sempre próximo de 100)
 	var peso_total = 0.0
 	for op in opcoes_config: peso_total += op.get("peso", 33.3)
 	
@@ -48,7 +47,6 @@ func _draw() -> void:
 	var raio_linha_fim = raio + (espessura / 2.0)
 	var raio_linha_inicio = 0
 
-	# 1. DESENHA LINHAS (Fundo)
 	if desenhar_linhas:
 		var angulo_temp = angulo_atual
 		for i in range(opcoes_config.size()):
@@ -60,7 +58,6 @@ func _draw() -> void:
 			draw_line(dir * raio_linha_inicio, dir * raio_linha_fim, cor_linha, espessura_linha)
 			angulo_temp += tamanho_angular
 
-	# 2. DESENHA ARCOS (Frente)
 	for i in range(opcoes_config.size()):
 		var op = opcoes_config[i]
 		var peso = op.get("peso", 33.3)
@@ -81,33 +78,23 @@ func _draw() -> void:
 		draw_arc(Vector2.ZERO, raio_desenho, inicio, fim, suavidade, cor, espessura_desenho, true)
 		angulo_atual += tamanho_angular
 
-# --- LÓGICA DE SOMA ZERO (A Mágica Acontece Aqui) ---
 func aplicar_mudanca_percentual(indice_alvo: int, variacao: float):
 	if indice_alvo < 0 or indice_alvo >= opcoes_config.size(): return
 	
-	# 1. Define limites para ninguém sumir (mínimo 10%)
-	# O máximo é 100 menos o mínimo dos outros (ex: 100 - 10 - 10 = 80)
 	var minimo = 2.0
 	var maximo = 100.0 - (minimo * (opcoes_config.size() - 1))
-	
-	# 2. Calcula quanto o alvo quer mudar
 	var peso_atual = opcoes_config[indice_alvo].get("peso", 33.3)
 	var novo_peso = clamp(peso_atual + variacao, minimo, maximo)
-	
-	# 3. Calcula a mudança REAL (caso o clamp tenha cortado)
 	var diferenca_real = novo_peso - peso_atual
 	
-	if diferenca_real == 0: return # Nada a fazer
+	if diferenca_real == 0: return
 	
-	# 4. Aplica a mudança no alvo
 	animar_peso(indice_alvo, novo_peso)
 	
-	# 5. Distribui o PREJUÍZO (ou lucro) igualmente entre os outros
 	var outros_indices = []
 	for i in range(opcoes_config.size()):
 		if i != indice_alvo: outros_indices.append(i)
 	
-	# Se eu ganhei 10, os outros dois perdem 5 cada (10 / 2)
 	var subtracao_por_irmao = diferenca_real / float(outros_indices.size())
 	
 	for i in outros_indices:
@@ -124,10 +111,9 @@ func animar_peso(indice: int, alvo: float):
 			queue_redraw(),
 		inicial,
 		alvo,
-		1.5 # Duração rápida e responsiva
-	).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_OUT)
+		1.5
+	).set_ease(Tween.EASE_OUT)
 
-# --- FUNÇÕES DE DETECÇÃO (Mantidas) ---
 func detectar_indice_no_mouse(posicao_global_cursor: Vector2) -> int:
 	var pos_local = to_local(posicao_global_cursor)
 	if pos_local.length() < 10.0: return -1

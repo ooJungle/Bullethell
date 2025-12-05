@@ -1,7 +1,7 @@
 extends Node2D
 
 # --- CONFIGURAÇÕES ---
-@export var velocidade_encher: float = 10.0
+@export var velocidade_encher: float = 20.0
 @export var velocidade_esvaziar: float = 10.0
 
 # --- REFERÊNCIAS ---
@@ -9,7 +9,7 @@ extends Node2D
 @onready var cursor = $Cursor
 
 @onready var barra_red = $Interface/VBoxContainer/BarraVermelha
-@onready var barra_blue = $Interface/VBoxContainer/BarraAzul
+@onready var barra_blue = $Interface/VBoxContainer/BarraAmarela
 @onready var barra_green = $Interface/VBoxContainer/BarraVerde
 
 func _ready():
@@ -55,8 +55,8 @@ func atualizar_barra(barra: TextureProgressBar, esta_ativo: bool, delta: float):
 func confirmar_escolha_por_barra(barra_cheia):
 	var escolha = ""
 	if barra_cheia == barra_red: escolha = "Agressivo"
-	elif barra_cheia == barra_blue: escolha = "Defensivo"
-	elif barra_cheia == barra_green: escolha = "Neutro"
+	elif barra_cheia == barra_blue: escolha = "Neutro"
+	elif barra_cheia == barra_green: escolha = "Defensivo"
 	
 	print("ESCOLHA CONFIRMADA: ", escolha)
 	

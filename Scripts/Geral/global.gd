@@ -21,6 +21,8 @@ var portais_ativos = {
 
 @onready var music_player = $MusicPlayer
 
+signal inimigo_morreu
+
 func _ready() -> void:
 
 	get_tree().get_root().transparent_bg = true

@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://t8ghk7m4ee6n"]
+[gd_scene load_steps=39 format=3 uid="uid://t8ghk7m4ee6n"]
 
 [ext_resource type="Script" uid="uid://dg2dn223k17pc" path="res://Scripts/Geral/roda_de_dialogo.gd" id="1_fkij7"]
 [ext_resource type="Script" uid="uid://bmk2bmosmf05v" path="res://Scripts/Geral/cursor.gd" id="2_7fsk6"]
@@ -9,15 +9,19 @@
 [ext_resource type="PackedScene" uid="uid://d31w57yocc33b" path="res://Cenas/Projeteis/bola_amarelo.tscn" id="5_h43rx"]
 [ext_resource type="Script" uid="uid://bypd1fjdycmqb" path="res://Scripts/Geral/roda_visual.gd" id="6_fkij7"]
 [ext_resource type="PackedScene" uid="uid://bikpslb418lrb" path="res://Cenas/Projeteis/bola_azul.tscn" id="6_pchii"]
+[ext_resource type="Texture2D" uid="uid://cl5ckdckl7p6i" path="res://Sprites/Geral/universo.png" id="9_4xbma"]
 [ext_resource type="Texture2D" path="res://Sprites/universo.png" id="9_efyx1"]
 [ext_resource type="Script" uid="uid://cvsbgdd61s6gt" path="res://Cenas/Geral/arcos_de_opcoes.gd" id="10_53pcd"]
 [ext_resource type="Script" uid="uid://dlc1e384bh631" path="res://Cenas/Geral/conteiner_tiros.gd" id="12_4xbma"]
+[ext_resource type="Script" uid="uid://csirlwiylq860" path="res://Cenas/Geral/legenda.gd" id="13_xblrk"]
+[ext_resource type="Script" uid="uid://d3eihidfqvla1" path="res://DadosLegenda.gd" id="14_maf43"]
+[ext_resource type="Texture2D" uid="uid://bqq6phbygth71" path="res://Sprites/Projeteis/bola_vermelho.png" id="15_qnp5a"]
+[ext_resource type="Texture2D" uid="uid://dwdqyqor6pb5g" path="res://Sprites/Projeteis/bola_rosa.png" id="16_xaxrl"]
+[ext_resource type="Texture2D" uid="uid://6upbxq5qfqs6" path="res://Sprites/Projeteis/bola_amarelo.png" id="17_w62et"]
+[ext_resource type="Texture2D" uid="uid://d3uj6m5qwmyev" path="res://Sprites/Projeteis/bola_azul.png" id="18_4jtg0"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fwti7"]
 size = Vector2(13, 13)
-
-[sub_resource type="ViewportTexture" id="ViewportTexture_53pcd"]
-viewport_path = NodePath("SubViewport")
 
 [sub_resource type="Gradient" id="Gradient_r8l7v"]
 offsets = PackedFloat32Array(1)
@@ -37,24 +41,6 @@ colors = PackedColorArray(1, 0.2901961, 0.24313726, 1)
 gradient = SubResource("Gradient_4xbma")
 height = 500
 
-[sub_resource type="Gradient" id="Gradient_o50r0"]
-offsets = PackedFloat32Array(1)
-colors = PackedColorArray(1, 1, 1, 0.19607843)
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_31q8p"]
-gradient = SubResource("Gradient_o50r0")
-height = 500
-fill_from = Vector2(0, 1)
-fill_to = Vector2(0, 0)
-
-[sub_resource type="Gradient" id="Gradient_xblrk"]
-offsets = PackedFloat32Array(1)
-colors = PackedColorArray(0.53333336, 1, 1, 1)
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_r8l7v"]
-gradient = SubResource("Gradient_xblrk")
-height = 500
-
 [sub_resource type="Gradient" id="Gradient_maf43"]
 offsets = PackedFloat32Array(1)
 colors = PackedColorArray(1, 1, 1, 0.19607843)
@@ -71,9 +57,68 @@ colors = PackedColorArray(0, 1, 0.54901963, 1)
 gradient = SubResource("Gradient_3mqvg")
 height = 500
 
+[sub_resource type="Gradient" id="Gradient_o50r0"]
+offsets = PackedFloat32Array(1)
+colors = PackedColorArray(1, 1, 1, 0.19607843)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_31q8p"]
+gradient = SubResource("Gradient_o50r0")
+height = 500
+fill_from = Vector2(0, 1)
+fill_to = Vector2(0, 0)
+
+[sub_resource type="Gradient" id="Gradient_xblrk"]
+offsets = PackedFloat32Array(1)
+colors = PackedColorArray(1, 1, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_r8l7v"]
+gradient = SubResource("Gradient_xblrk")
+height = 500
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_r8l7v"]
+bg_color = Color(0.6862745, 1, 0.9607843, 0.21568628)
+
+[sub_resource type="Resource" id="Resource_fwx1e"]
+script = ExtResource("14_maf43")
+textura = ExtResource("15_qnp5a")
+descricao = "Aumenta o arco vermelho"
+metadata/_custom_type_script = "uid://d3eihidfqvla1"
+
+[sub_resource type="Resource" id="Resource_qjl1k"]
+script = ExtResource("14_maf43")
+textura = ExtResource("16_xaxrl")
+descricao = "Acelera a rotação"
+metadata/_custom_type_script = "uid://d3eihidfqvla1"
+
+[sub_resource type="Resource" id="Resource_eoytu"]
+script = ExtResource("14_maf43")
+textura = ExtResource("17_w62et")
+descricao = "Desacelera o player"
+metadata/_custom_type_script = "uid://d3eihidfqvla1"
+
+[sub_resource type="Resource" id="Resource_hoe3f"]
+script = ExtResource("14_maf43")
+textura = ExtResource("18_4jtg0")
+descricao = "Ajuda o player"
+metadata/_custom_type_script = "uid://d3eihidfqvla1"
+
+[sub_resource type="Resource" id="Resource_qnp5a"]
+script = ExtResource("14_maf43")
+textura = ExtResource("4_fwti7")
+descricao = "VOCÊ!"
+metadata/_custom_type_script = "uid://d3eihidfqvla1"
+
 [node name="RodaDeDialogo" type="Node2D"]
 process_mode = 3
 script = ExtResource("1_fkij7")
+
+[node name="SubViewport" type="SubViewport" parent="."]
+process_mode = 3
+render_target_update_mode = 4
+
+[node name="Sprite2D" type="Sprite2D" parent="SubViewport"]
+texture = ExtResource("9_efyx1")
+centered = false
 
 [node name="CentroDeTiros" type="Node2D" parent="."]
 script = ExtResource("2_fm8an")
@@ -81,6 +126,12 @@ bala_cena_vermelho = ExtResource("3_gcqkt")
 bala_cena_rosa = ExtResource("4_efyx1")
 bala_cena_amarelo = ExtResource("5_h43rx")
 bala_cena_azul = ExtResource("6_pchii")
+
+[node name="RodaVisual" type="Polygon2D" parent="."]
+process_mode = 3
+texture = ExtResource("9_4xbma")
+script = ExtResource("6_fkij7")
+segmentos = 36
 
 [node name="Cursor" type="CharacterBody2D" parent="."]
 process_mode = 3
@@ -95,19 +146,6 @@ texture = ExtResource("4_fwti7")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Cursor"]
 shape = SubResource("RectangleShape2D_fwti7")
 
-[node name="SubViewport" type="SubViewport" parent="."]
-process_mode = 3
-
-[node name="Sprite2D" type="Sprite2D" parent="SubViewport"]
-texture = ExtResource("9_efyx1")
-centered = false
-
-[node name="RodaVisual" type="Polygon2D" parent="."]
-process_mode = 3
-texture = SubResource("ViewportTexture_53pcd")
-script = ExtResource("6_fkij7")
-segmentos = 36
-
 [node name="ArcosDeOpcoes" type="Node2D" parent="."]
 script = ExtResource("10_53pcd")
 velocidade_rotacao = 1.0
@@ -115,6 +153,19 @@ raio = 180.0
 espessura = 10.0
 padding = 0.0
 espessura_linha = 1.0
+opcoes_config = Array[Dictionary]([{
+"cor": Color(1, 0.3882353, 0.2784314, 1),
+"nome": "Agressivo",
+"peso": 75.0
+}, {
+"cor": Color(1, 1, 0, 1),
+"nome": "Defensivo",
+"peso": 12.5
+}, {
+"cor": Color(0.19607843, 0.8039216, 0.19607843, 1),
+"nome": "Neutro",
+"peso": 12.5
+}])
 
 [node name="ConteinerTiros" type="Polygon2D" parent="."]
 clip_children = 1
@@ -127,8 +178,10 @@ script = ExtResource("12_4xbma")
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
-offset_left = -200.0
-offset_bottom = 200.0
+offset_left = -380.0
+offset_top = 1.0
+offset_right = -180.0
+offset_bottom = 201.0
 grow_horizontal = 0
 size_flags_horizontal = 4
 size_flags_vertical = 4
@@ -140,16 +193,32 @@ fill_mode = 3
 texture_under = SubResource("GradientTexture2D_3mqvg")
 texture_progress = SubResource("GradientTexture2D_xblrk")
 
-[node name="BarraAzul" type="TextureProgressBar" parent="Interface/VBoxContainer"]
-z_index = 2
-layout_mode = 2
-fill_mode = 3
-texture_under = SubResource("GradientTexture2D_31q8p")
-texture_progress = SubResource("GradientTexture2D_r8l7v")
-
 [node name="BarraVerde" type="TextureProgressBar" parent="Interface/VBoxContainer"]
 z_index = 2
 layout_mode = 2
 fill_mode = 3
 texture_under = SubResource("GradientTexture2D_qnp5a")
 texture_progress = SubResource("GradientTexture2D_o50r0")
+
+[node name="BarraAmarela" type="TextureProgressBar" parent="Interface/VBoxContainer"]
+z_index = 2
+layout_mode = 2
+fill_mode = 3
+texture_under = SubResource("GradientTexture2D_31q8p")
+texture_progress = SubResource("GradientTexture2D_r8l7v")
+
+[node name="MarginContainer" type="MarginContainer" parent="Interface"]
+anchors_preset = -1
+anchor_right = 0.1657986
+anchor_bottom = 1.0
+grow_vertical = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="Legenda" type="PanelContainer" parent="Interface/MarginContainer"]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_r8l7v")
+script = ExtResource("13_xblrk")
+itens_legenda = Array[ExtResource("14_maf43")]([SubResource("Resource_fwx1e"), SubResource("Resource_qjl1k"), SubResource("Resource_eoytu"), SubResource("Resource_hoe3f"), SubResource("Resource_qnp5a")])
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Interface/MarginContainer/Legenda"]
+layout_mode = 2

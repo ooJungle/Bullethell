@@ -1,6 +1,6 @@
 extends Area2D
 
-@export var id_desta_fase: String = "fase_RPG"
+@export var id_desta_fase: String = "Fase_espaco"
 
 func _on_body_entered(body):
 	if body.is_in_group("players"):
