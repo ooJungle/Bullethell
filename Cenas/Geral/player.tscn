@@ -339,7 +339,7 @@ script = ExtResource("1_pmvhq")
 [node name="sprite" type="AnimatedSprite2D" parent="."]
 scale = Vector2(1.5, 1.5)
 sprite_frames = SubResource("SpriteFrames_8tubf")
-animation = &"idle_lado"
+animation = &"andando_lado"
 speed_scale = 1.7
 offset = Vector2(0, -8)
 
