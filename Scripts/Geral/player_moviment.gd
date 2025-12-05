@@ -234,7 +234,7 @@ func iniciar_ataque(com_projetil: bool):
 		sprite.play("ataque_frente")
 	elif last_move_direction.x != 0:
 		sprite.play("ataque_lado")
-		sprite.flip_h = (last_move_direction.x < 0)
+		sprite.flip_h = (last_move_direction.x > 0)
 	som_ataque.pitch_scale = randf_range(0.5, 2.0)
 	som_ataque.play()
 	verificar_dano_nos_inimigos()
@@ -304,25 +304,29 @@ func desativar_seta_guia():
 
 func atualizar_animacao_movimento(input_direction: Vector2):
 	if velocity.length() > 10.0:
-		if input_direction.y < 0:
+		if input_direction.x != 0:
+			if sprite.animation != "andando_lado":
+				sprite.play("andando_lado")
+			
+			if input_direction.x > 0:
+				last_move_direction = Vector2.RIGHT
+				sprite.flip_h = true # Mantive sua lógica (True = Direita)
+			elif input_direction.x < 0:
+				last_move_direction = Vector2.LEFT
+				sprite.flip_h = false # Mantive sua lógica (False = Esquerda)
+		
+		# Só checamos Y (Cima/Baixo) se o X for zero
+		elif input_direction.y < 0:
 			last_move_direction = Vector2.UP
 			sprite.flip_h = false
 			if sprite.animation != "andando_costas":
 				sprite.play("andando_costas")
+				
 		elif input_direction.y > 0:
 			last_move_direction = Vector2.DOWN
 			sprite.flip_h = false
 			if sprite.animation != "andando_frente":
 				sprite.play("andando_frente")
-		elif input_direction.x != 0:
-			if sprite.animation != "andando_lado":
-				sprite.play("andando_lado")
-			if input_direction.x > 0:
-				last_move_direction = Vector2.RIGHT
-				sprite.flip_h = false
-			elif input_direction.x < 0:
-				last_move_direction = Vector2.LEFT
-				sprite.flip_h = true
 	else:
 		if last_move_direction.y < 0:
 			sprite.flip_h = false
@@ -336,9 +340,9 @@ func atualizar_animacao_movimento(input_direction: Vector2):
 			if sprite.animation != "idle_lado":
 				sprite.play("idle_lado")
 			if last_move_direction.x > 0:
-				sprite.flip_h = false
-			elif last_move_direction.x < 0:
 				sprite.flip_h = true
+			elif last_move_direction.x < 0:
+				sprite.flip_h = false
 		else:
 			sprite.flip_h = false
 			if sprite.animation != "idle_frente":
