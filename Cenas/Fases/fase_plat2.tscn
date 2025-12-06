@@ -109,104 +109,132 @@ shape = SubResource("WorldBoundaryShape2D_6l5u7")
 [node name="InimigoParede" parent="." instance=ExtResource("6_72s7c")]
 position = Vector2(-294, -253)
 rotation = 1.5707964
+motion_mode = 0
 
 [node name="InimigoParede2" parent="." instance=ExtResource("6_72s7c")]
 position = Vector2(229, 8)
+motion_mode = 0
 
 [node name="InimigoParede3" parent="." instance=ExtResource("6_72s7c")]
 position = Vector2(-531, -600)
+motion_mode = 0
 
 [node name="InimigoParede4" parent="." instance=ExtResource("6_72s7c")]
 position = Vector2(357, 195)
 rotation = -1.5707964
+motion_mode = 0
 
 [node name="InimigoParede8" parent="." instance=ExtResource("6_72s7c")]
 position = Vector2(1154, 692)
 rotation = -1.5707964
+motion_mode = 0
 
 [node name="InimigoParede10" parent="." instance=ExtResource("6_72s7c")]
 position = Vector2(1162, 88)
 rotation = -1.5707964
+motion_mode = 0
 
 [node name="InimigoParede11" parent="." instance=ExtResource("6_72s7c")]
 position = Vector2(356, 792)
 rotation = -1.5707964
+motion_mode = 0
 
 [node name="InimigoParede13" parent="." instance=ExtResource("6_72s7c")]
 position = Vector2(942, 833)
 rotation = 3.1415927
+motion_mode = 0
 
 [node name="InimigoParede14" parent="." instance=ExtResource("6_72s7c")]
 position = Vector2(694, 830)
 rotation = 3.1415927
+motion_mode = 0
 
 [node name="InimigoParede17" parent="." instance=ExtResource("6_72s7c")]
 position = Vector2(1368, 838)
 rotation = 3.1415927
+motion_mode = 0
 
 [node name="InimigoParede18" parent="." instance=ExtResource("6_72s7c")]
 position = Vector2(1648, 830)
 rotation = 3.1415927
+motion_mode = 0
 
 [node name="InimigoParede19" parent="." instance=ExtResource("6_72s7c")]
 position = Vector2(1863, 827)
 rotation = 3.1415927
+motion_mode = 0
 
 [node name="InimigoParede20" parent="." instance=ExtResource("6_72s7c")]
 position = Vector2(154, 825)
 rotation = 3.1415927
+motion_mode = 0
 
 [node name="InimigoParede21" parent="." instance=ExtResource("6_72s7c")]
 position = Vector2(-725, 827)
 rotation = 3.1415927
+motion_mode = 0
 
 [node name="InimigoParede22" parent="." instance=ExtResource("6_72s7c")]
 position = Vector2(-287, 825)
 rotation = 3.1415927
+motion_mode = 0
 
 [node name="InimigoParede24" parent="." instance=ExtResource("6_72s7c")]
 position = Vector2(-1085, -48)
 rotation = -1.5707964
+motion_mode = 0
 
 [node name="InimigoParede25" parent="." instance=ExtResource("6_72s7c")]
 position = Vector2(-1080, -491)
 rotation = -1.5707964
+motion_mode = 0
 
 [node name="InimigoParede26" parent="." instance=ExtResource("6_72s7c")]
 position = Vector2(576, 5)
+motion_mode = 0
 
 [node name="InimigoParede27" parent="." instance=ExtResource("6_72s7c")]
 position = Vector2(1016, 5)
+motion_mode = 0
 
 [node name="InimigoParede28" parent="." instance=ExtResource("6_72s7c")]
 position = Vector2(1383, -92)
+motion_mode = 0
 
 [node name="InimigoParede29" parent="." instance=ExtResource("6_72s7c")]
 position = Vector2(1819, -156)
+motion_mode = 0
 
 [node name="InimigoParede31" parent="." instance=ExtResource("6_72s7c")]
 position = Vector2(729, 329)
 rotation = 1.5707964
+motion_mode = 0
 
 [node name="InimigoParede34" parent="." instance=ExtResource("6_72s7c")]
 position = Vector2(1880, 151)
 rotation = 1.5707964
+motion_mode = 0
 
 [node name="InimigoParede37" parent="." instance=ExtResource("6_72s7c")]
 position = Vector2(1114, 232)
 rotation = 1.5707964
+motion_mode = 0
 
 [node name="InimigoParede5" parent="." instance=ExtResource("6_72s7c")]
 position = Vector2(2124, -234)
+motion_mode = 0
 
 [node name="InimigoParede6" parent="." instance=ExtResource("6_72s7c")]
 position = Vector2(2254, -233)
+motion_mode = 0
 
 [node name="InimigoParede7" parent="." instance=ExtResource("6_72s7c")]
 position = Vector2(2533, -202)
+motion_mode = 0
 
 [node name="InimigoParede9" parent="." instance=ExtResource("6_72s7c")]
 position = Vector2(3234, -378)
+motion_mode = 0
 
 [node name="portal_volta" parent="." instance=ExtResource("7_f8xmv")]
 position = Vector2(3759, -277)
