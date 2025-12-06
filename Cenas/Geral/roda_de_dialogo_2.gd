@@ -9,7 +9,6 @@ extends Node2D
 
 # Referências das barras
 @onready var barra_red = $Interface/VBoxContainer/GrupoAgressivo/BarraVermelha
-@onready var barra_blue = $Interface/VBoxContainer/GrupoNeutro/BarraAmarela
 @onready var barra_green = $Interface/VBoxContainer/GrupoDefensivo/BarraVerde
 # Referências das Labels (para brilho)
 @onready var label_red = $Interface/VBoxContainer/GrupoAgressivo/LabelAgressivo
@@ -18,7 +17,6 @@ extends Node2D
 
 func _ready():
 	configurar_barra(barra_red)
-	configurar_barra(barra_blue)
 	configurar_barra(barra_green)
 	
 	# Animação de entrada
@@ -40,8 +38,7 @@ func _process(delta: float):
 	var indice = arcos.detectar_indice_no_mouse(cursor.global_position)
 	
 	atualizar_conjunto(barra_red, label_red, indice == 0, delta)
-	atualizar_conjunto(barra_blue, label_blue, indice == 1, delta)
-	atualizar_conjunto(barra_green, label_green, indice == 2, delta)
+	atualizar_conjunto(barra_green, label_green, indice == 1, delta)
 
 func atualizar_conjunto(barra, label, esta_ativo, delta):
 	if not barra: return
@@ -60,8 +57,7 @@ func confirmar_escolha_por_indice(barra_cheia):
 	var indice_escolhido = -1
 	
 	if barra_cheia == barra_red: indice_escolhido = 0
-	elif barra_cheia == barra_blue: indice_escolhido = 1
-	elif barra_cheia == barra_green: indice_escolhido = 2
+	elif barra_cheia == barra_green: indice_escolhido = 1
 	
 	# Pega o nome REAL que está configurado no Inspector do filho
 	# Usamos .get() para evitar crashes se o Godot se perder no tipo

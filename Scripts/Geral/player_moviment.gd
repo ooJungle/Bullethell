@@ -58,7 +58,14 @@ var arma_atual_dados: Dictionary
 var carga_atual: float = 0.0
 var esta_carregando: bool = false
 
-var pode_se_mexer: bool = true
+# --- CORREÇÃO 1: Setter para detectar o fim do diálogo ---
+var pode_se_mexer: bool = true:
+	set(valor):
+		pode_se_mexer = valor
+		# Se o movimento foi devolvido (fim do dialogo), forçamos o reset do combate
+		if pode_se_mexer:
+			resetar_combate()
+# ---------------------------------------------------------
 
 func _ready() -> void:
 	vida = vida_maxima
@@ -180,9 +187,10 @@ func _physics_process(delta: float) -> void:
 # --- SISTEMA DE CARGA E ATAQUE ---
 
 func processar_ataque_carregado(delta: float):
-	if Input.is_action_pressed("attack") and pode_atacar and tem_arma:
+	# --- CORREÇÃO 2: Verifica se pode se mexer antes de iniciar ataque ---
+	if Input.is_action_pressed("attack") and pode_atacar and tem_arma and pode_se_mexer:
 		esta_carregando = true
-		if barra_carga and pode_se_mexer:
+		if barra_carga:
 			barra_carga.visible = true
 			
 		carga_atual += delta
@@ -287,6 +295,15 @@ func _on_sprite_animation_finished():
 			sprite.play("idle_frente")
 		else:
 			sprite.play("idle_lado")
+
+# --- CORREÇÃO 3: Nova função de segurança ---
+func resetar_combate():
+	atacando = false
+	pode_atacar = true
+	# set_deferred é necessário pois isso pode acontecer durante a física
+	hitbox_colisao.set_deferred("disabled", true) 
+	resetar_carga()
+# --------------------------------------------
 
 # --- SISTEMA DE GUIA (SETA) ---
 

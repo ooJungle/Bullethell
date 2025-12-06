@@ -35,7 +35,7 @@ func _ready() -> void:
 
 func _physics_process(delta: float) -> void:
 	timer += delta
-	if timer >= 15:
+	if timer >= 25:
 		take_damage(1)
 	if Global.paused: return
 

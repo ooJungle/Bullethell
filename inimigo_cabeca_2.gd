@@ -1,58 +1,53 @@
 extends CharacterBody2D
 
-# --- Variáveis de Movimento e Percepção ---
+# --- Variáveis de Movimento ---
 @export var velocidade = 90.0
-@export var forca_maxima_direcao = 180.0
-@export var tempo_percepcao = 0.5
-var timer: float = 0.0
+# Removemos "forca_maxima_direcao" e "tempo_percepcao" pois não usaremos mais
 
 # --- Variáveis de Combate ---
 @export var player: CharacterBody2D
 @export var forca_knockback = 600.0
 @export var velocidade_projetil = 130.0
-# MANTIDO O SEU PRELOAD ORIGINAL:
 const obj_tiro_cabeca = preload("uid://c1jmoiulli385")
 
 # --- Nós Filhos ---
 @onready var sprite: AnimatedSprite2D = $sprite
-@onready var navigation_agent: NavigationAgent2D = $NavigationAgent2D
-@onready var perception_timer: Timer = $PerceptionTimer
+# Removemos NavigationAgent e PerceptionTimer aqui
 @onready var collision_area: Area2D = $CollisionArea
 
 # --- Variáveis de Estado ---
 var attack_cooldown = 0.0
 var knockback = false
 var tempo_knockback_atual = 0.0
-var is_shooting_anim = false 
+var timer: float = 0.0
 
 func _ready() -> void:
 	add_to_group("enemies")
 	
-	perception_timer.wait_time = tempo_percepcao
-	perception_timer.timeout.connect(recalcular_caminho)
-		
-	player = get_node_or_null("/root/Node2D/player")
-	if not player:
-		player = get_node_or_null("/root/fase_teste/player")
-		
-	recalcular_caminho()
+	player = get_tree().get_first_node_in_group("players")
 
 
 func _physics_process(delta: float) -> void:
 	timer += delta
-	if timer >= 15:
+	if timer >= 25:
 		take_damage(1)
+		
 	if Global.paused or !visible:
 		return
+		
 	attack_cooldown += delta
 
+	# Se não tiver player, fica parado
 	if not is_instance_valid(player):
 		velocity = Vector2.ZERO
 		move_and_slide()
 		return
 
+	# Olha para o player e ajusta sprite
 	look_at(player.global_position)
 	rotation_degrees -= 90
+
+	# --- LÓGICA DE KNOCKBACK ---
 	if knockback:
 		tempo_knockback_atual += delta
 		if tempo_knockback_atual >= 0.3:
@@ -61,21 +56,30 @@ func _physics_process(delta: float) -> void:
 		move_and_slide()
 		return
 
-	var direcao_alvo = Vector2.ZERO
-	if not navigation_agent.is_navigation_finished():
-		direcao_alvo = global_position.direction_to(navigation_agent.get_next_path_position())
-
-	if direcao_alvo.length() > 0:
-		var velocidade_desejada = direcao_alvo * velocidade
-		var forca_direcao = velocidade_desejada - velocity
-		forca_direcao = forca_direcao.limit_length(forca_maxima_direcao)
-		velocity += forca_direcao * delta
-		velocity = velocity.limit_length(velocidade)
-	else:
-		velocity = velocity.lerp(Vector2.ZERO, delta * 3.0)
-
+	# --- LÓGICA DE MOVIMENTO SIMPLIFICADA (A que você pediu) ---
+	var direcao = Vector2.ZERO
+	
+	# Eixo X
+	if global_position.x < player.global_position.x - 5.0:
+		direcao.x = 1 # Vai para a direita
+	elif global_position.x > player.global_position.x + 5.0:
+		direcao.x = -1 # Vai para a esquerda
+		
+	# Eixo Y
+	if global_position.y < player.global_position.y - 5.0:
+		direcao.y = 1 # Vai para baixo
+	elif global_position.y > player.global_position.y + 5.0:
+		direcao.y = -1 # Vai para cima
+	
+	# Normaliza para ele não correr mais rápido na diagonal (Matemática básica de vetores)
+	if direcao != Vector2.ZERO:
+		direcao = direcao.normalized()
+	
+	velocity = direcao * velocidade
 	move_and_slide()
+	# -----------------------------------------------------------
 
+	# Tiro
 	if (player.global_position - global_position).length() < 500:
 		shoot()
 
@@ -94,10 +98,6 @@ func shoot():
 			new_bullet.velocity = final_direction * velocidade_projetil
 			get_parent().add_child(new_bullet)
 		attack_cooldown = 0.0
-
-func recalcular_caminho() -> void:
-	if is_instance_valid(player):
-		navigation_agent.target_position = player.global_position
 
 func aplicar_knockback(direcao: Vector2):
 	knockback = true
