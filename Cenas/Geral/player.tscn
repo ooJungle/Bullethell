@@ -373,6 +373,7 @@ disabled = true
 [node name="SetaPivo" type="Node2D" parent="."]
 
 [node name="SpriteSeta" type="Sprite2D" parent="SetaPivo"]
+position = Vector2(20, 0)
 rotation = 1.5707964
 texture = ExtResource("7_8vhvd")
 
