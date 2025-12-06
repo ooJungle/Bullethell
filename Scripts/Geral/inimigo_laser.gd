@@ -37,6 +37,7 @@ var tempo_vida_atual: float = 0.0
 @onready var collision_area: Area2D = $CollisionArea
 @onready var audio_stream_player_2d: AudioStreamPlayer = $AudioStreamPlayer2D
 @onready var impact_light: Sprite2D = $FirePoint/ImpactLight 
+@onready var prep_laser: AudioStreamPlayer = $prep_laser
 
 enum Estado { IDLE, MIRANDO, LOCKADO, ATIRANDO, COOLDOWN }
 var estadoAtual = Estado.IDLE
@@ -124,12 +125,14 @@ func mudar_para_estado(novoEstado: Estado):
 			linha_2.visible = true
 			linha.default_color = Color("ffd900dc")
 			linha_2.default_color = Color("ffd900dc")
+			
 		Estado.LOCKADO:
 			state_timer = ducacaoLock
 			linha.visible = true
 			linha_2.visible = true
 			linha.default_color = Color("ff7b00")
 			linha_2.default_color = Color("ff7b00")
+			prep_laser.play()
 		Estado.ATIRANDO:
 			state_timer = duracaoTiro
 			laserbeam.visible = true
@@ -148,6 +151,7 @@ func modo_mira(delta: float):
 	if state_timer <= 0:
 		locked_angle = fire_point.rotation
 		mudar_para_estado(Estado.LOCKADO)
+		
 
 func modo_lockado(delta: float):
 	fire_point.rotation = locked_angle
