@@ -42,8 +42,8 @@ var offset_visual_seta: Vector2 = Vector2(0, -8)
 # --- PLATAFORMA & DASH ESPECÍFICOS ---
 @export_group("Plataforma e Dash")
 @export var PLAT_SPEED: float = 250.0
-@export var PLAT_JUMP_VELOCITY: float = -450.0
-@export var PLAT_DASH_SPEED: float = 800.0
+@export var PLAT_JUMP_VELOCITY: float = -1000.0
+@export var PLAT_DASH_SPEED: float = 1000.0
 @export var ghost_node : PackedScene # Arraste a cena do fantasma aqui
 
 # --- TIMERS E MARKERS ---
