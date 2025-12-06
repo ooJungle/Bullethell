@@ -245,36 +245,44 @@ func atualizar_animacao_plataforma(direction: float):
 
 func atualizar_animacao_movimento_topdown(input_direction: Vector2):
 	if velocity.length() > 10.0:
-		if input_direction.y < 0:
-			last_move_direction = Vector2.UP
-			sprite.flip_h = false
-			if sprite.animation != "andando_costas": sprite.play("andando_costas")
-		elif input_direction.y > 0:
-			last_move_direction = Vector2.DOWN
-			sprite.flip_h = false
-			if sprite.animation != "andando_frente": sprite.play("andando_frente")
-		elif input_direction.x != 0:
-			if sprite.animation != "andando_lado": sprite.play("andando_lado")
+		if input_direction.x != 0:
+			if sprite.animation != "andando_lado":
+				sprite.play("andando_lado")
+			
 			if input_direction.x > 0:
 				last_move_direction = Vector2.RIGHT
-				sprite.flip_h = true
+				sprite.flip_h = true 
 			elif input_direction.x < 0:
 				last_move_direction = Vector2.LEFT
 				sprite.flip_h = false
+		
+		elif input_direction.y < 0:
+			last_move_direction = Vector2.UP
+			sprite.flip_h = false
+			if sprite.animation != "andando_costas":
+				sprite.play("andando_costas")
+				
+		elif input_direction.y > 0:
+			last_move_direction = Vector2.DOWN
+			sprite.flip_h = false
+			if sprite.animation != "andando_frente":
+				sprite.play("andando_frente")
+				
 	else:
-		if last_move_direction.y < 0:
-			sprite.flip_h = true
-			if sprite.animation != "idle_costas": sprite.play("idle_costas")
+		if last_move_direction.x != 0:
+			if sprite.animation != "idle_lado":
+				sprite.play("idle_lado")
+			sprite.flip_h = (last_move_direction.x > 0)
+			
+		elif last_move_direction.y < 0:
+			sprite.flip_h = false
+			if sprite.animation != "idle_costas":
+				sprite.play("idle_costas")
+				
 		elif last_move_direction.y > 0:
 			sprite.flip_h = false
-			if sprite.animation != "idle_frente": sprite.play("idle_frente")
-		elif last_move_direction.x != 0:
-			if sprite.animation != "idle_lado": sprite.play("idle_lado")
-			if last_move_direction.x > 0: sprite.flip_h = false
-			elif last_move_direction.x < 0: sprite.flip_h = true
-		else:
-			sprite.flip_h = true
-			if sprite.animation != "idle_frente": sprite.play("idle_frente")
+			if sprite.animation != "idle_frente":
+				sprite.play("idle_frente")
 
 # --- SISTEMA DE DASH (Plataforma vs TopDown) ---
 
