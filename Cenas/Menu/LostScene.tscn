@@ -1,9 +1,11 @@
-[gd_scene load_steps=4 format=3 uid="uid://ho5yv5ew87ln"]
+[gd_scene load_steps=7 format=3 uid="uid://ho5yv5ew87ln"]
 
 [ext_resource type="Script" uid="uid://bxqgvl7b40t4m" path="res://Scripts/Menu/lost_scene.gd" id="1_oej1p"]
 [ext_resource type="Texture2D" uid="uid://d10lk88fslwii" path="res://Sprites/Menu/gameover.png" id="2_4qvgj"]
+[ext_resource type="Texture2D" uid="uid://0tr5dxilujpi" path="res://Sprites/Menu/fundo_g_over.png" id="2_qsttg"]
 [ext_resource type="PackedScene" uid="uid://b2pnn1csceu83" path="res://UI_UX/mira.tscn" id="3_g8j1v"]
-
+[ext_resource type="Texture2D" uid="uid://c6m8k8f0g24qd" path="res://Sprites/Menu/voltar.png" id="3_kbroo"]
+[ext_resource type="Texture2D" uid="uid://ci1d6v1r3bbal" path="res://Sprites/Menu/voltar_apagado.png" id="4_71ln1"]
 
 [node name="LostScene" type="Control"]
 layout_mode = 3
@@ -14,32 +16,42 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_oej1p")
 
-[node name="ColorRect" type="ColorRect" parent="."]
-layout_mode = 0
-offset_right = 1158.0
-offset_bottom = 656.0
-color = Color(0.500095, 0.50009507, 0.500095, 1)
-
 [node name="TextureRect" type="TextureRect" parent="."]
-layout_mode = 0
-offset_top = 70.0
-offset_right = 1152.0
-offset_bottom = 718.0
-scale = Vector2(1, 0.27999985)
-texture = ExtResource("2_4qvgj")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_qsttg")
+stretch_mode = 4
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
-layout_mode = 0
-offset_left = 480.0
-offset_top = 342.0
-offset_right = 580.0
-offset_bottom = 408.0
-scale = Vector2(2, 2)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -126.0
+offset_top = 96.0
+offset_right = -53.0
+offset_bottom = 113.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(3, 3)
 alignment = 1
 
-[node name="MenuButton" type="Button" parent="VBoxContainer"]
+[node name="MenuButton" type="TextureButton" parent="VBoxContainer"]
 layout_mode = 2
-text = "Menu"
+texture_normal = ExtResource("3_kbroo")
+texture_hover = ExtResource("4_71ln1")
+stretch_mode = 4
+
+[node name="Sprite2D" type="Sprite2D" parent="VBoxContainer"]
+position = Vector2(50, -100)
+scale = Vector2(3, 3)
+texture = ExtResource("2_4qvgj")
 
 [node name="Mira" parent="." instance=ExtResource("3_g8j1v")]
 position = Vector2(480, 342)
