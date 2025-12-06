@@ -206,13 +206,6 @@ offset_bottom = 134.95581
 settings_menu_scene = ExtResource("7_ypqou")
 metadata/_edit_use_anchors_ = true
 
-[node name="ColorRect" parent="." instance=ExtResource("1_setcl")]
-offset_left = -2198.0
-offset_top = -1835.0
-offset_right = 2243.0
-offset_bottom = 8018.0
-script = null
-
 [node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]
 navigation_polygon = SubResource("NavigationPolygon_pxeo3")
 
@@ -326,5 +319,11 @@ position = Vector2(-369, 688)
 
 [node name="tocha12" parent="." instance=ExtResource("17_tumva")]
 position = Vector2(15, 685)
+
+[node name="ColorRect" parent="." instance=ExtResource("1_setcl")]
+offset_left = -7639.0
+offset_top = -5611.0
+offset_right = 8510.0
+offset_bottom = 10687.0
 
 [connection signal="body_entered" from="Portal_branco" to="Portal_branco" method="_on_body_entered"]

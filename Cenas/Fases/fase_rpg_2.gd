@@ -1,14 +1,13 @@
 extends Node2D
 
-# --- REFERÊNCIAS GERAIS ---
-@onready var player: CharacterBody2D 
+# --- REFERÊNCIAS ---
+@onready var player: CharacterBody2D # Será buscado no _ready
 @export var nav_region: NavigationRegion2D
-@export var tilemap: TileMapLayer 
+@export var tilemap: TileMapLayer # Arraste o TileMapLayer aqui no Inspector
 
-# --- REFERÊNCIAS DO PORTAL (Adicionado) ---
-# Certifique-se de que o nó do portal na sua cena se chama "portal_volta"
-@onready var portal_volta = $portal_volta
-@onready var colisao_portal = $portal_volta/CollisionShape2D
+# --- REFERÊNCIA AO PORTAL (ADICIONADO) ---
+# O nó na cena precisa ter este nome para o script encontrá-lo
+@onready var portal_volta = $portal_volta 
 
 # --- LISTA DE INIMIGOS ---
 var enemies_list = [
@@ -25,46 +24,60 @@ var map_bottom: float = 100000
 var spawn_position: Vector2
 
 func _ready() -> void:
-	# 1. Configuração Inicial do Portal (Lógica adicionada)
+	# 1. CONFIGURAÇÃO DO PORTAL (ADICIONADO)
+	# Garante que o portal comece escondido e desativado
 	if portal_volta:
-		portal_volta.visible = false
-	if colisao_portal:
-		colisao_portal.set_deferred("disabled", true)
-	
+		# Se o portal tiver o script próprio (que criamos antes), usa o método dele
+		if portal_volta.has_method("desativar_portal"):
+			portal_volta.desativar_portal()
+		else:
+			# Fallback: desativa manualmente se o script não estiver atualizado
+			portal_volta.visible = false
+			portal_volta.monitoring = false
+			print("Portal desativado manualmente pelo LevelManager.")
+	else:
+		print("ERRO: O nó 'portal_volta' não foi encontrado na cena!")
+
 	# 2. Busca o Player
 	player = get_tree().get_first_node_in_group("players")
 	
-	# 3. Calcula os limites do mapa automaticamente
+	# 3. Calcula os limites do mapa automaticamente (se houver TileMap)
 	if tilemap:
 		var used_rect = tilemap.get_used_rect()
 		# Verifica se tile_set existe para evitar erros
 		if tilemap.tile_set:
 			var cell_size = tilemap.tile_set.tile_size
+			
+			# Converte coordenadas de tile para pixels globais
 			var top_left = tilemap.to_global(tilemap.map_to_local(used_rect.position))
 			var bottom_right_pos = used_rect.position + used_rect.size
 			var bottom_right = tilemap.to_global(tilemap.map_to_local(bottom_right_pos))
 			
+			# Ajusta os limites
 			map_left = top_left.x
 			map_top = top_left.y
 			map_right = bottom_right.x
 			map_bottom = bottom_right.y
+			
 			print("Limites da Fase definidos: ", map_left, map_top, map_right, map_bottom)
 		else:
-			print("AVISO: TileSet não encontrado no TileMapLayer.")
+			print("AVISO: TileMapLayer não possui um TileSet atribuído.")
 	else:
 		print("AVISO: TileMap não atribuído. Limites de spawn infinitos.")
 
-# --- FUNÇÃO PARA ATIVAR O PORTAL (Lógica adicionada) ---
+# --- FUNÇÃO AUXILIAR PARA ABRIR PORTAL (OPCIONAL) ---
+# Caso você precise abrir o portal via código da fase em vez do NPC
 func ativar_portal():
 	if portal_volta:
-		portal_volta.visible = true
-	if colisao_portal:
-		colisao_portal.set_deferred("disabled", false)
-	
-	# Ativa a seta do player se disponível
-	if player and player.has_method("ativar_seta_guia"):
-		player.ativar_seta_guia(portal_volta.global_position)
-	print("Portal da fase ativado!")
+		if portal_volta.has_method("ativar_portal"):
+			portal_volta.ativar_portal()
+		else:
+			portal_volta.visible = true
+			portal_volta.monitoring = true
+		
+		# Seta do Player
+		if player and player.has_method("ativar_seta_guia"):
+			player.ativar_seta_guia(portal_volta.global_position)
 
 # --- FUNÇÕES DE ONDA (CHAMADAS PELO NPC) ---
 
@@ -72,44 +85,49 @@ func spawnar_onda_por_escolha(quantidade: int):
 	print("Consequência da Escolha: Spawnando ", quantidade, " inimigos!")
 	
 	for i in range(quantidade):
+		# 1. Escolhe um inimigo aleatório da lista
 		if enemies_list.is_empty(): return
 		
 		var dados_inimigo = enemies_list.pick_random()
 		var path = dados_inimigo["path"]
 		
+		# 2. Spawna usando a lógica de posição segura
 		_spawn_entity(path, Vector2.ZERO)
 		
+		# 3. Pequeno delay para não travar o jogo
 		await get_tree().create_timer(0.2).timeout
 
 # --- LÓGICA DE SPAWN E POSICIONAMENTO ---
 
 func _spawn_entity(resource_path: String, positionLoc: Vector2):
+	# 1. Define a posição inicial
 	if positionLoc != Vector2.ZERO:
 		spawn_position = positionLoc
 	else:
 		if not is_instance_valid(player):
 			return 
 			
+		# Gera posição circular ao redor do player
 		var angulo_aleatorio = randf() * TAU
 		var distancia = randf_range(550.0, 850.0)
 		var offset_vetor = Vector2(cos(angulo_aleatorio), sin(angulo_aleatorio)) * distancia
 		spawn_position = player.global_position + offset_vetor
 
-	# Mantém dentro dos limites do mapa
+	# 2. Mantém dentro dos limites do mapa
 	if map_right > map_left + 100: 
 		if not is_within_map_bounds(spawn_position):
 			spawn_position = clamp_position_to_bounds(spawn_position)
 	
-	# Validação de Navegação
+	# 3. Validação de Navegação (Evita paredes)
 	if nav_region: 
 		var mapa_rid = nav_region.get_navigation_map()
-		# map_get_closest_point retorna um Vector2 na navmesh
 		spawn_position = NavigationServer2D.map_get_closest_point(mapa_rid, spawn_position)
 	
+	# 4. Instancia o inimigo
 	var resource = load(resource_path)
 	if resource:
 		var entity = resource.instantiate()
-		entity.global_position = spawn_position
+		entity.global_position = spawn_position # Use global_position para garantir
 		call_deferred("add_child", entity)
 
 # --- FUNÇÕES AUXILIARES DE LIMITES ---
@@ -118,6 +136,7 @@ func is_within_map_bounds(pos: Vector2) -> bool:
 	return pos.x >= map_left and pos.x <= map_right and pos.y >= map_top and pos.y <= map_bottom
 
 func clamp_position_to_bounds(pos: Vector2) -> Vector2:
+	# Margem de segurança (padding) de 100px para não spawnar exatamente na borda
 	var padding = 100.0
 	pos.x = clamp(pos.x, map_left + padding, map_right - padding)
 	pos.y = clamp(pos.y, map_top + padding, map_bottom - padding)

@@ -1,9 +1,10 @@
-[gd_scene load_steps=13 format=4 uid="uid://bo2lv860jpjyn"]
+[gd_scene load_steps=14 format=4 uid="uid://bo2lv860jpjyn"]
 
 [ext_resource type="Script" uid="uid://dm3ux3o1rdq2g" path="res://Cenas/Fases/fase_rpg_2.gd" id="1_ngtvl"]
 [ext_resource type="Texture2D" uid="uid://cuats4fupmos7" path="res://Sprites/Tilesets/tilesetAZUL.png" id="2_3sieu"]
 [ext_resource type="PackedScene" uid="uid://cw5ic42v3wep7" path="res://Cenas/Geral/player.tscn" id="3_1lip7"]
 [ext_resource type="PackedScene" uid="uid://bf4kxcsfswmtq" path="res://Cenas/Geral/portal_volta.tscn" id="4_altyx"]
+[ext_resource type="Script" uid="uid://cheglp3s50e26" path="res://Cenas/Geral/portal_volta_rpg.gd" id="5_20ehh"]
 [ext_resource type="PackedScene" uid="uid://df3k86d0us6lx" path="res://Cenas/Geral/npc_rpg.tscn" id="6_4q4ok"]
 [ext_resource type="PackedScene" uid="uid://t8ghk7m4ee6n" path="res://Cenas/Geral/roda_de_dialogo.tscn" id="7_rdcca"]
 [ext_resource type="PackedScene" uid="uid://dy5ohomxyqocr" path="res://Cenas/Geral/roda_de_dialogo_2.tscn" id="8_20ehh"]
@@ -115,6 +116,7 @@ process_callback = 0
 
 [node name="portal_volta" parent="." instance=ExtResource("4_altyx")]
 position = Vector2(-5, 26)
+script = ExtResource("5_20ehh")
 id_desta_fase = "Fase_RPG"
 
 [node name="ColorRect" parent="." instance=ExtResource("8_hgk82")]
@@ -123,7 +125,8 @@ offset_top = -33880.0
 offset_right = 99008.0
 offset_bottom = 33746.0
 
-[node name="NPC_RPG" parent="." instance=ExtResource("6_4q4ok")]
+[node name="NPC_RPG" parent="." node_paths=PackedStringArray("portal_saida") instance=ExtResource("6_4q4ok")]
 position = Vector2(326, 52)
 cena_fase_1 = ExtResource("7_rdcca")
 cena_fase_2 = ExtResource("8_20ehh")
+portal_saida = NodePath("../portal_volta")
