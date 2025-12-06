@@ -335,11 +335,24 @@ collision_layer = 33
 collision_mask = 33
 safe_margin = 1.0
 script = ExtResource("1_pmvhq")
+speed = null
+aceleracao = null
+atrito = null
+forca_salto_inimigo = null
+raio_max_dilatacao = null
+fator_tempo_maximo = null
+raio_max_aceleracao = null
+fator_tempo_minimo = null
+dano_do_player = null
+tempo_para_carregar = null
+dash_speed = null
+dash_duration = null
+dash_cooldown = null
 
 [node name="sprite" type="AnimatedSprite2D" parent="."]
 scale = Vector2(1.5, 1.5)
 sprite_frames = SubResource("SpriteFrames_8tubf")
-animation = &"ataque_lado"
+animation = &"andando_lado"
 speed_scale = 1.7
 offset = Vector2(0, -8)
 
