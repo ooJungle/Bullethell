@@ -9,11 +9,22 @@ var projetil_cena = preload("uid://bgs1gd3re016g")
 var player: Node2D
 var attack_cooldown: float = 0
 
+# --- NOVAS VARIÁVEIS PARA ANIMAÇÃO ---
+# Verifique se o nome do seu nó é AnimatedSprite2D ou sprite
+@onready var sprite: AnimatedSprite2D = $Sprite 
 @onready var ray_cast_2d: RayCast2D = $RayCast2D
+
+# Controle para não interromper a animação de tiro
+var esta_atirando: bool = false 
 
 func _ready() -> void:
 	player = get_tree().get_first_node_in_group("players")
 	add_to_group("inimigo")
+	
+	# Conecta o sinal para saber quando a animação acabou
+	if sprite:
+		sprite.animation_finished.connect(_on_animation_finished)
+		sprite.play("andando") # Começa andando
 
 func _physics_process(delta):
 	if "paused" in Global and Global.paused:
@@ -39,6 +50,13 @@ func _physics_process(delta):
 	else:
 		rotate(deg_to_rad(velocidade_rotacao * 10) * delta)
 		
+	# --- LÓGICA DE ANIMAÇÃO DE MOVIMENTO ---
+	# Só toca a animação de andar se NÃO estiver atirando
+	if not esta_atirando and sprite:
+		if sprite.animation != "andando":
+			sprite.play("andando")
+	# ---------------------------------------
+
 	attack_cooldown += delta
 	if player and (player.global_position - global_position).length() < 500:
 		shoot()
@@ -49,6 +67,12 @@ func alinharNormal(normal: Vector2, delta: float):
 
 func shoot():
 	if attack_cooldown >= 3:
+		# --- ATIVA A ANIMAÇÃO DE TIRO ---
+		esta_atirando = true
+		if sprite:
+			sprite.play("atirando")
+		# --------------------------------
+		
 		for i in range(10):
 			var new_bullet = projetil_cena.instantiate()
 			new_bullet.global_position = global_position
@@ -57,6 +81,12 @@ func shoot():
 			new_bullet.velocity = direcao * velocidade_tiro
 			get_tree().current_scene.call_deferred("add_child", new_bullet)
 			attack_cooldown = 0
+
+# --- FUNÇÃO PARA RESETAR ANIMAÇÃO ---
+func _on_animation_finished():
+	if sprite.animation == "atirando":
+		esta_atirando = false
+		sprite.play("andando")
 
 func take_damage(_amount: int) -> void:
 	queue_free()

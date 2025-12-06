@@ -16,8 +16,8 @@ const obj_tiro_azul = preload("res://Cenas/Projeteis/tiro_polvo.tscn")
 const obj_tiro_verde = preload("res://Cenas/Projeteis/tiro_polvo.tscn")
 
 # --- Nós Filhos ---
+# O nome no editor é "sprite", então $sprite está correto
 @onready var sprite: AnimatedSprite2D = $sprite
-# Nota: O NavigationAgent2D não é mais necessário, mas mantive a referência caso precise deletar da cena depois
 @onready var collision_area: Area2D = $Area2D
 
 # --- Variáveis de Estado de Ataque ---
@@ -38,7 +38,6 @@ func _ready() -> void:
 	randomize()
 	ataque_aleatorio = randi_range(0, 4)
 	
-	# Busca segura pelo player
 	player = get_tree().get_first_node_in_group("player")
 
 func _physics_process(delta: float) -> void:
@@ -51,13 +50,12 @@ func _physics_process(delta: float) -> void:
 	attack_cooldown += delta * Global.fator_tempo
 	tempo_entre_tiros += delta * Global.fator_tempo
 	
-	# Verifica se o player existe antes de tentar se mover
 	if not is_instance_valid(player):
 		velocity = Vector2.ZERO
 		move_and_slide()
 		return
 
-	# Lógica de Knockback (Prioridade sobre movimento)
+	# Lógica de Knockback
 	if knockback:
 		tempo_knockback_atual += delta
 		if tempo_knockback_atual >= 0.3:
@@ -67,40 +65,55 @@ func _physics_process(delta: float) -> void:
 		return
 
 	# --- MOVIMENTAÇÃO SIMPLIFICADA ---
-	# Só se move se NÃO estiver atirando (para não atrapalhar o padrão de tiro)
 	if not atirando:
-		# Calcula a direção direta para o player
 		var direcao = (player.global_position - global_position).normalized()
-		
-		# Aplica a velocidade na direção
 		velocity = direcao * velocidade * Global.fator_tempo
 	else:
-		# Se estiver atirando, para suavemente
 		velocity = velocity.lerp(Vector2.ZERO, delta * 3.0 * Global.fator_tempo)
 
 	move_and_slide()
 	
-	# Lógica de disparo baseada na distância
+	# --- SISTEMA DE ANIMAÇÃO ---
+	if atirando:
+		# Se estiver atirando, força a animação de tiro
+		if sprite.animation != "atirando":
+			sprite.play("atirando")
+	else:
+		# Se não estiver atirando e estiver se movendo, toca andando
+		if velocity.length() > 5.0:
+			if sprite.animation != "andando":
+				sprite.play("andando")
+			
+			# Espelha o sprite baseado na direção horizontal
+			if velocity.x < 0:
+				sprite.flip_h = true
+			elif velocity.x > 0:
+				sprite.flip_h = false
+		else:
+			# Opcional: Se estiver parado e não atirando, pode manter o "andando" pausado ou tocar um idle
+			pass
+	# --------------------------
+	
 	if (player.global_position - global_position).length() < 500:
 		shoot()
 
-# --- FUNÇÃO HELPER DE TIRO ---
 func spawn_bullet(scene: PackedScene, direction: Vector2, speed: float):
 	var new_bullet = scene.instantiate()
 	new_bullet.global_position = global_position
 	
-	# Define a velocidade se o script da bala tiver essa variável
 	if "velocity" in new_bullet:
 		new_bullet.velocity = direction * speed
 	
-	# Adiciona à cena principal para não herdar movimento do inimigo
 	get_tree().current_scene.add_child(new_bullet)
-	
-	# Evita que o inimigo colida com a própria bala ao nascer
 	add_collision_exception_with(new_bullet)
 
 func shoot():
-	# ATAQUE 0: Metralhadora giratória
+	# --- GATILHO VISUAL ---
+	# Força a animação "atirando" no momento exato que o cooldown permite o disparo
+	if attack_cooldown >= 3:
+		sprite.play("atirando")
+	# ----------------------
+
 	if ataque_aleatorio == 0:
 		if not atirando:
 			direcao_ataque_fixa = (player.global_position - global_position).normalized()
@@ -116,7 +129,6 @@ func shoot():
 			if limite_projeteis > 30:
 				reset_attack_state()
 
-	# ATAQUE 1: Explosão em círculo
 	elif ataque_aleatorio == 1:
 		if attack_cooldown >= 3:
 			for i in range(11):
@@ -124,21 +136,18 @@ func shoot():
 				spawn_bullet(obj_tiro_roxo, direction, velocidade_projetil)
 			reset_attack_state()
 
-	# ATAQUE 2: Tiro único simples
 	elif ataque_aleatorio == 2:
 		if attack_cooldown >= 3:
 			var direction = (player.global_position - global_position).normalized()
 			spawn_bullet(obj_tiro_roxo, direction, velocidade_projetil)
 			reset_attack_state()
 
-	# ATAQUE 3: Tiro Azul
 	elif ataque_aleatorio == 3:
 		if attack_cooldown >= 3:
 			var direction = (player.global_position - global_position).normalized()
 			spawn_bullet(obj_tiro_azul, direction, velocidade_projetil)
 			reset_attack_state()
 
-	# ATAQUE 4: Tiro Verde Múltiplo
 	elif ataque_aleatorio == 4:
 		if attack_cooldown >= 3:
 			for i in range(4):
@@ -152,6 +161,9 @@ func reset_attack_state():
 	rotacao_ataque = 200.0
 	atirando = false
 	ataque_aleatorio = randi_range(0, 4)
+	
+	# Retorna para a animação de andar assim que o ataque acaba
+	sprite.play("andando")
 
 func aplicar_knockback(direcao: Vector2):
 	knockback = true

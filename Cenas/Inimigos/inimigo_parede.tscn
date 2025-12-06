@@ -11,23 +11,23 @@ region = Rect2(0, 0, 35, 16)
 atlas = ExtResource("2_i24pn")
 region = Rect2(35, 0, 35, 16)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_805wo"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_th5o7"]
 atlas = ExtResource("2_i24pn")
 region = Rect2(70, 0, 35, 16)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_w3hng"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_rimx8"]
 atlas = ExtResource("2_i24pn")
 region = Rect2(105, 0, 35, 16)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_7egtw"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_sgfjx"]
 atlas = ExtResource("2_i24pn")
 region = Rect2(140, 0, 35, 16)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_ac871"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_3edrg"]
 atlas = ExtResource("2_i24pn")
 region = Rect2(175, 0, 35, 16)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_6ncqh"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_k00ul"]
 atlas = ExtResource("2_i24pn")
 region = Rect2(210, 0, 35, 16)
 
@@ -39,24 +39,29 @@ animations = [{
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_cxu1g")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_805wo")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_w3hng")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_7egtw")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_ac871")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_6ncqh")
 }],
 "loop": true,
 "name": &"andando",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_th5o7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rimx8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sgfjx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3edrg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_k00ul")
+}],
+"loop": true,
+"name": &"atirando",
 "speed": 5.0
 }]
 
@@ -69,9 +74,10 @@ motion_mode = 1
 wall_min_slide_angle = 0.0
 script = ExtResource("1_8ofrx")
 
-[node name="Sprite2D" type="AnimatedSprite2D" parent="."]
+[node name="Sprite" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_8ofrx")
-animation = &"andando"
+animation = &"atirando"
+frame_progress = 0.18294351
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_i24pn")

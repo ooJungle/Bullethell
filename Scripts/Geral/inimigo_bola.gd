@@ -73,7 +73,7 @@ func _physics_process(delta: float) -> void:
 
 func update_animation_and_flip():
 	if velocity.length() > 10:
-		sprite.play("Walking")
+		sprite.play("andando")
 		if velocity.x > 0: sprite.flip_h = false
 		elif velocity.x < 0: sprite.flip_h = true
 
@@ -93,6 +93,7 @@ func _on_collision_area_body_entered(body: Node2D) -> void:
 			body.take_damage(5)
 
 func shoot():
+	sprite.play("atirando")
 	if timer >= 4:
 		var new_bullet = obj_tiro_azul.instantiate()
 		var direction = (player.global_position - global_position).normalized()

@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=4 uid="uid://bo2lv860jpjyn"]
+[gd_scene load_steps=15 format=4 uid="uid://bo2lv860jpjyn"]
 
 [ext_resource type="Script" uid="uid://dm3ux3o1rdq2g" path="res://Cenas/Fases/fase_rpg_2.gd" id="1_ngtvl"]
 [ext_resource type="Texture2D" uid="uid://cuats4fupmos7" path="res://Sprites/Tilesets/tilesetAZUL.png" id="2_3sieu"]
@@ -9,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://t8ghk7m4ee6n" path="res://Cenas/Geral/roda_de_dialogo.tscn" id="7_rdcca"]
 [ext_resource type="PackedScene" uid="uid://dy5ohomxyqocr" path="res://Cenas/Geral/roda_de_dialogo_2.tscn" id="8_20ehh"]
 [ext_resource type="PackedScene" uid="uid://d2m240uv3u7nj" path="res://UI_UX/fundo.tscn" id="8_hgk82"]
+[ext_resource type="PackedScene" uid="uid://btmuqo7o24djd" path="res://Cenas/Geral/chroma.tscn" id="10_qkx7a"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_ngtvl"]
 
@@ -115,18 +116,32 @@ zoom = Vector2(1.5, 1.5)
 process_callback = 0
 
 [node name="portal_volta" parent="." instance=ExtResource("4_altyx")]
-position = Vector2(-5, 26)
+position = Vector2(9, 69)
 script = ExtResource("5_20ehh")
 id_desta_fase = "Fase_RPG"
 
 [node name="ColorRect" parent="." instance=ExtResource("8_hgk82")]
-offset_left = -86997.0
-offset_top = -33880.0
-offset_right = 99008.0
-offset_bottom = 33746.0
+offset_left = -3996.0
+offset_top = -2727.0
+offset_right = 4217.0
+offset_bottom = 2947.0
 
 [node name="NPC_RPG" parent="." node_paths=PackedStringArray("portal_saida") instance=ExtResource("6_4q4ok")]
 position = Vector2(326, 52)
 cena_fase_1 = ExtResource("7_rdcca")
 cena_fase_2 = ExtResource("8_20ehh")
 portal_saida = NodePath("../portal_volta")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="chroma" parent="CanvasLayer" instance=ExtResource("10_qkx7a")]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 0.0
+offset_top = 0.0
+offset_right = 0.0
+offset_bottom = 0.0
+grow_horizontal = 2
+grow_vertical = 2
+metadata/_edit_use_anchors_ = true

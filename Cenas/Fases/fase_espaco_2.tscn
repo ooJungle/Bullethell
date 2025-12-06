@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=4 uid="uid://cfdba3cyiaxu2"]
+[gd_scene load_steps=13 format=4 uid="uid://cfdba3cyiaxu2"]
 
 [ext_resource type="Texture2D" uid="uid://c86py1otnghao" path="res://Sprites/Tilesets/tilsesetVERMELHO.png" id="1_bim4w"]
 [ext_resource type="Script" uid="uid://dgr3wj7x8jbi" path="res://Scripts/Projeteis/Fases/fase_espaco_2.gd" id="1_rhh3j"]
@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://nktj48qc0r0f" path="res://Cenas/Projeteis/Blaster.tscn" id="6_27d66"]
 [ext_resource type="Script" uid="uid://be3talp5xho6t" path="res://Scripts/Projeteis/Fases/battle_manager.gd" id="7_k2jx6"]
 [ext_resource type="PackedScene" uid="uid://d2m240uv3u7nj" path="res://UI_UX/fundo.tscn" id="8_27d66"]
+[ext_resource type="PackedScene" uid="uid://btmuqo7o24djd" path="res://Cenas/Geral/chroma.tscn" id="9_k2jx6"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_u663p"]
 vertices = PackedVector2Array(8, 8, -8, 8, -8, -8, 8, -8)
@@ -122,3 +123,17 @@ offset_left = -86664.0
 offset_top = -33914.0
 offset_right = 99341.0
 offset_bottom = 33712.0
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="chroma" parent="CanvasLayer" instance=ExtResource("9_k2jx6")]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 0.0
+offset_top = 0.0
+offset_right = 0.0
+offset_bottom = 0.0
+grow_horizontal = 2
+grow_vertical = 2
+metadata/_edit_use_anchors_ = true
