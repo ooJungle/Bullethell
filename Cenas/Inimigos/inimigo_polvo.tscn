@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://2gn7h1kpcbh8"]
+[gd_scene load_steps=12 format=3 uid="uid://2gn7h1kpcbh8"]
 
 [ext_resource type="Script" uid="uid://bpw4rey8dmhx5" path="res://Scripts/Geral/inimigo_polvo.gd" id="1_7nq0h"]
 [ext_resource type="Texture2D" uid="uid://c8ev27nrgotn" path="res://Sprites/Tilesets/Inimigos/spriteSheetPolvo.png" id="2_qacp0"]
@@ -14,6 +14,18 @@ region = Rect2(32, 0, 32, 32)
 [sub_resource type="AtlasTexture" id="AtlasTexture_nhmfn"]
 atlas = ExtResource("2_qacp0")
 region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7nq0h"]
+atlas = ExtResource("2_qacp0")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qacp0"]
+atlas = ExtResource("2_qacp0")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_75ksd"]
+atlas = ExtResource("2_qacp0")
+region = Rect2(32, 0, 32, 32)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_75ksd"]
 animations = [{
@@ -31,6 +43,15 @@ animations = [{
 "frames": [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_nhmfn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7nq0h")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qacp0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_75ksd")
 }],
 "loop": true,
 "name": &"atirando",
@@ -53,14 +74,12 @@ script = ExtResource("1_7nq0h")
 [node name="sprite" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_75ksd")
 animation = &"andando"
-frame_progress = 0.44515195
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 7)
 shape = SubResource("CapsuleShape2D_7nq0h")
 
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
-debug_enabled = true
 
 [node name="Area2D" type="Area2D" parent="."]
 collision_layer = 2

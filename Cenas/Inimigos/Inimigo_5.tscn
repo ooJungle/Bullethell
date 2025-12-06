@@ -4,7 +4,6 @@
 [ext_resource type="Texture2D" uid="uid://43vonnfep7qg" path="res://Sprites/Tilesets/Inimigos/inimigo_horrendo.png" id="2_e8bdr"]
 [ext_resource type="Texture2D" uid="uid://2vf1cnjbjpfl" path="res://Sprites/Sheets/Sprite-Sheet-GatoZumbiCompleto.png" id="2_rq2oo"]
 
-
 [sub_resource type="AtlasTexture" id="AtlasTexture_gyrmc"]
 atlas = ExtResource("2_rq2oo")
 region = Rect2(0, 0, 32, 32)
@@ -128,7 +127,6 @@ position = Vector2(0, 6)
 shape = SubResource("CircleShape2D_e8bdr")
 
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
-debug_enabled = true
 
 [node name="Area2D" type="Area2D" parent="." groups=["inimigo"]]
 position = Vector2(0, 6)

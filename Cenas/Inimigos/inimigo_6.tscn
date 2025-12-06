@@ -3,7 +3,6 @@
 [ext_resource type="Script" uid="uid://8j63cbnh1k54" path="res://Scripts/Geral/inimigo_cabeca.gd" id="1_tbf7d"]
 [ext_resource type="Texture2D" uid="uid://dk6i7l8df031s" path="res://Sprites/Sheets/spriteSheetCabecaMonstro.png" id="2_tbf7d"]
 
-
 [sub_resource type="AtlasTexture" id="AtlasTexture_irq7h"]
 atlas = ExtResource("2_tbf7d")
 region = Rect2(0, 0, 32, 32)
@@ -90,7 +89,6 @@ collision_layer = 2
 shape = SubResource("CapsuleShape2D_tbf7d")
 
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
-debug_enabled = true
 
 [node name="PerceptionTimer" type="Timer" parent="."]
 wait_time = 0.2

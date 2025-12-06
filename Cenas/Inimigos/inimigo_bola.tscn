@@ -3,7 +3,6 @@
 [ext_resource type="Script" uid="uid://den7kmot2egue" path="res://Scripts/Geral/inimigo_bola.gd" id="1_0oe2p"]
 [ext_resource type="Texture2D" uid="uid://kpxy4dwyilpw" path="res://Sprites/Tilesets/Inimigos/Inimigo_Bolas-Sheet.png" id="2_0oe2p"]
 
-
 [sub_resource type="AtlasTexture" id="AtlasTexture_m3yd2"]
 atlas = ExtResource("2_0oe2p")
 region = Rect2(0, 0, 64, 64)
@@ -183,7 +182,6 @@ position = Vector2(0, 6)
 shape = SubResource("CircleShape2D_e8bdr")
 
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
-debug_enabled = true
 
 [node name="Area2D" type="Area2D" parent="." groups=["inimigo"]]
 position = Vector2(0, 6)

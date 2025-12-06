@@ -59,16 +59,9 @@ frame_progress = 0.44515195
 position = Vector2(0, 7)
 shape = SubResource("CapsuleShape2D_7nq0h")
 
-[node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
-debug_enabled = true
-
 [node name="Area2D" type="Area2D" parent="."]
 collision_layer = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 position = Vector2(0, 7)
 shape = SubResource("CapsuleShape2D_qacp0")
-
-[node name="PerceptionTimer" type="Timer" parent="."]
-wait_time = 0.2
-autostart = true
