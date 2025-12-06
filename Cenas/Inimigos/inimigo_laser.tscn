@@ -1,9 +1,10 @@
-[gd_scene load_steps=9 format=3 uid="uid://bu7otdeikbwcr"]
+[gd_scene load_steps=10 format=3 uid="uid://bu7otdeikbwcr"]
 
 [ext_resource type="Script" uid="uid://dpe1ob6rs5koo" path="res://Scripts/Geral/inimigo_laser.gd" id="1_nkaow"]
 [ext_resource type="Texture2D" uid="uid://0lg1tna0hnmk" path="res://Sprites/Tilesets/Inimigos/inimigo_REDONDO.png" id="2_nkaow"]
 [ext_resource type="Texture2D" uid="uid://cx6ixn88ac2ge" path="res://Sprites/Projeteis/laser.png" id="3_tykgi"]
 [ext_resource type="AudioStream" uid="uid://3joxybnj71qi" path="res://Sons e Musica/Laser_SF.mp3" id="4_qr2jw"]
+[ext_resource type="AudioStream" uid="uid://dtma1gg2op1t1" path="res://Sons e Musica/_prep_laser.mp3" id="5_6rh2l"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_0nkwv"]
 radius = 37.01351
@@ -78,6 +79,11 @@ shape = SubResource("CapsuleShape2D_wcglr")
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("4_qr2jw")
+bus = &"sfx"
+
+[node name="prep_laser" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_6rh2l")
+volume_db = 7.0
 bus = &"sfx"
 
 [connection signal="body_entered" from="CollisionArea" to="." method="_on_collision_area_body_entered"]

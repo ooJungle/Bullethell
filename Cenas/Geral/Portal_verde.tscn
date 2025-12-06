@@ -2,9 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://dyf3xrfpljsqv" path="res://Sprites/Sheets/spriteSheet_portalVerde.png" id="1_e1v1s"]
 [ext_resource type="Script" uid="uid://bl8bghau78slr" path="res://Scripts/Geral/portal_verde.gd" id="1_tfeku"]
-[ext_resource type="AudioStream" uid="uid://cc275cfqq7684" path="res://Sons e Musica/portaltp.mp3" id="3_jy353"]
-
-
+[ext_resource type="AudioStream" uid="uid://qtw6kt2un7k4" path="res://Sons e Musica/new_teleporte.mp3" id="3_govv6"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_e1v1s"]
 atlas = ExtResource("1_e1v1s")
@@ -71,6 +69,6 @@ frame_progress = 0.1645751
 shape = SubResource("CircleShape2D_b55a4")
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("3_jy353")
+stream = ExtResource("3_govv6")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
