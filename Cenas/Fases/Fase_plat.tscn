@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=4 uid="uid://bd1kjomv53gnt"]
+[gd_scene load_steps=22 format=4 uid="uid://bd1kjomv53gnt"]
 
 [ext_resource type="Script" uid="uid://rpmvree5m8p3" path="res://Scripts/Projeteis/Fases/fase_plat.gd" id="1_axnnm"]
 [ext_resource type="PackedScene" uid="uid://d2m240uv3u7nj" path="res://UI_UX/fundo.tscn" id="2_ijx0c"]
@@ -136,6 +136,16 @@ shader_parameter/saturation = 1.102000052345
 shader_parameter/tint_color = Color(0, 0.84313726, 0.02745098, 1)
 shader_parameter/tint_strength = 0.2000000095
 shader_parameter/vignette_intensity = 0.4
+shader_parameter/vignette_opacity = 0.702000033345
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_qkknj"]
+shader = ExtResource("11_wbt8w")
+shader_parameter/brightness = 1.0000000475
+shader_parameter/contrast = 1.0
+shader_parameter/saturation = 0.918000043605
+shader_parameter/tint_color = Color(1, 1, 1, 1)
+shader_parameter/tint_strength = 0.50000002375
+shader_parameter/vignette_intensity = 1.0000000475
 shader_parameter/vignette_opacity = 0.702000033345
 
 [node name="Node2D" type="Node2D" node_paths=PackedStringArray("nav_region", "tilemap")]
@@ -548,3 +558,17 @@ position = Vector2(507, -1264)
 
 [node name="cristal_verde3" parent="." instance=ExtResource("14_qkknj")]
 position = Vector2(-1734, -772)
+
+[node name="CanvasModulate" type="CanvasModulate" parent="."]
+color = Color(0.6031534, 0.735357, 0.6031534, 1)
+
+[node name="Ambiente2" type="CanvasLayer" parent="."]
+
+[node name="ColorRect" type="ColorRect" parent="Ambiente2"]
+material = SubResource("ShaderMaterial_qkknj")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2

@@ -1,0 +1,93 @@
+[gd_scene load_steps=14 format=3 uid="uid://ccfgwwjp3djau"]
+
+[ext_resource type="Texture2D" uid="uid://1waps2fs887j" path="res://Sprites/Tilesets/tocha_costas.png" id="1_ego6l"]
+[ext_resource type="Script" uid="uid://b4hue6m46xrip" path="res://Scripts/Geral/luz.gd" id="2_ubxbi"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_chg7d"]
+atlas = ExtResource("1_ego6l")
+region = Rect2(0, 0, 15, 15)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vf6uq"]
+atlas = ExtResource("1_ego6l")
+region = Rect2(15, 0, 15, 15)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lmg35"]
+atlas = ExtResource("1_ego6l")
+region = Rect2(30, 0, 15, 15)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_eujsh"]
+atlas = ExtResource("1_ego6l")
+region = Rect2(45, 0, 15, 15)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4byl6"]
+atlas = ExtResource("1_ego6l")
+region = Rect2(60, 0, 15, 15)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lpoq0"]
+atlas = ExtResource("1_ego6l")
+region = Rect2(75, 0, 15, 15)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qrw54"]
+atlas = ExtResource("1_ego6l")
+region = Rect2(90, 0, 15, 15)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pxj6p"]
+atlas = ExtResource("1_ego6l")
+region = Rect2(105, 0, 15, 15)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_3rork"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_chg7d")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vf6uq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lmg35")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_eujsh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4byl6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lpoq0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qrw54")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pxj6p")
+}],
+"loop": true,
+"name": &"default",
+"speed": 13.0
+}]
+
+[sub_resource type="Gradient" id="Gradient_r2n4i"]
+offsets = PackedFloat32Array(0, 0.32022473, 1)
+colors = PackedColorArray(0.99999946, 0.950152, 0.60764116, 1, 1, 0.65882355, 0, 0.5372549, 1, 0.5764706, 0, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_2yw2g"]
+gradient = SubResource("Gradient_r2n4i")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(0.5, 0)
+
+[node name="tocha_costas" type="Node2D"]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_3rork")
+autoplay = "default"
+frame_progress = 0.19159144
+
+[node name="luz" type="PointLight2D" parent="."]
+position = Vector2(0, 7)
+scale = Vector2(5, 5)
+color = Color(1, 0.67058825, 0, 1)
+shadow_enabled = true
+texture = SubResource("GradientTexture2D_2yw2g")
+script = ExtResource("2_ubxbi")

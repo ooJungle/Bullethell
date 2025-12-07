@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=4 uid="uid://dgvk00ax3rrbo"]
+[gd_scene load_steps=29 format=4 uid="uid://dgvk00ax3rrbo"]
 
 [ext_resource type="Script" uid="uid://bl0k0fcu8kka2" path="res://Scripts/Projeteis/Fases/fase_0.gd" id="1_l7uc1"]
 [ext_resource type="PackedScene" uid="uid://d2m240uv3u7nj" path="res://UI_UX/fundo.tscn" id="1_setcl"]
@@ -15,6 +15,8 @@
 [ext_resource type="Shader" uid="uid://cdki4y1u5d4ne" path="res://Scripts/Projeteis/Fases/Fase_0.gdshader" id="16_qn66s"]
 [ext_resource type="Texture2D" uid="uid://b3xw4on0rl8mn" path="res://Sprites/Tilesets/Inimigos/rosto_mal.png" id="17_d716y"]
 [ext_resource type="PackedScene" uid="uid://dqkd2v8c08jsp" path="res://Cenas/Geral/tocha.tscn" id="17_tumva"]
+[ext_resource type="PackedScene" uid="uid://j8054vcypju4" path="res://Cenas/Geral/tocha_lado.tscn" id="19_ukt1a"]
+[ext_resource type="PackedScene" uid="uid://ccfgwwjp3djau" path="res://Cenas/Geral/tocha_costas.tscn" id="20_2gjbv"]
 [ext_resource type="PackedScene" uid="uid://of3w43relaht" path="res://Cenas/Geral/Portal_azul.tscn" id="20_ve75a"]
 [ext_resource type="PackedScene" uid="uid://dybqvnmb765cl" path="res://Cenas/Geral/Portal_verde.tscn" id="22_if8b4"]
 [ext_resource type="PackedScene" uid="uid://du6ljd75pr82g" path="res://Cenas/Geral/Portal_vermelho.tscn" id="23_8de20"]
@@ -191,7 +193,7 @@ shader_parameter/contrast = 1.0
 shader_parameter/saturation = 0.918000043605
 shader_parameter/tint_color = Color(1, 1, 1, 1)
 shader_parameter/tint_strength = 0.50000002375
-shader_parameter/vignette_intensity = 0.4
+shader_parameter/vignette_intensity = 1.0000000475
 shader_parameter/vignette_opacity = 0.702000033345
 
 [node name="Node2D" type="Node2D"]
@@ -252,6 +254,7 @@ zoom = Vector2(1.5, 1.5)
 process_callback = 0
 
 [node name="efeito" type="CanvasLayer" parent="."]
+visible = false
 
 [node name="chroma" parent="efeito" instance=ExtResource("13_gmavx")]
 visible = false
@@ -266,6 +269,7 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="Ambiente" type="CanvasLayer" parent="."]
+visible = false
 
 [node name="ColorRect" type="ColorRect" parent="Ambiente"]
 material = SubResource("ShaderMaterial_tumva")
@@ -321,9 +325,70 @@ position = Vector2(-369, 688)
 position = Vector2(15, 685)
 
 [node name="ColorRect" parent="." instance=ExtResource("1_setcl")]
-offset_left = -7639.0
-offset_top = -5611.0
-offset_right = 8510.0
-offset_bottom = 10687.0
+visible = false
+offset_left = -7749.0
+offset_top = -5696.0
+offset_right = 8400.0
+offset_bottom = 10602.0
+
+[node name="CanvasModulate" type="CanvasModulate" parent="."]
+color = Color(0.70175606, 0.70175606, 0.70175606, 1)
+
+[node name="tocha_lado" parent="." instance=ExtResource("19_ukt1a")]
+position = Vector2(639, 194)
+
+[node name="tocha_lado2" parent="." instance=ExtResource("19_ukt1a")]
+position = Vector2(639, 48)
+
+[node name="tocha_lado4" parent="." instance=ExtResource("19_ukt1a")]
+position = Vector2(639, -130)
+
+[node name="tocha_lado6" parent="." instance=ExtResource("19_ukt1a")]
+position = Vector2(639, 1181)
+
+[node name="tocha_lado8" parent="." instance=ExtResource("19_ukt1a")]
+position = Vector2(639, 998)
+
+[node name="tocha_lado9" parent="." instance=ExtResource("19_ukt1a")]
+position = Vector2(639, 816)
+
+[node name="tocha_lado13" parent="." instance=ExtResource("19_ukt1a")]
+position = Vector2(639, 1344)
+
+[node name="tocha_costas" parent="." instance=ExtResource("20_2gjbv")]
+position = Vector2(-360, 296)
+
+[node name="tocha_costas2" parent="." instance=ExtResource("20_2gjbv")]
+position = Vector2(-190, 296)
+
+[node name="tocha_costas3" parent="." instance=ExtResource("20_2gjbv")]
+position = Vector2(-8, 296)
+
+[node name="tocha_costas6" parent="." instance=ExtResource("20_2gjbv")]
+position = Vector2(183, 296)
+
+[node name="tocha_costas8" parent="." instance=ExtResource("20_2gjbv")]
+position = Vector2(395, 296)
+
+[node name="tocha_costas12" parent="." instance=ExtResource("20_2gjbv")]
+position = Vector2(-331, 1448)
+
+[node name="tocha_costas14" parent="." instance=ExtResource("20_2gjbv")]
+position = Vector2(-157, 1448)
+
+[node name="tocha_costas16" parent="." instance=ExtResource("20_2gjbv")]
+position = Vector2(50, 1448)
+
+[node name="tocha_costas18" parent="." instance=ExtResource("20_2gjbv")]
+position = Vector2(380, 1448)
+
+[node name="tocha_costas20" parent="." instance=ExtResource("20_2gjbv")]
+position = Vector2(565, 1448)
+
+[node name="tocha_costas9" parent="." instance=ExtResource("20_2gjbv")]
+position = Vector2(567, 296)
+
+[node name="tocha_costas15" parent="." instance=ExtResource("20_2gjbv")]
+position = Vector2(231, 1448)
 
 [connection signal="body_entered" from="Portal_branco" to="Portal_branco" method="_on_body_entered"]

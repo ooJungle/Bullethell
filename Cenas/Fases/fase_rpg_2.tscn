@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=4 uid="uid://bo2lv860jpjyn"]
+[gd_scene load_steps=17 format=4 uid="uid://bo2lv860jpjyn"]
 
 [ext_resource type="Script" uid="uid://dm3ux3o1rdq2g" path="res://Cenas/Fases/fase_rpg_2.gd" id="1_ngtvl"]
 [ext_resource type="Texture2D" uid="uid://cuats4fupmos7" path="res://Sprites/Tilesets/tilesetAZUL.png" id="2_3sieu"]
@@ -10,6 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://dy5ohomxyqocr" path="res://Cenas/Geral/roda_de_dialogo_2.tscn" id="8_20ehh"]
 [ext_resource type="PackedScene" uid="uid://d2m240uv3u7nj" path="res://UI_UX/fundo.tscn" id="8_hgk82"]
 [ext_resource type="PackedScene" uid="uid://btmuqo7o24djd" path="res://Cenas/Geral/chroma.tscn" id="10_qkx7a"]
+[ext_resource type="Shader" uid="uid://cdki4y1u5d4ne" path="res://Scripts/Projeteis/Fases/Fase_0.gdshader" id="11_bulm6"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_ngtvl"]
 
@@ -95,6 +96,16 @@ physics_layer_0/collision_layer = 1
 navigation_layer_0/layers = 1
 sources/0 = SubResource("TileSetAtlasSource_s3hcg")
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_o28cs"]
+shader = ExtResource("11_bulm6")
+shader_parameter/brightness = 1.0000000475
+shader_parameter/contrast = 1.0
+shader_parameter/saturation = 0.918000043605
+shader_parameter/tint_color = Color(1, 1, 1, 1)
+shader_parameter/tint_strength = 0.50000002375
+shader_parameter/vignette_intensity = 1.0000000475
+shader_parameter/vignette_opacity = 0.702000033345
+
 [node name="fase_RPG_2" type="Node2D" node_paths=PackedStringArray("nav_region", "tilemap")]
 script = ExtResource("1_ngtvl")
 nav_region = NodePath("NavigationRegion2D")
@@ -145,3 +156,17 @@ offset_bottom = 0.0
 grow_horizontal = 2
 grow_vertical = 2
 metadata/_edit_use_anchors_ = true
+
+[node name="CanvasModulate" type="CanvasModulate" parent="."]
+color = Color(0.38281417, 0.60021555, 0.735357, 1)
+
+[node name="Ambiente" type="CanvasLayer" parent="."]
+
+[node name="ColorRect" type="ColorRect" parent="Ambiente"]
+material = SubResource("ShaderMaterial_o28cs")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2

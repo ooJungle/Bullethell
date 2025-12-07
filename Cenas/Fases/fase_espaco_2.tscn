@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=4 uid="uid://cfdba3cyiaxu2"]
+[gd_scene load_steps=15 format=4 uid="uid://cfdba3cyiaxu2"]
 
 [ext_resource type="Texture2D" uid="uid://c86py1otnghao" path="res://Sprites/Tilesets/tilsesetVERMELHO.png" id="1_bim4w"]
 [ext_resource type="Script" uid="uid://dgr3wj7x8jbi" path="res://Scripts/Projeteis/Fases/fase_espaco_2.gd" id="1_rhh3j"]
@@ -9,6 +9,7 @@
 [ext_resource type="Script" uid="uid://be3talp5xho6t" path="res://Scripts/Projeteis/Fases/battle_manager.gd" id="7_k2jx6"]
 [ext_resource type="PackedScene" uid="uid://d2m240uv3u7nj" path="res://UI_UX/fundo.tscn" id="8_27d66"]
 [ext_resource type="PackedScene" uid="uid://btmuqo7o24djd" path="res://Cenas/Geral/chroma.tscn" id="9_k2jx6"]
+[ext_resource type="Shader" uid="uid://cdki4y1u5d4ne" path="res://Scripts/Projeteis/Fases/Fase_0.gdshader" id="10_kg6jl"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_u663p"]
 vertices = PackedVector2Array(8, 8, -8, 8, -8, -8, 8, -8)
@@ -92,6 +93,16 @@ physics_layer_0/collision_layer = 1
 navigation_layer_0/layers = 1
 sources/0 = SubResource("TileSetAtlasSource_5qdy1")
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_1u7bs"]
+shader = ExtResource("10_kg6jl")
+shader_parameter/brightness = 1.0000000475
+shader_parameter/contrast = 1.0
+shader_parameter/saturation = 0.918000043605
+shader_parameter/tint_color = Color(1, 1, 1, 1)
+shader_parameter/tint_strength = 0.50000002375
+shader_parameter/vignette_intensity = 1.0000000475
+shader_parameter/vignette_opacity = 0.702000033345
+
 [node name="Node2D" type="Node2D"]
 script = ExtResource("1_rhh3j")
 
@@ -123,6 +134,7 @@ offset_left = -86664.0
 offset_top = -33914.0
 offset_right = 99341.0
 offset_bottom = 33712.0
+color = Color(0.735357, 0.735357, 0.735357, 1)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
@@ -137,3 +149,17 @@ offset_bottom = 0.0
 grow_horizontal = 2
 grow_vertical = 2
 metadata/_edit_use_anchors_ = true
+
+[node name="CanvasModulate" type="CanvasModulate" parent="."]
+color = Color(0.99999946, 0.80581295, 0.80356836, 1)
+
+[node name="Ambiente" type="CanvasLayer" parent="."]
+
+[node name="ColorRect" type="ColorRect" parent="Ambiente"]
+material = SubResource("ShaderMaterial_1u7bs")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
