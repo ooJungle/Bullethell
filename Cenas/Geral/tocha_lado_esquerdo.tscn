@@ -1,30 +1,30 @@
-[gd_scene load_steps=12 format=3 uid="uid://j8054vcypju4"]
+[gd_scene load_steps=12 format=3 uid="uid://cfe7ov4nhlnpv"]
 
-[ext_resource type="Texture2D" uid="uid://cb50i8xrlce3h" path="res://Sprites/Tilesets/tocha_lado.png" id="1_7l7l3"]
-[ext_resource type="Script" uid="uid://b4hue6m46xrip" path="res://Scripts/Geral/luz.gd" id="2_en8ty"]
+[ext_resource type="Texture2D" uid="uid://cb50i8xrlce3h" path="res://Sprites/Tilesets/tocha_lado.png" id="1_xofs6"]
+[ext_resource type="Script" uid="uid://b4hue6m46xrip" path="res://Scripts/Geral/luz.gd" id="2_dmogc"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_f1x8u"]
-atlas = ExtResource("1_7l7l3")
+atlas = ExtResource("1_xofs6")
 region = Rect2(0, 0, 15, 15)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_aw3ux"]
-atlas = ExtResource("1_7l7l3")
+atlas = ExtResource("1_xofs6")
 region = Rect2(15, 0, 15, 15)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ts3o1"]
-atlas = ExtResource("1_7l7l3")
+atlas = ExtResource("1_xofs6")
 region = Rect2(30, 0, 15, 15)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_3s2d3"]
-atlas = ExtResource("1_7l7l3")
+atlas = ExtResource("1_xofs6")
 region = Rect2(45, 0, 15, 15)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_8f1im"]
-atlas = ExtResource("1_7l7l3")
+atlas = ExtResource("1_xofs6")
 region = Rect2(60, 0, 15, 15)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_1gjd3"]
-atlas = ExtResource("1_7l7l3")
+atlas = ExtResource("1_xofs6")
 region = Rect2(75, 0, 15, 15)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_yjl2e"]
@@ -63,16 +63,17 @@ fill = 1
 fill_from = Vector2(0.5, 0.5)
 fill_to = Vector2(0.5, 0)
 
-[node name="tocha_lado" type="Node2D"]
+[node name="tocha_lado_esquerdo" type="Node2D"]
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_yjl2e")
 autoplay = "default"
-frame_progress = 0.20872557
+flip_h = true
 
 [node name="luz" type="PointLight2D" parent="."]
+position = Vector2(0.99999994, 0)
 scale = Vector2(5, 5)
 color = Color(1, 0.67058825, 0, 1)
 shadow_enabled = true
 texture = SubResource("GradientTexture2D_2yw2g")
-script = ExtResource("2_en8ty")
+script = ExtResource("2_dmogc")
