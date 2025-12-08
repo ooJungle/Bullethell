@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://b4qdyri6plwbq"]
 
-[ext_resource type="Script" uid="uid://d4j0f4y3p5c4d" path="res://Scripts/dialogo.gd" id="1_y0g0c"]
+[ext_resource type="Script" uid="uid://d4j0f4y3p5c4d" path="res://Scripts/Geral/dialogo.gd" id="1_y0g0c"]
 
 [node name="Dialogo" type="CanvasLayer"]
 script = ExtResource("1_y0g0c")
@@ -25,3 +25,37 @@ offset_top = 17.0
 offset_right = 1072.68
 offset_bottom = 108.92
 scroll_active = false
+
+[node name="ColorRect2" type="ColorRect" parent="."]
+anchors_preset = -1
+anchor_right = 1.2673612
+anchor_bottom = 1.4074074
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+color = Color(0.007843138, 0.003921569, 0.078431375, 0.4392157)
+metadata/_edit_use_anchors_ = true
+
+[node name="RichTextLabel2" type="RichTextLabel" parent="ColorRect2"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 0.035
+anchor_bottom = 0.24000001
+offset_left = 40.0
+offset_top = 23.0
+offset_right = 1803.9
+offset_bottom = 710.12
+theme_override_font_sizes/normal_font_size = 37
+bbcode_enabled = true
+text = "[img=90x90]res://Sprites/Geral/estrela.png[/img] Você agora vai controlar essa estrela dentro de uma roda de diálogo. Para escolher sua resposta, mantenha ela dentro do arco que representa a alternativa desejada até que sua respectiva barra de progresso (à direita) seja totalmente preenchida.
+
+[img=90x90]res://Sprites/Projeteis/bola_vermelho.png[/img] Os projéteis vermelhos aumentam o arco vermelho e dificultam a escolha de uma resposta conservadora.
+
+[img=90x90]res://Sprites/Projeteis/bola_rosa.png[/img] Os projéteis rosa aumentam a velocidade de rotação dos arcos, tornando a permanencia no arco desejado mais desafiadora.
+
+[img=90x90]res://Sprites/Projeteis/bola_amarelo.png[/img] Os projéteis amarelos desaceleram a estrela.
+
+[img=90x90]res://Sprites/Projeteis/bola_azul.png[/img] Os projéteis azuis aparecem para te ajudar, apresentando todos os efeitos anteriores invertidos."
+scroll_active = false
+vertical_alignment = 3

@@ -81,11 +81,14 @@ func iniciar_conversa():
 	var texto_a_usar: Array[String] = []
 	if interacao_atual == 0:
 		texto_a_usar = falas_interacao_1
+		Dialogo.tutorial = true
 	elif interacao_atual == 1:
 		texto_a_usar = falas_interacao_2
+		Dialogo.tutorial = false
 	else:
 		texto_a_usar = falas_interacao_final # Texto final
-	
+		Dialogo.tutorial = false
+
 	Dialogo.start_dialogue(texto_a_usar)
 	await Dialogo.finished
 	
