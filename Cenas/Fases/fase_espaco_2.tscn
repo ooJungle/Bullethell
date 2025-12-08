@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=4 uid="uid://cfdba3cyiaxu2"]
+[gd_scene load_steps=19 format=4 uid="uid://cfdba3cyiaxu2"]
 
 [ext_resource type="Texture2D" uid="uid://c86py1otnghao" path="res://Sprites/Tilesets/tilsesetVERMELHO.png" id="1_bim4w"]
 [ext_resource type="Script" uid="uid://dgr3wj7x8jbi" path="res://Scripts/Projeteis/Fases/fase_espaco_2.gd" id="1_rhh3j"]
@@ -10,6 +10,10 @@
 [ext_resource type="PackedScene" uid="uid://d2m240uv3u7nj" path="res://UI_UX/fundo.tscn" id="8_27d66"]
 [ext_resource type="PackedScene" uid="uid://btmuqo7o24djd" path="res://Cenas/Geral/chroma.tscn" id="9_k2jx6"]
 [ext_resource type="Shader" uid="uid://cdki4y1u5d4ne" path="res://Scripts/Projeteis/Fases/Fase_0.gdshader" id="10_kg6jl"]
+[ext_resource type="PackedScene" uid="uid://dqkd2v8c08jsp" path="res://Cenas/Geral/tocha.tscn" id="11_461gt"]
+[ext_resource type="PackedScene" uid="uid://ccfgwwjp3djau" path="res://Cenas/Geral/tocha_costas.tscn" id="12_wuya5"]
+[ext_resource type="PackedScene" uid="uid://j8054vcypju4" path="res://Cenas/Geral/tocha_lado.tscn" id="13_3y8gm"]
+[ext_resource type="PackedScene" uid="uid://cfe7ov4nhlnpv" path="res://Cenas/Geral/tocha_lado_esquerdo.tscn" id="14_xlgou"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_u663p"]
 vertices = PackedVector2Array(8, 8, -8, 8, -8, -8, 8, -8)
@@ -123,6 +127,7 @@ position = Vector2(29, 61)
 [node name="Node2D" type="Node2D" parent="."]
 
 [node name="BlasterSpawner" type="Node2D" parent="Node2D"]
+z_index = 1
 script = ExtResource("5_8mtgn")
 blaster_scene = ExtResource("6_27d66")
 
@@ -163,3 +168,45 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
+
+[node name="tocha" parent="." instance=ExtResource("11_461gt")]
+position = Vector2(-303, -256)
+
+[node name="tocha2" parent="." instance=ExtResource("11_461gt")]
+position = Vector2(-110, -257)
+
+[node name="tocha3" parent="." instance=ExtResource("11_461gt")]
+position = Vector2(110, -255)
+
+[node name="tocha4" parent="." instance=ExtResource("11_461gt")]
+position = Vector2(334, -258)
+
+[node name="tocha_costas" parent="." instance=ExtResource("12_wuya5")]
+position = Vector2(-326, 392)
+
+[node name="tocha_costas2" parent="." instance=ExtResource("12_wuya5")]
+position = Vector2(-77, 392)
+
+[node name="tocha_costas3" parent="." instance=ExtResource("12_wuya5")]
+position = Vector2(112, 392)
+
+[node name="tocha_costas4" parent="." instance=ExtResource("12_wuya5")]
+position = Vector2(339, 393)
+
+[node name="tocha_lado" parent="." instance=ExtResource("13_3y8gm")]
+position = Vector2(415, 267)
+
+[node name="tocha_lado3" parent="." instance=ExtResource("13_3y8gm")]
+position = Vector2(416, 59)
+
+[node name="tocha_lado4" parent="." instance=ExtResource("13_3y8gm")]
+position = Vector2(415, -142)
+
+[node name="tocha_lado_esquerdo" parent="." instance=ExtResource("14_xlgou")]
+position = Vector2(-384, 263)
+
+[node name="tocha_lado_esquerdo2" parent="." instance=ExtResource("14_xlgou")]
+position = Vector2(-385, 80)
+
+[node name="tocha_lado_esquerdo3" parent="." instance=ExtResource("14_xlgou")]
+position = Vector2(-385, -122)
