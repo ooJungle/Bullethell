@@ -13,7 +13,6 @@
 [ext_resource type="Texture2D" uid="uid://divbo35e3qmdx" path="res://Sprites/Menu/opcoes_apagado.png" id="7_qlikg"]
 [ext_resource type="Texture2D" uid="uid://dhpv31y0qpyuj" path="res://Sprites/Menu/sair_apagado.png" id="9_re7i5"]
 
-
 [sub_resource type="AtlasTexture" id="AtlasTexture_re7i5"]
 atlas = ExtResource("2_qlikg")
 region = Rect2(0, 0, 101, 101)

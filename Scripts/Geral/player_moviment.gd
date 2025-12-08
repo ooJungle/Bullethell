@@ -44,13 +44,13 @@ var offset_visual_seta: Vector2 = Vector2(0, -8)
 @export var PLAT_SPEED: float = 250.0
 @export var PLAT_JUMP_VELOCITY: float = -1000.0
 @export var PLAT_DASH_SPEED: float = 1000.0
-@export var ghost_node : PackedScene # Arraste a cena do fantasma aqui
+@export var ghost_node : PackedScene 
 
 # --- TIMERS E MARKERS ---
 @onready var ghost_timer: Timer = $GhostTimer
 @onready var dash_timer: Timer = $DashTimer
 @onready var dash_cooldown_timer: Timer = $DashCooldown
-@onready var ponto_do_rastro: Marker2D = $PontoDoRastro # Crie um Marker2D no pé do player
+@onready var ponto_do_rastro: Marker2D = $PontoDoRastro 
 
 # --- VARIÁVEIS GERAIS ---
 var is_dashing: bool = false
@@ -97,7 +97,6 @@ func _ready() -> void:
 	if not sprite.animation_finished.is_connected(_on_sprite_animation_finished):
 		sprite.animation_finished.connect(_on_sprite_animation_finished)
 
-	# Conexão segura dos timers de Dash
 	if dash_timer and not dash_timer.timeout.is_connected(_on_dash_timer_timeout):
 		dash_timer.timeout.connect(_on_dash_timer_timeout)
 	if dash_cooldown_timer and not dash_cooldown_timer.timeout.is_connected(_on_dash_cooldown_timeout):
@@ -119,7 +118,6 @@ func _process(_delta: float) -> void:
 
 func _physics_process(delta: float) -> void:
 	if Global.paused:
-		# Lógica de pause simples para parar animações
 		if not Global.plataforma:
 			if last_move_direction.y < 0: sprite.play("idle_costas")
 			elif last_move_direction.y > 0: sprite.play("idle_frente")
@@ -144,55 +142,75 @@ func _physics_process(delta: float) -> void:
 	# Input de Dash Geral
 	if Input.is_action_just_pressed("dash") and can_dash and pode_se_mexer:
 		if Global.plataforma:
-			start_platform_dash()
+			# Impede dash se estiver no meio do ataque na plataforma
+			if not atacando: 
+				start_platform_dash()
 		else:
 			iniciar_dash_topdown()
 
-	# Bloqueio de Ataque
+	# Bloqueio de Ataque (Lógica Original TopDown + Segurança Plataforma)
 	if atacando and not sprite.animation in ["ataque_frente", "ataque_costas", "ataque_lado"]:
 		atacando = false
 		hitbox_colisao.disabled = true
 
-	if atacando:
-		velocity = Vector2.ZERO
-		move_and_slide()
-		return
+	# --- RESTAURAÇÃO LÓGICA TOP-DOWN ORIGINAL ---
+	if not Global.plataforma:
+		if atacando:
+			velocity = Vector2.ZERO
+			move_and_slide()
+			return # Isso existia no seu código original topdown
 
 	# Ataque Carregado
 	processar_ataque_carregado(delta)
 
-	# --- LÓGICA PLATAFORMA ---
+	# --- LÓGICA PLATAFORMA (SOMENTE AQUI FOI MEXIDO) ---
 	if Global.plataforma:
 		# 1. Gravidade
 		if not is_on_floor():
 			velocity += get_gravity() * delta
 
-		# 2. Pulo Variável
+		# 2. TRAVA DE ATAQUE (FIX: Prioriza animação de ataque)
+		if atacando:
+			# Para o movimento horizontal e aplica atrito básico
+			velocity.x = move_toward(velocity.x, 0, PLAT_SPEED)
+			move_and_slide()
+			return # IMPORTANTE: Retorna para impedir que o código abaixo troque a animação para 'idle' ou 'run'
+
+		# 3. Pulo Variável
 		if Input.is_action_just_pressed("ui_accept") and is_on_floor() and pode_se_mexer:
 			velocity.y = PLAT_JUMP_VELOCITY
 
 		if Input.is_action_just_released("ui_accept") and velocity.y < 0:
-			velocity.y *= 0.5 # Corte de pulo
+			velocity.y *= 0.5 
 
-		# 3. Movimento Horizontal
+		# 4. Movimento Horizontal
 		var direction := Input.get_axis("move_left", "move_right")
 		if direction and pode_se_mexer:
 			velocity.x = direction * PLAT_SPEED
+			
+			# FIX: Atualiza last_move_direction na plataforma para o ataque sair pro lado certo
+			if direction > 0:
+				last_move_direction = Vector2.RIGHT
+			elif direction < 0:
+				last_move_direction = Vector2.LEFT
 		else:
 			velocity.x = move_toward(velocity.x, 0, PLAT_SPEED)
 
-		# 4. Virar Sprite
+		# 5. Virar Sprite
 		if direction > 0:
 			sprite.flip_h = true
 		elif direction < 0:
 			sprite.flip_h = false
 
-		# 5. Sistema de Animações (Plataforma)
+		# 6. Sistema de Animações (Plataforma)
 		atualizar_animacao_plataforma(direction)
+		
+		# Move e desliza (necessário adicionar pois no topdown original ele estava fora do else)
+		move_and_slide()
 
-	# --- LÓGICA TOP-DOWN ---
+	# --- LÓGICA TOP-DOWN (RESTAURADA ORIGINAL) ---
 	else:
-		atualizar_fator_tempo() # Mecânica de buracos negros
+		atualizar_fator_tempo() 
 
 		var forca_externa = calcular_forcas_externas()
 		velocity += forca_externa * delta
@@ -212,7 +230,6 @@ func _physics_process(delta: float) -> void:
 		else:
 			velocity = Vector2.ZERO
 			
-			# Idle TopDown simples
 			if last_move_direction.y < 0: sprite.play("idle_costas")
 			elif last_move_direction.y > 0: sprite.play("idle_frente")
 			else: sprite.play("idle_lado")
@@ -235,7 +252,6 @@ func atualizar_animacao_plataforma(direction: float):
 			tempo_idle_plat = 0
 			if sprite.sprite_frames.has_animation("run"): sprite.play("run")
 	else:
-		# Animações de pulo
 		if velocity.y < 0:
 			if sprite.sprite_frames.has_animation("jump_up"): sprite.play("jump_up")
 		elif velocity.y >= 0 and velocity.y < 250:
@@ -284,10 +300,9 @@ func atualizar_animacao_movimento_topdown(input_direction: Vector2):
 			if sprite.animation != "idle_frente":
 				sprite.play("idle_frente")
 
-# --- SISTEMA DE DASH (Plataforma vs TopDown) ---
+# --- SISTEMA DE DASH ---
 
 func start_platform_dash() -> void:
-	# Ativa partículas se existirem
 	if has_node("GPUParticles2D"):
 		$GPUParticles2D.emitting = true
 
@@ -305,7 +320,8 @@ func start_platform_dash() -> void:
 	var dash_direction = Vector2(dash_direction_x, dash_direction_y).normalized()
 
 	if dash_direction == Vector2.ZERO:
-		var facing_direction = -1 if sprite.flip_h else 1
+		var facing_direction = -1 if not sprite.flip_h else 1 # Ajuste para flip_h atual
+		if sprite.flip_h: facing_direction = 1
 		dash_direction = Vector2(facing_direction, 0)
 
 	velocity = dash_direction * PLAT_DASH_SPEED
@@ -332,8 +348,6 @@ func iniciar_dash_topdown():
 
 	await get_tree().create_timer(dash_cooldown).timeout
 	can_dash = true
-
-# --- FUNÇÕES DE TIMER DO DASH PLATAFORMA ---
 
 func _on_dash_timer_timeout() -> void:
 	if has_node("GPUParticles2D"):
@@ -390,9 +404,9 @@ func processar_ataque_carregado(delta: float):
 		
 	elif Input.is_action_just_released("attack"):
 		if esta_carregando:
-			if carga_atual >= tempo_para_carregar: 
+			if carga_atual >= tempo_para_carregar:
 				iniciar_ataque(true)
-			else: 
+			else:
 				iniciar_ataque(false)
 		resetar_carga()
 		
@@ -415,11 +429,19 @@ func iniciar_ataque(com_projetil: bool):
 	
 	if com_projetil: lancar_projetil()
 
-	if last_move_direction.y < 0: sprite.play("ataque_costas")
-	elif last_move_direction.y > 0: sprite.play("ataque_frente")
-	elif last_move_direction.x != 0:
+	# --- MODIFICADO APENAS AQUI PARA PLATAFORMA ---
+	if Global.plataforma:
+		# Na plataforma é sempre ataque lateral
 		sprite.play("ataque_lado")
+		# Usa last_move_direction para flipar corretamente na plataforma
 		sprite.flip_h = (last_move_direction.x > 0)
+	else:
+		# --- TOP DOWN ORIGINAL ---
+		if last_move_direction.y < 0: sprite.play("ataque_costas")
+		elif last_move_direction.y > 0: sprite.play("ataque_frente")
+		elif last_move_direction.x != 0:
+			sprite.play("ataque_lado")
+			sprite.flip_h = (last_move_direction.x > 0)
 	
 	som_ataque.pitch_scale = randf_range(0.5, 2.0)
 	som_ataque.play()
@@ -434,18 +456,29 @@ func lancar_projetil():
 	get_tree().current_scene.add_child(beam)
 
 func posicionar_hitbox():
-	if last_move_direction.y < 0:
-		hitbox.position = Vector2(11.5, -10)
-		hitbox.rotation_degrees = -90
-	elif last_move_direction.y > 0:
-		hitbox.position = Vector2(-11.5, -5)
-		hitbox.rotation_degrees = 90
-	elif last_move_direction.x > 0:
-		hitbox.position = Vector2(0, 0)
-		hitbox.rotation_degrees = 0
-	elif last_move_direction.x < 0:
-		hitbox.position = Vector2(0, -23)
-		hitbox.rotation_degrees = 180
+	# Mesma lógica do iniciar_ataque: Separa plataforma do resto
+	if Global.plataforma:
+		# Lógica simples para plataforma (só esquerda/direita)
+		if last_move_direction.x > 0:
+			hitbox.position = Vector2(0, 0)
+			hitbox.rotation_degrees = 0
+		else: # Assumindo esquerda
+			hitbox.position = Vector2(0, -23)
+			hitbox.rotation_degrees = 180
+	else:
+		# --- TOP DOWN ORIGINAL ---
+		if last_move_direction.y < 0:
+			hitbox.position = Vector2(11.5, -10)
+			hitbox.rotation_degrees = -90
+		elif last_move_direction.y > 0:
+			hitbox.position = Vector2(-11.5, -5)
+			hitbox.rotation_degrees = 90
+		elif last_move_direction.x > 0:
+			hitbox.position = Vector2(0, 0)
+			hitbox.rotation_degrees = 0
+		elif last_move_direction.x < 0:
+			hitbox.position = Vector2(0, -23)
+			hitbox.rotation_degrees = 180
 
 func verificar_dano_nos_inimigos():
 	await get_tree().physics_frame
@@ -465,9 +498,12 @@ func _on_sprite_animation_finished():
 		atacando = false
 		pode_atacar = true
 		hitbox_colisao.disabled = true
-		if last_move_direction.y < 0: sprite.play("idle_costas")
-		elif last_move_direction.y > 0: sprite.play("idle_frente")
-		else: sprite.play("idle_lado")
+		
+		# Restaura animação idle no top-down (como no original)
+		if not Global.plataforma:
+			if last_move_direction.y < 0: sprite.play("idle_costas")
+			elif last_move_direction.y > 0: sprite.play("idle_frente")
+			else: sprite.play("idle_lado")
 
 func resetar_combate():
 	atacando = false
@@ -502,7 +538,7 @@ func _on_dano_timer_timeout() -> void:
 
 func ativar_seta_guia(posicao_do_portal: Vector2):
 	alvo_seta = posicao_do_portal
-	if seta_pivo: 
+	if seta_pivo:
 		seta_pivo.visible = true
 		seta_pivo.z_index = 100
 
