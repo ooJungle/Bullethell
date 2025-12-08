@@ -1,8 +1,10 @@
-[gd_scene load_steps=12 format=3 uid="uid://dybqvnmb765cl"]
+[gd_scene load_steps=15 format=3 uid="uid://dybqvnmb765cl"]
 
 [ext_resource type="Texture2D" uid="uid://dyf3xrfpljsqv" path="res://Sprites/Sheets/spriteSheet_portalVerde.png" id="1_e1v1s"]
 [ext_resource type="Script" uid="uid://bl8bghau78slr" path="res://Scripts/Geral/portal_verde.gd" id="1_tfeku"]
 [ext_resource type="AudioStream" uid="uid://qtw6kt2un7k4" path="res://Sons e Musica/new_teleporte.mp3" id="3_govv6"]
+[ext_resource type="Shader" uid="uid://ccs370ls56tkk" path="res://Cenas/Geral/Portal_verde.gdshader" id="4_c6f2d"]
+[ext_resource type="Texture2D" uid="uid://bt5socl2sy4jw" path="res://UI_UX/efeito_distorcao.png" id="5_24fiv"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_e1v1s"]
 atlas = ExtResource("1_e1v1s")
@@ -57,6 +59,13 @@ animations = [{
 [sub_resource type="CircleShape2D" id="CircleShape2D_b55a4"]
 radius = 30.066593
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_0gj2x"]
+shader = ExtResource("4_c6f2d")
+shader_parameter/pulse_speed = 3.0
+shader_parameter/falloff_min = 0.01
+shader_parameter/falloff_max = 0.05
+shader_parameter/intensity = 3.0
+
 [node name="Portal_verde" type="Area2D"]
 script = ExtResource("1_tfeku")
 
@@ -70,5 +79,10 @@ shape = SubResource("CircleShape2D_b55a4")
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("3_govv6")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_0gj2x")
+scale = Vector2(0.15, 0.15)
+texture = ExtResource("5_24fiv")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

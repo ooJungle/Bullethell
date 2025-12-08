@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://bcy00foe0uxsx"]
 
-[ext_resource type="Texture2D" uid="uid://dtfya46fnxhud" path="res://Sprites/Projeteis/tiro_roxo.png" id="1_daehv"]
 [ext_resource type="Script" uid="uid://cxsg8h7qabkw2" path="res://Scripts/Projeteis/projetil_espiral.gd" id="1_ola5w"]
+[ext_resource type="Texture2D" uid="uid://d0ndgaijtmc5t" path="res://Sprites/Projeteis/bullet_cactobolas.png" id="2_3qvk7"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ola5w"]
 radius = 7.0
@@ -11,7 +11,7 @@ script = ExtResource("1_ola5w")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 visible = false
-texture = ExtResource("1_daehv")
+texture = ExtResource("2_3qvk7")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_ola5w")
