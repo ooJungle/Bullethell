@@ -341,6 +341,7 @@ safe_margin = 0.08
 [node name="Camera2D" type="Camera2D" parent="player"]
 position = Vector2(48, 28)
 zoom = Vector2(1.5, 1.5)
+process_callback = 0
 
 [node name="PauseMenu" parent="player" instance=ExtResource("3_1c0qe")]
 unique_name_in_owner = true

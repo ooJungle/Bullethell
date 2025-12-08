@@ -183,7 +183,6 @@ func spawn_bullet(scene: PackedScene, direction: Vector2, speed: float):
 	new_bullet.velocity = direction * speed
 	
 	get_tree().current_scene.add_child(new_bullet)
-	add_collision_exception_with(new_bullet)
 
 func shoot():
 	# --- ANIMATION TRIGGER ---

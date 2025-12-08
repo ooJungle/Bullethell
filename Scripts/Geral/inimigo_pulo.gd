@@ -20,17 +20,12 @@ var tempo_knockback = 0.0
 @onready var visual_node: Node2D = $Visual
 @onready var sombra_sprite: Sprite2D = $Sombra
 @onready var sprite: AnimatedSprite2D = $Visual/Sprite
-@onready var hitbox: Area2D = $Visual/Hitbox 
 @onready var spawner_tiro: Marker2D = $Visual/SpawnerTiro
 
 func _ready() -> void:
 	add_to_group("inimigo")
 	player = get_tree().get_first_node_in_group("players")
 	tempo_para_pulo = randf_range(1.0, 3.0)
-	
-	if hitbox:
-		if not hitbox.body_entered.is_connected(_on_hitbox_body_entered):
-			hitbox.body_entered.connect(_on_hitbox_body_entered)
 
 func _physics_process(delta: float) -> void:
 	if Global.paused: return
