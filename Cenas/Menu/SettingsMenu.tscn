@@ -13,7 +13,6 @@
 [ext_resource type="Texture2D" uid="uid://c3016t7l6mf0v" path="res://Sprites/Menu/muscia.png" id="8_iikuj"]
 [ext_resource type="Texture2D" uid="uid://ycc5sda0x8k8" path="res://Sprites/Menu/sfx.png" id="9_07vh6"]
 
-
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_eke6s"]
 texture = ExtResource("4_f8bue")
 texture_margin_left = 4.0
