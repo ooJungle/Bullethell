@@ -44,14 +44,19 @@ var offset_visual_seta: Vector2 = Vector2(0, -8)
 @export var PLAT_SPEED: float = 250.0
 @export var PLAT_JUMP_VELOCITY: float = -1000.0
 @export var PLAT_DASH_SPEED: float = 1000.0
-@export var ghost_node : PackedScene # Arraste a cena do fantasma aqui
+@export var ghost_node : PackedScene
+
+# --- COYOTE TIME & JUMP BUFFER ---
+const COYOTE_TIME = 0.15
+const JUMP_BUFFER_TIME = 0.15
+var coyote_time_counter = 0.0
+var jump_buffer_counter = 0.0
 
 # --- TIMERS E MARKERS ---
-# Se não existirem na cena, crie nós Timer filhos do Player com esses nomes
 @onready var ghost_timer: Timer = $GhostTimer 
 @onready var dash_timer: Timer = $DashTimer
 @onready var dash_cooldown_timer: Timer = $DashCooldown
-@onready var ponto_do_rastro: Marker2D = $PontoDoRastro # Crie um Marker2D no pé do player
+@onready var ponto_do_rastro: Marker2D = $PontoDoRastro
 
 # --- VARIÁVEIS GERAIS ---
 var is_dashing: bool = false
@@ -60,7 +65,7 @@ var vida_maxima: int = 300
 var vida: int = vida_maxima
 var buraco_negro_proximo: Node2D = null
 var buraco_minhoca_proximo: Node2D = null
-var last_move_direction: Vector2 = Vector2.DOWN
+var last_move_direction: Vector2 = Vector2.RIGHT # Inicia virado para direita
 
 var tem_arma: bool = true
 var pode_atacar: bool = true
@@ -98,7 +103,6 @@ func _ready() -> void:
 	if not sprite.animation_finished.is_connected(_on_sprite_animation_finished):
 		sprite.animation_finished.connect(_on_sprite_animation_finished)
 		
-	# Conexão segura dos timers de Dash (Plataforma)
 	if dash_timer and not dash_timer.timeout.is_connected(_on_dash_timer_timeout):
 		dash_timer.timeout.connect(_on_dash_timer_timeout)
 	if dash_cooldown_timer and not dash_cooldown_timer.timeout.is_connected(_on_dash_cooldown_timeout):
@@ -120,24 +124,10 @@ func _process(_delta: float) -> void:
 
 func _physics_process(delta: float) -> void:
 	if Global.paused:
-		# Lógica de pause simples para parar animações
-		if not Global.plataforma:
-			if last_move_direction.y < 0: sprite.play("idle_costas")
-			elif last_move_direction.y > 0: sprite.play("idle_frente")
-			else: sprite.play("idle_lado")
-		if barra_carga:
-			barra_carga.visible = false
-			esta_carregando = false 
-			carga_atual = 0.0
 		return
 
-	# Se estiver dashando (Modo Plataforma trava movimento normal)
-	if is_dashing and Global.plataforma:
-		move_and_slide()
-		return
-
-	# Dash Top-Down (Modo Antigo)
-	if not Global.plataforma and is_dashing:
+	# Se estiver dashando
+	if is_dashing:
 		move_and_slide()
 		return
 
@@ -148,13 +138,19 @@ func _physics_process(delta: float) -> void:
 		else:
 			iniciar_dash_topdown()
 
-	# Bloqueio de Ataque
+	# Bloqueio de Ataque e Cancelamento
 	if atacando and not sprite.animation in ["ataque_frente", "ataque_costas", "ataque_lado"]:
 		atacando = false
 		hitbox_colisao.disabled = true
 
 	if atacando:
-		velocity = Vector2.ZERO
+		# No modo plataforma, aplicamos gravidade mesmo atacando (opcional, remova se quiser travar no ar)
+		if Global.plataforma and not is_on_floor():
+			velocity += get_gravity() * delta
+		else:
+			velocity.x = 0
+			if not Global.plataforma: velocity.y = 0
+			
 		move_and_slide()
 		return
 
@@ -164,36 +160,65 @@ func _physics_process(delta: float) -> void:
 	# --- LÓGICA PLATAFORMA ---
 	if Global.plataforma:
 		
-		# 1. Gravidade
+		# 1. Coyote Time
+		if is_on_floor():
+			coyote_time_counter = COYOTE_TIME
+		else:
+			coyote_time_counter -= delta
+
+		# 2. Jump Buffer
+		if Input.is_action_just_pressed("ui_accept"):
+			jump_buffer_counter = JUMP_BUFFER_TIME
+		else:
+			jump_buffer_counter -= delta
+
+		# 3. Gravidade
 		if not is_on_floor():
 			velocity += get_gravity() * delta
 
-		# 2. Pulo Variável
-		if Input.is_action_just_pressed("ui_accept") and is_on_floor() and pode_se_mexer:
+		# 4. Pulo
+		if jump_buffer_counter > 0 and coyote_time_counter > 0 and pode_se_mexer:
 			velocity.y = PLAT_JUMP_VELOCITY
+			jump_buffer_counter = 0
+			coyote_time_counter = 0
 		
 		if Input.is_action_just_released("ui_accept") and velocity.y < 0:
-			velocity.y *= 0.5 # Corte de pulo
+			velocity.y *= 0.5 
 
-		# 3. Movimento Horizontal
-		var direction := Input.get_axis("move_left", "move_right")
-		if direction and pode_se_mexer:
-			velocity.x = direction * PLAT_SPEED
+		# 5. Movimento Horizontal e Vertical (Aiming)
+		var direction_x := Input.get_axis("move_left", "move_right")
+		var direction_y := Input.get_axis("move_up", "move_down") # Captura Cima/Baixo
+		
+		if direction_x and pode_se_mexer:
+			velocity.x = direction_x * PLAT_SPEED
 		else:
 			velocity.x = move_toward(velocity.x, 0, PLAT_SPEED)
 		
-		# 4. Virar Sprite
-		if direction > 0:
+		# --- ATUALIZAÇÃO DA DIREÇÃO DO OLHAR (CRUCIAL PARA O ATAQUE) ---
+		if pode_se_mexer:
+			if direction_y < 0: # Olhando para Cima
+				last_move_direction = Vector2.UP
+			elif direction_y > 0: # Olhando para Baixo
+				last_move_direction = Vector2.DOWN
+			elif direction_x != 0: # Olhando para os lados
+				last_move_direction = Vector2(direction_x, 0).normalized()
+			# Se nada for apertado, mantém a last_move_direction anterior (lados)
+		
+		# Virar Sprite horizontalmente apenas se estiver movendo X ou atacando de lado
+		if direction_x > 0:
 			sprite.flip_h = true
-		elif direction < 0:
+		elif direction_x < 0:
 			sprite.flip_h = false
 			
-		# 5. Sistema de Animações (Plataforma)
-		atualizar_animacao_plataforma(direction)
+		# 6. Sistema de Animações Atualizado
+		atualizar_animacao_plataforma(direction_x, direction_y)
 	
 	# --- LÓGICA TOP-DOWN ---
 	else:
-		atualizar_fator_tempo() # Mecânica de buracos negros
+		coyote_time_counter = 0
+		jump_buffer_counter = 0
+		
+		atualizar_fator_tempo()
 		
 		var forca_externa = calcular_forcas_externas()
 		velocity += forca_externa * delta
@@ -212,7 +237,6 @@ func _physics_process(delta: float) -> void:
 				atualizar_animacao_movimento_topdown(input_direction)
 		else:
 			velocity = Vector2.ZERO
-			# Idle TopDown simples
 			if last_move_direction.y < 0: sprite.play("idle_costas")
 			elif last_move_direction.y > 0: sprite.play("idle_frente")
 			else: sprite.play("idle_lado")
@@ -221,27 +245,65 @@ func _physics_process(delta: float) -> void:
 	handle_enemy_bounce()
 	global_position = global_position.round()
 
-# --- ANIMAÇÕES (SEPARADAS POR MODO) ---
+# --- ANIMAÇÕES ---
 
-func atualizar_animacao_plataforma(direction: float):
-	if is_on_floor():
-		if direction == 0:
-			tempo_idle_plat += get_process_delta_time()
-			if tempo_idle_plat >= 2:
-				if sprite.sprite_frames.has_animation("idle"): sprite.play("idle")
+func atualizar_animacao_plataforma(dir_x: float, dir_y: float):
+	# Se estiver atacando, não troca a animação aqui (controlado pelo atacar)
+	if atacando: return
+
+	# Prioridade: Ar -> Chão (Mirando Cima/Baixo ou Correndo)
+	
+	if not is_on_floor():
+		# ANIMAÇÕES DE PULO/AR
+		if dir_y < 0: # Mirando pra cima no ar
+			if sprite.sprite_frames.has_animation("jump_up_look"): # Se tiver animação específica
+				sprite.play("jump_up_look")
+			elif sprite.sprite_frames.has_animation("idle_costas"): # Reusa idle costas
+				sprite.play("idle_costas")
+		elif dir_y > 0: # Mirando pra baixo no ar
+			if sprite.sprite_frames.has_animation("jump_down_look"):
+				sprite.play("jump_down_look")
+			elif sprite.sprite_frames.has_animation("idle_frente"):
+				sprite.play("idle_frente")
+		else:
+			# Pulo normal lateral
+			if velocity.y < 0:
+				if sprite.sprite_frames.has_animation("jump_up"): sprite.play("jump_up")
+			elif velocity.y >= 0 and velocity.y < 250:
+				if sprite.sprite_frames.has_animation("jump_middle"): sprite.play("jump_middle")
 			else:
-				if sprite.sprite_frames.has_animation("parado"): sprite.play("parado")
-		else:
-			tempo_idle_plat = 0
-			if sprite.sprite_frames.has_animation("run"): sprite.play("run")
+				if sprite.sprite_frames.has_animation("jump_down"): sprite.play("jump_down")
 	else:
-		# Animações de pulo
-		if velocity.y < 0:
-			if sprite.sprite_frames.has_animation("jump_up"): sprite.play("jump_up")
-		elif velocity.y >= 0 and velocity.y < 250:
-			if sprite.sprite_frames.has_animation("jump_middle"): sprite.play("jump_middle")
+		# NO CHÃO
+		if dir_y < 0:
+			# OLHANDO/ANDANDO PARA CIMA (Usando animações 'costas' do topdown)
+			if dir_x != 0:
+				# Correndo mirando pra cima
+				if sprite.sprite_frames.has_animation("andando_costas"): sprite.play("andando_costas")
+			else:
+				# Parado mirando pra cima
+				if sprite.sprite_frames.has_animation("idle_costas"): sprite.play("idle_costas")
+				
+		elif dir_y > 0:
+			# OLHANDO/ANDANDO PARA BAIXO (Agachado ou 'frente' do topdown)
+			if dir_x != 0:
+				# Crawl / Andar agachado
+				if sprite.sprite_frames.has_animation("andando_frente"): sprite.play("andando_frente")
+			else:
+				# Agachado parado
+				if sprite.sprite_frames.has_animation("idle_frente"): sprite.play("idle_frente")
+		
 		else:
-			if sprite.sprite_frames.has_animation("jump_down"): sprite.play("jump_down")
+			# LATERAL PADRÃO
+			if dir_x == 0:
+				tempo_idle_plat += get_process_delta_time()
+				if tempo_idle_plat >= 2:
+					if sprite.sprite_frames.has_animation("idle"): sprite.play("idle")
+				else:
+					if sprite.sprite_frames.has_animation("parado"): sprite.play("parado")
+			else:
+				tempo_idle_plat = 0
+				if sprite.sprite_frames.has_animation("run"): sprite.play("run")
 
 func atualizar_animacao_movimento_topdown(input_direction: Vector2):
 	if velocity.length() > 10.0:
@@ -287,7 +349,6 @@ func atualizar_animacao_movimento_topdown(input_direction: Vector2):
 # --- SISTEMA DE DASH (Plataforma vs TopDown) ---
 
 func start_platform_dash() -> void:
-	# Ativa partículas se existirem
 	if has_node("GPUParticles2D"):
 		$GPUParticles2D.emitting = true
 		
@@ -305,8 +366,12 @@ func start_platform_dash() -> void:
 	var dash_direction = Vector2(dash_direction_x, dash_direction_y).normalized()
 
 	if dash_direction == Vector2.ZERO:
-		var facing_direction = -1 if sprite.flip_h else 1
-		dash_direction = Vector2(facing_direction, 0)
+		# No dash plataforma, se não apertar nada, vai na direção do olhar (last_move_direction) ou frente sprite
+		if last_move_direction.x != 0:
+			dash_direction = Vector2(last_move_direction.x, 0)
+		else:
+			var facing = -1 if not sprite.flip_h else 1 # Fallback
+			dash_direction = Vector2(facing, 0)
 		
 	velocity = dash_direction * PLAT_DASH_SPEED
 	
@@ -331,8 +396,6 @@ func iniciar_dash_topdown():
 	
 	await get_tree().create_timer(dash_cooldown).timeout
 	can_dash = true
-
-# --- FUNÇÕES DE TIMER DO DASH PLATAFORMA ---
 
 func _on_dash_timer_timeout() -> void:
 	if has_node("GPUParticles2D"):
@@ -402,14 +465,21 @@ func iniciar_ataque(com_projetil: bool):
 	atacando = true
 	pode_atacar = false
 	hitbox_colisao.disabled = false
+	
+	# Garante que a hitbox vá para o lugar certo baseado na last_move_direction atualizada
 	posicionar_hitbox()
+	
 	if com_projetil: lancar_projetil()
 	
-	if last_move_direction.y < 0: sprite.play("ataque_costas")
-	elif last_move_direction.y > 0: sprite.play("ataque_frente")
-	elif last_move_direction.x != 0:
-		sprite.play("ataque_lado")
+	# Toca animação baseada na direção (funciona para plataforma E topdown agora)
+	if last_move_direction.y < 0: 
+		sprite.play("ataque_costas") # Ataque pra cima
+	elif last_move_direction.y > 0: 
+		sprite.play("ataque_frente") # Ataque pra baixo
+	else:
+		sprite.play("ataque_lado") # Ataque lado
 		sprite.flip_h = (last_move_direction.x > 0)
+		
 	som_ataque.pitch_scale = randf_range(0.5, 2.0)
 	som_ataque.play()
 	verificar_dano_nos_inimigos()
@@ -423,14 +493,15 @@ func lancar_projetil():
 	get_tree().current_scene.add_child(beam)
 
 func posicionar_hitbox():
-	if last_move_direction.y < 0:
-		hitbox.position = Vector2(11.5, -10); hitbox.rotation_degrees = -90
-	elif last_move_direction.y > 0:
-		hitbox.position = Vector2(-11.5, -5); hitbox.rotation_degrees = 90
-	elif last_move_direction.x > 0:
-		hitbox.position = Vector2(0, 0); hitbox.rotation_degrees = 0
-	elif last_move_direction.x < 0:
-		hitbox.position = Vector2(0, -23); hitbox.rotation_degrees = 180
+	# Ajuste as posições conforme o tamanho do seu sprite
+	if last_move_direction.y < 0: # Cima
+		hitbox.position = Vector2(0, -25); hitbox.rotation_degrees = -90
+	elif last_move_direction.y > 0: # Baixo
+		hitbox.position = Vector2(0, 10); hitbox.rotation_degrees = 90
+	elif last_move_direction.x > 0: # Direita
+		hitbox.position = Vector2(15, 0); hitbox.rotation_degrees = 0
+	elif last_move_direction.x < 0: # Esquerda
+		hitbox.position = Vector2(-15, 0); hitbox.rotation_degrees = 180
 
 func verificar_dano_nos_inimigos():
 	await get_tree().physics_frame
@@ -448,9 +519,15 @@ func _on_sprite_animation_finished():
 		atacando = false
 		pode_atacar = true
 		hitbox_colisao.disabled = true
-		if last_move_direction.y < 0: sprite.play("idle_costas")
-		elif last_move_direction.y > 0: sprite.play("idle_frente")
-		else: sprite.play("idle_lado")
+		# Retorna para a animação correta após ataque
+		if Global.plataforma:
+			var dx = Input.get_axis("move_left", "move_right")
+			var dy = Input.get_axis("move_up", "move_down")
+			atualizar_animacao_plataforma(dx, dy)
+		else:
+			if last_move_direction.y < 0: sprite.play("idle_costas")
+			elif last_move_direction.y > 0: sprite.play("idle_frente")
+			else: sprite.play("idle_lado")
 
 func resetar_combate():
 	atacando = false

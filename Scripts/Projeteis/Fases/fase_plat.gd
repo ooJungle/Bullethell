@@ -3,7 +3,7 @@ extends Node2D
 @onready var portal_volta = $portal_volta
 @onready var colisao_portal = $portal_volta/CollisionShape2D
 @onready var musica_inicio: AudioStreamPlayer = $AudioStreamPlayer2D
-
+@onready var camera_shake: AnimationPlayer = $player/Camera2D/AnimationPlayer
 var total_cristais = 0
 var cristais_quebrados = 0
 
@@ -120,6 +120,8 @@ func controlar_audio():
 func _on_cristal_quebrado():
 	cristais_quebrados += 1
 	print("Cristal quebrado! ", cristais_quebrados, "/", total_cristais)
+	if cristais_quebrados >= 3:
+		camera_shake.play("camera_shake")
 	
 	if cristais_quebrados >= total_cristais:
 		Global.plataforma = true
