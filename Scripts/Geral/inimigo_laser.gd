@@ -138,6 +138,7 @@ func mudar_para_estado(novoEstado: Estado):
 			laserbeam.visible = true
 			ray_cast_2d.enabled = true
 			alvo_atingido_neste_tiro = false
+			prep_laser.stop()
 		Estado.COOLDOWN:
 			state_timer = randf_range(3, tiroCooldown)
 		Estado.IDLE:

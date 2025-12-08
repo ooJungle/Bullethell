@@ -83,7 +83,7 @@ bus = &"sfx"
 
 [node name="prep_laser" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("5_6rh2l")
-volume_db = 7.0
+volume_db = 15.0
 bus = &"sfx"
 
 [connection signal="body_entered" from="CollisionArea" to="." method="_on_collision_area_body_entered"]

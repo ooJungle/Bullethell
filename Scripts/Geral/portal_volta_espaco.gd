@@ -1,6 +1,8 @@
 extends Area2D
+@onready var audio: AudioStreamPlayer = $AudioStreamPlayer
 
 func _on_body_entered(body):
+	audio.play()
 	if body.is_in_group("players"):
 		call_deferred("voltar_para_hub")
 

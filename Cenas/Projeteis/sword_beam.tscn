@@ -3,7 +3,6 @@
 [ext_resource type="Texture2D" uid="uid://xici2bepchya" path="res://Sprites/Geral/concavo.png" id="1_7qrga"]
 [ext_resource type="Script" uid="uid://c6idweuta3buu" path="res://Scripts/Geral/sword_beam.gd" id="1_dyecq"]
 
-
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_t3wtv"]
 radius = 11.0
 

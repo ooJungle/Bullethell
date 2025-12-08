@@ -8,6 +8,7 @@ extends Node2D
 # --- REFERÊNCIA AO PORTAL (ADICIONADO) ---
 # O nó na cena precisa ter este nome para o script encontrá-lo
 @onready var portal_volta = $portal_volta 
+@onready var audio: AudioStreamPlayer = $AudioStreamPlayer
 
 # --- LISTA DE INIMIGOS ---
 var enemies_list = [

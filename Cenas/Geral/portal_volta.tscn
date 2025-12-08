@@ -1,8 +1,8 @@
-[gd_scene load_steps=11 format=3 uid="uid://bf4kxcsfswmtq"]
+[gd_scene load_steps=12 format=3 uid="uid://bf4kxcsfswmtq"]
 
 [ext_resource type="Script" uid="uid://csanxmph4pwqn" path="res://Scripts/Geral/portal_volta.gd" id="1_u8cmn"]
 [ext_resource type="Texture2D" uid="uid://dba7roywd1lm5" path="res://Sprites/Sheets/spriteSheet_portalBranco.png" id="2_5a0o3"]
-
+[ext_resource type="AudioStream" uid="uid://qtw6kt2un7k4" path="res://Sons e Musica/new_teleporte.mp3" id="3_tuyxd"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_5xnuo"]
 atlas = ExtResource("2_5a0o3")
@@ -68,5 +68,8 @@ speed_scale = 1.75
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_ompmp")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_tuyxd")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
