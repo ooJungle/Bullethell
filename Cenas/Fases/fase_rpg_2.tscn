@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=4 uid="uid://bo2lv860jpjyn"]
+[gd_scene load_steps=21 format=4 uid="uid://bo2lv860jpjyn"]
 
 [ext_resource type="Script" uid="uid://dm3ux3o1rdq2g" path="res://Cenas/Fases/fase_rpg_2.gd" id="1_ngtvl"]
 [ext_resource type="Texture2D" uid="uid://cuats4fupmos7" path="res://Sprites/Tilesets/tilesetAZUL.png" id="2_3sieu"]
@@ -11,6 +11,10 @@
 [ext_resource type="PackedScene" uid="uid://d2m240uv3u7nj" path="res://UI_UX/fundo.tscn" id="8_hgk82"]
 [ext_resource type="PackedScene" uid="uid://btmuqo7o24djd" path="res://Cenas/Geral/chroma.tscn" id="10_qkx7a"]
 [ext_resource type="Shader" uid="uid://cdki4y1u5d4ne" path="res://Scripts/Projeteis/Fases/Fase_0.gdshader" id="11_bulm6"]
+[ext_resource type="PackedScene" uid="uid://dqkd2v8c08jsp" path="res://Cenas/Geral/tocha.tscn" id="12_y5gqd"]
+[ext_resource type="PackedScene" uid="uid://j8054vcypju4" path="res://Cenas/Geral/tocha_lado.tscn" id="13_eem4q"]
+[ext_resource type="PackedScene" uid="uid://ccfgwwjp3djau" path="res://Cenas/Geral/tocha_costas.tscn" id="14_k5o8c"]
+[ext_resource type="PackedScene" uid="uid://cfe7ov4nhlnpv" path="res://Cenas/Geral/tocha_lado_esquerdo.tscn" id="15_mrho4"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_ngtvl"]
 
@@ -170,3 +174,27 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
+
+[node name="tocha" parent="." instance=ExtResource("12_y5gqd")]
+position = Vector2(-239, -253)
+
+[node name="tocha2" parent="." instance=ExtResource("12_y5gqd")]
+position = Vector2(300, -257)
+
+[node name="tocha_lado" parent="." instance=ExtResource("13_eem4q")]
+position = Vector2(415, -139)
+
+[node name="tocha_lado2" parent="." instance=ExtResource("13_eem4q")]
+position = Vector2(415, 247)
+
+[node name="tocha_costas" parent="." instance=ExtResource("14_k5o8c")]
+position = Vector2(253, 392)
+
+[node name="tocha_costas2" parent="." instance=ExtResource("14_k5o8c")]
+position = Vector2(-236, 392)
+
+[node name="tocha_lado_esquerdo" parent="." instance=ExtResource("15_mrho4")]
+position = Vector2(-384, 256)
+
+[node name="tocha_lado_esquerdo2" parent="." instance=ExtResource("15_mrho4")]
+position = Vector2(-384, -105)

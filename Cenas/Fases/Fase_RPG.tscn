@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=4 uid="uid://drbeol373ocxe"]
+[gd_scene load_steps=29 format=4 uid="uid://drbeol373ocxe"]
 
 [ext_resource type="Texture2D" uid="uid://cuats4fupmos7" path="res://Sprites/Tilesets/tilesetAZUL.png" id="1_1c0qe"]
 [ext_resource type="Script" uid="uid://8h76fmmuw404" path="res://Scripts/Projeteis/Fases/fase_rpg.gd" id="1_xlyqc"]
@@ -15,6 +15,9 @@
 [ext_resource type="AudioStream" uid="uid://cnq0eiwyt0vde" path="res://Sons e Musica/Boss_2.mp3" id="10_h5dsd"]
 [ext_resource type="Shader" uid="uid://cdki4y1u5d4ne" path="res://Scripts/Projeteis/Fases/Fase_0.gdshader" id="11_0bv0s"]
 [ext_resource type="Shader" uid="uid://ouiul00apcvm" path="res://Scripts/Projeteis/Fases/fog.gdshader" id="11_urkna"]
+[ext_resource type="PackedScene" uid="uid://cfe7ov4nhlnpv" path="res://Cenas/Geral/tocha_lado_esquerdo.tscn" id="16_2f8tq"]
+[ext_resource type="PackedScene" uid="uid://ccfgwwjp3djau" path="res://Cenas/Geral/tocha_costas.tscn" id="17_hghn4"]
+[ext_resource type="PackedScene" uid="uid://j8054vcypju4" path="res://Cenas/Geral/tocha_lado.tscn" id="18_uvxa2"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_gkdup"]
 vertices = PackedVector2Array(854, -134, 1046, -134, 1046, 166, 822, 166, 822, 314, 950, 314, 950, 774, 618, 774, 618, 314, 746, 314, 746, 166, 778, -134, 854, -486, 586, 166, 586, -134, 778, -410, 342, -486, 342, -410, 342, -346, 22, -346, -918, -550, -374, 326, -54, -230, 22, -230, -374, 390, -54, -346, -458, -346, -458, -90, -650, -90, -650, 58, -458, 58, -458, 250, -374, 250, -374, -230, 406, -230, 406, 390, 310, 390, 310, 506, 234, 506, 234, 390, -458, 326, -374, 538, -374, 506, 534, 506, 534, 742, -374, 742, -374, 614, -458, 538, -458, 614, -458, 678, -790, 678, -790, 58, -726, 58, -726, -90, -918, -90, 342, -550)
@@ -171,89 +174,35 @@ position = Vector2(-239, -257)
 [node name="tocha2" parent="NavigationRegion2D" instance=ExtResource("3_bisrh")]
 position = Vector2(304, -256)
 
-[node name="tocha3" parent="NavigationRegion2D" instance=ExtResource("3_bisrh")]
-position = Vector2(-79, -256)
-
-[node name="tocha4" parent="NavigationRegion2D" instance=ExtResource("3_bisrh")]
-position = Vector2(146, -256)
-
 [node name="tocha5" parent="NavigationRegion2D" instance=ExtResource("3_bisrh")]
 position = Vector2(204, 480)
-
-[node name="tocha6" parent="NavigationRegion2D" instance=ExtResource("3_bisrh")]
-position = Vector2(46, 481)
 
 [node name="tocha7" parent="NavigationRegion2D" instance=ExtResource("3_bisrh")]
 position = Vector2(-112, 480)
 
-[node name="tocha8" parent="NavigationRegion2D" instance=ExtResource("3_bisrh")]
-position = Vector2(-273, 479)
-
 [node name="tocha9" parent="NavigationRegion2D" instance=ExtResource("3_bisrh")]
 position = Vector2(328, 481)
-
-[node name="tocha10" parent="NavigationRegion2D" instance=ExtResource("3_bisrh")]
-position = Vector2(496, 479)
-
-[node name="tocha11" parent="NavigationRegion2D" instance=ExtResource("3_bisrh")]
-position = Vector2(-528, 31)
 
 [node name="tocha12" parent="NavigationRegion2D" instance=ExtResource("3_bisrh")]
 position = Vector2(-750, 30)
 
-[node name="tocha13" parent="NavigationRegion2D" instance=ExtResource("3_bisrh")]
-position = Vector2(-879, -575)
-
-[node name="tocha14" parent="NavigationRegion2D" instance=ExtResource("3_bisrh")]
-position = Vector2(-719, -575)
-
 [node name="tocha15" parent="NavigationRegion2D" instance=ExtResource("3_bisrh")]
 position = Vector2(-559, -577)
-
-[node name="tocha16" parent="NavigationRegion2D" instance=ExtResource("3_bisrh")]
-position = Vector2(-401, -578)
 
 [node name="tocha17" parent="NavigationRegion2D" instance=ExtResource("3_bisrh")]
 position = Vector2(-240, -576)
 
-[node name="tocha18" parent="NavigationRegion2D" instance=ExtResource("3_bisrh")]
-position = Vector2(-80, -578)
-
 [node name="tocha19" parent="NavigationRegion2D" instance=ExtResource("3_bisrh")]
 position = Vector2(79, -578)
 
-[node name="tocha20" parent="NavigationRegion2D" instance=ExtResource("3_bisrh")]
-position = Vector2(208, -578)
-
-[node name="tocha21" parent="NavigationRegion2D" instance=ExtResource("3_bisrh")]
-position = Vector2(371, -511)
-
 [node name="tocha22" parent="NavigationRegion2D" instance=ExtResource("3_bisrh")]
-position = Vector2(530, -511)
-
-[node name="tocha23" parent="NavigationRegion2D" instance=ExtResource("3_bisrh")]
-position = Vector2(688, -512)
+position = Vector2(432, -509)
 
 [node name="tocha24" parent="NavigationRegion2D" instance=ExtResource("3_bisrh")]
 position = Vector2(846, -512)
 
-[node name="tocha25" parent="NavigationRegion2D" instance=ExtResource("3_bisrh")]
-position = Vector2(882, -161)
-
-[node name="tocha26" parent="NavigationRegion2D" instance=ExtResource("3_bisrh")]
-position = Vector2(1039, -161)
-
 [node name="tocha27" parent="NavigationRegion2D" instance=ExtResource("3_bisrh")]
 position = Vector2(750, -161)
-
-[node name="tocha28" parent="NavigationRegion2D" instance=ExtResource("3_bisrh")]
-position = Vector2(591, -161)
-
-[node name="tocha29" parent="NavigationRegion2D" instance=ExtResource("3_bisrh")]
-position = Vector2(686, 288)
-
-[node name="tocha30" parent="NavigationRegion2D" instance=ExtResource("3_bisrh")]
-position = Vector2(884, 286)
 
 [node name="inimigo_pulo" parent="NavigationRegion2D" instance=ExtResource("4_ppeux")]
 position = Vector2(702, 680)
@@ -395,3 +344,78 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
+
+[node name="tocha_lado_esquerdo" parent="." instance=ExtResource("16_2f8tq")]
+position = Vector2(-384, 191)
+
+[node name="tocha_costas2" parent="." instance=ExtResource("17_hghn4")]
+position = Vector2(-122, 742)
+
+[node name="tocha_costas5" parent="." instance=ExtResource("17_hghn4")]
+position = Vector2(351, 744)
+
+[node name="tocha_costas7" parent="." instance=ExtResource("17_hghn4")]
+position = Vector2(773, 776)
+
+[node name="tocha_costas10" parent="." instance=ExtResource("17_hghn4")]
+position = Vector2(942, 168)
+
+[node name="tocha_costas12" parent="." instance=ExtResource("17_hghn4")]
+position = Vector2(598, -408)
+
+[node name="tocha_costas16" parent="." instance=ExtResource("17_hghn4")]
+position = Vector2(50, -344)
+
+[node name="tocha_costas19" parent="." instance=ExtResource("17_hghn4")]
+position = Vector2(-417, -344)
+
+[node name="tocha_costas21" parent="." instance=ExtResource("17_hghn4")]
+position = Vector2(-852, -88)
+
+[node name="tocha_costas24" parent="." instance=ExtResource("17_hghn4")]
+position = Vector2(46, 392)
+
+[node name="tocha_costas26" parent="." instance=ExtResource("17_hghn4")]
+position = Vector2(337, 392)
+
+[node name="tocha_lado" parent="." instance=ExtResource("18_uvxa2")]
+position = Vector2(415, 317)
+
+[node name="tocha_lado3" parent="." instance=ExtResource("18_uvxa2")]
+position = Vector2(415, -15)
+
+[node name="tocha_lado6" parent="." instance=ExtResource("18_uvxa2")]
+position = Vector2(-449, 350)
+
+[node name="tocha_lado7" parent="." instance=ExtResource("18_uvxa2")]
+position = Vector2(-449, 639)
+
+[node name="tocha_lado9" parent="." instance=ExtResource("18_uvxa2")]
+position = Vector2(-449, -214)
+
+[node name="tocha_lado10" parent="." instance=ExtResource("18_uvxa2")]
+position = Vector2(863, -292)
+
+[node name="tocha_lado12" parent="." instance=ExtResource("18_uvxa2")]
+position = Vector2(1055, -10)
+
+[node name="tocha_lado_esquerdo10" parent="." instance=ExtResource("16_2f8tq")]
+position = Vector2(576, -7)
+
+[node name="tocha_lado16" parent="." instance=ExtResource("18_uvxa2")]
+position = Vector2(959, 532)
+
+[node name="tocha_lado_esquerdo13" parent="." instance=ExtResource("16_2f8tq")]
+position = Vector2(608, 366)
+
+[node name="tocha_lado17" parent="." instance=ExtResource("18_uvxa2")]
+position = Vector2(543, 637)
+
+[node name="tocha_lado_esquerdo15" parent="." instance=ExtResource("16_2f8tq")]
+position = Vector2(-928, -336)
+
+[node name="tocha_lado_esquerdo16" parent="." instance=ExtResource("16_2f8tq")]
+position = Vector2(-800, 382)
+
+[node name="tocha_costas27" parent="." instance=ExtResource("17_hghn4")]
+position = Vector2(-730, 680)

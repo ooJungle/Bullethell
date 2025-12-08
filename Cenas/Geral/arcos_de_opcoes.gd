@@ -26,7 +26,7 @@ extends Node2D
 @export var fonte: Font
 @export var tamanho_fonte: int = 25:
 	set(v): tamanho_fonte = v; queue_redraw()
-@export var cor_texto: Color = Color.BLACK:
+@export var cor_texto: Color = Color.WHITE:
 	set(v): cor_texto = v; queue_redraw()
 # Use o offset para empurrar o texto para dentro (negativo) ou fora (positivo) do círculo central
 @export var offset_texto: float = 30.0: 
@@ -100,8 +100,8 @@ func _draw() -> void:
 			raio_desenho += 5.0
 			espessura_desenho += 4.0
 			cor = cor.lightened(0.2)
-			# Opcional: Mudar cor do texto quando selecionado
-			# cor_txt_atual = Color.YELLOW 
+			cor_txt_atual = Color.YELLOW 
+
 
 		var inicio = angulo_atual + padding
 		var fim = angulo_atual + tamanho_angular - padding

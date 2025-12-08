@@ -157,9 +157,6 @@ espessura = 10.0
 padding = 0.0
 espessura_linha = 1.0
 fonte = SubResource("SystemFont_qnp5a")
-tamanho_fonte = null
-cor_texto = null
-offset_texto = null
 opcoes_config = Array[Dictionary]([{
 "cor": Color(1, 0.3882353, 0.2784314, 1),
 "nome": "20!",
