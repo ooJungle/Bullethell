@@ -1,8 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://bgs1gd3re016g"]
 
 [ext_resource type="Script" uid="uid://bp0t7rdr0alv5" path="res://Scripts/Projeteis/tiro_amarelo.gd" id="1_qt5ni"]
-[ext_resource type="Texture2D" uid="uid://y1bsrfrw4xj2" path="res://Sprites/Projeteis/tiro_amarelo.png" id="2_wobai"]
-
+[ext_resource type="Texture2D" uid="uid://bkornkxahmyw5" path="res://Sprites/Projeteis/bullet_lesma.png" id="2_rlpxf"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_g8jtw"]
 radius = 7.0
@@ -12,7 +11,7 @@ collision_layer = 0
 script = ExtResource("1_qt5ni")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("2_wobai")
+texture = ExtResource("2_rlpxf")
 
 [node name="hitbox" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_g8jtw")

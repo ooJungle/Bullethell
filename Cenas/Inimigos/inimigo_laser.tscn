@@ -10,13 +10,14 @@
 radius = 37.01351
 
 [sub_resource type="Gradient" id="Gradient_qr2jw"]
-offsets = PackedFloat32Array(0, 0.49333334, 1)
-colors = PackedColorArray(0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 0)
+offsets = PackedFloat32Array(0.5394191, 0.8879668)
+colors = PackedColorArray(1, 0, 0, 1, 1, 0, 0, 0)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_6rh2l"]
 gradient = SubResource("Gradient_qr2jw")
-fill_from = Vector2(0, 1)
-fill_to = Vector2(1, 1)
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(0.5, 0)
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_wcglr"]
 radius = 56.0
@@ -68,12 +69,14 @@ target_position = Vector2(3895.0747, 0)
 
 [node name="ImpactLight" type="Sprite2D" parent="FirePoint"]
 modulate = Color(1, 0, 0, 0.75686276)
+scale = Vector2(2, 2)
 texture = SubResource("GradientTexture2D_6rh2l")
 
 [node name="CollisionArea" type="Area2D" parent="."]
 collision_layer = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CollisionArea"]
+visible = false
 position = Vector2(4, 0)
 shape = SubResource("CapsuleShape2D_wcglr")
 

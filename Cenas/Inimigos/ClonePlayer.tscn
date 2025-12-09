@@ -258,3 +258,4 @@ shape = SubResource("CapsuleShape2D_tqfeg")
 [node name="dano_timer" type="Timer" parent="."]
 
 [connection signal="body_entered" from="CollisionArea" to="." method="_on_collision_area_body_entered"]
+[connection signal="timeout" from="dano_timer" to="." method="_on_dano_timer_timeout"]

@@ -16,6 +16,7 @@ grow_vertical = 0
 color = Color(0.007843138, 0.003921569, 0.078431375, 0.4392157)
 
 [node name="RichTextLabel" type="RichTextLabel" parent="ColorRect"]
+z_index = 4096
 layout_mode = 1
 anchors_preset = -1
 anchor_right = 0.035

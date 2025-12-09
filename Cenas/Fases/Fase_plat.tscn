@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=4 uid="uid://bd1kjomv53gnt"]
+[gd_scene load_steps=31 format=4 uid="uid://bd1kjomv53gnt"]
 
 [ext_resource type="Script" uid="uid://rpmvree5m8p3" path="res://Scripts/Projeteis/Fases/fase_plat.gd" id="1_axnnm"]
 [ext_resource type="PackedScene" uid="uid://d2m240uv3u7nj" path="res://UI_UX/fundo.tscn" id="2_ijx0c"]
@@ -17,6 +17,7 @@
 [ext_resource type="PackedScene" uid="uid://cfe7ov4nhlnpv" path="res://Cenas/Geral/tocha_lado_esquerdo.tscn" id="15_mmjue"]
 [ext_resource type="PackedScene" uid="uid://ccfgwwjp3djau" path="res://Cenas/Geral/tocha_costas.tscn" id="16_n46ps"]
 [ext_resource type="PackedScene" uid="uid://j8054vcypju4" path="res://Cenas/Geral/tocha_lado.tscn" id="17_gcvnk"]
+[ext_resource type="FontFile" uid="uid://d1g8okxudu3hl" path="res://Minecraft.ttf" id="19_qf2fo"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_g5322"]
 
@@ -187,6 +188,15 @@ shader_parameter/tint_color = Color(1, 1, 1, 1)
 shader_parameter/tint_strength = 0.50000002375
 shader_parameter/vignette_intensity = 1.0000000475
 shader_parameter/vignette_opacity = 0.702000033345
+
+[sub_resource type="Gradient" id="Gradient_n46ps"]
+offsets = PackedFloat32Array(0, 0.5, 1)
+colors = PackedColorArray(0, 0, 0, 0.78431374, 0, 0, 0, 1, 0, 0, 0, 0.78431374)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_gcvnk"]
+gradient = SubResource("Gradient_n46ps")
+fill_from = Vector2(0.5, 1)
+fill_to = Vector2(0.5, 0)
 
 [node name="Node2D" type="Node2D" node_paths=PackedStringArray("nav_region", "tilemap")]
 script = ExtResource("1_axnnm")
@@ -587,3 +597,22 @@ position = Vector2(-980, 136)
 
 [node name="tocha13" parent="." instance=ExtResource("5_47xyu")]
 position = Vector2(-784, 95)
+
+[node name="tut" type="CanvasLayer" parent="."]
+
+[node name="Label" type="Label" parent="tut"]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -20.0
+offset_right = 20.0
+offset_bottom = 23.0
+grow_horizontal = 2
+scale = Vector2(2, 2)
+theme_override_fonts/font = ExtResource("19_qf2fo")
+text = "Pressione \"espaço\" para pular e \"shift\" para dash"
+
+[node name="TextureRect" type="TextureRect" parent="tut"]
+offset_right = 40.0
+offset_bottom = 40.0
+texture = SubResource("GradientTexture2D_gcvnk")

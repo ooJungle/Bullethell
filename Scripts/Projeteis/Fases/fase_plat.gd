@@ -4,6 +4,8 @@ extends Node2D
 @onready var colisao_portal = $portal_volta/CollisionShape2D
 @onready var musica_inicio: AudioStreamPlayer = $AudioStreamPlayer2D
 @onready var camera_shake: AnimationPlayer = $player/Camera2D/AnimationPlayer
+@onready var tut: CanvasLayer = $tut
+
 var total_cristais = 0
 var cristais_quebrados = 0
 
@@ -41,6 +43,7 @@ var pause_control_path = "/root/fase_teste/PauseMenu"
 var pause_control
 
 func _ready():
+	tut.visible = false
 	player = get_tree().get_first_node_in_group("players")
 
 	# Obtenha as posições globais dos limites
@@ -124,6 +127,7 @@ func _on_cristal_quebrado():
 		camera_shake.play("camera_shake")
 	
 	if cristais_quebrados >= total_cristais:
+		tut.visible = true
 		Global.plataforma = true
 		abrir_portal()
 
