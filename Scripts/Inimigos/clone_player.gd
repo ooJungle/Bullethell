@@ -3,8 +3,9 @@ extends CharacterBody2D
 @export var speed = 180.0
 @export var damage = 15
 @export var lifetime = 6.0 # Tempo que o clone vive
-
+@export var vida = 2
 @export var player_ref: Node2D = null
+@onready var dano_timer: Timer = $dano_timer
 
 func _ready():
 	# Visual: Deixa o clone cinza e meio transparente para diferenciar do original
@@ -33,9 +34,16 @@ func _physics_process(_delta):
 		# Opcional: Virar o sprite
 		if velocity.x != 0:
 			$sprite.flip_h = velocity.x < 0
-
-func _on_collision_area_body_entered(body: Node2D) -> void:
-	if body.is_in_group("Player"):
-		if body.has_method("take_damage"):
-			body.take_damage(damage)
+	if player_ref.global_position - global_position < Vector2(16, 16):
+		player_ref.take_damage(damage)
 		queue_free()
+		
+func take_damage(_amount: int) -> void:
+	dano_timer.start(0.3)
+	modulate = Color(1.0, 0.502, 0.502, 0.749)
+	vida -= 1
+	if vida <= 0:
+		queue_free()	
+
+func _on_dano_timer_timeout() -> void:
+	modulate = Color(0.5, 0.5, 0.5, 0.75)

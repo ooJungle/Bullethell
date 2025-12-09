@@ -8,7 +8,6 @@
 [ext_resource type="Texture2D" uid="uid://cahr62u3ueaec" path="res://Sprites/Sheets/Protag_Swing_Espada-Sheet.png" id="6_fdes5"]
 [ext_resource type="Texture2D" uid="uid://d3n2k4ydxps1p" path="res://Sprites/Sheets/Protag_Lado_Atk_Espada-Sheet.png" id="7_g11yk"]
 
-
 [sub_resource type="AtlasTexture" id="AtlasTexture_e2nbm"]
 atlas = ExtResource("2_tqfeg")
 region = Rect2(0, 0, 64, 64)
@@ -255,5 +254,7 @@ position = Vector2(0, -1)
 shape = SubResource("CapsuleShape2D_tqfeg")
 
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
+
+[node name="dano_timer" type="Timer" parent="."]
 
 [connection signal="body_entered" from="CollisionArea" to="." method="_on_collision_area_body_entered"]
