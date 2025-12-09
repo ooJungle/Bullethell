@@ -1,0 +1,8 @@
+[gd_scene load_steps=3 format=3 uid="uid://ddlspjlgmtsie"]
+
+[ext_resource type="Texture2D" uid="uid://dk0yxs42laay0" path="res://Sprites/Geral/guga.png" id="1_6attn"]
+[ext_resource type="Script" uid="uid://fbk8nepbefi4" path="res://ghost.gd" id="1_v5pp4"]
+
+[node name="ghost" type="Sprite2D"]
+texture = ExtResource("1_6attn")
+script = ExtResource("1_v5pp4")

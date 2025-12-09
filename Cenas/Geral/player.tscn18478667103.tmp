@@ -1,4 +1,4 @@
-[gd_scene load_steps=58 format=3 uid="uid://cw5ic42v3wep7"]
+[gd_scene load_steps=56 format=3 uid="uid://cw5ic42v3wep7"]
 
 [ext_resource type="Script" uid="uid://dxifkqojdxq0a" path="res://Scripts/Geral/player_moviment.gd" id="1_pmvhq"]
 [ext_resource type="Texture2D" uid="uid://buwiyodclkf8g" path="res://Sprites/Sheets/player/player_run_sword_costas.png" id="2_fkqs1"]
@@ -11,10 +11,8 @@
 [ext_resource type="Texture2D" uid="uid://db2mbslat5rw6" path="res://Sprites/Sheets/player/player_idle_costas_sword.png" id="6_nc3o8"]
 [ext_resource type="Texture2D" uid="uid://d0f6cf6ulwpjg" path="res://Sprites/Geral/seta.png" id="7_8vhvd"]
 [ext_resource type="AudioStream" uid="uid://yiq4b3oftl0o" path="res://Sons e Musica/golpe.mp3" id="10_4q8k4"]
-[ext_resource type="Script" uid="uid://c7tbf28lnfn6e" path="res://Cenas/Geral/movement_platform.gd" id="12_n6hrf"]
-[ext_resource type="Script" uid="uid://clga8r2uoukeq" path="res://Cenas/Geral/movement_top_down.gd" id="12_nc3o8"]
-[ext_resource type="PackedScene" uid="uid://ddlspjlgmtsie" path="res://ghost.tscn" id="13_7a67c"]
-[ext_resource type="AudioStream" uid="uid://b4u6fc3s8bmtl" path="res://Sons e Musica/dash.wav" id="14_62tt0"]
+[ext_resource type="Script" uid="uid://b3pt02a2nxqws" path="res://Cenas/Geral/plataforma.gd" id="12_nc3o8"]
+[ext_resource type="Script" uid="uid://caajcnn78cx8o" path="res://Cenas/Geral/movementtopdown.gd" id="13_n6hrf"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_fkqs1"]
 atlas = ExtResource("2_fkqs1")
@@ -277,7 +275,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_pheb3")
 }],
-"loop": false,
+"loop": true,
 "name": &"idle_costas",
 "speed": 5.0
 }, {
@@ -294,7 +292,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_gdprn")
 }],
-"loop": false,
+"loop": true,
 "name": &"idle_frente",
 "speed": 5.0
 }, {
@@ -311,7 +309,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_wnguq")
 }],
-"loop": false,
+"loop": true,
 "name": &"idle_lado",
 "speed": 5.0
 }]
@@ -394,29 +392,22 @@ texture_progress = SubResource("GradientTexture2D_4q8k4")
 stream = ExtResource("10_4q8k4")
 bus = &"sfx"
 
+[node name="GhostTimer" type="Timer" parent="."]
+
+[node name="DashTimer" type="Timer" parent="."]
+
+[node name="DashCooldown" type="Timer" parent="."]
+
 [node name="PontoDoRastro" type="Marker2D" parent="."]
 position = Vector2(0, 12)
 
-[node name="MovementPlatform" type="Node" parent="." node_paths=PackedStringArray("body", "jogador_vivo", "ponto_do_rastro")]
-script = ExtResource("12_n6hrf")
-body = NodePath("..")
-jogador_vivo = NodePath("../sprite")
-ponto_do_rastro = NodePath("../PontoDoRastro")
-ghost_node = ExtResource("13_7a67c")
-
-[node name="DashTimer" type="Timer" parent="MovementPlatform"]
-
-[node name="GhostTimer" type="Timer" parent="MovementPlatform"]
-
-[node name="DashCooldown" type="Timer" parent="MovementPlatform"]
-
-[node name="dash" type="AudioStreamPlayer2D" parent="MovementPlatform"]
-stream = ExtResource("14_62tt0")
-volume_db = 1.0
-
-[node name="MovementTopDown" type="Node" parent="." node_paths=PackedStringArray("body")]
+[node name="MovementPlatform" type="Node2D" parent="."]
 script = ExtResource("12_nc3o8")
-body = NodePath("..")
+
+[node name="dash" type="AudioStreamPlayer2D" parent="."]
+
+[node name="MovementTopDown" type="Node2D" parent="."]
+script = ExtResource("13_n6hrf")
 
 [connection signal="animation_finished" from="sprite" to="." method="_on_sprite_animation_finished"]
 [connection signal="timeout" from="dano_timer" to="." method="_on_dano_timer_timeout"]

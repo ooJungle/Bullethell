@@ -1,4 +1,4 @@
-[gd_scene load_steps=58 format=3 uid="uid://cw5ic42v3wep7"]
+[gd_scene load_steps=57 format=3 uid="uid://cw5ic42v3wep7"]
 
 [ext_resource type="Script" uid="uid://dxifkqojdxq0a" path="res://Scripts/Geral/player_moviment.gd" id="1_pmvhq"]
 [ext_resource type="Texture2D" uid="uid://buwiyodclkf8g" path="res://Sprites/Sheets/player/player_run_sword_costas.png" id="2_fkqs1"]
@@ -14,7 +14,6 @@
 [ext_resource type="Script" uid="uid://c7tbf28lnfn6e" path="res://Cenas/Geral/movement_platform.gd" id="12_n6hrf"]
 [ext_resource type="Script" uid="uid://clga8r2uoukeq" path="res://Cenas/Geral/movement_top_down.gd" id="12_nc3o8"]
 [ext_resource type="PackedScene" uid="uid://ddlspjlgmtsie" path="res://ghost.tscn" id="13_7a67c"]
-[ext_resource type="AudioStream" uid="uid://b4u6fc3s8bmtl" path="res://Sons e Musica/dash.wav" id="14_62tt0"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_fkqs1"]
 atlas = ExtResource("2_fkqs1")
@@ -277,7 +276,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_pheb3")
 }],
-"loop": false,
+"loop": true,
 "name": &"idle_costas",
 "speed": 5.0
 }, {
@@ -294,7 +293,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_gdprn")
 }],
-"loop": false,
+"loop": true,
 "name": &"idle_frente",
 "speed": 5.0
 }, {
@@ -311,7 +310,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_wnguq")
 }],
-"loop": false,
+"loop": true,
 "name": &"idle_lado",
 "speed": 5.0
 }]
@@ -394,6 +393,12 @@ texture_progress = SubResource("GradientTexture2D_4q8k4")
 stream = ExtResource("10_4q8k4")
 bus = &"sfx"
 
+[node name="GhostTimer" type="Timer" parent="."]
+
+[node name="DashTimer" type="Timer" parent="."]
+
+[node name="DashCooldown" type="Timer" parent="."]
+
 [node name="PontoDoRastro" type="Marker2D" parent="."]
 position = Vector2(0, 12)
 
@@ -404,15 +409,7 @@ jogador_vivo = NodePath("../sprite")
 ponto_do_rastro = NodePath("../PontoDoRastro")
 ghost_node = ExtResource("13_7a67c")
 
-[node name="DashTimer" type="Timer" parent="MovementPlatform"]
-
-[node name="GhostTimer" type="Timer" parent="MovementPlatform"]
-
-[node name="DashCooldown" type="Timer" parent="MovementPlatform"]
-
-[node name="dash" type="AudioStreamPlayer2D" parent="MovementPlatform"]
-stream = ExtResource("14_62tt0")
-volume_db = 1.0
+[node name="dash" type="AudioStreamPlayer2D" parent="."]
 
 [node name="MovementTopDown" type="Node" parent="." node_paths=PackedStringArray("body")]
 script = ExtResource("12_nc3o8")
