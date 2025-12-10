@@ -4,7 +4,6 @@
 [ext_resource type="Texture2D" uid="uid://bt5socl2sy4jw" path="res://UI_UX/efeito_distorcao.png" id="2_l602y"]
 [ext_resource type="Texture2D" uid="uid://0n5dulh0ah70" path="res://Sprites/Geral/cristal_verde.png" id="2_lyudc"]
 
-
 [sub_resource type="Shader" id="Shader_avnrk"]
 code = "shader_type canvas_item;
 
@@ -53,8 +52,8 @@ shader_parameter/falloff_max = 0.05
 shader_parameter/intensity = 8.0
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ay01c"]
-radius = 36.0
-height = 92.0
+radius = 39.0
+height = 96.0
 
 [node name="cristal_verde" type="StaticBody2D"]
 light_mask = 1023
@@ -68,10 +67,10 @@ texture = ExtResource("2_l602y")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(-14, -2.999999)
-scale = Vector2(0.45666668, 0.51)
+scale = Vector2(0.055, 0.055)
 texture = ExtResource("2_lyudc")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 light_mask = 1023
-position = Vector2(-14, 5)
+position = Vector2(-15, 0)
 shape = SubResource("CapsuleShape2D_ay01c")

@@ -4,7 +4,6 @@
 [ext_resource type="Texture2D" uid="uid://c0bmkdvxb3xfb" path="res://Sprites/Geral/cristal_azul.png" id="2_ay01c"]
 [ext_resource type="Texture2D" uid="uid://bt5socl2sy4jw" path="res://UI_UX/efeito_distorcao.png" id="2_udsaq"]
 
-
 [sub_resource type="Shader" id="Shader_nps87"]
 code = "shader_type canvas_item;
 
@@ -63,12 +62,11 @@ script = ExtResource("1_wtav8")
 [node name="efeito_cristal" type="Sprite2D" parent="."]
 material = SubResource("ShaderMaterial_gur0j")
 position = Vector2(-22, 6)
-scale = Vector2(1.12, 1.12)
 texture = ExtResource("2_udsaq")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(-13.374992, 1.875001)
-scale = Vector2(0.47666666, 0.47)
+scale = Vector2(0.058, 0.058)
 texture = ExtResource("2_ay01c")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

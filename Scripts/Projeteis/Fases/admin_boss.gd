@@ -42,7 +42,6 @@ func _ready():
 	
 	# VERIFICAÇÃO DA SPRITE
 	if not sprite or not sprite.texture:
-		# print("AVISO: Sprite do boss não encontrada ou sem textura!")
 		sprite = $Sprite2D
 			
 	# Calcula a área visível da câmera
@@ -408,7 +407,7 @@ func _spawn_bullets_in_area(rect: Rect2):
 		await get_tree().create_timer(delay).timeout
 
 # =========================================================
-# FUNÇÕES CORRIGIDAS DE DANO E MORTE
+# FUNÇÕES DE DANO E MORTE
 # =========================================================
 
 func take_damage(amount: int) -> void:
@@ -417,15 +416,11 @@ func take_damage(amount: int) -> void:
 	print("Boss tomou dano. Vida:", vida)
 	
 	# 2. Efeito Visual de Dano (Flash Vermelho)
-	# Se já houver um tween rodando, cancela para iniciar o novo
 	if tween_dano:
 		tween_dano.kill()
 	
-	# Pinta o boss de vermelho forte instantaneamente
-	modulate = Color(1.0, 0.0, 0.0) # Vermelho puro
-	# Ou use Color(2.0, 0.0, 0.0) se tiver WorldEnvironment com Glow para brilhar
+	modulate = Color(1.0, 0.0, 0.0) # Flash Vermelho
 	
-	# Cria o tween para voltar ao branco (normal)
 	tween_dano = create_tween()
 	tween_dano.tween_property(self, "modulate", Color.WHITE, 0.15).set_trans(Tween.TRANS_SINE)
 	

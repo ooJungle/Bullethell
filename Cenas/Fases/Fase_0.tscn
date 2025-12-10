@@ -1,4 +1,4 @@
-[gd_scene load_steps=36 format=4 uid="uid://dgvk00ax3rrbo"]
+[gd_scene load_steps=35 format=4 uid="uid://dgvk00ax3rrbo"]
 
 [ext_resource type="Script" uid="uid://bl0k0fcu8kka2" path="res://Scripts/Projeteis/Fases/fase_0.gd" id="1_l7uc1"]
 [ext_resource type="PackedScene" uid="uid://d2m240uv3u7nj" path="res://UI_UX/fundo.tscn" id="1_setcl"]
@@ -23,8 +23,7 @@
 [ext_resource type="PackedScene" uid="uid://cfe7ov4nhlnpv" path="res://Cenas/Geral/tocha_lado_esquerdo.tscn" id="21_2gjbv"]
 [ext_resource type="PackedScene" uid="uid://dybqvnmb765cl" path="res://Cenas/Geral/Portal_verde.tscn" id="22_if8b4"]
 [ext_resource type="PackedScene" uid="uid://du6ljd75pr82g" path="res://Cenas/Geral/Portal_vermelho.tscn" id="23_8de20"]
-[ext_resource type="Texture2D" uid="uid://b2wwj4y0fpyar" path="res://Sprites/Tilesets/Inimigos/textbox_domal.png" id="24_if8b4"]
-[ext_resource type="PackedScene" uid="uid://ugvn400iuskf" path="res://control.tscn" id="25_8de20"]
+[ext_resource type="PackedScene" path="res://control.tscn" id="25_8de20"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_pxeo3"]
 vertices = PackedVector2Array(1126, 6630, -982, 6630, -982, 2362, 1126, 2362, 630, 1446, -422, 1446, -422, 714, 630, 714, 630, 390, -422, 390, -422, -342, 630, -342)
@@ -251,20 +250,6 @@ shader_parameter/vignette_opacity = 0.702000033345
 [node name="Node2D" type="Node2D"]
 script = ExtResource("1_l7uc1")
 
-[node name="texto_mal" type="CanvasLayer" parent="."]
-
-[node name="caixa_de_texto_mal" type="TextureRect" parent="texto_mal"]
-z_index = 1
-anchors_preset = 12
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_top = -525.0
-offset_bottom = -125.0
-grow_horizontal = 2
-grow_vertical = 0
-texture = ExtResource("24_if8b4")
-
 [node name="tut" type="CanvasLayer" parent="."]
 script = ExtResource("2_ciat0")
 
@@ -344,7 +329,6 @@ process_callback = 0
 [node name="efeito" type="CanvasLayer" parent="."]
 
 [node name="chroma" parent="efeito" instance=ExtResource("13_gmavx")]
-visible = false
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0

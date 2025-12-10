@@ -11,36 +11,52 @@ enum TutorialState {
 
 var current_state = TutorialState.MOVE
 var can_proceed = true # Para evitar inputs durante o delay
-
+var inicio = true
 # Referências aos nós (ajuste os caminhos conforme sua cena)
 @onready var label: Label = $Label
 @onready var tilemap: TileMapLayer = $"../NavigationRegion2D/TileMapLayer2"
 
 func _ready():
-	update_ui()
+	verificar_inicio_de_jogo()
+	if inicio:
+		update_ui()
+	else:
+		tilemap.queue_free()
+
+func verificar_inicio_de_jogo():
+	var f1 = Global.portais_ativos["Fase_espaco"] == true
+	var f2 = Global.portais_ativos["Fase_plat"] == true
+	var f3 = Global.portais_ativos["Fase_RPG"] == true
+	
+	if f1 and f2 and f3:
+		inicio = true
+	else:
+		inicio = false
 
 func _process(delta):
-	if not can_proceed:
+	if inicio:
+		if not can_proceed:
+			return
+			
+		match current_state:
+			TutorialState.MOVE:
+				# Verifica se o jogador apertou algum botão de movimento
+				if Input.is_action_just_pressed("move_right") or Input.is_action_just_pressed("move_left"):
+					complete_step(TutorialState.DASH)
+			TutorialState.DASH:
+				if Input.is_action_just_pressed("dash"):
+					complete_step(TutorialState.ATTACK)
+			TutorialState.ATTACK:
+				if Input.is_action_just_pressed("atacar"):
+					complete_step(TutorialState.ATTACK2)
+			TutorialState.ATTACK2:
+				if Input.is_action_just_pressed("atacar"):
+					complete_step(TutorialState.TALK)
+			TutorialState.TALK:
+				if Input.is_action_just_pressed("interagir"):
+					complete_step(TutorialState.FINISHED)
+	else:
 		return
-		
-	match current_state:
-		TutorialState.MOVE:
-			# Verifica se o jogador apertou algum botão de movimento
-			if Input.is_action_just_pressed("move_right") or Input.is_action_just_pressed("move_left"):
-				complete_step(TutorialState.DASH)
-		TutorialState.DASH:
-			if Input.is_action_just_pressed("dash"):
-				complete_step(TutorialState.ATTACK)
-		TutorialState.ATTACK:
-			if Input.is_action_just_pressed("atacar"):
-				complete_step(TutorialState.ATTACK2)
-		TutorialState.ATTACK2:
-			if Input.is_action_just_pressed("atacar"):
-				complete_step(TutorialState.TALK)
-		TutorialState.TALK:
-			if Input.is_action_just_pressed("interagir"):
-				complete_step(TutorialState.FINISHED)
-
 # Função para atualizar o texto na tela
 func update_ui():
 	

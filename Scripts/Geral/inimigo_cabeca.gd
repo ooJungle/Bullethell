@@ -106,7 +106,6 @@ func _on_collision_area_body_entered(body: Node2D) -> void:
 	if body.is_in_group("player"):
 		var direcao = (global_position - body.global_position).normalized()
 		aplicar_knockback(direcao)
-		body.take_damage(5)
 
 func take_damage(_amount: int) -> void:
 	queue_free()

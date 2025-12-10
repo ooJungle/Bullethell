@@ -59,7 +59,7 @@ shader_parameter/falloff_max = 0.05
 shader_parameter/intensity = 8.0
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ay01c"]
-radius = 36.0
+radius = 37.0
 height = 92.0
 
 [node name="cristal_vermelho" type="StaticBody2D" groups=["cristal"]]
@@ -76,10 +76,10 @@ texture = ExtResource("4_av7e6")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(-14, -3.000001)
-scale = Vector2(0.51, 0.5766667)
+scale = Vector2(0.06, 0.06)
 texture = ExtResource("2_v6luj")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 light_mask = 1023
-position = Vector2(-14, 5)
+position = Vector2(-14, 1)
 shape = SubResource("CapsuleShape2D_ay01c")
