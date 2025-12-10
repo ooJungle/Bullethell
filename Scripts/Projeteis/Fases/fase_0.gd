@@ -8,9 +8,10 @@ extends Node2D
 
 @onready var color_rect: ColorRect = $Ambiente/ColorRect
 @onready var imagem_final: TextureRect = $Ambiente/ImagemFinal
-@onready var texto_mal: CanvasLayer = $texto_mal
+@onready var control: CanvasLayer = $Control
 
 func _ready() -> void:
+	Global.boss_final_morreu.connect(fimdejogo)
 	get_tree().get_root().set_transparent_background(true)
 	DisplayServer.window_set_flag(DisplayServer.WINDOW_FLAG_TRANSPARENT, true, 0)
 	DisplayServer.window_set_flag(DisplayServer.WINDOW_FLAG_BORDERLESS, true, 0)
@@ -18,8 +19,7 @@ func _ready() -> void:
 	if imagem_final:
 		imagem_final.visible = false
 		imagem_final.modulate.a = 0.0
-	
-	texto_mal.visible = false
+
 	$Timer.start()
 	Global.plataforma = false
 	
@@ -35,7 +35,6 @@ func verificar_fim_de_jogo():
 	var f3 = Global.portais_ativos["Fase_RPG"] == false
 	
 	if f1 and f2 and f3:
-		texto_mal.visible = true
 		mostrar_imagem_final()
 		if not Global.dialogo_final_mostrado:
 			iniciar_dialogo_automatico()
@@ -60,6 +59,11 @@ func iniciar_dialogo_automatico():
 	Global.dialogo_final_mostrado = true
 	animar_pulso_final()
 	Dialogo.start_dialogue(falas_finais)
+
+func fimdejogo():
+	control.visible = true
+	get_tree().paused = true
+	control.start_fake_cutscene()
 
 func animar_pulso_final():
 	if not color_rect:
