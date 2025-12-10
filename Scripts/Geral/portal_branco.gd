@@ -5,6 +5,9 @@ extends Area2D
 # Adicione uma export variável para a cena do boss
 @export var boss_scene: PackedScene
 
+func _ready() -> void:
+	modulate = Color(1.2, 1.2, 1.2, 1.0)
+
 func _on_body_entered(body: Node2D) -> void:
 	som_portal.play()
 	body.pode_se_mexer = false

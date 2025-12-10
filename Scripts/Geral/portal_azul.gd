@@ -11,6 +11,7 @@ func _ready():
 	if Global.portais_ativos.has(id_da_fase):
 		if Global.portais_ativos[id_da_fase] == false:
 			queue_free() 
+	modulate = Color(1.2, 1.2, 1.2, 1.0)
 
 func _on_body_entered(body):
 	som_portal.play()

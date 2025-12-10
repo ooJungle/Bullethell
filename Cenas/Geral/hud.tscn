@@ -4,6 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://bc6xm446i2t4t" path="res://Sprites/Geral/vidas.png" id="2_fua3i"]
 
 [node name="HUD" type="CanvasLayer"]
+layer = 2147483647
 script = ExtResource("1_mdmel")
 
 [node name="Control" type="Control" parent="."]

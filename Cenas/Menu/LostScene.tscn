@@ -17,6 +17,9 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_oej1p")
 
+[node name="ColorRect" parent="." instance=ExtResource("7_kbroo")]
+layout_mode = 0
+
 [node name="TextureRect" type="TextureRect" parent="."]
 layout_mode = 1
 anchors_preset = 15
@@ -57,12 +60,5 @@ texture = ExtResource("2_4qvgj")
 [node name="Mira" parent="." instance=ExtResource("3_g8j1v")]
 position = Vector2(480, 342)
 scale = Vector2(1.5, 1.5)
-
-[node name="ColorRect" parent="." instance=ExtResource("7_kbroo")]
-layout_mode = 0
-offset_left = -86142.0
-offset_top = -33618.0
-offset_right = 99863.0
-offset_bottom = 34008.0
 
 [connection signal="pressed" from="VBoxContainer/MenuButton" to="." method="_on_menu_button_pressed"]

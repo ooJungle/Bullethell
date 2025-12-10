@@ -24,11 +24,7 @@ func _ready():
 		tilemap.queue_free()
 
 func verificar_inicio_de_jogo():
-	var f1 = Global.portais_ativos["Fase_espaco"] == true
-	var f2 = Global.portais_ativos["Fase_plat"] == true
-	var f3 = Global.portais_ativos["Fase_RPG"] == true
-	
-	if f1 and f2 and f3:
+	if Global.primeira_vez:
 		inicio = true
 	else:
 		inicio = false

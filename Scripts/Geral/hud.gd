@@ -25,3 +25,4 @@ func atualizar_vidas(vida_atual: int):
 		var limite_inferior = i * 4
 		var vida_neste_coracao = clamp(vida_atual - limite_inferior, 0, 4)
 		coracao.frame = vida_neste_coracao
+		coracao.modulate = Color(0.5 * vida_neste_coracao, 0.5 * vida_neste_coracao, 0.5 * vida_neste_coracao, 1)
