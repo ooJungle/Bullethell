@@ -33,6 +33,10 @@ var pode_se_mexer: bool:
 			return componente_ativo.pode_se_mexer
 		return true
 
+#bill de invencivel
+var invencivel: bool = false
+@export var tempo_invencibilidade: float = 1.0
+
 # --- CONFIGURAÇÕES ---
 @export var dano_do_player: int = 10
 @export var tempo_para_carregar: float = 1.5
@@ -354,6 +358,8 @@ func verificar_dano_nos_inimigos():
 				corpo.velocity += direcao_empurrao * 300
 
 func take_damage(amount: int) -> void:
+	if invencivel: 
+		return
 	var is_dashing = false
 	if componente_ativo and "is_dashing" in componente_ativo:
 		is_dashing = componente_ativo.is_dashing
@@ -361,8 +367,25 @@ func take_damage(amount: int) -> void:
 		vida -= amount
 		Global.vida = vida
 		dano()
+		ficar_invencivel()
 		if vida <= 0: die()
-
+		
+func ficar_invencivel():
+	invencivel = true
+	var tween = create_tween()
+	tween.set_loops() # repete infinito
+	
+	# Anima a opacidade para 0.2 (quase invisível) em 0.1 segundos
+	tween.tween_property(sprite, "modulate:a", 0.2, 0.1)
+	# Anima a opacidade para 1.0 (visível) em 0.1 segundos
+	tween.tween_property(sprite, "modulate:a", 1.0, 0.1)
+	
+	await get_tree().create_timer(tempo_invencibilidade).timeout
+	if is_instance_valid(tween):
+		tween.kill()
+	sprite.modulate.a = 1.0
+	invencivel = false
+	
 func die() -> void:
 	get_tree().change_scene_to_file("res://Cenas/Menu/LostScene.tscn")
 
