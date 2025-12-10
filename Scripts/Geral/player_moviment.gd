@@ -56,6 +56,7 @@ var alvo_seta: Vector2 = Vector2.ZERO
 var offset_visual_seta: Vector2 = Vector2(0, -8)
 @onready var transparente: bool = true
 @onready var ativo: bool = true
+@onready var particula: CPUParticles2D = $CPUParticles2D
 
 func _ready() -> void:
 	vida = vida_maxima
@@ -142,6 +143,12 @@ func _physics_process(delta: float) -> void:
 			atualizar_animacao_topdown()
 
 	global_position = global_position.round()
+	atualizar_particulas_poeira()
+
+func atualizar_particulas_poeira():
+	var esta_se_movendo = velocity.length() > 10 
+	if particula.emitting != esta_se_movendo:
+		particula.emitting = esta_se_movendo
 
 func atualizar_modo_de_jogo():
 	if Global.plataforma:

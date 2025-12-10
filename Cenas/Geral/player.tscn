@@ -1,4 +1,4 @@
-[gd_scene load_steps=58 format=3 uid="uid://cw5ic42v3wep7"]
+[gd_scene load_steps=59 format=3 uid="uid://cw5ic42v3wep7"]
 
 [ext_resource type="Script" uid="uid://dxifkqojdxq0a" path="res://Scripts/Geral/player_moviment.gd" id="1_pmvhq"]
 [ext_resource type="Texture2D" uid="uid://buwiyodclkf8g" path="res://Sprites/Sheets/player/player_run_sword_costas.png" id="2_fkqs1"]
@@ -334,6 +334,10 @@ width = 49
 height = 4
 fill_to = Vector2(0, 0)
 
+[sub_resource type="Curve" id="Curve_62tt0"]
+_data = [Vector2(0.75000006, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
 [node name="player" type="CharacterBody2D" groups=["player", "players"]]
 collision_layer = 33
 collision_mask = 33
@@ -417,6 +421,23 @@ volume_db = 1.0
 [node name="MovementTopDown" type="Node" parent="." node_paths=PackedStringArray("body")]
 script = ExtResource("12_nc3o8")
 body = NodePath("..")
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="."]
+show_behind_parent = true
+position = Vector2(0, 10)
+amount = 4
+lifetime = 0.3
+emission_shape = 1
+emission_sphere_radius = 4.0
+direction = Vector2(0, -1)
+spread = 90.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 10.0
+initial_velocity_max = 20.0
+scale_amount_min = 2.0
+scale_amount_max = 2.0
+scale_amount_curve = SubResource("Curve_62tt0")
+color = Color(0.6255971, 0.6255971, 0.6255971, 1)
 
 [connection signal="animation_finished" from="sprite" to="." method="_on_sprite_animation_finished"]
 [connection signal="timeout" from="dano_timer" to="." method="_on_dano_timer_timeout"]
