@@ -180,7 +180,7 @@ func modo_atirando(delta: float):
 		
 		if collider == player:
 			if not alvo_atingido_neste_tiro:
-				if "take_damage" in player: player.take_damage(40)
+				if "take_damage" in player: player.take_damage(2)
 				alvo_atingido_neste_tiro = true
 			
 			ray_cast_2d.add_exception(player)
@@ -323,7 +323,6 @@ func _on_collision_area_body_entered(body: Node2D) -> void:
 	if body.is_in_group("player"):
 		var direcao = (global_position - body.global_position).normalized()
 		aplicar_knockback(direcao)
-		if body.has_method("take_damage"): body.take_damage(5)
 
 func take_damage(_amount: int) -> void:
 	queue_free()

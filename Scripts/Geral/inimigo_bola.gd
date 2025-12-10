@@ -90,7 +90,7 @@ func _on_collision_area_body_entered(body: Node2D) -> void:
 		var direcao = (global_position - body.global_position).normalized()
 		aplicar_knockback(direcao)
 		if body.has_method("take_damage"):
-			body.take_damage(5)
+			body.take_damage(1)
 
 func shoot():
 	sprite.play("atirando")

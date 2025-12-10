@@ -126,9 +126,6 @@ func _on_hitbox_body_entered(body: Node2D) -> void:
 	if body.is_in_group("players"): 
 		var direcao_recuo = (global_position - body.global_position).normalized()
 		aplicar_knockback(direcao_recuo)
-		
-		if body.has_method("take_damage"):
-			body.take_damage(5)
 
 func take_damage(_amount: int) -> void:
 	if altura_z > 0:

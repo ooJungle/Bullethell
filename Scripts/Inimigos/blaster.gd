@@ -97,7 +97,7 @@ func modo_atirando(delta: float):
 			
 			if is_instance_valid(collider) and collider.is_in_group("player"):
 				if player.has_method("take_damage"):
-					player.take_damage(20)
+					player.take_damage(2)
 				alvo_atingido_neste_tiro = true 
 	
 	state_timer -= delta * Global.fator_tempo
