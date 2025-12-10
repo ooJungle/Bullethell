@@ -27,6 +27,7 @@ var portais_ativos = {
 
 signal inimigo_morreu
 signal boss_final_morreu
+signal vida_mudou(nova_vida)
 
 func _ready() -> void:
 	if not FileAccess.file_exists(SAVE_PATH):
@@ -41,7 +42,11 @@ func _ready() -> void:
 	carregar()
 	if zerou == true:
 		get_tree().quit()
-	
+
+func atualizar_hud_vida(valor):
+	vida = valor
+	emit_signal("vida_mudou", vida)
+
 func set_in_menu_state(in_menu: bool):
 	if in_menu == is_in_menu:
 		return

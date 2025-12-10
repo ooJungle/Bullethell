@@ -15,7 +15,7 @@ var tempo = 0.0
 @onready var dano_timer: Timer = $dano_timer
 
 # --- VARIÁVEIS DE ESTADO ---
-var vida_maxima: int = 300
+var vida_maxima: int = 12
 var vida: int = vida_maxima
 var atacando: bool = false
 var pode_atacar: bool = true
@@ -57,6 +57,7 @@ var offset_visual_seta: Vector2 = Vector2(0, -8)
 @onready var transparente: bool = true
 @onready var ativo: bool = true
 @onready var particula: CPUParticles2D = $CPUParticles2D
+@onready var hit: AudioStreamPlayer = $hit
 
 func _ready() -> void:
 	vida = vida_maxima
@@ -391,8 +392,10 @@ func take_damage(amount: int) -> void:
 	if componente_ativo and "is_dashing" in componente_ativo:
 		is_dashing = componente_ativo.is_dashing
 	if not is_dashing:
+		hit.play()
 		vida -= amount
-		Global.vida = vida
+		vida = clamp(vida, 0, vida_maxima)
+		Global.atualizar_hud_vida(vida)
 		dano()
 		ficar_invencivel()
 		if vida <= 0: die()

@@ -1,9 +1,8 @@
-[gd_scene load_steps=59 format=3 uid="uid://cw5ic42v3wep7"]
+[gd_scene load_steps=58 format=3 uid="uid://cw5ic42v3wep7"]
 
 [ext_resource type="Script" uid="uid://dxifkqojdxq0a" path="res://Scripts/Geral/player_moviment.gd" id="1_pmvhq"]
 [ext_resource type="Texture2D" uid="uid://buwiyodclkf8g" path="res://Sprites/Sheets/player/player_run_sword_costas.png" id="2_fkqs1"]
 [ext_resource type="Texture2D" uid="uid://dnkma0b5kv7iu" path="res://Sprites/Sheets/player/player_run_sword_animation.png" id="3_g8kdf"]
-[ext_resource type="Script" uid="uid://crfk7npa02onr" path="res://Scripts/Geral/PROVISORIO --- VIDA.gd" id="4_5p0qj"]
 [ext_resource type="Texture2D" uid="uid://dxtv4ric4h25d" path="res://Sprites/Sheets/player/player_ataque_costas.png" id="4_fkqs1"]
 [ext_resource type="Texture2D" uid="uid://bkkbh0icw3per" path="res://Sprites/Sheets/player/new_player_ataque.png" id="5_ey3av"]
 [ext_resource type="Texture2D" uid="uid://cvj3ox238pvhj" path="res://Sprites/Sheets/player/player_ataque_down.png" id="5_fkqs1"]
@@ -15,6 +14,7 @@
 [ext_resource type="Script" uid="uid://clga8r2uoukeq" path="res://Cenas/Geral/movement_top_down.gd" id="12_nc3o8"]
 [ext_resource type="PackedScene" uid="uid://ddlspjlgmtsie" path="res://ghost.tscn" id="13_7a67c"]
 [ext_resource type="AudioStream" uid="uid://b4u6fc3s8bmtl" path="res://Sons e Musica/dash.wav" id="14_62tt0"]
+[ext_resource type="AudioStream" uid="uid://cqlu18bubviu2" path="res://Sons e Musica/hitcpa.mp3" id="15_62tt0"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_fkqs1"]
 atlas = ExtResource("2_fkqs1")
@@ -319,8 +319,6 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_iersn"]
 size = Vector2(20, 29)
 
-[sub_resource type="LabelSettings" id="LabelSettings_yuqgu"]
-
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_yuqgu"]
 size = Vector2(30, 37)
 
@@ -357,16 +355,6 @@ shape = SubResource("RectangleShape2D_iersn")
 
 [node name="dano_timer" type="Timer" parent="."]
 wait_time = 0.5
-
-[node name="Label" type="Label" parent="."]
-offset_left = -20.0
-offset_top = -51.0
-offset_right = 20.0
-offset_bottom = -28.0
-label_settings = SubResource("LabelSettings_yuqgu")
-horizontal_alignment = 1
-vertical_alignment = 1
-script = ExtResource("4_5p0qj")
 
 [node name="Hitbox" type="Area2D" parent="."]
 light_mask = 2
@@ -438,6 +426,11 @@ scale_amount_min = 2.0
 scale_amount_max = 2.0
 scale_amount_curve = SubResource("Curve_62tt0")
 color = Color(0.6255971, 0.6255971, 0.6255971, 1)
+
+[node name="hit" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("15_62tt0")
+volume_db = 4.0
+bus = &"sfx"
 
 [connection signal="animation_finished" from="sprite" to="." method="_on_sprite_animation_finished"]
 [connection signal="timeout" from="dano_timer" to="." method="_on_dano_timer_timeout"]

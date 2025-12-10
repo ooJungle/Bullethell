@@ -10,7 +10,7 @@ extends Node
 @onready var ghost_timer: Timer = $GhostTimer
 @onready var dash_timer: Timer = $DashTimer
 @onready var dash_cooldown: Timer = $DashCooldown
-@onready var particles: GPUParticles2D = $GPUParticles2D
+@onready var particles: CPUParticles2D = $CPUParticles2D
 @onready var dash_som: AudioStreamPlayer2D = $dash
 
 # --- CONFIGURAÇÕES ---

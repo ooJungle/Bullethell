@@ -1,0 +1,30 @@
+[gd_scene load_steps=3 format=3 uid="uid://bgvdtutb1paf0"]
+
+[ext_resource type="Script" uid="uid://wpepjvnqmu2j" path="res://Scripts/Geral/hud.gd" id="1_mdmel"]
+[ext_resource type="Texture2D" uid="uid://bc6xm446i2t4t" path="res://Sprites/Geral/vidas.png" id="2_fua3i"]
+
+[node name="HUD" type="CanvasLayer"]
+script = ExtResource("1_mdmel")
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 20.0
+offset_top = 20.0
+offset_right = 60.0
+offset_bottom = 60.0
+
+[node name="coracao1" type="Sprite2D" parent="Control"]
+position = Vector2(250, 40)
+texture = ExtResource("2_fua3i")
+hframes = 5
+
+[node name="coracao2" type="Sprite2D" parent="Control"]
+position = Vector2(150, 40)
+texture = ExtResource("2_fua3i")
+hframes = 5
+
+[node name="coracao3" type="Sprite2D" parent="Control"]
+position = Vector2(50, 40)
+texture = ExtResource("2_fua3i")
+hframes = 5

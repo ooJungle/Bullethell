@@ -21,6 +21,7 @@ Global="*res://Cenas/Geral/Global.tscn"
 Dialogo="*res://Cenas/Geral/dialogo.tscn"
 Transicao="*res://Scripts/Projeteis/Fases/Transicao.tscn"
 RodaManager="*res://Scripts/Geral/roda_manager.gd"
+Hud="*res://Cenas/Geral/hud.tscn"
 
 [display]
 
