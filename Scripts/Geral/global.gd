@@ -46,19 +46,22 @@ func _ready() -> void:
 func atualizar_hud_vida(valor):
 	vida = valor
 	emit_signal("vida_mudou", vida)
-
+	
+func alternar_pause_musica(pausado: bool):
+	music_player.stream_paused = pausado
+	
 func set_in_menu_state(in_menu: bool):
 	if in_menu == is_in_menu:
 		return
 	
 	is_in_menu = in_menu
 	
-	if is_in_menu:
+	if is_in_menu :
 		music_player.stop()
+		musica_timer.stop()
 	else:
-		if primeira_vez:
-			timer()
-			primeira_vez = false
+		timer()
+		primeira_vez = false
 
 func timer():
 	musica_timer.start(2.0)

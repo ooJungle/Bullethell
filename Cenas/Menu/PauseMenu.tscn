@@ -50,7 +50,16 @@ volume_db = -80.0
 expand = true
 buffering_msec = 10
 
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0.101960786, 0.10980392, 0.67058825)
+
 [node name="TextureRect" type="TextureRect" parent="CanvasLayer"]
+visible = false
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0

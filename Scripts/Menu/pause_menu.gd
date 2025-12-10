@@ -1,5 +1,6 @@
 extends Control
 
+var PARA = true
 @export var settings_menu_scene: PackedScene
 @onready var video_player: VideoStreamPlayer = $CanvasLayer/PauseVideo
 @onready var despause_video_player: VideoStreamPlayer = $CanvasLayer/DespauseVideo
@@ -9,29 +10,38 @@ extends Control
 @onready var settings_button: TextureButton = $CanvasLayer/VBoxContainer/SettingsButton
 @onready var options: VBoxContainer = $CanvasLayer/VBoxContainer
 
+
 func _ready() -> void:
 	process_mode = Node.PROCESS_MODE_WHEN_PAUSED
 	
 func start_pause() -> void:
 	Global.menu = 1
-	Global.set_in_menu_state(true)
+	Global.alternar_pause_musica(true)
 	menu_container.show()
-	
 	Global.paused = true
 	get_tree().paused = true
 	
-	options.hide()
-	despause_video_player.hide()
-	video_player.show()
-	video_player.stop() #pra rebobinar
-	video_player.play()
+	if not PARA:
+		options.hide()
+		despause_video_player.hide()
+		video_player.show()
+		video_player.stop() #pra rebobinar
+		video_player.play()
+	else:
+		options.show()
 
 func _on_resume_button_pressed() -> void:
-	options.hide()
-	despause_video_player.show()
-	despause_video_player.stop()
-	despause_video_player.play()
-
+	if not PARA:
+		options.hide()
+		despause_video_player.show()
+		despause_video_player.stop()
+		despause_video_player.play()
+	else:
+		Global.alternar_pause_musica(false)
+		menu_container.hide()
+		Global.paused = false
+		get_tree().paused = false
+		
 func _on_quit_button_pressed() -> void:
 	Global.set_in_menu_state(true)
 	Global.paused = false
