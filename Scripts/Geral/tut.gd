@@ -2,7 +2,9 @@ extends CanvasLayer
 
 enum TutorialState {
 	MOVE,
+	DASH,
 	ATTACK,
+	ATTACK2,
 	TALK,
 	FINISHED
 }
@@ -25,23 +27,33 @@ func _process(delta):
 		TutorialState.MOVE:
 			# Verifica se o jogador apertou algum botão de movimento
 			if Input.is_action_just_pressed("move_right") or Input.is_action_just_pressed("move_left"):
+				complete_step(TutorialState.DASH)
+		TutorialState.DASH:
+			if Input.is_action_just_pressed("dash"):
 				complete_step(TutorialState.ATTACK)
-				
 		TutorialState.ATTACK:
 			if Input.is_action_just_pressed("atacar"):
+				complete_step(TutorialState.ATTACK2)
+		TutorialState.ATTACK2:
+			if Input.is_action_just_pressed("atacar"):
 				complete_step(TutorialState.TALK)
-				
+				await get_tree().create_timer(1.5).timeout
 		TutorialState.TALK:
 			if Input.is_action_just_pressed("interagir"):
 				complete_step(TutorialState.FINISHED)
 
 # Função para atualizar o texto na tela
 func update_ui():
+	
 	match current_state:
 		TutorialState.MOVE:
 			label.text = "Pressione WASD para se mover!"
+		TutorialState.DASH:
+			label.text = "Pressione SHIFT para usar o dash!"
 		TutorialState.ATTACK:
 			label.text = "Pressione BOTÃO ESQUERDO DO MOUSE para atacar!"
+		TutorialState.ATTACK2:
+			label.text = "Segure BOTÃO ESQUERDO DO MOUSE para um ataque carregado!"
 		TutorialState.TALK:
 			tilemap.queue_free()
 			label.text = "Pressione E para conversar e ESPAÇO para mudar o diálogo!"
