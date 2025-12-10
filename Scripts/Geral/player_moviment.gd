@@ -204,8 +204,12 @@ func atualizar_animacao_plataforma():
 		tocar_anim("idle_lado") 
 			
 	if not is_on_floor():
-		if velocity.y < 0: tocar_anim("jump_up")
-		else: tocar_anim("jump_down")
+		if velocity.y < 0: 
+			tocar_anim("jump_up")
+		elif velocity.y > 300:
+			tocar_anim("jump_down")
+		else: 
+			tocar_anim("jump_middle")
 
 func atualizar_animacao_topdown():
 	if not self.pode_se_mexer: return

@@ -1,4 +1,4 @@
-[gd_scene load_steps=58 format=3 uid="uid://cw5ic42v3wep7"]
+[gd_scene load_steps=62 format=3 uid="uid://cw5ic42v3wep7"]
 
 [ext_resource type="Script" uid="uid://dxifkqojdxq0a" path="res://Scripts/Geral/player_moviment.gd" id="1_pmvhq"]
 [ext_resource type="Texture2D" uid="uid://buwiyodclkf8g" path="res://Sprites/Sheets/player/player_run_sword_costas.png" id="2_fkqs1"]
@@ -9,6 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://d00c5kl0qhryq" path="res://Sprites/Sheets/player/player_idle_sword.png" id="6_fkqs1"]
 [ext_resource type="Texture2D" uid="uid://db2mbslat5rw6" path="res://Sprites/Sheets/player/player_idle_costas_sword.png" id="6_nc3o8"]
 [ext_resource type="Texture2D" uid="uid://d0f6cf6ulwpjg" path="res://Sprites/Geral/seta.png" id="7_8vhvd"]
+[ext_resource type="Texture2D" uid="uid://ci7beu2ak3lju" path="res://Sprites/Sheets/player/player_jump.png" id="9_s0oku"]
 [ext_resource type="AudioStream" uid="uid://yiq4b3oftl0o" path="res://Sons e Musica/golpe.mp3" id="10_4q8k4"]
 [ext_resource type="Script" uid="uid://c7tbf28lnfn6e" path="res://Cenas/Geral/movement_platform.gd" id="12_n6hrf"]
 [ext_resource type="Script" uid="uid://clga8r2uoukeq" path="res://Cenas/Geral/movement_top_down.gd" id="12_nc3o8"]
@@ -159,6 +160,18 @@ region = Rect2(96, 0, 48, 64)
 [sub_resource type="AtlasTexture" id="AtlasTexture_wnguq"]
 atlas = ExtResource("6_fkqs1")
 region = Rect2(144, 0, 48, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_06gvy"]
+atlas = ExtResource("9_s0oku")
+region = Rect2(144, 0, 48, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fo4pp"]
+atlas = ExtResource("9_s0oku")
+region = Rect2(96, 0, 48, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qdhuv"]
+atlas = ExtResource("9_s0oku")
+region = Rect2(48, 0, 48, 64)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_8tubf"]
 animations = [{
@@ -314,6 +327,30 @@ animations = [{
 "loop": true,
 "name": &"idle_lado",
 "speed": 9.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_06gvy")
+}],
+"loop": true,
+"name": &"jump_down",
+"speed": 9.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fo4pp")
+}],
+"loop": true,
+"name": &"jump_middle",
+"speed": 9.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qdhuv")
+}],
+"loop": true,
+"name": &"jump_up",
+"speed": 9.0
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_iersn"]
@@ -345,7 +382,7 @@ script = ExtResource("1_pmvhq")
 [node name="sprite" type="AnimatedSprite2D" parent="."]
 scale = Vector2(1.5, 1.5)
 sprite_frames = SubResource("SpriteFrames_8tubf")
-animation = &"idle_costas"
+animation = &"jump_up"
 speed_scale = 1.7
 offset = Vector2(0, -8)
 

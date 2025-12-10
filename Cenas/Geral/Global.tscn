@@ -9,6 +9,7 @@ script = ExtResource("1_4mbhf")
 [node name="MusicPlayer" type="AudioStreamPlayer" parent="."]
 process_mode = 3
 stream = ExtResource("2_hnvys")
+volume_db = 24.0
 bus = &"musica"
 
 [node name="Timer" type="Timer" parent="."]

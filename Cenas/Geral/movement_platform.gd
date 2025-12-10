@@ -112,12 +112,12 @@ func processar_animacoes(delta: float, direction: float = 0.0):
 			# --- CORREÇÃO DO NOME DA ANIMAÇÃO ---
 			tocar_anim("andando_lado") 
 	else:
-		if body.velocity.y < 0:
+		if body.velocity.y < 1000:
 			tocar_anim("jump_up")
-		elif body.velocity.y >= 0 and body.velocity.y < 250:
-			tocar_anim("jump_middle")
-		else:
+		elif body.velocity.y > 1000:
 			tocar_anim("jump_down")
+		else:
+			tocar_anim("jump_middle")
 
 func tocar_anim(nome: String):
 	if jogador_vivo and jogador_vivo.sprite_frames.has_animation(nome):
