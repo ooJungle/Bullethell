@@ -46,5 +46,6 @@ func _on_dano_timer_timeout() -> void:
 	modulate = Color(0.5, 0.5, 0.5, 0.75)
 
 func _on_collision_area_body_entered(body: Node2D) -> void:
-	player_ref.take_damage(damage)
-	queue_free()
+	if body.is_in_group("players"):
+		player_ref.take_damage(damage)
+		queue_free()
