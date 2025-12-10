@@ -2,9 +2,9 @@ extends Node2D
 
 # --- Variáveis de Combate e Estados ---
 @export_group("Timers do Ataque")
-@export var duracaoMira: float = 1.0   # Duração do aviso (linha)
-@export var ducacaoLock: float = 0.3   # Duração do "lock" (mudança de cor)
-@export var duracaoTiro: float = 0.9   # Duração do laser ativo
+@export var duracaoMira: float = 1.0    # Duração do aviso (linha)
+@export var ducacaoLock: float = 0.3    # Duração do "lock" (mudança de cor)
+@export var duracaoTiro: float = 0.9    # Duração do laser ativo
 
 # --- Nós Filhos ---
 @onready var fire_point: Node2D = $FirePoint
@@ -76,28 +76,28 @@ func mudar_para_estado(novoEstado: Estado):
 			laser.play()
 
 func modo_mira(delta: float):
-	# Não precisamos mais mirar, o spawner já rotacionou o BlasterFixo.
-	# Apenas esperamos o timer.
 	state_timer -= delta * Global.fator_tempo
 	if state_timer <= 0:
 		mudar_para_estado(Estado.LOCKADO)
 
 func modo_lockado(delta: float):
-	# Apenas esperamos o timer.
 	state_timer -= delta * Global.fator_tempo
 	if state_timer <= 0:
 		mudar_para_estado(Estado.ATIRANDO)
 		
 func modo_atirando(delta: float):
 	if not alvo_atingido_neste_tiro:
+		# Força a atualização imediata do Raycast
 		ray_cast_2d.force_raycast_update()
 		
 		if ray_cast_2d.is_colliding():
 			var collider = ray_cast_2d.get_collider()
-			print("Colidiu com o nó: ", collider.name)
-			print("Grupos deste nó: ", collider.get_groups())
+			# Debug para ver o que ele está acertando
+			# print("Colidiu com: ", collider.name) 
+			
 			if is_instance_valid(collider) and collider.is_in_group("player"):
-				player.take_damage(20)
+				if player.has_method("take_damage"):
+					player.take_damage(20)
 				alvo_atingido_neste_tiro = true 
 	
 	state_timer -= delta * Global.fator_tempo

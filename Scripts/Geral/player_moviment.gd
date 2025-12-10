@@ -35,7 +35,7 @@ var pode_se_mexer: bool:
 
 #bill de invencivel
 var invencivel: bool = false
-@export var tempo_invencibilidade: float = 1.0
+@export var tempo_invencibilidade: float = 0.5
 
 # --- CONFIGURAÇÕES ---
 @export var dano_do_player: int = 10
