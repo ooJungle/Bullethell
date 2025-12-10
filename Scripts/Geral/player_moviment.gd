@@ -302,7 +302,7 @@ func iniciar_ataque(com_projetil: bool):
 	som_ataque.play()
 	verificar_dano_nos_inimigos()
 	
-	get_tree().create_timer(0.6).timeout.connect(func():
+	get_tree().create_timer(0.4).timeout.connect(func():
 		if atacando: 
 			print("Timer de segurança destravou o player.")
 			_on_sprite_animation_finished_force()

@@ -378,7 +378,6 @@ scale = Vector2(17, 17)
 texture = ExtResource("17_d716y")
 
 [node name="ColorRect" parent="." instance=ExtResource("1_setcl")]
-visible = false
 offset_left = -7749.0
 offset_top = -5696.0
 offset_right = 8400.0
