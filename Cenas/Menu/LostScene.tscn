@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://ho5yv5ew87ln"]
+[gd_scene load_steps=8 format=3 uid="uid://ho5yv5ew87ln"]
 
 [ext_resource type="Script" uid="uid://bxqgvl7b40t4m" path="res://Scripts/Menu/lost_scene.gd" id="1_oej1p"]
 [ext_resource type="Texture2D" uid="uid://d10lk88fslwii" path="res://Sprites/Menu/gameover.png" id="2_4qvgj"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://b2pnn1csceu83" path="res://UI_UX/mira.tscn" id="3_g8j1v"]
 [ext_resource type="Texture2D" uid="uid://c6m8k8f0g24qd" path="res://Sprites/Menu/voltar.png" id="3_kbroo"]
 [ext_resource type="Texture2D" uid="uid://ci1d6v1r3bbal" path="res://Sprites/Menu/voltar_apagado.png" id="4_71ln1"]
+[ext_resource type="PackedScene" uid="uid://d2m240uv3u7nj" path="res://UI_UX/fundo.tscn" id="7_kbroo"]
 
 [node name="LostScene" type="Control"]
 layout_mode = 3
@@ -56,5 +57,12 @@ texture = ExtResource("2_4qvgj")
 [node name="Mira" parent="." instance=ExtResource("3_g8j1v")]
 position = Vector2(480, 342)
 scale = Vector2(1.5, 1.5)
+
+[node name="ColorRect" parent="." instance=ExtResource("7_kbroo")]
+layout_mode = 0
+offset_left = -86142.0
+offset_top = -33618.0
+offset_right = 99863.0
+offset_bottom = 34008.0
 
 [connection signal="pressed" from="VBoxContainer/MenuButton" to="." method="_on_menu_button_pressed"]

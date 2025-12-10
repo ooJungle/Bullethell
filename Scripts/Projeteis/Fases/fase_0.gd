@@ -8,6 +8,7 @@ extends Node2D
 
 @onready var color_rect: ColorRect = $Ambiente/ColorRect
 @onready var imagem_final: TextureRect = $Ambiente/ImagemFinal
+@onready var texto_mal: CanvasLayer = $texto_mal
 
 func _ready() -> void:
 	get_tree().get_root().set_transparent_background(true)
@@ -17,7 +18,8 @@ func _ready() -> void:
 	if imagem_final:
 		imagem_final.visible = false
 		imagem_final.modulate.a = 0.0
-
+	
+	texto_mal.visible = false
 	$Timer.start()
 	Global.plataforma = false
 	
@@ -33,6 +35,7 @@ func verificar_fim_de_jogo():
 	var f3 = Global.portais_ativos["Fase_RPG"] == false
 	
 	if f1 and f2 and f3:
+		texto_mal.visible = true
 		mostrar_imagem_final()
 		if not Global.dialogo_final_mostrado:
 			iniciar_dialogo_automatico()

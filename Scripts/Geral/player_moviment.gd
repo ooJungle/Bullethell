@@ -7,7 +7,7 @@ extends CharacterBody2D
 var componente_ativo: Node = null
 
 # --- REFERÊNCIAS VISUAIS ---
-@onready var sprite: AnimatedSprite2D = $sprite # Confirme se o nome é esse ou $sprite
+@onready var sprite: AnimatedSprite2D = $sprite 
 @onready var som_ataque: AudioStreamPlayer = $AudioStreamPlayer
 @onready var hitbox: Area2D = $Hitbox
 @onready var hitbox_colisao: CollisionShape2D = $Hitbox/CollisionShape2D
@@ -107,31 +107,33 @@ func _physics_process(delta: float) -> void:
 
 	# --- 1. BLOQUEIO DE ATAQUE (Prioridade Máxima) ---
 	if atacando:
-		# Trava lógica do componente
 		self.pode_se_mexer = false 
-		
-		# Trava física total
 		velocity = Vector2.ZERO
 		move_and_slide()
-		return # IMPEDE que o código abaixo rode
+		return 
 
-	# --- 2. SE NÃO ESTIVER ATACANDO ---
-	self.pode_se_mexer = true
+	# --- 2. BLOQUEIO EXTERNO (Portal/Cutscene) ---
+	# Se não estiver atacando, mas "pode_se_mexer" for false (ex: portal setou isso)
+	# Congelamos o player e tocamos a animação idle correta.
+	if not self.pode_se_mexer:
+		velocity = Vector2.ZERO
+		move_and_slide()
+		tocar_idle_forcado() # Nova função auxiliar
+		return
+
+	# --- 3. SE PUDER SE MEXER ---
+	# (Removi a linha 'self.pode_se_mexer = true' que estava aqui forçando o movimento)
 
 	processar_ataque_carregado(delta)
 
 	if Global.plataforma:
 		move_platform.handle_movement(delta)
-		
-		# SÓ chama atualização de animação se NÃO estiver atacando
 		if not atacando:
 			atualizar_animacao_plataforma()
 	else:
 		atualizar_fator_tempo()
 		var forca_externa = calcular_forcas_externas()
 		move_topdown.handle_movement(delta, forca_externa)
-		
-		# SÓ chama atualização de animação se NÃO estiver atacando
 		if not atacando:
 			atualizar_animacao_topdown()
 
@@ -147,28 +149,38 @@ func atualizar_modo_de_jogo():
 
 # --- GERENCIADOR DE ANIMAÇÕES ---
 
+# Função nova para tocar Idle na direção certa quando travado
+func tocar_idle_forcado():
+	if Global.plataforma:
+		tocar_anim("idle_lado")
+	else:
+		var dir = Vector2.DOWN
+		if "last_move_direction" in move_topdown:
+			dir = move_topdown.last_move_direction
+		
+		if dir.y < 0:
+			tocar_anim("idle_costas")
+		elif dir.y > 0:
+			tocar_anim("idle_frente")
+		else:
+			tocar_anim("idle_lado")
+
 func atualizar_animacao_plataforma():
-	# Verificação Extra: Se não puder se mexer, não toca animação de correr
-	if not self.pode_se_mexer:
-		# Opcional: Se quiser forçar Idle quando travado (ex: cutscene), descomente abaixo
-		# tocar_anim("idle_lado") 
-		return
+	if not self.pode_se_mexer: return
 
 	if abs(velocity.x) > 10:
 		sprite.flip_h = velocity.x > 0
 		if is_on_floor(): 
 			tocar_anim("run")
 	elif is_on_floor():
-		tocar_anim("idle_lado") # ou "idle"
+		tocar_anim("idle_lado") 
 			
 	if not is_on_floor():
 		if velocity.y < 0: tocar_anim("jump_up")
 		else: tocar_anim("jump_down")
 
 func atualizar_animacao_topdown():
-	# Verificação Extra
-	if not self.pode_se_mexer:
-		return
+	if not self.pode_se_mexer: return
 
 	var dir = Vector2.DOWN
 	if "last_move_direction" in move_topdown:
@@ -196,7 +208,6 @@ func atualizar_animacao_topdown():
 			tocar_anim("idle_frente")
 
 func tocar_anim(nome: String):
-	# Segurança extra: Só toca se não estiver atacando
 	if atacando: return 
 	
 	if sprite.sprite_frames.has_animation(nome):
@@ -210,21 +221,20 @@ func iniciar_ataque(com_projetil: bool):
 	
 	atacando = true
 	pode_atacar = false
+	self.pode_se_mexer = false # Garante travamento
 	hitbox_colisao.disabled = false
 	
-	# Direção
 	var dir_ataque = Vector2.RIGHT
 	if componente_ativo and "last_move_direction" in componente_ativo:
 		dir_ataque = componente_ativo.last_move_direction
 	elif Global.plataforma:
 		dir_ataque = Vector2.LEFT if sprite.flip_h else Vector2.RIGHT
 	
-	if dir_ataque == Vector2.ZERO: dir_ataque = Vector2.RIGHT # Fallback
+	if dir_ataque == Vector2.ZERO: dir_ataque = Vector2.RIGHT 
 
 	posicionar_hitbox(dir_ataque)
 	if com_projetil: lancar_projetil(dir_ataque)
 
-	# Escolha de Animação
 	var anim_name = "ataque_lado"
 	var deve_flipar = false
 
@@ -239,16 +249,23 @@ func iniciar_ataque(com_projetil: bool):
 			if dir_ataque.y < 0: anim_name = "ataque_costas"
 			else: anim_name = "ataque_frente"
 
+	print("Tentando tocar animação: ", anim_name)
+
+	sprite.stop()
+	sprite.frame = 0
 	sprite.flip_h = deve_flipar
 	
 	if sprite.sprite_frames.has_animation(anim_name):
 		sprite.play(anim_name)
+		print("SUCESSO: Tocando ", anim_name)
+	else:
+		print("ERRO: '", anim_name, "' não existe. Usando 'ataque_lado'.")
+		sprite.play("ataque_lado")
 
 	som_ataque.pitch_scale = randf_range(0.5, 2.0)
 	som_ataque.play()
 	verificar_dano_nos_inimigos()
 	
-	# Timer de Segurança
 	get_tree().create_timer(0.6).timeout.connect(func():
 		if atacando: 
 			print("Timer de segurança destravou o player.")
@@ -266,11 +283,15 @@ func finalizar_ataque_logica():
 	atacando = false
 	pode_atacar = true
 	hitbox_colisao.disabled = true
+	
+	# RESTAURA O MOVIMENTO
+	# Necessário porque removemos o reset automático do _physics_process
+	self.pode_se_mexer = true 
 
 # --- CARGA, PROJÉTIL, DANO ---
 
 func processar_ataque_carregado(delta: float):
-	# Verifica se pode se mexer antes de carregar
+	# Agora verifica self.pode_se_mexer corretamente
 	if Input.is_action_pressed("attack") and pode_atacar and tem_arma and self.pode_se_mexer:
 		esta_carregando = true
 		if barra_carga: barra_carga.visible = true

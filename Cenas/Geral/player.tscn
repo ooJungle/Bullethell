@@ -277,7 +277,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_pheb3")
 }],
-"loop": false,
+"loop": true,
 "name": &"idle_costas",
 "speed": 5.0
 }, {
@@ -294,7 +294,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_gdprn")
 }],
-"loop": false,
+"loop": true,
 "name": &"idle_frente",
 "speed": 5.0
 }, {
@@ -311,7 +311,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_wnguq")
 }],
-"loop": false,
+"loop": true,
 "name": &"idle_lado",
 "speed": 5.0
 }]
@@ -343,7 +343,7 @@ script = ExtResource("1_pmvhq")
 [node name="sprite" type="AnimatedSprite2D" parent="."]
 scale = Vector2(1.5, 1.5)
 sprite_frames = SubResource("SpriteFrames_8tubf")
-animation = &"ataque_lado"
+animation = &"idle_costas"
 speed_scale = 1.7
 offset = Vector2(0, -8)
 

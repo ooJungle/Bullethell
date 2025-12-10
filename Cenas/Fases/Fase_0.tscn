@@ -250,13 +250,18 @@ shader_parameter/vignette_opacity = 0.702000033345
 [node name="Node2D" type="Node2D"]
 script = ExtResource("1_l7uc1")
 
-[node name="TextureRect" type="TextureRect" parent="."]
+[node name="texto_mal" type="CanvasLayer" parent="."]
+
+[node name="caixa_de_texto_mal" type="TextureRect" parent="texto_mal"]
 z_index = 1
-anchors_preset = 15
+anchors_preset = 12
+anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_top = -525.0
+offset_bottom = -125.0
 grow_horizontal = 2
-grow_vertical = 2
+grow_vertical = 0
 texture = ExtResource("24_if8b4")
 
 [node name="tut" type="CanvasLayer" parent="."]

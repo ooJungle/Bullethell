@@ -34,7 +34,7 @@ func _physics_process(_delta):
 		# Opcional: Virar o sprite
 		if velocity.x != 0:
 			$sprite.flip_h = velocity.x < 0
-	if player_ref.global_position - global_position < Vector2(16, 16):
+	if player_ref.global_position - global_position < Vector2(20, 20):
 		player_ref.take_damage(damage)
 		queue_free()
 		
