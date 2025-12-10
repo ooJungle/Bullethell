@@ -16,7 +16,7 @@ func _process(delta: float) -> void:
 
 func abrir_portal():
 	portal_volta.visible = true
-	if tempo > 2:
+	if tempo > 1:
 		colisao_portal.set_deferred("disabled", false)
 		
 	if player:
