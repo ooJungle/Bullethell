@@ -61,7 +61,6 @@ func set_in_menu_state(in_menu: bool):
 		musica_timer.stop()
 	else:
 		timer()
-		primeira_vez = false
 
 func timer():
 	musica_timer.start(2.0)
@@ -128,5 +127,6 @@ func creditos():
 
 
 func _on_timer_timeout() -> void:
+	primeira_vez = false
 	musica_timer.stop()
 	music_player.play()

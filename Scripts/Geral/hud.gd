@@ -7,6 +7,9 @@ extends CanvasLayer
 ]
 
 func _ready():
+	for i in range(coracoes.size()):
+		var coracao = coracoes[i]
+		coracao.modulate = Color(2.0, 2.0, 2.0, 1.0)
 	Global.vida_mudou.connect(atualizar_vidas)
 	atualizar_vidas(Global.vida)
 	
