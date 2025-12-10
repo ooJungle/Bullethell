@@ -435,11 +435,5 @@ func take_damage(amount: int) -> void:
 
 func die() -> void:
 	print("BOSS MORREU!")
-	
-	# Para o processamento para evitar que ele continue se movendo ou atacando
 	set_process(false)
-	
-	# Se quiser adicionar uma animação ou partículas antes de mudar de cena, faça aqui.
-	# Por exemplo: await get_tree().create_timer(1.0).timeout
-	
-	get_tree().change_scene_to_file("res://Cenas/Menu/WinScene.tscn")
+	Global.boss_morreu()
