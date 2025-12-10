@@ -8,7 +8,7 @@ func _ready() -> void:
 	Global.menu = 0
 	DisplayServer.window_set_flag(DisplayServer.WINDOW_FLAG_TRANSPARENT, true, 0)
 	DisplayServer.window_set_flag(DisplayServer.WINDOW_FLAG_BORDERLESS, true, 0)
-	menu_music_player.volume_db = linear_to_db(Global.volume * 4)
+	menu_music_player.volume_db = linear_to_db(Global.volume * 90)
 	
 	# Toca a música do menu (se ela não estiver no Autoplay)
 	if not menu_music_player.playing:

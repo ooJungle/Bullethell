@@ -14,6 +14,7 @@ var fator_tempo: float = 1.0
 var plataforma = false
 var is_in_menu: bool = true
 var zerou = false
+var primeira_vez = true
 
 var portais_ativos = {
 	"Fase_espaco": true,
@@ -22,6 +23,7 @@ var portais_ativos = {
 }
 
 @onready var music_player = $MusicPlayer
+@onready var musica_timer: Timer = $Timer
 
 signal inimigo_morreu
 signal boss_final_morreu
@@ -49,7 +51,12 @@ func set_in_menu_state(in_menu: bool):
 	if is_in_menu:
 		music_player.stop()
 	else:
-		music_player.play()
+		if primeira_vez:
+			timer()
+			primeira_vez = false
+
+func timer():
+	musica_timer.start(2.0)
 
 func set_global_volume(valor_linear: float):
 	volume = valor_linear
@@ -110,3 +117,8 @@ func creditos():
 	else:
 		printerr("Erro ao tentar criar o arquivo. Verifique permissões.")
 	
+
+
+func _on_timer_timeout() -> void:
+	musica_timer.stop()
+	music_player.play()
