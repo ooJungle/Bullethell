@@ -106,6 +106,20 @@ func _process(_delta: float) -> void:
 		seta_pivo.look_at(alvo_seta)
 
 func _physics_process(delta: float) -> void:
+	if Dialogo.is_active:
+		particula.emitting = false
+		velocity = Vector2(0,0)
+		var dir = Vector2.DOWN
+		if "last_move_direction" in move_topdown:
+			dir = move_topdown.last_move_direction
+		
+		if dir.y < 0:
+			tocar_anim("idle_costas")
+			sprite.flip_h = (dir.x > 0)
+		elif dir.y > 0:
+			tocar_anim("idle_frente")
+		else:
+			tocar_anim("idle_lado")
 	if Global.paused: return
 
 	atualizar_modo_de_jogo()
@@ -121,6 +135,7 @@ func _physics_process(delta: float) -> void:
 	# Se não estiver atacando, mas "pode_se_mexer" for false (ex: portal setou isso)
 	# Congelamos o player e tocamos a animação idle correta.
 	if not self.pode_se_mexer:
+		
 		velocity = Vector2.ZERO
 		move_and_slide()
 		tocar_idle_forcado() # Nova função auxiliar
@@ -224,7 +239,7 @@ func tocar_anim(nome: String):
 	if sprite.sprite_frames.has_animation(nome):
 		if sprite.animation != nome:
 			sprite.play(nome)
-
+	if not pode_se_mexer: sprite.play("ataque_lado")
 # --- COMBATE ---
 
 func iniciar_ataque(com_projetil: bool):

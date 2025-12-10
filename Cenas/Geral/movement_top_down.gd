@@ -34,9 +34,6 @@ func handle_movement(delta: float, forca_externa: Vector2) -> void:
 
 	# 2. Bloqueio (Se Player mandou parar)
 	if not pode_se_mexer:
-		aplicar_friccao(delta)
-		body.velocity += forca_externa * delta
-		body.move_and_slide()
 		return
 
 	# 3. Input Dash
