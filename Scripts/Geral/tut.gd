@@ -37,7 +37,6 @@ func _process(delta):
 		TutorialState.ATTACK2:
 			if Input.is_action_just_pressed("atacar"):
 				complete_step(TutorialState.TALK)
-				await get_tree().create_timer(1.5).timeout
 		TutorialState.TALK:
 			if Input.is_action_just_pressed("interagir"):
 				complete_step(TutorialState.FINISHED)
@@ -54,6 +53,7 @@ func update_ui():
 			label.text = "Pressione BOTÃO ESQUERDO DO MOUSE para atacar!"
 		TutorialState.ATTACK2:
 			label.text = "Segure BOTÃO ESQUERDO DO MOUSE para um ataque carregado!"
+			await get_tree().create_timer(1.5).timeout
 		TutorialState.TALK:
 			tilemap.queue_free()
 			label.text = "Pressione E para conversar e ESPAÇO para mudar o diálogo!"

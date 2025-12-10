@@ -1,8 +1,9 @@
-[gd_scene load_steps=3 format=3 uid="uid://nktj48qc0r0f"]
+[gd_scene load_steps=5 format=3 uid="uid://nktj48qc0r0f"]
 
 [ext_resource type="Script" uid="uid://bvi74nmu58wnv" path="res://Scripts/Inimigos/blaster.gd" id="1_a1j0g"]
 [ext_resource type="Texture2D" uid="uid://cx6ixn88ac2ge" path="res://Sprites/Projeteis/laser.png" id="2_4h1ry"]
-
+[ext_resource type="AudioStream" uid="uid://dtma1gg2op1t1" path="res://Sons e Musica/_prep_laser.mp3" id="3_kegro"]
+[ext_resource type="AudioStream" uid="uid://3joxybnj71qi" path="res://Sons e Musica/Laser_SF.mp3" id="4_83214"]
 
 [node name="Blaster" type="Node2D"]
 script = ExtResource("1_a1j0g")
@@ -34,3 +35,11 @@ visibility_layer = 32
 scale = Vector2(1.025, 20)
 target_position = Vector2(5000, 0)
 collision_mask = 32
+
+[node name="prep_laser" type="AudioStreamPlayer" parent="FirePoint"]
+stream = ExtResource("3_kegro")
+bus = &"sfx"
+
+[node name="laser" type="AudioStreamPlayer" parent="FirePoint"]
+stream = ExtResource("4_83214")
+bus = &"sfx"

@@ -12,6 +12,8 @@ extends Node2D
 @onready var linha_2: Line2D = $FirePoint/linha2
 @onready var laserbeam: Sprite2D = $FirePoint/Laserbeam
 @onready var ray_cast_2d: RayCast2D = $FirePoint/RayCast2D
+@onready var prep_laser: AudioStreamPlayer = $FirePoint/prep_laser
+@onready var laser: AudioStreamPlayer = $FirePoint/laser
 
 var player: CharacterBody2D
 
@@ -57,6 +59,7 @@ func mudar_para_estado(novoEstado: Estado):
 			# Cor de aviso inicial
 			linha.default_color = Color("ffd900dc") 
 			linha_2.default_color = Color("ffd900dc")
+			prep_laser.play()
 		Estado.LOCKADO:
 			state_timer = ducacaoLock
 			linha.visible = true
@@ -64,10 +67,13 @@ func mudar_para_estado(novoEstado: Estado):
 			# Cor de aviso final (antes do tiro)
 			linha.default_color = Color("ff7b00") 
 			linha_2.default_color = Color("ff7b00")
+			prep_laser.pitch_scale = 1.2
 		Estado.ATIRANDO:
 			state_timer = duracaoTiro
 			laserbeam.visible = true
 			alvo_atingido_neste_tiro = false
+			prep_laser.stop()
+			laser.play()
 
 func modo_mira(delta: float):
 	# Não precisamos mais mirar, o spawner já rotacionou o BlasterFixo.

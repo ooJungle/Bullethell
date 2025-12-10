@@ -134,6 +134,7 @@ func mudar_para_estado(novoEstado: Estado):
 			linha_2.default_color = Color("ff7b00")
 			prep_laser.play()
 		Estado.ATIRANDO:
+			prep_laser.pitch_scale = 1.2
 			state_timer = duracaoTiro
 			laserbeam.visible = true
 			ray_cast_2d.enabled = true
