@@ -279,7 +279,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"idle_costas",
-"speed": 5.0
+"speed": 9.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -296,7 +296,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"idle_frente",
-"speed": 5.0
+"speed": 9.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -313,7 +313,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"idle_lado",
-"speed": 5.0
+"speed": 9.0
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_iersn"]

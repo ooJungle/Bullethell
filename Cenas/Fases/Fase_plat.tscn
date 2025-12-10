@@ -601,6 +601,7 @@ position = Vector2(-784, 95)
 [node name="tut" type="CanvasLayer" parent="."]
 
 [node name="Label" type="Label" parent="tut"]
+z_index = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
@@ -613,6 +614,8 @@ theme_override_fonts/font = ExtResource("19_qf2fo")
 text = "Pressione \"espaço\" para pular e \"shift\" para dash"
 
 [node name="TextureRect" type="TextureRect" parent="tut"]
-offset_right = 40.0
-offset_bottom = 40.0
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 64.0
+grow_horizontal = 2
 texture = SubResource("GradientTexture2D_gcvnk")

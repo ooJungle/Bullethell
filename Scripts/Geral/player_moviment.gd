@@ -5,7 +5,7 @@ extends CharacterBody2D
 @onready var move_platform: Node = $MovementPlatform
 
 var componente_ativo: Node = null
-
+var tempo = 0.0
 # --- REFERÊNCIAS VISUAIS ---
 @onready var sprite: AnimatedSprite2D = $sprite 
 @onready var som_ataque: AudioStreamPlayer = $AudioStreamPlayer
@@ -106,6 +106,7 @@ func _process(_delta: float) -> void:
 		seta_pivo.look_at(alvo_seta)
 
 func _physics_process(delta: float) -> void:
+	tempo = delta
 	if Dialogo.is_active:
 		particula.emitting = false
 		velocity = Vector2(0,0)
@@ -234,10 +235,14 @@ func atualizar_animacao_topdown():
 			tocar_anim("idle_frente")
 
 func tocar_anim(nome: String):
+	if nome == "idle_frente" or nome == "idle_costas" or nome == "idle_lado":
+		if sprite.speed_scale >= 0.45:
+			sprite.speed_scale -= 0.05 * tempo
 	if atacando: return 
 	
 	if sprite.sprite_frames.has_animation(nome):
 		if sprite.animation != nome:
+			sprite.speed_scale = 1.0
 			sprite.play(nome)
 	if not pode_se_mexer: sprite.play("ataque_lado")
 # --- COMBATE ---
