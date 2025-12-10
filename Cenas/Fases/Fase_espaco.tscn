@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=4 uid="uid://vtcrh3j2rb3w"]
+[gd_scene load_steps=31 format=4 uid="uid://vtcrh3j2rb3w"]
 
 [ext_resource type="Script" uid="uid://c026j0c7a8vyi" path="res://Scripts/Projeteis/Fases/fase_espaco.gd" id="1_msfmn"]
 [ext_resource type="Texture2D" uid="uid://0hnxho8ngv6r" path="res://Sprites/Tilesets/tilesetCINZA.png" id="2_a6l73"]
@@ -19,6 +19,7 @@
 [ext_resource type="PackedScene" uid="uid://c6woybm3rk543" path="res://Cenas/Geral/cristal_vermelho.tscn" id="10_lpm77"]
 [ext_resource type="PackedScene" uid="uid://btmuqo7o24djd" path="res://Cenas/Geral/chroma.tscn" id="11_knx60"]
 [ext_resource type="Script" uid="uid://dqvlvjq7lda8p" path="res://Scripts/Geral/portal_volta_espaco.gd" id="14_h0w8i"]
+[ext_resource type="AudioStream" uid="uid://qtw6kt2un7k4" path="res://Sons e Musica/new_teleporte.mp3" id="15_6gwva"]
 [ext_resource type="AudioStream" uid="uid://dxf5nvye1lu10" path="res://Sons e Musica/Boss_3.mp3" id="17_8nlod"]
 [ext_resource type="Shader" uid="uid://cyy2w5soru1ax" path="res://Scripts/Projeteis/Fases/Fase_espaco.gdshader" id="20_0au1x"]
 
@@ -254,6 +255,10 @@ wormhole_exit = NodePath("../buraco_de_mihoca")
 [node name="portal_volta" parent="." instance=ExtResource("7_ipj78")]
 position = Vector2(3199, -1274)
 script = ExtResource("14_h0w8i")
+
+[node name="som" type="AudioStreamPlayer" parent="portal_volta"]
+stream = ExtResource("15_6gwva")
+bus = &"sfx"
 
 [node name="buraco_de_mihoca" parent="." instance=ExtResource("5_x6llx")]
 z_index = 5

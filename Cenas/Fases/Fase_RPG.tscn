@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=4 uid="uid://drbeol373ocxe"]
+[gd_scene load_steps=30 format=4 uid="uid://drbeol373ocxe"]
 
 [ext_resource type="Texture2D" uid="uid://cuats4fupmos7" path="res://Sprites/Tilesets/tilesetAZUL.png" id="1_1c0qe"]
 [ext_resource type="Script" uid="uid://8h76fmmuw404" path="res://Scripts/Projeteis/Fases/fase_rpg.gd" id="1_xlyqc"]
@@ -10,6 +10,7 @@
 [ext_resource type="Script" uid="uid://cd7r3xpwr1hde" path="res://Scripts/Geral/portal_volta_RPG.gd" id="6_66goa"]
 [ext_resource type="PackedScene" uid="uid://bf4kxcsfswmtq" path="res://Cenas/Geral/portal_volta.tscn" id="6_u663p"]
 [ext_resource type="PackedScene" uid="uid://c3oseobpuwlb8" path="res://Cenas/Geral/cristal_azul.tscn" id="7_282xx"]
+[ext_resource type="AudioStream" uid="uid://qtw6kt2un7k4" path="res://Sons e Musica/new_teleporte.mp3" id="7_hghn4"]
 [ext_resource type="PackedScene" uid="uid://d2m240uv3u7nj" path="res://UI_UX/fundo.tscn" id="8_282xx"]
 [ext_resource type="PackedScene" uid="uid://btmuqo7o24djd" path="res://Cenas/Geral/chroma.tscn" id="8_u3e22"]
 [ext_resource type="AudioStream" uid="uid://cnq0eiwyt0vde" path="res://Sons e Musica/Boss_2.mp3" id="10_h5dsd"]
@@ -273,6 +274,10 @@ position = Vector2(-242, 298)
 [node name="portal_volta" parent="." instance=ExtResource("6_u663p")]
 position = Vector2(6, 109)
 script = ExtResource("6_66goa")
+
+[node name="som" type="AudioStreamPlayer" parent="portal_volta"]
+stream = ExtResource("7_hghn4")
+bus = &"sfx"
 
 [node name="cristal_azul" parent="." instance=ExtResource("7_282xx")]
 position = Vector2(-774, -417)

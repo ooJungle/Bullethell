@@ -1,6 +1,7 @@
 extends Area2D
 
 @export var id_desta_fase: String = "Fase_RPG"
+@onready var som: AudioStreamPlayer = $som
 
 func _ready():
 	# Começa escondido e desativado por padrão
@@ -28,6 +29,10 @@ func ativar_portal():
 
 func _on_body_entered(body):
 	if body.is_in_group("players"):
+		body.pode_se_mexer = false
+		som.play()
+		Transicao.transition()
+		await Transicao.on_transition_finished
 		if Global.portais_ativos.has(id_desta_fase):
 			Global.portais_ativos[id_desta_fase] = false
 		

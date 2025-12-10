@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=4 uid="uid://bd1kjomv53gnt"]
+[gd_scene load_steps=32 format=4 uid="uid://bd1kjomv53gnt"]
 
 [ext_resource type="Script" uid="uid://rpmvree5m8p3" path="res://Scripts/Projeteis/Fases/fase_plat.gd" id="1_axnnm"]
 [ext_resource type="PackedScene" uid="uid://d2m240uv3u7nj" path="res://UI_UX/fundo.tscn" id="2_ijx0c"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://dqkd2v8c08jsp" path="res://Cenas/Geral/tocha.tscn" id="5_47xyu"]
 [ext_resource type="PackedScene" uid="uid://d26majiwami8u" path="res://Cenas/Menu/PauseMenu.tscn" id="5_i8j5m"]
 [ext_resource type="PackedScene" uid="uid://dfemr1maf8q5y" path="res://Cenas/Menu/SettingsMenu.tscn" id="6_8j3os"]
+[ext_resource type="AudioStream" uid="uid://qtw6kt2un7k4" path="res://Sons e Musica/new_teleporte.mp3" id="6_gcvnk"]
 [ext_resource type="PackedScene" uid="uid://bf4kxcsfswmtq" path="res://Cenas/Geral/portal_volta.tscn" id="7_7vntg"]
 [ext_resource type="Script" uid="uid://2nthye853e2g" path="res://Scripts/Geral/portal_volta_plat.gd" id="7_qkknj"]
 [ext_resource type="PackedScene" uid="uid://btmuqo7o24djd" path="res://Cenas/Geral/chroma.tscn" id="9_i8j5m"]
@@ -220,6 +221,10 @@ tile_set = SubResource("TileSet_47xyu")
 [node name="portal_volta" parent="." instance=ExtResource("7_7vntg")]
 position = Vector2(-22, 521)
 script = ExtResource("7_qkknj")
+
+[node name="som" type="AudioStreamPlayer" parent="portal_volta"]
+stream = ExtResource("6_gcvnk")
+bus = &"sfx"
 
 [node name="player" parent="." instance=ExtResource("4_ucltn")]
 position = Vector2(-141, -301)

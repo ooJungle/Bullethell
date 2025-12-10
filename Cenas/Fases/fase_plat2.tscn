@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=4 uid="uid://cprb4i2e2sign"]
+[gd_scene load_steps=16 format=4 uid="uid://cprb4i2e2sign"]
 
 [ext_resource type="Script" uid="uid://dq84f1ig8vc0l" path="res://Scripts/Projeteis/Fases/fase_plat_2.gd" id="1_36qp4"]
 [ext_resource type="PackedScene" uid="uid://cqvnwh1djj47x" path="res://Cenas/Geral/abismo.tscn" id="2_eag30"]
@@ -8,6 +8,7 @@
 [ext_resource type="Script" uid="uid://bavp5jofa842y" path="res://Scripts/Geral/abismo_2.gd" id="5_6uyw8"]
 [ext_resource type="PackedScene" uid="uid://crl0o5hjuoci8" path="res://Cenas/Inimigos/inimigo_parede.tscn" id="6_72s7c"]
 [ext_resource type="PackedScene" uid="uid://bf4kxcsfswmtq" path="res://Cenas/Geral/portal_volta.tscn" id="7_f8xmv"]
+[ext_resource type="AudioStream" uid="uid://qtw6kt2un7k4" path="res://Sons e Musica/new_teleporte.mp3" id="9_6uyw8"]
 [ext_resource type="PackedScene" uid="uid://btmuqo7o24djd" path="res://Cenas/Geral/chroma.tscn" id="9_p5rqd"]
 [ext_resource type="Shader" uid="uid://cdki4y1u5d4ne" path="res://Scripts/Projeteis/Fases/Fase_0.gdshader" id="10_igggf"]
 
@@ -219,6 +220,10 @@ motion_mode = 0
 [node name="portal_volta" parent="." instance=ExtResource("7_f8xmv")]
 position = Vector2(5070, -318)
 id_desta_fase = "Fase_plat"
+
+[node name="som" type="AudioStreamPlayer" parent="portal_volta"]
+stream = ExtResource("9_6uyw8")
+bus = &"sfx"
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 

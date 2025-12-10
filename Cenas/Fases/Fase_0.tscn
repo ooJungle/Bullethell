@@ -23,7 +23,7 @@
 [ext_resource type="PackedScene" uid="uid://cfe7ov4nhlnpv" path="res://Cenas/Geral/tocha_lado_esquerdo.tscn" id="21_2gjbv"]
 [ext_resource type="PackedScene" uid="uid://dybqvnmb765cl" path="res://Cenas/Geral/Portal_verde.tscn" id="22_if8b4"]
 [ext_resource type="PackedScene" uid="uid://du6ljd75pr82g" path="res://Cenas/Geral/Portal_vermelho.tscn" id="23_8de20"]
-[ext_resource type="PackedScene" path="res://control.tscn" id="25_8de20"]
+[ext_resource type="PackedScene" uid="uid://ugvn400iuskf" path="res://control.tscn" id="25_8de20"]
 
 [sub_resource type="Gradient" id="Gradient_n46ps"]
 offsets = PackedFloat32Array(0, 0.5, 1)
