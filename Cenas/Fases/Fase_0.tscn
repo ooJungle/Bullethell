@@ -375,6 +375,13 @@ portal_alvo = NodePath("../Portal_branco")
 [node name="player" parent="." instance=ExtResource("4_2olo2")]
 position = Vector2(-264, 47)
 safe_margin = 0.08
+tempo_invencibilidade = 0.5
+dano_do_player = 10
+tempo_para_carregar = 1.5
+raio_max_dilatacao = 500.0
+fator_tempo_maximo = 3.0
+raio_max_aceleracao = 500.0
+fator_tempo_minimo = 0.2
 
 [node name="Camera2D" type="Camera2D" parent="player"]
 position = Vector2(48, 28)
