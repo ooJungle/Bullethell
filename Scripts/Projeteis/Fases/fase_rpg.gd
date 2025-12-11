@@ -3,6 +3,7 @@ extends Node2D
 @onready var portal_volta = $portal_volta
 @onready var colisao_portal = $portal_volta/CollisionShape2D
 @onready var musica_inicio: AudioStreamPlayer = $AudioStreamPlayer2D
+@onready var crash: AudioStreamPlayer = $crash
 
 var total_cristais = 0
 var cristais_quebrados = 0
@@ -118,6 +119,7 @@ func controlar_audio():
 	
 func _on_cristal_quebrado():
 	cristais_quebrados += 1
+	crash.play()
 	print("Cristal quebrado! ", cristais_quebrados, "/", total_cristais)
 	
 	if cristais_quebrados >= total_cristais:

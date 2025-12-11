@@ -10,6 +10,7 @@ var cristais_quebrados = 0
 
 @export var nav_region: NavigationRegion2D
 @export var tilemap: TileMapLayer
+@onready var crash: AudioStreamPlayer = $crash
 
 # Variáveis para armazenar os limites
 var map_left: float
@@ -103,6 +104,7 @@ func controlar_audio():
 
 func _on_cristal_quebrado():
 	cristais_quebrados += 1
+	crash.play()
 	print("Cristal quebrado! ", cristais_quebrados, "/", total_cristais)
 	
 	if cristais_quebrados >= total_cristais:

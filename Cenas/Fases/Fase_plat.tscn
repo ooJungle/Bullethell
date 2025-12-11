@@ -1,4 +1,4 @@
-[gd_scene load_steps=33 format=4 uid="uid://bd1kjomv53gnt"]
+[gd_scene load_steps=34 format=4 uid="uid://bd1kjomv53gnt"]
 
 [ext_resource type="Script" uid="uid://rpmvree5m8p3" path="res://Scripts/Projeteis/Fases/fase_plat.gd" id="1_axnnm"]
 [ext_resource type="PackedScene" uid="uid://d2m240uv3u7nj" path="res://UI_UX/fundo.tscn" id="2_ijx0c"]
@@ -20,6 +20,7 @@
 [ext_resource type="PackedScene" uid="uid://j8054vcypju4" path="res://Cenas/Geral/tocha_lado.tscn" id="17_gcvnk"]
 [ext_resource type="FontFile" uid="uid://d1g8okxudu3hl" path="res://Minecraft.ttf" id="19_qf2fo"]
 [ext_resource type="PackedScene" uid="uid://cm88udal3jtb" path="res://vida_extra.tscn" id="20_qf2fo"]
+[ext_resource type="AudioStream" uid="uid://cc1rnv4arycn6" path="res://Sons e Musica/crash2.mp3" id="21_e23mf"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_g5322"]
 
@@ -645,3 +646,7 @@ position = Vector2(1439, -402)
 position = Vector2(-734, -1032)
 
 [node name="troca" type="AudioStreamPlayer" parent="."]
+
+[node name="crash" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("21_e23mf")
+bus = &"sfx"

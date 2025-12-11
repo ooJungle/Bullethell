@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=4 uid="uid://drbeol373ocxe"]
+[gd_scene load_steps=32 format=4 uid="uid://drbeol373ocxe"]
 
 [ext_resource type="Texture2D" uid="uid://cuats4fupmos7" path="res://Sprites/Tilesets/tilesetAZUL.png" id="1_1c0qe"]
 [ext_resource type="Script" uid="uid://8h76fmmuw404" path="res://Scripts/Projeteis/Fases/fase_rpg.gd" id="1_xlyqc"]
@@ -20,6 +20,7 @@
 [ext_resource type="PackedScene" uid="uid://ccfgwwjp3djau" path="res://Cenas/Geral/tocha_costas.tscn" id="17_hghn4"]
 [ext_resource type="PackedScene" uid="uid://j8054vcypju4" path="res://Cenas/Geral/tocha_lado.tscn" id="18_uvxa2"]
 [ext_resource type="PackedScene" uid="uid://cm88udal3jtb" path="res://vida_extra.tscn" id="20_uvxa2"]
+[ext_resource type="AudioStream" uid="uid://cc1rnv4arycn6" path="res://Sons e Musica/crash2.mp3" id="21_ndfk2"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_gkdup"]
 vertices = PackedVector2Array(854, -134, 1046, -134, 1046, 166, 822, 166, 822, 314, 950, 314, 950, 774, 618, 774, 618, 314, 746, 314, 746, 166, 778, -134, 854, -486, 586, 166, 586, -134, 778, -410, 342, -486, 342, -410, 342, -346, 22, -346, -918, -550, -374, 326, -54, -230, 22, -230, -374, 390, -54, -346, -458, -346, -458, -90, -650, -90, -650, 58, -458, 58, -458, 250, -374, 250, -374, -230, 406, -230, 406, 390, 310, 390, 310, 506, 234, 506, 234, 390, -458, 326, -374, 538, -374, 506, 534, 506, 534, 742, -374, 742, -374, 614, -458, 538, -458, 614, -458, 678, -790, 678, -790, 58, -726, 58, -726, -90, -918, -90, 342, -550)
@@ -437,3 +438,7 @@ position = Vector2(-667, 515)
 
 [node name="vida extra5" parent="." instance=ExtResource("20_uvxa2")]
 position = Vector2(756, 535)
+
+[node name="crash" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("21_ndfk2")
+bus = &"sfx"

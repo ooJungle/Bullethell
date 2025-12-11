@@ -6,6 +6,7 @@ extends Node2D
 @onready var camera_shake: AnimationPlayer = $player/Camera2D/AnimationPlayer
 @onready var tut: CanvasLayer = $tut
 @onready var troca: AudioStreamPlayer = $troca
+@onready var crash: AudioStreamPlayer = $crash
 
 var total_cristais = 0
 var cristais_quebrados = 0
@@ -123,6 +124,7 @@ func controlar_audio():
 	
 func _on_cristal_quebrado():
 	cristais_quebrados += 1
+	crash.play()
 	print("Cristal quebrado! ", cristais_quebrados, "/", total_cristais)
 	if cristais_quebrados >= 3:
 		camera_shake.play("camera_shake")
