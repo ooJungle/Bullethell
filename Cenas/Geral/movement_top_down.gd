@@ -1,5 +1,9 @@
 extends Node
 
+# --- SINAIS ---
+# Adição 1: O sinal que avisa que o dash ocorreu e passa o tempo de recarga
+signal dash_realizado(tempo_cooldown)
+
 # --- REFERÊNCIAS ---
 @export var body: CharacterBody2D
 
@@ -61,6 +65,9 @@ func aplicar_friccao(delta: float):
 func start_dash():
 	is_dashing = true
 	can_dash = false
+	
+	# Adição 2: Dispara o aviso para quem estiver ouvindo (o Player)
+	dash_realizado.emit(dash_cooldown)
 	
 	var dash_dir = Input.get_vector("move_left", "move_right", "move_up", "move_down")
 	if dash_dir == Vector2.ZERO:

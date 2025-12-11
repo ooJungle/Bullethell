@@ -1,13 +1,17 @@
 extends CharacterBody2D
 
+# --- SINAL QUE O HUD ESCUTA ---
+signal dash_usado(tempo)
+
 # --- REFERÊNCIAS AOS FILHOS (CÉREBROS DE MOVIMENTO) ---
 @onready var move_topdown: Node = $MovementTopDown
 @onready var move_platform: Node = $MovementPlatform
 
 var componente_ativo: Node = null
-var tempo = 0.0
+var tempo_delta = 0.0 # Renomeei para evitar conflito com 'tempo' do dash
+
 # --- REFERÊNCIAS VISUAIS ---
-@onready var sprite: AnimatedSprite2D = $sprite 
+@onready var sprite: AnimatedSprite2D = $sprite
 @onready var som_ataque: AudioStreamPlayer = $AudioStreamPlayer
 @onready var hitbox: Area2D = $Hitbox
 @onready var hitbox_colisao: CollisionShape2D = $Hitbox/CollisionShape2D
@@ -33,7 +37,7 @@ var pode_se_mexer: bool:
 			return componente_ativo.pode_se_mexer
 		return true
 
-#bill de invencivel
+# Bill de invencivel
 var invencivel: bool = false
 @export var tempo_invencibilidade: float = 0.5
 
@@ -60,6 +64,30 @@ var offset_visual_seta: Vector2 = Vector2(0, -8)
 @onready var hit: AudioStreamPlayer = $hit
 
 func _ready() -> void:
+	print("PLAYER: _ready iniciado. Configurando conexões...")
+
+	# --- CONEXÃO DEBUGADA TOPDOWN ---
+	if move_topdown:
+		if move_topdown.has_signal("dash_realizado"):
+			if not move_topdown.dash_realizado.is_connected(_on_component_dash):
+				move_topdown.dash_realizado.connect(_on_component_dash)
+				print("PLAYER: Conectado ao sinal de dash do MovementTopDown.")
+		else:
+			print("ERRO CRÍTICO: O nó MovementTopDown NÃO tem o sinal 'dash_realizado'. Verifique o script dele.")
+	else:
+		print("ERRO: Nó MovementTopDown não encontrado.")
+
+	# --- CONEXÃO DEBUGADA PLATAFORMA ---
+	if move_platform:
+		if move_platform.has_signal("dash_realizado"):
+			if not move_platform.dash_realizado.is_connected(_on_component_dash):
+				move_platform.dash_realizado.connect(_on_component_dash)
+				print("PLAYER: Conectado ao sinal de dash do MovementPlatform.")
+		else:
+			print("ERRO CRÍTICO: O nó MovementPlatform NÃO tem o sinal 'dash_realizado'.")
+	else:
+		print("ERRO: Nó MovementPlatform não encontrado.")
+
 	vida = vida_maxima
 	Global.vida = vida
 	hitbox_colisao.disabled = true
@@ -89,10 +117,10 @@ func _ready() -> void:
 
 	atualizar_modo_de_jogo()
 	
-	print("--- DEBUG DE NÓS ---")
-	print("Script no TopDown: ", $MovementTopDown.get_script().resource_path)
-	print("Script no Platform: ", $MovementPlatform.get_script().resource_path)
-	print("--------------------")
+	# DEBUG FINAL
+	print("PLAYER: Configuração concluída. Grupos deste nó: ", get_groups())
+	if not is_in_group("player"):
+		print("ALERTA MÁXIMO: O Player NÃO está no grupo 'player'. O HUD NÃO VAI FUNCIONAR!")
 
 func _process(_delta: float) -> void:
 	if transparente:
@@ -107,7 +135,8 @@ func _process(_delta: float) -> void:
 		seta_pivo.look_at(alvo_seta)
 
 func _physics_process(delta: float) -> void:
-	tempo = delta
+	tempo_delta = delta
+	
 	if Dialogo.is_active:
 		particula.emitting = false
 		velocity = Vector2(0,0)
@@ -128,24 +157,19 @@ func _physics_process(delta: float) -> void:
 
 	# --- 1. BLOQUEIO DE ATAQUE (Prioridade Máxima) ---
 	if atacando:
-		self.pode_se_mexer = false 
+		self.pode_se_mexer = false
 		velocity = Vector2.ZERO
 		move_and_slide()
-		return 
+		return
 
 	# --- 2. BLOQUEIO EXTERNO (Portal/Cutscene) ---
-	# Se não estiver atacando, mas "pode_se_mexer" for false (ex: portal setou isso)
-	# Congelamos o player e tocamos a animação idle correta.
 	if not self.pode_se_mexer:
-		
 		velocity = Vector2.ZERO
 		move_and_slide()
-		tocar_idle_forcado() # Nova função auxiliar
+		tocar_idle_forcado()
 		return
 
 	# --- 3. SE PUDER SE MEXER ---
-	# (Removi a linha 'self.pode_se_mexer = true' que estava aqui forçando o movimento)
-
 	processar_ataque_carregado(delta)
 
 	if Global.plataforma:
@@ -163,7 +187,7 @@ func _physics_process(delta: float) -> void:
 	atualizar_particulas_poeira()
 
 func atualizar_particulas_poeira():
-	var esta_se_movendo = velocity.length() > 10 
+	var esta_se_movendo = velocity.length() > 10
 	if particula.emitting != esta_se_movendo:
 		particula.emitting = esta_se_movendo
 
@@ -177,7 +201,6 @@ func atualizar_modo_de_jogo():
 
 # --- GERENCIADOR DE ANIMAÇÕES ---
 
-# Função nova para tocar Idle na direção certa quando travado
 func tocar_idle_forcado():
 	if Global.plataforma:
 		tocar_anim("idle_lado")
@@ -198,17 +221,17 @@ func atualizar_animacao_plataforma():
 
 	if abs(velocity.x) > 10:
 		sprite.flip_h = velocity.x > 0
-		if is_on_floor(): 
+		if is_on_floor():
 			tocar_anim("run")
 	elif is_on_floor():
-		tocar_anim("idle_lado") 
+		tocar_anim("idle_lado")
 			
 	if not is_on_floor():
-		if velocity.y < 0: 
+		if velocity.y < 0:
 			tocar_anim("jump_up")
 		elif velocity.y > 300:
 			tocar_anim("jump_down")
-		else: 
+		else:
 			tocar_anim("jump_middle")
 
 func atualizar_animacao_topdown():
@@ -242,22 +265,21 @@ func atualizar_animacao_topdown():
 func tocar_anim(nome: String):
 	if nome == "idle_frente" or nome == "idle_costas" or nome == "idle_lado":
 		if sprite.speed_scale >= 0.45:
-			sprite.speed_scale -= 0.05 * tempo
-	if atacando: return 
+			sprite.speed_scale -= 0.05 * tempo_delta
+	if atacando: return
 	
 	if sprite.sprite_frames.has_animation(nome):
 		if sprite.animation != nome:
 			sprite.speed_scale = 1.0
 			sprite.play(nome)
 	if not pode_se_mexer: sprite.play("ataque_lado")
+
 # --- COMBATE ---
 
 func iniciar_ataque(com_projetil: bool):
-	print("--- DEBUG ATAQUE ---")
-	
 	atacando = true
 	pode_atacar = false
-	self.pode_se_mexer = false # Garante travamento
+	self.pode_se_mexer = false
 	hitbox_colisao.disabled = false
 	
 	var dir_ataque = Vector2.RIGHT
@@ -266,7 +288,7 @@ func iniciar_ataque(com_projetil: bool):
 	elif Global.plataforma:
 		dir_ataque = Vector2.LEFT if sprite.flip_h else Vector2.RIGHT
 	
-	if dir_ataque == Vector2.ZERO: dir_ataque = Vector2.RIGHT 
+	if dir_ataque == Vector2.ZERO: dir_ataque = Vector2.RIGHT
 
 	posicionar_hitbox(dir_ataque)
 	if com_projetil: lancar_projetil(dir_ataque)
@@ -285,17 +307,13 @@ func iniciar_ataque(com_projetil: bool):
 			if dir_ataque.y < 0: anim_name = "ataque_costas"
 			else: anim_name = "ataque_frente"
 
-	print("Tentando tocar animação: ", anim_name)
-
 	sprite.stop()
 	sprite.frame = 0
 	sprite.flip_h = deve_flipar
 	
 	if sprite.sprite_frames.has_animation(anim_name):
 		sprite.play(anim_name)
-		print("SUCESSO: Tocando ", anim_name)
 	else:
-		print("ERRO: '", anim_name, "' não existe. Usando 'ataque_lado'.")
 		sprite.play("ataque_lado")
 
 	som_ataque.pitch_scale = randf_range(0.5, 2.0)
@@ -303,8 +321,7 @@ func iniciar_ataque(com_projetil: bool):
 	verificar_dano_nos_inimigos()
 	
 	get_tree().create_timer(0.4).timeout.connect(func():
-		if atacando: 
-			print("Timer de segurança destravou o player.")
+		if atacando:
 			_on_sprite_animation_finished_force()
 	)
 
@@ -319,15 +336,11 @@ func finalizar_ataque_logica():
 	atacando = false
 	pode_atacar = true
 	hitbox_colisao.disabled = true
-	
-	# RESTAURA O MOVIMENTO
-	# Necessário porque removemos o reset automático do _physics_process
-	self.pode_se_mexer = true 
+	self.pode_se_mexer = true
 
 # --- CARGA, PROJÉTIL, DANO ---
 
 func processar_ataque_carregado(delta: float):
-	# Agora verifica self.pode_se_mexer corretamente
 	if Input.is_action_pressed("attack") and pode_atacar and tem_arma and self.pode_se_mexer:
 		esta_carregando = true
 		if barra_carga: barra_carga.visible = true
@@ -390,7 +403,7 @@ func verificar_dano_nos_inimigos():
 				corpo.velocity += direcao_empurrao * 300
 
 func take_damage(amount: int) -> void:
-	if invencivel: 
+	if invencivel:
 		return
 	var is_dashing = false
 	if componente_ativo and "is_dashing" in componente_ativo:
@@ -407,11 +420,9 @@ func take_damage(amount: int) -> void:
 func ficar_invencivel():
 	invencivel = true
 	var tween = create_tween()
-	tween.set_loops() # repete infinito
+	tween.set_loops()
 	
-	# Anima a opacidade para 0.2 (quase invisível) em 0.1 segundos
 	tween.tween_property(sprite, "modulate:a", 0.2, 0.1)
-	# Anima a opacidade para 1.0 (visível) em 0.1 segundos
 	tween.tween_property(sprite, "modulate:a", 1.0, 0.1)
 	
 	await get_tree().create_timer(tempo_invencibilidade).timeout
@@ -480,3 +491,9 @@ func encontrar_corpo_celeste_mais_proximo(grupo: String) -> Node2D:
 func _unhandled_input(event):
 	if event.is_action_pressed("ui_cancel") and not Global.paused:
 		get_node("%PauseMenu").start_pause()
+
+# --- A FUNÇÃO VITAL PARA O HUD ---
+func _on_component_dash(tempo):
+	print("PLAYER: Sinal de Dash recebido do componente! Tempo: ", tempo)
+	print("PLAYER: Emitindo sinal 'dash_usado' para o HUD...")
+	emit_signal("dash_usado", tempo)

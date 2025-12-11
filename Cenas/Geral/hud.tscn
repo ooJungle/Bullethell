@@ -8,15 +8,15 @@ colors = PackedColorArray(1, 1, 1, 0.19607843, 0, 1, 1, 0.19607843)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_fua3i"]
 gradient = SubResource("Gradient_mdmel")
-width = 350
+width = 300
 height = 30
 
 [sub_resource type="Gradient" id="Gradient_ybr15"]
-colors = PackedColorArray(0, 1, 0.91764706, 1, 0, 0, 0.91764706, 1)
+colors = PackedColorArray(0, 1, 1, 1, 0, 0, 1, 1)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_0sjo4"]
 gradient = SubResource("Gradient_ybr15")
-width = 350
+width = 300
 height = 30
 
 [node name="HUD" type="CanvasLayer"]
@@ -46,14 +46,23 @@ position = Vector2(50, 40)
 texture = ExtResource("2_fua3i")
 hframes = 5
 
-[node name="BarraCarga" type="TextureProgressBar" parent="Control"]
+[node name="Control2" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -40.0
+offset_bottom = 40.0
+grow_horizontal = 0
+
+[node name="BarraCarga" type="TextureProgressBar" parent="Control2"]
 layout_mode = 1
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
-offset_left = 730.0
+offset_left = -340.0
 offset_top = 30.0
-offset_right = 1080.0
+offset_right = 10.0
 offset_bottom = 60.0
 grow_horizontal = 0
 max_value = 1.5

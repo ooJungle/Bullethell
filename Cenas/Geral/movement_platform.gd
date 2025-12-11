@@ -1,5 +1,9 @@
 extends Node
 
+# --- SINAIS ---
+# ADIÇÃO 1: Sinal para avisar o HUD (igual ao TopDown)
+signal dash_realizado(tempo_cooldown)
+
 # --- REFERÊNCIAS EXTERNAS ---
 @export var body: CharacterBody2D
 @export var jogador_vivo: AnimatedSprite2D
@@ -11,7 +15,7 @@ extends Node
 @onready var dash_timer: Timer = $DashTimer
 @onready var dash_cooldown: Timer = $DashCooldown
 @onready var particles: CPUParticles2D = $CPUParticles2D
-@onready var dash_som: AudioStreamPlayer2D = $dash
+@onready var dash_som: AudioStreamPlayer = $dash
 
 # --- CONFIGURAÇÕES ---
 const SPEED = 250.0
@@ -126,6 +130,11 @@ func tocar_anim(nome: String):
 
 func start_dash() -> void:
 	print("Dash Iniciado!") 
+	
+	# ADIÇÃO 2: Emite o sinal avisando que o dash foi gasto
+	# Passamos o wait_time do timer como o valor total da recarga
+	dash_realizado.emit(dash_cooldown.wait_time)
+	
 	if dash_som: dash_som.play()
 	if particles: particles.emitting = true
 	

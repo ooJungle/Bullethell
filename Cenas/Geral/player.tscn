@@ -378,13 +378,6 @@ collision_layer = 33
 collision_mask = 33
 safe_margin = 1.0
 script = ExtResource("1_pmvhq")
-tempo_invencibilidade = null
-dano_do_player = null
-tempo_para_carregar = null
-raio_max_dilatacao = null
-fator_tempo_maximo = null
-raio_max_aceleracao = null
-fator_tempo_minimo = null
 
 [node name="sprite" type="AnimatedSprite2D" parent="."]
 scale = Vector2(1.5, 1.5)
@@ -446,7 +439,7 @@ ghost_node = ExtResource("13_7a67c")
 
 [node name="DashCooldown" type="Timer" parent="MovementPlatform"]
 
-[node name="dash" type="AudioStreamPlayer2D" parent="MovementPlatform"]
+[node name="dash" type="AudioStreamPlayer" parent="MovementPlatform"]
 stream = ExtResource("14_62tt0")
 volume_db = 1.0
 
