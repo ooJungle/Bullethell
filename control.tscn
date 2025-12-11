@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://b16kjdkhmnxy1" path="res://control.gd" id="1_62e2m"]
 [ext_resource type="Texture2D" uid="uid://b7w8t0igorlux" path="res://Scripts/Geral/alerta.png" id="2_ee4bf"]
 [ext_resource type="Texture2D" uid="uid://u2cc8u2tv2jc" path="res://Sprites/Geral/mousinho.png" id="2_qtu10"]
-[ext_resource type="AudioStream" uid="uid://dpfy2n7xruw0v" path="res://Sons e Musica/Som de erro do Windows - Efeitos Sonoros HD.mp3" id="4_ee4bf"]
+[ext_resource type="AudioStream" uid="uid://c3agj7jpw46r7" path="res://Sons e Musica/audioerro.mp3" id="4_kbped"]
 [ext_resource type="AudioStream" uid="uid://danymu7krmhs8" path="res://Sons e Musica/computer-mouse-click-352734.mp3" id="5_kbped"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_kbped"]
@@ -80,7 +80,7 @@ texture = SubResource("AtlasTexture_kbped")
 texture = ExtResource("2_qtu10")
 
 [node name="audioerro" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("4_ee4bf")
+stream = ExtResource("4_kbped")
 volume_db = 24.0
 bus = &"sfx"
 

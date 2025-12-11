@@ -17,7 +17,6 @@ func start_fake_cutscene():
 	print("aaq")
 	audioerro.play()
 	await get_tree().create_timer(tempo).timeout
-	
 	var mouse_pos = get_viewport().get_mouse_position()
 	fake_cursor.global_position = mouse_pos
 	Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)

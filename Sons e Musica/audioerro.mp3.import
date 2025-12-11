@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://c3agj7jpw46r7"
+path="res://.godot/imported/audioerro.mp3-c3b0811d1a4348c4a8537e44c36ffa84.mp3str"
+
+[deps]
+
+source_file="res://Sons e Musica/audioerro.mp3"
+dest_files=["res://.godot/imported/audioerro.mp3-c3b0811d1a4348c4a8537e44c36ffa84.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4
