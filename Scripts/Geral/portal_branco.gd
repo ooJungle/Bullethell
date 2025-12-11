@@ -2,6 +2,7 @@ extends Area2D
 
 @onready var som_portal: AudioStreamPlayer = $AudioStreamPlayer
 @onready var vida_boss: Control = $"../CanvasLayer/vida_boss"
+@onready var risos: AudioStreamPlayer = $"../risos"
 
 
 # Adicione uma export variável para a cena do boss
@@ -12,6 +13,7 @@ func _ready() -> void:
 
 func _on_body_entered(body: Node2D) -> void:
 	som_portal.play()
+	risos.stop()
 	body.pode_se_mexer = false
 	if body.has_method("desativar_seta_guia"):
 			body.desativar_seta_guia()

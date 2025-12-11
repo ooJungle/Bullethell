@@ -1,4 +1,4 @@
-[gd_scene load_steps=48 format=4 uid="uid://dgvk00ax3rrbo"]
+[gd_scene load_steps=49 format=4 uid="uid://dgvk00ax3rrbo"]
 
 [ext_resource type="Script" uid="uid://bl0k0fcu8kka2" path="res://Scripts/Projeteis/Fases/fase_0.gd" id="1_l7uc1"]
 [ext_resource type="PackedScene" uid="uid://d2m240uv3u7nj" path="res://UI_UX/fundo.tscn" id="1_setcl"]
@@ -26,10 +26,11 @@
 [ext_resource type="PackedScene" uid="uid://ugvn400iuskf" path="res://control.tscn" id="25_8de20"]
 [ext_resource type="PackedScene" uid="uid://c8p0syv4qvxwx" path="res://Cutscene pré final.tscn" id="25_od6vr"]
 [ext_resource type="Texture2D" uid="uid://b6ivh1vsxi5pb" path="res://Sprites/Geral/coracao_pulsante-Sheet.png" id="25_oy6jg"]
-[ext_resource type="Script" path="res://Scripts/Inimigos/vida_boss.gd" id="25_wa3l2"]
+[ext_resource type="Script" uid="uid://gg3rsvoqwv2o" path="res://Scripts/Inimigos/vida_boss.gd" id="25_wa3l2"]
 [ext_resource type="AudioStream" uid="uid://d1i0iqmxuk46g" path="res://Sons e Musica/musica_boss_final.mp3" id="27_wa3l2"]
 [ext_resource type="AudioStream" uid="uid://cgi5vkms0eun7" path="res://Sons e Musica/sala_pre_final.mp3" id="28_fnywe"]
 [ext_resource type="AudioStream" uid="uid://bekrxn4npafvs" path="res://Sons e Musica/ultimo_hit.mp3" id="30_f011b"]
+[ext_resource type="AudioStream" uid="uid://djbbv564g1gmy" path="res://Sons e Musica/risadafinal.mp3" id="31_f011b"]
 
 [sub_resource type="Gradient" id="Gradient_n46ps"]
 offsets = PackedFloat32Array(0, 0.5, 1)
@@ -584,5 +585,10 @@ bus = &"musica"
 [node name="bossmerro" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("30_f011b")
 bus = &"sfx"
+
+[node name="risos" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("31_f011b")
+bus = &"sfx"
+parameters/looping = true
 
 [connection signal="body_entered" from="Portal_branco" to="Portal_branco" method="_on_body_entered"]

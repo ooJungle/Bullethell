@@ -13,6 +13,7 @@ extends Node2D
 @onready var aiquemedo: AudioStreamPlayer = $aiquemedo
 @onready var cutscene_pré_final: Node2D = $"Cutscene pré final"
 @onready var bossmerro: AudioStreamPlayer = $bossmerro
+@onready var risos: AudioStreamPlayer = $risos
 
 func _ready() -> void:
 	Global.boss_final_morreu.connect(fimdejogo)
@@ -68,6 +69,7 @@ func iniciar_dialogo_automatico():
 	Global.dialogo_final_mostrado = true
 	animar_pulso_final()
 	Dialogo.start_dialogue(falas_finais)
+	risos.play()
 
 func fimdejogo():
 	Hud.visible = false
