@@ -1,7 +1,7 @@
 extends CharacterBody2D
 
 @export var speed = 180.0
-@export var damage = 15
+@export var damage = 1
 @export var lifetime = 6.0 # Tempo que o clone vive
 @export var vida = 2
 @export var player_ref: Node2D = null
