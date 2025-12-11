@@ -359,12 +359,12 @@ size = Vector2(20, 29)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_yuqgu"]
 size = Vector2(30, 37)
 
-[sub_resource type="Gradient" id="Gradient_ybr15"]
+[sub_resource type="Gradient" id="Gradient_s0oku"]
 offsets = PackedFloat32Array(0.78698224)
 colors = PackedColorArray(0.82206786, 0.0012204034, 0.9174733, 1)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_4q8k4"]
-gradient = SubResource("Gradient_ybr15")
+gradient = SubResource("Gradient_s0oku")
 width = 49
 height = 4
 fill_to = Vector2(0, 0)
@@ -378,6 +378,13 @@ collision_layer = 33
 collision_mask = 33
 safe_margin = 1.0
 script = ExtResource("1_pmvhq")
+tempo_invencibilidade = null
+dano_do_player = null
+tempo_para_carregar = null
+raio_max_dilatacao = null
+fator_tempo_maximo = null
+raio_max_aceleracao = null
+fator_tempo_minimo = null
 
 [node name="sprite" type="AnimatedSprite2D" parent="."]
 scale = Vector2(1.5, 1.5)

@@ -1,7 +1,23 @@
-[gd_scene load_steps=3 format=3 uid="uid://bgvdtutb1paf0"]
+[gd_scene load_steps=7 format=3 uid="uid://bgvdtutb1paf0"]
 
 [ext_resource type="Script" uid="uid://wpepjvnqmu2j" path="res://Scripts/Geral/hud.gd" id="1_mdmel"]
 [ext_resource type="Texture2D" uid="uid://bc6xm446i2t4t" path="res://Sprites/Geral/vidas.png" id="2_fua3i"]
+
+[sub_resource type="Gradient" id="Gradient_mdmel"]
+colors = PackedColorArray(1, 1, 1, 0.19607843, 0, 1, 1, 0.19607843)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_fua3i"]
+gradient = SubResource("Gradient_mdmel")
+width = 350
+height = 30
+
+[sub_resource type="Gradient" id="Gradient_ybr15"]
+colors = PackedColorArray(0, 1, 0.91764706, 1, 0, 0, 0.91764706, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_0sjo4"]
+gradient = SubResource("Gradient_ybr15")
+width = 350
+height = 30
 
 [node name="HUD" type="CanvasLayer"]
 layer = 2147483647
@@ -29,3 +45,19 @@ hframes = 5
 position = Vector2(50, 40)
 texture = ExtResource("2_fua3i")
 hframes = 5
+
+[node name="BarraCarga" type="TextureProgressBar" parent="Control"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = 730.0
+offset_top = 30.0
+offset_right = 1080.0
+offset_bottom = 60.0
+grow_horizontal = 0
+max_value = 1.5
+step = 0.01
+fill_mode = 1
+texture_under = SubResource("GradientTexture2D_fua3i")
+texture_progress = SubResource("GradientTexture2D_0sjo4")

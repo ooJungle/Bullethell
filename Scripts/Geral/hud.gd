@@ -1,5 +1,5 @@
 extends CanvasLayer
-
+@onready var barra_carga: TextureProgressBar = $Control/BarraCarga
 @onready var coracoes = [
 	$Control/coracao3, 
 	$Control/coracao2, 
@@ -7,6 +7,8 @@ extends CanvasLayer
 ]
 
 func _ready():
+	barra_carga.max_value = 1.5
+	barra_carga.value = 1.5
 	for i in range(coracoes.size()):
 		var coracao = coracoes[i]
 		coracao.modulate = Color(2.0, 2.0, 2.0, 1.0)
@@ -14,6 +16,8 @@ func _ready():
 func _process(_delta):
 	atualizar_vidas(Global.vida)
 	var cena_atual = get_tree().current_scene
+	if Dialogo.tutorial:
+		self.visible = false
 	if cena_atual:
 		if cena_atual.name == "MainMenu" or cena_atual.name == "PauseMenu" or cena_atual.name == "SettingsMenu" or cena_atual.name == "LostScene" or cena_atual.name == "WinScene":
 			self.visible = false

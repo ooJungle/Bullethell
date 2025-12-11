@@ -12,7 +12,7 @@ extends Node
 @export_group("Dash")
 @export var dash_speed: float = 1500.0
 @export var dash_duration: float = 0.15
-@export var dash_cooldown: float = 0.6
+@export var dash_cooldown: float = 1.5
 
 # --- VARIÁVEIS DE INTERFACE ---
 var pode_se_mexer: bool = true
