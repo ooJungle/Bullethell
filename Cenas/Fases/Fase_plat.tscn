@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=4 uid="uid://bd1kjomv53gnt"]
+[gd_scene load_steps=33 format=4 uid="uid://bd1kjomv53gnt"]
 
 [ext_resource type="Script" uid="uid://rpmvree5m8p3" path="res://Scripts/Projeteis/Fases/fase_plat.gd" id="1_axnnm"]
 [ext_resource type="PackedScene" uid="uid://d2m240uv3u7nj" path="res://UI_UX/fundo.tscn" id="2_ijx0c"]
@@ -19,6 +19,7 @@
 [ext_resource type="PackedScene" uid="uid://ccfgwwjp3djau" path="res://Cenas/Geral/tocha_costas.tscn" id="16_n46ps"]
 [ext_resource type="PackedScene" uid="uid://j8054vcypju4" path="res://Cenas/Geral/tocha_lado.tscn" id="17_gcvnk"]
 [ext_resource type="FontFile" uid="uid://d1g8okxudu3hl" path="res://Minecraft.ttf" id="19_qf2fo"]
+[ext_resource type="AudioStream" uid="uid://b811iufygt406" path="res://Sons e Musica/trocar_plat.mp3" id="20_qf2fo"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_g5322"]
 
@@ -624,3 +625,7 @@ anchor_right = 1.0
 offset_bottom = 64.0
 grow_horizontal = 2
 texture = SubResource("GradientTexture2D_gcvnk")
+
+[node name="troca" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("20_qf2fo")
+bus = &"sfx"

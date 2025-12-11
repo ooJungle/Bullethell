@@ -1,4 +1,4 @@
-[gd_scene load_steps=45 format=4 uid="uid://dgvk00ax3rrbo"]
+[gd_scene load_steps=46 format=4 uid="uid://dgvk00ax3rrbo"]
 
 [ext_resource type="Script" uid="uid://bl0k0fcu8kka2" path="res://Scripts/Projeteis/Fases/fase_0.gd" id="1_l7uc1"]
 [ext_resource type="PackedScene" uid="uid://d2m240uv3u7nj" path="res://UI_UX/fundo.tscn" id="1_setcl"]
@@ -27,6 +27,7 @@
 [ext_resource type="Texture2D" uid="uid://b6ivh1vsxi5pb" path="res://Sprites/Geral/coracao_pulsante-Sheet.png" id="25_oy6jg"]
 [ext_resource type="Script" uid="uid://gg3rsvoqwv2o" path="res://Scripts/Inimigos/vida_boss.gd" id="25_wa3l2"]
 [ext_resource type="AudioStream" uid="uid://d1i0iqmxuk46g" path="res://Sons e Musica/musica_boss_final.mp3" id="27_wa3l2"]
+[ext_resource type="AudioStream" uid="uid://cgi5vkms0eun7" path="res://Sons e Musica/sala_pre_final.mp3" id="28_fnywe"]
 
 [sub_resource type="Gradient" id="Gradient_n46ps"]
 offsets = PackedFloat32Array(0, 0.5, 1)
@@ -568,6 +569,10 @@ autoplay = "pulsar"
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="CanvasLayer"]
 stream = ExtResource("27_wa3l2")
+bus = &"musica"
+
+[node name="aiquemedo" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("28_fnywe")
 bus = &"musica"
 
 [connection signal="body_entered" from="Portal_branco" to="Portal_branco" method="_on_body_entered"]
