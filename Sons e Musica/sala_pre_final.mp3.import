@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://cgi5vkms0eun7"
+path="res://.godot/imported/sala_pre_final.mp3-028d46575811cb1f7df6b17b57e4697d.mp3str"
+
+[deps]
+
+source_file="res://Sons e Musica/sala_pre_final.mp3"
+dest_files=["res://.godot/imported/sala_pre_final.mp3-028d46575811cb1f7df6b17b57e4697d.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

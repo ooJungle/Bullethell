@@ -10,6 +10,7 @@ extends Node2D
 @onready var imagem_final: TextureRect = $Ambiente/ImagemFinal
 @onready var control: CanvasLayer = $Control
 @onready var audio_stream_player: AudioStreamPlayer = $CanvasLayer/AudioStreamPlayer
+@onready var aiquemedo: AudioStreamPlayer = $aiquemedo
 
 func _ready() -> void:
 	Global.boss_final_morreu.connect(fimdejogo)
@@ -39,6 +40,7 @@ func verificar_fim_de_jogo():
 		if Global.musica_timer:
 			Global.musica_timer.stop()
 		Global.music_player.stop()
+		aiquemedo.play()
 		audio_stream_player.play()
 		mostrar_imagem_final()
 		if not Global.dialogo_final_mostrado:

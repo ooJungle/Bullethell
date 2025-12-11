@@ -5,6 +5,7 @@ extends Node2D
 @onready var musica_inicio: AudioStreamPlayer = $AudioStreamPlayer2D
 @onready var camera_shake: AnimationPlayer = $player/Camera2D/AnimationPlayer
 @onready var tut: CanvasLayer = $tut
+@onready var troca: AudioStreamPlayer = $troca
 
 var total_cristais = 0
 var cristais_quebrados = 0
@@ -128,6 +129,7 @@ func _on_cristal_quebrado():
 	
 	if cristais_quebrados >= total_cristais:
 		tut.visible = true
+		troca.play()
 		Global.plataforma = true
 		abrir_portal()
 
