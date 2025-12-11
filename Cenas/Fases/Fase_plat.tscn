@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=4 uid="uid://bd1kjomv53gnt"]
+[gd_scene load_steps=33 format=4 uid="uid://bd1kjomv53gnt"]
 
 [ext_resource type="Script" uid="uid://rpmvree5m8p3" path="res://Scripts/Projeteis/Fases/fase_plat.gd" id="1_axnnm"]
 [ext_resource type="PackedScene" uid="uid://d2m240uv3u7nj" path="res://UI_UX/fundo.tscn" id="2_ijx0c"]
@@ -19,6 +19,7 @@
 [ext_resource type="PackedScene" uid="uid://ccfgwwjp3djau" path="res://Cenas/Geral/tocha_costas.tscn" id="16_n46ps"]
 [ext_resource type="PackedScene" uid="uid://j8054vcypju4" path="res://Cenas/Geral/tocha_lado.tscn" id="17_gcvnk"]
 [ext_resource type="FontFile" uid="uid://d1g8okxudu3hl" path="res://Minecraft.ttf" id="19_qf2fo"]
+[ext_resource type="PackedScene" uid="uid://cm88udal3jtb" path="res://vida_extra.tscn" id="20_qf2fo"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_g5322"]
 
@@ -624,3 +625,21 @@ anchor_right = 1.0
 offset_bottom = 64.0
 grow_horizontal = 2
 texture = SubResource("GradientTexture2D_gcvnk")
+
+[node name="vida extra" parent="tut" instance=ExtResource("20_qf2fo")]
+position = Vector2(-1030, 68)
+
+[node name="vida extra" parent="." instance=ExtResource("20_qf2fo")]
+position = Vector2(345, -272)
+
+[node name="vida extra2" parent="." instance=ExtResource("20_qf2fo")]
+position = Vector2(-1746, 560)
+
+[node name="vida extra3" parent="." instance=ExtResource("20_qf2fo")]
+position = Vector2(952, 547)
+
+[node name="vida extra4" parent="." instance=ExtResource("20_qf2fo")]
+position = Vector2(1439, -402)
+
+[node name="vida extra5" parent="." instance=ExtResource("20_qf2fo")]
+position = Vector2(-734, -1032)

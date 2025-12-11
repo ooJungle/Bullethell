@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=4 uid="uid://vtcrh3j2rb3w"]
+[gd_scene load_steps=32 format=4 uid="uid://vtcrh3j2rb3w"]
 
 [ext_resource type="Script" uid="uid://c026j0c7a8vyi" path="res://Scripts/Projeteis/Fases/fase_espaco.gd" id="1_msfmn"]
 [ext_resource type="Texture2D" uid="uid://0hnxho8ngv6r" path="res://Sprites/Tilesets/tilesetCINZA.png" id="2_a6l73"]
@@ -22,6 +22,7 @@
 [ext_resource type="AudioStream" uid="uid://qtw6kt2un7k4" path="res://Sons e Musica/new_teleporte.mp3" id="15_6gwva"]
 [ext_resource type="AudioStream" uid="uid://dxf5nvye1lu10" path="res://Sons e Musica/Boss_3.mp3" id="17_8nlod"]
 [ext_resource type="Shader" uid="uid://cyy2w5soru1ax" path="res://Scripts/Projeteis/Fases/Fase_espaco.gdshader" id="20_0au1x"]
+[ext_resource type="PackedScene" uid="uid://cm88udal3jtb" path="res://vida_extra.tscn" id="23_7yv8o"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_pxeo3"]
 vertices = PackedVector2Array(10683, 2167, -3729, 2167, -3729, -5813, 10683, -5813)
@@ -463,3 +464,39 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
+
+[node name="vida extra" parent="." instance=ExtResource("23_7yv8o")]
+position = Vector2(3924, -1710)
+
+[node name="vida extra2" parent="." instance=ExtResource("23_7yv8o")]
+position = Vector2(4517, -1296)
+
+[node name="vida extra3" parent="." instance=ExtResource("23_7yv8o")]
+position = Vector2(5353, -1048)
+
+[node name="vida extra4" parent="." instance=ExtResource("23_7yv8o")]
+position = Vector2(2826, -2601)
+
+[node name="vida extra5" parent="." instance=ExtResource("23_7yv8o")]
+position = Vector2(2509, -3033)
+
+[node name="vida extra6" parent="." instance=ExtResource("23_7yv8o")]
+position = Vector2(1438, -3038)
+
+[node name="vida extra7" parent="." instance=ExtResource("23_7yv8o")]
+position = Vector2(1070, -2712)
+
+[node name="vida extra8" parent="." instance=ExtResource("23_7yv8o")]
+position = Vector2(441, -2248)
+
+[node name="vida extra9" parent="." instance=ExtResource("23_7yv8o")]
+position = Vector2(812, -560)
+
+[node name="vida extra10" parent="." instance=ExtResource("23_7yv8o")]
+position = Vector2(5208, -3344)
+
+[node name="vida extra11" parent="." instance=ExtResource("23_7yv8o")]
+position = Vector2(2953, -560)
+
+[node name="vida extra12" parent="." instance=ExtResource("23_7yv8o")]
+position = Vector2(-670, -3368)

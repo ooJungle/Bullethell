@@ -1,0 +1,38 @@
+[gd_scene load_steps=6 format=3 uid="uid://cm88udal3jtb"]
+
+[ext_resource type="Script" uid="uid://k0ryk6sxg728" path="res://area_2d.gd" id="1_ml6ih"]
+[ext_resource type="Texture2D" uid="uid://bc6xm446i2t4t" path="res://Sprites/Geral/vidas.png" id="2_6vrdj"]
+
+[sub_resource type="Gradient" id="Gradient_ml6ih"]
+colors = PackedColorArray(0.8352941, 0, 1, 1, 0.5411765, 0, 1, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_6vrdj"]
+gradient = SubResource("Gradient_ml6ih")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(0.5, 0)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_crf6h"]
+radius = 50.0
+
+[node name="vida extra" type="Area2D"]
+scale = Vector2(0.3, 0.3)
+collision_layer = 255
+collision_mask = 255
+script = ExtResource("1_ml6ih")
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+color = Color(1, 0, 1, 1)
+texture = SubResource("GradientTexture2D_6vrdj")
+texture_scale = 4.69
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_6vrdj")
+hframes = 5
+frame = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -6)
+shape = SubResource("CircleShape2D_crf6h")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

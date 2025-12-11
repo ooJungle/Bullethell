@@ -366,11 +366,36 @@ func _get_different_quadrant(used_quadrants: Array) -> int:
 
 func _get_random_position_in_quadrant(quadrant_index: int, margin: float = 0) -> Vector2:
 	var quadrant_rect = _get_quadrant_rect(quadrant_index)
-	return Vector2(
-		randf_range(quadrant_rect.position.x + margin, quadrant_rect.end.x - margin),
-		randf_range(quadrant_rect.position.y + margin, quadrant_rect.end.y - margin)
-	)
+	
+	var valid_rect = quadrant_rect
+	if arena_rect.has_area():
+		valid_rect = quadrant_rect.intersection(arena_rect)
+	
+	if valid_rect.size.x <= 0 or valid_rect.size.y <= 0:
+		return Vector2(
+			clamp(quadrant_rect.position.x, arena_rect.position.x, arena_rect.end.x),
+			clamp(quadrant_rect.position.y, arena_rect.position.y, arena_rect.end.y)
+		)
 
+	var min_x = valid_rect.position.x + margin
+	var max_x = valid_rect.end.x - margin
+	var min_y = valid_rect.position.y + margin
+	var max_y = valid_rect.end.y - margin
+	
+	if min_x > max_x:
+		var center_x = valid_rect.position.x + valid_rect.size.x / 2
+		min_x = center_x
+		max_x = center_x
+		
+	if min_y > max_y:
+		var center_y = valid_rect.position.y + valid_rect.size.y / 2
+		min_y = center_y
+		max_y = center_y
+
+	return Vector2(
+		randf_range(min_x, max_x),
+		randf_range(min_y, max_y)
+	)
 func _spawn_bullets_in_area(rect: Rect2):
 	var blaster_scene = load("res://Cenas/Projeteis/Blaster.tscn")
 	var count = 20
