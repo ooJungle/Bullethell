@@ -302,7 +302,9 @@ func attack_bucket_fill():
 	
 	print("Atenção! Preenchendo...")
 	await get_tree().create_timer(2.0).timeout
-	
+	if Global.vida <= 0:
+		if canvas_layer:
+			canvas_layer.queue_free()
 	var is_safe = false
 	for zone in safe_zones:
 		if player.global_position.distance_to(zone.global_position) < 100:
