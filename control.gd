@@ -13,7 +13,6 @@ var click_pending: bool = false
 
 func _ready():
 	set_process(false)
-	start_fake_cutscene()
 func start_fake_cutscene():
 	print("aaq")
 	audioerro.play()
