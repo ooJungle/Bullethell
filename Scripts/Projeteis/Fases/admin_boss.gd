@@ -311,7 +311,9 @@ func attack_bucket_fill():
 	if not is_safe:
 		print("DANO DO BALDE!")
 		if player.has_method("take_damage"):
-			player.take_damage(25)
+			if canvas_layer:
+				canvas_layer.queue_free()
+			player.take_damage(1)
 	
 	var fade_tween = create_tween()
 	fade_tween.tween_property(danger_overlay, "color:a", 0.0, 0.5)
@@ -319,7 +321,8 @@ func attack_bucket_fill():
 	
 	for zone in safe_zones:
 		zone.queue_free()
-	canvas_layer.queue_free()
+	if canvas_layer:
+		canvas_layer.queue_free()
 		
 	_start_next_attack()
 

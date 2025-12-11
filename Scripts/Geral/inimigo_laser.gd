@@ -11,7 +11,7 @@ extends CharacterBody2D
 
 @export_group("Cristal - Refração Config")
 @export var quantidade_mini_lasers: int = 3
-@export var dano_mini_laser: int = 20 
+@export var dano_mini_laser: int = 1
 @export_range(0, 90) var abertura_leque: float = 45.0 
 @export_range(0, 30) var grau_de_tortura: float = 15.0 
 
