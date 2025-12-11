@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://d1i0iqmxuk46g"
+path="res://.godot/imported/musica_boss_final.mp3-1ed76fc7ff65911abe8ce2e9f590f7b5.mp3str"
+
+[deps]
+
+source_file="res://Sons e Musica/musica_boss_final.mp3"
+dest_files=["res://.godot/imported/musica_boss_final.mp3-1ed76fc7ff65911abe8ce2e9f590f7b5.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

@@ -9,6 +9,7 @@ extends Node2D
 @onready var color_rect: ColorRect = $Ambiente/ColorRect
 @onready var imagem_final: TextureRect = $Ambiente/ImagemFinal
 @onready var control: CanvasLayer = $Control
+@onready var audio_stream_player: AudioStreamPlayer = $CanvasLayer/AudioStreamPlayer
 
 func _ready() -> void:
 	Global.boss_final_morreu.connect(fimdejogo)
@@ -35,6 +36,10 @@ func verificar_fim_de_jogo():
 	var f3 = Global.portais_ativos["Fase_RPG"] == false
 	
 	if f1 and f2 and f3:
+		if Global.musica_timer:
+			Global.musica_timer.stop()
+		Global.music_player.stop()
+		audio_stream_player.play()
 		mostrar_imagem_final()
 		if not Global.dialogo_final_mostrado:
 			iniciar_dialogo_automatico()
