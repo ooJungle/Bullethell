@@ -643,3 +643,5 @@ position = Vector2(1439, -402)
 
 [node name="vida extra5" parent="." instance=ExtResource("20_qf2fo")]
 position = Vector2(-734, -1032)
+
+[node name="troca" type="AudioStreamPlayer" parent="."]
