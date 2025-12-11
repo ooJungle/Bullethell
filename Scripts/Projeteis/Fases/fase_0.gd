@@ -11,6 +11,8 @@ extends Node2D
 @onready var control: CanvasLayer = $Control
 @onready var audio_stream_player: AudioStreamPlayer = $CanvasLayer/AudioStreamPlayer
 @onready var aiquemedo: AudioStreamPlayer = $aiquemedo
+@onready var cutscene_pré_final: Node2D = $"Cutscene pré final"
+@onready var bossmerro: AudioStreamPlayer = $bossmerro
 
 func _ready() -> void:
 	Global.boss_final_morreu.connect(fimdejogo)
@@ -68,9 +70,11 @@ func iniciar_dialogo_automatico():
 	Dialogo.start_dialogue(falas_finais)
 
 func fimdejogo():
-	control.visible = true
+	Hud.visible = false
 	get_tree().paused = true
-	control.start_fake_cutscene()
+	bossmerro.play()
+	cutscene_pré_final.visible = true
+	cutscene_pré_final.start_boss_death_sequence()
 
 func animar_pulso_final():
 	if not color_rect:

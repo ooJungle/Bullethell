@@ -1,9 +1,10 @@
-[gd_scene load_steps=6 format=3 uid="uid://ugvn400iuskf"]
+[gd_scene load_steps=7 format=3 uid="uid://ugvn400iuskf"]
 
 [ext_resource type="Script" uid="uid://b16kjdkhmnxy1" path="res://control.gd" id="1_62e2m"]
 [ext_resource type="Texture2D" uid="uid://b7w8t0igorlux" path="res://Scripts/Geral/alerta.png" id="2_ee4bf"]
 [ext_resource type="Texture2D" uid="uid://u2cc8u2tv2jc" path="res://Sprites/Geral/mousinho.png" id="2_qtu10"]
 [ext_resource type="AudioStream" uid="uid://dpfy2n7xruw0v" path="res://Sons e Musica/Som de erro do Windows - Efeitos Sonoros HD.mp3" id="4_ee4bf"]
+[ext_resource type="AudioStream" uid="uid://danymu7krmhs8" path="res://Sons e Musica/computer-mouse-click-352734.mp3" id="5_kbped"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_kbped"]
 atlas = ExtResource("2_ee4bf")
@@ -14,6 +15,7 @@ process_mode = 3
 scale = Vector2(0.99215513, 0.9953156)
 transform = Transform2D(0.99215513, 0, 0, 0.9953156, 0, 0)
 script = ExtResource("1_62e2m")
+tempo = 1.0
 
 [node name="Control" type="Control" parent="."]
 layout_mode = 3
@@ -24,14 +26,14 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="ColorRect" type="ColorRect" parent="Control"]
+z_index = 7
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-scale = Vector2(28.610764, 16.060635)
-color = Color(1, 1, 1, 0.7019608)
+color = Color(1, 1, 1, 0.5803922)
 
 [node name="CenterContainer" type="CenterContainer" parent="Control"]
 layout_mode = 1
@@ -77,6 +79,12 @@ texture = SubResource("AtlasTexture_kbped")
 [node name="fakecursor" type="Sprite2D" parent="Control"]
 texture = ExtResource("2_qtu10")
 
-[node name="audioerro" type="AudioStreamPlayer2D" parent="."]
+[node name="audioerro" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("4_ee4bf")
 volume_db = 24.0
+bus = &"sfx"
+
+[node name="clique" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_kbped")
+volume_db = 15.85
+bus = &"sfx"

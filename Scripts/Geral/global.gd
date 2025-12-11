@@ -117,7 +117,11 @@ func creditos():
 	if arquivo:
 		arquivo.store_string("OBRIGADO POR JOGAR!\n")
 		arquivo.store_string("-------------------\n")
-		arquivo.store_string("Por: João, Caio, Caio e Gusta\n")
+		arquivo.store_string("Por: Caio Henrique,\n")
+		arquivo.store_string("     Caio Mesquita,\n")
+		arquivo.store_string("     Gustavo,\n")
+		arquivo.store_string("     João Gabriel e\n")
+		arquivo.store_string("     Gabriel Panza\n")
 		arquivo.close()
 		print("Arquivo criado em: ", caminho_arquivo)
 		OS.shell_open(caminho_arquivo)
