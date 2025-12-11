@@ -181,8 +181,8 @@ func attack_drag_select():
 	else: 
 		max_distance_y = global_position.y - camera_rect.position.y - 10
 	
-	var target_width = randf_range(200, 400)
-	var target_height = randf_range(200, 400)
+	var target_width = randf_range(700, 1000)
+	var target_height = randf_range(600, 900)
 	
 	if expand_direction.x != 0:
 		var max_width = abs(max_distance_x / expand_direction.x) if expand_direction.x != 0 else target_width
