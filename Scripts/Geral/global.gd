@@ -8,7 +8,7 @@ const SAVE_PATH = "user://save_game.json"
 var menu = 0
 var volume = 0.3
 var dialogo_final_mostrado: bool = false
-var vida = 300
+var vida = 12
 var paused = false
 var fator_tempo: float = 1.0
 var plataforma = false
@@ -17,9 +17,9 @@ var zerou = false
 var primeira_vez = true
 
 var portais_ativos = {
-	"Fase_espaco": true,
-	"Fase_plat": true,
-	"Fase_RPG": true
+	"Fase_espaco": false,
+	"Fase_plat": false,
+	"Fase_RPG": false
 }
 
 @onready var music_player = $MusicPlayer

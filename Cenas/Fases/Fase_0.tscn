@@ -1,4 +1,4 @@
-[gd_scene load_steps=37 format=4 uid="uid://dgvk00ax3rrbo"]
+[gd_scene load_steps=44 format=4 uid="uid://dgvk00ax3rrbo"]
 
 [ext_resource type="Script" uid="uid://bl0k0fcu8kka2" path="res://Scripts/Projeteis/Fases/fase_0.gd" id="1_l7uc1"]
 [ext_resource type="PackedScene" uid="uid://d2m240uv3u7nj" path="res://UI_UX/fundo.tscn" id="1_setcl"]
@@ -23,7 +23,9 @@
 [ext_resource type="PackedScene" uid="uid://cfe7ov4nhlnpv" path="res://Cenas/Geral/tocha_lado_esquerdo.tscn" id="21_2gjbv"]
 [ext_resource type="PackedScene" uid="uid://dybqvnmb765cl" path="res://Cenas/Geral/Portal_verde.tscn" id="22_if8b4"]
 [ext_resource type="PackedScene" uid="uid://du6ljd75pr82g" path="res://Cenas/Geral/Portal_vermelho.tscn" id="23_8de20"]
-[ext_resource type="PackedScene" path="res://control.tscn" id="25_8de20"]
+[ext_resource type="PackedScene" uid="uid://ugvn400iuskf" path="res://control.tscn" id="25_8de20"]
+[ext_resource type="Texture2D" uid="uid://b6ivh1vsxi5pb" path="res://Sprites/Geral/coracao_pulsante-Sheet.png" id="25_oy6jg"]
+[ext_resource type="Script" uid="uid://gg3rsvoqwv2o" path="res://Scripts/Inimigos/vida_boss.gd" id="25_wa3l2"]
 
 [sub_resource type="Gradient" id="Gradient_n46ps"]
 offsets = PackedFloat32Array(0, 0.5, 1)
@@ -255,6 +257,42 @@ shader_parameter/tint_color = Color(1, 1, 1, 1)
 shader_parameter/tint_strength = 0.50000002375
 shader_parameter/vignette_intensity = 1.0000000475
 shader_parameter/vignette_opacity = 0.702000033345
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_g2xff"]
+atlas = ExtResource("25_oy6jg")
+region = Rect2(0, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4vhhd"]
+atlas = ExtResource("25_oy6jg")
+region = Rect2(100, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_v54xa"]
+atlas = ExtResource("25_oy6jg")
+region = Rect2(200, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_iqj32"]
+atlas = ExtResource("25_oy6jg")
+region = Rect2(300, 0, 100, 100)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_wa3l2"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_g2xff")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4vhhd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_v54xa")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_iqj32")
+}],
+"loop": true,
+"name": &"pulsar",
+"speed": 5.0
+}]
 
 [node name="Node2D" type="Node2D"]
 script = ExtResource("1_l7uc1")
@@ -505,5 +543,26 @@ position = Vector2(-416, 837)
 [node name="Control" parent="." instance=ExtResource("25_8de20")]
 layer = 300
 visible = false
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="vida_boss" type="Control" parent="CanvasLayer"]
+layout_mode = 3
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -26.0
+offset_top = 150.0
+offset_right = 14.0
+offset_bottom = 190.0
+grow_horizontal = 2
+scale = Vector2(3, 3)
+size_flags_vertical = 0
+script = ExtResource("25_wa3l2")
+
+[node name="coracao_boss" type="AnimatedSprite2D" parent="CanvasLayer/vida_boss"]
+sprite_frames = SubResource("SpriteFrames_wa3l2")
+animation = &"pulsar"
+autoplay = "pulsar"
 
 [connection signal="body_entered" from="Portal_branco" to="Portal_branco" method="_on_body_entered"]

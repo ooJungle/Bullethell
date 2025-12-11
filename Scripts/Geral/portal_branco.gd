@@ -1,6 +1,8 @@
 extends Area2D
 
 @onready var som_portal: AudioStreamPlayer = $AudioStreamPlayer
+@onready var vida_boss: Control = $"../CanvasLayer/vida_boss"
+
 
 # Adicione uma export variável para a cena do boss
 @export var boss_scene: PackedScene
@@ -29,6 +31,8 @@ func spawn_boss():
 	# Só spawna o boss se ele não existir já
 	if get_tree().get_nodes_in_group("boss").size() == 0:
 		var boss_instance = boss_scene.instantiate()
+		boss_instance.vida_mudou.connect(vida_boss.atualizar_coracao)
+		vida_boss.visible = true
 		get_parent().add_child(boss_instance)
 		boss_instance.global_position = Vector2(35, 3000) 
 		boss_instance.add_to_group("boss")

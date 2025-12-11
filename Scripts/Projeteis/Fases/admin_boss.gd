@@ -2,6 +2,7 @@ extends CharacterBody2D
 
 enum States {IDLE, MOVE, DRAG_SELECT, CTRL_CV, BUCKET_FILL}
 var current_state = States.IDLE
+signal vida_mudou(nova_vida)
 
 @export var player: Node2D
 @onready var selection_box = $SelectionBox
@@ -17,6 +18,7 @@ var arena_rect: Rect2
 var tween_dano: Tween
 
 var vida = 550
+var vida_max = 550
 
 func _ready():
 	player = get_node_or_null("/root/Node2D/player")
@@ -414,7 +416,7 @@ func take_damage(amount: int) -> void:
 	# 1. Aplica o dano
 	vida -= amount
 	print("Boss tomou dano. Vida:", vida)
-	
+	emit_signal("vida_mudou", vida)
 	# 2. Efeito Visual de Dano (Flash Vermelho)
 	if tween_dano:
 		tween_dano.kill()

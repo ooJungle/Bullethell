@@ -4,6 +4,7 @@ extends Control
 @onready var menu_music_player = $MenuMusicPlayer
 
 func _ready() -> void:
+	Global.atualizar_hud_vida(12)
 	Global.set_in_menu_state(true)
 	Global.menu = 0
 	DisplayServer.window_set_flag(DisplayServer.WINDOW_FLAG_TRANSPARENT, true, 0)
