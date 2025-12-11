@@ -10,10 +10,9 @@ func _ready():
 	for i in range(coracoes.size()):
 		var coracao = coracoes[i]
 		coracao.modulate = Color(2.0, 2.0, 2.0, 1.0)
-	Global.vida_mudou.connect(atualizar_vidas)
-	atualizar_vidas(Global.vida)
 	
 func _process(_delta):
+	atualizar_vidas(Global.vida)
 	var cena_atual = get_tree().current_scene
 	if cena_atual:
 		if cena_atual.name == "MainMenu" or cena_atual.name == "PauseMenu" or cena_atual.name == "SettingsMenu" or cena_atual.name == "LostScene" or cena_atual.name == "WinScene":
