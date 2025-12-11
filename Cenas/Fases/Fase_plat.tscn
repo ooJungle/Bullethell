@@ -19,7 +19,7 @@
 [ext_resource type="PackedScene" uid="uid://ccfgwwjp3djau" path="res://Cenas/Geral/tocha_costas.tscn" id="16_n46ps"]
 [ext_resource type="PackedScene" uid="uid://j8054vcypju4" path="res://Cenas/Geral/tocha_lado.tscn" id="17_gcvnk"]
 [ext_resource type="FontFile" uid="uid://d1g8okxudu3hl" path="res://Minecraft.ttf" id="19_qf2fo"]
-[ext_resource type="AudioStream" uid="uid://b811iufygt406" path="res://Sons e Musica/trocar_plat.mp3" id="20_qf2fo"]
+[ext_resource type="PackedScene" uid="uid://cm88udal3jtb" path="res://vida_extra.tscn" id="20_qf2fo"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_g5322"]
 
@@ -626,6 +626,22 @@ offset_bottom = 64.0
 grow_horizontal = 2
 texture = SubResource("GradientTexture2D_gcvnk")
 
+[node name="vida extra" parent="tut" instance=ExtResource("20_qf2fo")]
+position = Vector2(-1030, 68)
+
+[node name="vida extra" parent="." instance=ExtResource("20_qf2fo")]
+position = Vector2(345, -272)
+
+[node name="vida extra2" parent="." instance=ExtResource("20_qf2fo")]
+position = Vector2(-1746, 560)
+
+[node name="vida extra3" parent="." instance=ExtResource("20_qf2fo")]
+position = Vector2(952, 547)
+
+[node name="vida extra4" parent="." instance=ExtResource("20_qf2fo")]
+position = Vector2(1439, -402)
+
+[node name="vida extra5" parent="." instance=ExtResource("20_qf2fo")]
+position = Vector2(-734, -1032)
+
 [node name="troca" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("20_qf2fo")
-bus = &"sfx"

@@ -17,9 +17,9 @@ var zerou = false
 var primeira_vez = true
 
 var portais_ativos = {
-	"Fase_espaco": false,
-	"Fase_plat": false,
-	"Fase_RPG": false
+	"Fase_espaco": true,
+	"Fase_plat": true,
+	"Fase_RPG": true
 }
 
 @onready var music_player = $MusicPlayer
